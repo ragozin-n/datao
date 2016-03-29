@@ -18,9 +18,8 @@ namespace DATAO
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new StartForm());
              GAuthForm f = new GAuthForm();
-            Application.Run();
-            f.Show();
-            f.Size.Height = 600;
+            Application.Run(f);
+            
         }
     }
 }

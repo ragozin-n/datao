@@ -5,6 +5,9 @@ using MaterialSkin.Controls;
 using System.Windows.Forms;
 using MaterialSkin;
 using MaterialSkin.Animations;
+using System.Drawing;
+using System.Dynamic;
+using Google.GData.Calendar;
 
 namespace DATAO
 {
@@ -33,6 +36,8 @@ namespace DATAO
         {
             string authorizationUrl = OAuthUtil.CreateOAuth2AuthorizationUrl(parameters);
             webBrowser.Navigate(authorizationUrl);
+            this.Size = new Size(480,520);
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void webBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
@@ -50,7 +55,7 @@ namespace DATAO
 
                 SpreadsheetQuery query = new SpreadsheetQuery();
                 SpreadsheetFeed feed = service.Query(query);
-
+                
                 //Ищем таблицу с именем datao.init
                 //Ее в последствии положим в spreadsheet
                 SpreadsheetEntry spreadsheet = new SpreadsheetEntry();
@@ -78,7 +83,9 @@ namespace DATAO
 
                 MessageBox.Show("МЫ ПОЛУЧИЛИ ТАБЛИЦУ! УРА!");
 
-                this.Close();
+                webBrowser.Visible = false;
+                this.ChangeForm();
+                
                 //this.ChangeForm(f);                
                 
                 //GAuthForm.ActiveForm.Close();
@@ -96,9 +103,19 @@ namespace DATAO
 
         }
 
-        private void ChangeForm(GAuthForm f)
+        private void ChangeForm()
         {
-            //f.Size.Height = 400;
+            
+            this.Text = "Салон красоты \"Пизда\"";
+            this.Size = new System.Drawing.Size(1280, 720);
+            this.pictureBox1.Visible = true;
+            this.materialTabControl1.Visible = true;
+            this.materialTabSelector1.Visible = true;
+        }
+
+        private void Calendar_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
