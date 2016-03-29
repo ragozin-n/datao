@@ -3,6 +3,8 @@ using Google.GData.Client;
 using Google.GData.Spreadsheets;
 using MaterialSkin.Controls;
 using System.Windows.Forms;
+using MaterialSkin;
+using MaterialSkin.Animations;
 
 namespace DATAO
 {
@@ -75,39 +77,28 @@ namespace DATAO
                 ListEntry row = (ListEntry)listFeed.Entries[0];
 
                 MessageBox.Show("МЫ ПОЛУЧИЛИ ТАБЛИЦУ! УРА!");
+
+                this.Close();
+                //this.ChangeForm(f);                
+                
+                //GAuthForm.ActiveForm.Close();
                 
                 //Проверяем первую букву ID (можно придумать что угодно)
-                switch (row.Elements[0].Value.ToString()[0])
-                {
-                    case ('a'):
-                        {
-                            //a - admin
-                            //Открывается форма админа.
-                            MessageBox.Show($"Приветствуем, {row.Elements[1].Value.ToString()}");
-                            break;
-                        }
-                    case ('w'):
-                        {
-                            //w - worker
-                            //Открывается форма рабочего
-                            MessageBox.Show($"Приветствуем, {row.Elements[1].ToString()}");
-                            break;
-                        }
-                    default:
-                        {
-                            //Неизвестный тип
-                            break;
-                        }
-                }
+                
 
                 //Далее в зависимости от типа можно загрузить его страницу на диске, предварительно как-нибудь ее обозвав
-                Close();
+                //Close();
             }
             catch (Exception ex)
             {
                 //System.Windows.Forms.MessageBox.Show(ex.Message);
             }
 
+        }
+
+        private void ChangeForm(GAuthForm f)
+        {
+            //f.Size.Height = 400;
         }
     }
 }
