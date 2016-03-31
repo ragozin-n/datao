@@ -36,7 +36,7 @@
             this.webBrowser.Location = new System.Drawing.Point(0, 64);
             this.webBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser.Name = "webBrowser";
-            this.webBrowser.Size = new System.Drawing.Size(458, 411);
+            this.webBrowser.Size = new System.Drawing.Size(442, 469);
             this.webBrowser.TabIndex = 0;
             this.webBrowser.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser_DocumentCompleted);
             // 
@@ -44,7 +44,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(460, 476);
+            this.ClientSize = new System.Drawing.Size(445, 536);
             this.Controls.Add(this.webBrowser);
             this.Name = "GAuthForm";
             this.Text = "Авторизуйся, раб!";
