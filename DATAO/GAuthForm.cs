@@ -34,19 +34,24 @@ namespace DATAO
 
         private void GAuthForm_Load(object sender, EventArgs e)
         {
+            
             string authorizationUrl = OAuthUtil.CreateOAuth2AuthorizationUrl(parameters);
             webBrowser.Navigate(authorizationUrl);
             this.Size = new Size(480,520);
             this.StartPosition = FormStartPosition.CenterScreen;
+
         }
 
         private void webBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
             try
             {
-                parameters.AccessCode = webBrowser.DocumentTitle.Remove(0,13);
-                OAuthUtil.GetAccessToken(parameters);
 
+                parameters.AccessCode = webBrowser.DocumentTitle.Remove(0,13);
+
+                OAuthUtil.GetAccessToken(parameters);
+                webBrowser.Visible = false;
+                
                 GOAuth2RequestFactory requestFactory =
                     new GOAuth2RequestFactory(null, "DATAO", parameters);
 
@@ -66,7 +71,7 @@ namespace DATAO
                         spreadsheet = entry;
                     }
                 }
-
+                
                 //Разбиваем полученную таблицу на листы
                 WorksheetFeed wsFeed = spreadsheet.Worksheets;
 
@@ -83,7 +88,7 @@ namespace DATAO
 
                 MessageBox.Show("МЫ ПОЛУЧИЛИ ТАБЛИЦУ! УРА!");
 
-                webBrowser.Visible = false;
+                
                 this.ChangeForm();
                 
                 //this.ChangeForm(f);                
@@ -116,6 +121,16 @@ namespace DATAO
         private void Calendar_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void progressBar1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
