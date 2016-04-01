@@ -8,11 +8,14 @@ namespace DATAO
 {
     public partial class GAuthForm : MaterialForm
     {
-        OAuth2Parameters parameters = new OAuth2Parameters();
+
+        OAuth2Parameters Parameters { get; set; } = new OAuth2Parameters();
+        public ListFeed listFeed { get; set; }
+
         public GAuthForm()
         {
             InitializeComponent();
-            webBrowser.Navigate(Authorization.CreatAauthorizationLink(parameters));
+            webBrowser.Navigate(Authorization.CreatAauthorizationLink(Parameters));
         }
 
         private void GAuthForm_Load(object sender, EventArgs e)
@@ -22,20 +25,14 @@ namespace DATAO
 
         private void webBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
-            ListFeed listFeed;
-
             try
             {
-                listFeed = Authorization.GetTablesFeed(parameters, webBrowser.DocumentTitle.Remove(0, 13));
+                listFeed = Authorization.GetTablesFeed(Parameters, webBrowser.DocumentTitle.Remove(0, 13));
 
-                //Берем первый ряд
-                ListEntry row = (ListEntry)listFeed.Entries[0];
-
-                //Открывается форма админа.
-                MessageBox.Show($"Приветствуем, {row.Elements[1].Value.ToString()}");
-
-                //Далее в зависимости от типа можно загрузить его страницу на диске, предварительно как-нибудь ее обозвав
-                Close();
+                if (listFeed != null)
+                {
+                    Close();
+                }
             }
             catch (Exception)
             {

@@ -47,7 +47,7 @@
             this.ClientSize = new System.Drawing.Size(445, 536);
             this.Controls.Add(this.webBrowser);
             this.Name = "GAuthForm";
-            this.Text = "Авторизуйся, раб!";
+            this.Text = "Войти с помощью Google";
             this.Load += new System.EventHandler(this.GAuthForm_Load);
             this.ResumeLayout(false);
 
