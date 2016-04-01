@@ -10,6 +10,7 @@ namespace DATAO
     {
 
         OAuth2Parameters parameters = new OAuth2Parameters();
+        public ListEntry row;
         public GAuthForm()
         {
             InitializeComponent();
@@ -31,15 +32,15 @@ namespace DATAO
                 listFeed = Authorization.GetTablesFeed(parameters, webBrowser.DocumentTitle.Remove(0, 13));
 
                 //Берем первый ряд
-                ListEntry row = (ListEntry)listFeed.Entries[0];
+                row = (ListEntry)listFeed.Entries[0];
 
                 //Открывается форма админа.
                 MessageBox.Show("Приветствуем "+row.Elements[1].Value.ToString());
-                AdminForm f = new AdminForm(row);
-                f.Show();
-                
+
+                //AdminForm adminF = new AdminForm(row);
+                //adminF.Show(); 
                 //Далее в зависимости от типа можно загрузить его страницу на диске, предварительно как-нибудь ее обозвав
-                this.Hide();
+                this.Close();
             }
             catch (Exception)
             {

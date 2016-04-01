@@ -127,7 +127,7 @@
             this.Controls.Add(this.materialTabControl1);
             this.Controls.Add(this.pictureBox1);
             this.Name = "GAuthForm";
-            this.Load += new System.EventHandler(this.GAuthForm_Load);
+            this.Load += new System.EventHandler(this.AdminForm_Load);
             this.materialTabControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
