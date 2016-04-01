@@ -16,9 +16,9 @@ namespace DATAO
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new StartForm());
-             GAuthForm f = new GAuthForm();
-            Application.Run(f);
+            GAuthForm authF = new GAuthForm();
+
+            Application.Run(authF);
             
         }
     }

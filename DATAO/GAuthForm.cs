@@ -3,134 +3,48 @@ using Google.GData.Client;
 using Google.GData.Spreadsheets;
 using MaterialSkin.Controls;
 using System.Windows.Forms;
-using MaterialSkin;
-using MaterialSkin.Animations;
-using System.Drawing;
-using System.Dynamic;
-using Google.GData.Calendar;
 
 namespace DATAO
 {
     public partial class GAuthForm : MaterialForm
     {
+
         OAuth2Parameters parameters = new OAuth2Parameters();
         public GAuthForm()
         {
             InitializeComponent();
-            //Служебные поля для авторизации
-            string CLIENT_ID = "144023824946-13eih1nnnlh8oq9ae8lmdaamchj8bc69.apps.googleusercontent.com";
-            string CLIENT_SECRET = "96MURyKXl8uApYvdn6fWO_3T";
-            string SCOPE = "https://spreadsheets.google.com/feeds https://docs.google.com/feeds";
-            string REDIRECT_URI = "urn:ietf:wg:oauth:2.0:oob:auto";
+            webBrowser.Navigate(Authorization.CreatAauthorizationLink(parameters));
 
-            //Заполняем нужные для авторизации параметры (самый минимум)
-            parameters.ClientId = CLIENT_ID;
-            parameters.ClientSecret = CLIENT_SECRET;
-            parameters.RedirectUri = REDIRECT_URI;
-            parameters.Scope = SCOPE;
-
-            //Открываем у пользователя браузер...
         }
 
         private void GAuthForm_Load(object sender, EventArgs e)
         {
-            
-            string authorizationUrl = OAuthUtil.CreateOAuth2AuthorizationUrl(parameters);
-            webBrowser.Navigate(authorizationUrl);
-            this.Size = new Size(480,520);
-            this.StartPosition = FormStartPosition.CenterScreen;
-
+            //
         }
 
         private void webBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
+            ListFeed listFeed;
+
             try
             {
-
-                parameters.AccessCode = webBrowser.DocumentTitle.Remove(0,13);
-
-                OAuthUtil.GetAccessToken(parameters);
-                webBrowser.Visible = false;
-                
-                GOAuth2RequestFactory requestFactory =
-                    new GOAuth2RequestFactory(null, "DATAO", parameters);
-
-                SpreadsheetsService service = new SpreadsheetsService("DATAO");
-                service.RequestFactory = requestFactory;
-
-                SpreadsheetQuery query = new SpreadsheetQuery();
-                SpreadsheetFeed feed = service.Query(query);
-                
-                //Ищем таблицу с именем datao.init
-                //Ее в последствии положим в spreadsheet
-                SpreadsheetEntry spreadsheet = new SpreadsheetEntry();
-                foreach (SpreadsheetEntry entry in feed.Entries)
-                {
-                    if (entry.Title.Text == "datao.init")
-                    {
-                        spreadsheet = entry;
-                    }
-                }
-                
-                //Разбиваем полученную таблицу на листы
-                WorksheetFeed wsFeed = spreadsheet.Worksheets;
-
-                //Берем первый лист, там содержится ID, Имя, Фамилия и Дата регистрации
-                WorksheetEntry worksheet = (WorksheetEntry)wsFeed.Entries[0];
-
-                //Стандартная операция запроса сетки таблицы от Google
-                AtomLink listFeedLink = worksheet.Links.FindService(GDataSpreadsheetsNameTable.ListRel, null);
-                ListQuery listQuery = new ListQuery(listFeedLink.HRef.ToString());
-                ListFeed listFeed = service.Query(listQuery);
+                listFeed = Authorization.GetTablesFeed(parameters, webBrowser.DocumentTitle.Remove(0, 13));
 
                 //Берем первый ряд
                 ListEntry row = (ListEntry)listFeed.Entries[0];
 
-                MessageBox.Show("МЫ ПОЛУЧИЛИ ТАБЛИЦУ! УРА!");
-
+                //Открывается форма админа.
+                MessageBox.Show("Приветствуем "+row.Elements[1].Value.ToString());
+                AdminForm f = new AdminForm(row);
+                f.Show();
                 
-                this.ChangeForm();
-                
-                //this.ChangeForm(f);                
-                
-                //GAuthForm.ActiveForm.Close();
-                
-                //Проверяем первую букву ID (можно придумать что угодно)
-                
-
                 //Далее в зависимости от типа можно загрузить его страницу на диске, предварительно как-нибудь ее обозвав
-                //Close();
+                this.Hide();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                //System.Windows.Forms.MessageBox.Show(ex.Message);
+                //
             }
-
-        }
-
-        private void ChangeForm()
-        {
-            
-            this.Text = "Салон красоты \"Пизда\"";
-            this.Size = new System.Drawing.Size(1280, 720);
-            this.pictureBox1.Visible = true;
-            this.materialTabControl1.Visible = true;
-            this.materialTabSelector1.Visible = true;
-        }
-
-        private void Calendar_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void progressBar1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
