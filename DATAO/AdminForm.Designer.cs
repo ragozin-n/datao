@@ -28,31 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
+            this.tabControl = new MaterialSkin.Controls.MaterialTabControl();
             this.Calendar = new System.Windows.Forms.TabPage();
             this.Personal = new System.Windows.Forms.TabPage();
             this.Uslugi = new System.Windows.Forms.TabPage();
             this.Sklad = new System.Windows.Forms.TabPage();
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.materialTabControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.backgroundPictureBox = new System.Windows.Forms.PictureBox();
+            this.tabControl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.backgroundPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
-            // materialTabControl1
+            // tabControl
             // 
-            this.materialTabControl1.Controls.Add(this.Calendar);
-            this.materialTabControl1.Controls.Add(this.Personal);
-            this.materialTabControl1.Controls.Add(this.Uslugi);
-            this.materialTabControl1.Controls.Add(this.Sklad);
-            this.materialTabControl1.Depth = 0;
-            this.materialTabControl1.Location = new System.Drawing.Point(12, 131);
-            this.materialTabControl1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialTabControl1.Name = "materialTabControl1";
-            this.materialTabControl1.SelectedIndex = 0;
-            this.materialTabControl1.Size = new System.Drawing.Size(1256, 577);
-            this.materialTabControl1.TabIndex = 2;
-            this.materialTabControl1.Visible = false;
+            this.tabControl.Controls.Add(this.Calendar);
+            this.tabControl.Controls.Add(this.Personal);
+            this.tabControl.Controls.Add(this.Uslugi);
+            this.tabControl.Controls.Add(this.Sklad);
+            this.tabControl.Depth = 0;
+            this.tabControl.Location = new System.Drawing.Point(12, 131);
+            this.tabControl.MouseState = MaterialSkin.MouseState.HOVER;
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.Size = new System.Drawing.Size(1256, 577);
+            this.tabControl.TabIndex = 2;
             // 
             // Calendar
             // 
@@ -95,49 +94,48 @@
             // 
             // materialTabSelector1
             // 
-            this.materialTabSelector1.BaseTabControl = this.materialTabControl1;
+            this.materialTabSelector1.BaseTabControl = this.tabControl;
             this.materialTabSelector1.Depth = 0;
             this.materialTabSelector1.Location = new System.Drawing.Point(12, 75);
             this.materialTabSelector1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialTabSelector1.Name = "materialTabSelector1";
             this.materialTabSelector1.Size = new System.Drawing.Size(1256, 50);
             this.materialTabSelector1.TabIndex = 3;
-            this.materialTabSelector1.Text = "materialTabSelector1";
-            this.materialTabSelector1.Visible = false;
+            this.materialTabSelector1.Text = "tabSelector";
+            this.materialTabSelector1.Click += new System.EventHandler(this.materialTabSelector1_Click);
             // 
-            // pictureBox1
+            // backgroundPictureBox
             // 
-            this.pictureBox1.BackgroundImage = global::DATAO.Properties.Resources.bigstock_Abstract_White_Digital_D_Chao_75094717;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.InitialImage = null;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 64);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1283, 720);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Visible = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.backgroundPictureBox.BackgroundImage = global::DATAO.Properties.Resources.bigstock_Abstract_White_Digital_D_Chao_75094717;
+            this.backgroundPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.backgroundPictureBox.InitialImage = null;
+            this.backgroundPictureBox.Location = new System.Drawing.Point(0, 64);
+            this.backgroundPictureBox.Name = "backgroundPictureBox";
+            this.backgroundPictureBox.Size = new System.Drawing.Size(1283, 720);
+            this.backgroundPictureBox.TabIndex = 1;
+            this.backgroundPictureBox.TabStop = false;
+            this.backgroundPictureBox.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // GAuthForm
+            // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1280, 720);
             this.Controls.Add(this.materialTabSelector1);
-            this.Controls.Add(this.materialTabControl1);
-            this.Controls.Add(this.pictureBox1);
-            this.Name = "GAuthForm";
+            this.Controls.Add(this.tabControl);
+            this.Controls.Add(this.backgroundPictureBox);
+            this.Name = "AdminForm";
             this.Load += new System.EventHandler(this.AdminForm_Load);
-            this.materialTabControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.tabControl.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.backgroundPictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private MaterialSkin.Controls.MaterialTabControl materialTabControl1;
+        private System.Windows.Forms.PictureBox backgroundPictureBox;
+        private MaterialSkin.Controls.MaterialTabControl tabControl;
         private System.Windows.Forms.TabPage Calendar;
         private System.Windows.Forms.TabPage Personal;
         private System.Windows.Forms.TabPage Uslugi;

@@ -18,10 +18,10 @@ namespace DATAO
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            GAuthForm authF = new GAuthForm();            
-            Application.Run(authF);
-            AdminForm f = new AdminForm(authF.row);
-            Application.Run(f);
+
+            var gAuth = new GAuthForm();
+            Application.Run(gAuth);
+            Application.Run(new AdminForm(gAuth.listFeed));
         }
     }
 }
