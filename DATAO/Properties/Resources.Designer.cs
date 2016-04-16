@@ -63,26 +63,6 @@ namespace DATAO.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _3d_blue_dunes_wallpaper_for_1280x800_69_951 {
-            get {
-                object obj = ResourceManager.GetObject("3d-blue-dunes-wallpaper-for-1280x800-69-951", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap _3d_blue_dunes_wallpaper_for_1280x800_69_9511 {
-            get {
-                object obj = ResourceManager.GetObject("3d-blue-dunes-wallpaper-for-1280x800-69-9511", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap bigstock_Abstract_White_Digital_D_Chao_75094717 {
             get {
                 object obj = ResourceManager.GetObject("bigstock-Abstract-White-Digital-D-Chao-75094717", resourceCulture);

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Google.GData.Client;
+using Google.GData.Spreadsheets;
 
 namespace DATAO
 {
@@ -16,7 +18,10 @@ namespace DATAO
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new GAuthForm());
+
+            var gAuth = new GAuthForm();
+            Application.Run(gAuth);
+            Application.Run(new AdminForm(gAuth.listFeed));
         }
     }
 }
