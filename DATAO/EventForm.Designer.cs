@@ -28,22 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SelectWorker = new System.Windows.Forms.ComboBox();
+            this.selectWorker = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.selectWork = new System.Windows.Forms.ComboBox();
+            this.selectService = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.selectTime = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.confirmButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // SelectWorker
+            // selectWorker
             // 
-            this.SelectWorker.FormattingEnabled = true;
-            this.SelectWorker.Location = new System.Drawing.Point(51, 161);
-            this.SelectWorker.Name = "SelectWorker";
-            this.SelectWorker.Size = new System.Drawing.Size(199, 21);
-            this.SelectWorker.TabIndex = 0;
+            this.selectWorker.FormattingEnabled = true;
+            this.selectWorker.Location = new System.Drawing.Point(51, 161);
+            this.selectWorker.Name = "selectWorker";
+            this.selectWorker.Size = new System.Drawing.Size(199, 21);
+            this.selectWorker.TabIndex = 0;
             // 
             // label1
             // 
@@ -63,13 +63,13 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Выберите услугу";
             // 
-            // selectWork
+            // selectService
             // 
-            this.selectWork.FormattingEnabled = true;
-            this.selectWork.Location = new System.Drawing.Point(51, 98);
-            this.selectWork.Name = "selectWork";
-            this.selectWork.Size = new System.Drawing.Size(199, 21);
-            this.selectWork.TabIndex = 3;
+            this.selectService.FormattingEnabled = true;
+            this.selectService.Location = new System.Drawing.Point(51, 98);
+            this.selectService.Name = "selectService";
+            this.selectService.Size = new System.Drawing.Size(199, 21);
+            this.selectService.TabIndex = 3;
             // 
             // label3
             // 
@@ -88,28 +88,28 @@
             this.selectTime.Size = new System.Drawing.Size(196, 21);
             this.selectTime.TabIndex = 5;
             // 
-            // button1
+            // confirmButton
             // 
-            this.button1.Location = new System.Drawing.Point(51, 267);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(135, 35);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Подтвердить";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.confirmButton.Location = new System.Drawing.Point(51, 267);
+            this.confirmButton.Name = "confirmButton";
+            this.confirmButton.Size = new System.Drawing.Size(135, 35);
+            this.confirmButton.TabIndex = 6;
+            this.confirmButton.Text = "Подтвердить";
+            this.confirmButton.UseVisualStyleBackColor = true;
+            this.confirmButton.Click += new System.EventHandler(this.button1_Click);
             // 
             // EventForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(299, 346);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.confirmButton);
             this.Controls.Add(this.selectTime);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.selectWork);
+            this.Controls.Add(this.selectService);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.SelectWorker);
+            this.Controls.Add(this.selectWorker);
             this.Name = "EventForm";
             this.Text = "Редактор события";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -120,12 +120,12 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox SelectWorker;
+        private System.Windows.Forms.ComboBox selectWorker;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox selectWork;
+        private System.Windows.Forms.ComboBox selectService;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox selectTime;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button confirmButton;
     }
 }

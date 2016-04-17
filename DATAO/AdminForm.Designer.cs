@@ -30,15 +30,15 @@
         {
             this.tabControl = new MaterialSkin.Controls.MaterialTabControl();
             this.Calendar = new System.Windows.Forms.TabPage();
-            this.CheckEvent = new System.Windows.Forms.Button();
-            this.EditEvent = new System.Windows.Forms.Button();
-            this.AddEvent = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.checkEvent = new System.Windows.Forms.Button();
+            this.editEvent = new System.Windows.Forms.Button();
+            this.addEvent = new System.Windows.Forms.Button();
+            this.dataGridView = new System.Windows.Forms.DataGridView();
             this.Worker = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Worker1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Worker2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Worker3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.monthCalendar = new System.Windows.Forms.MonthCalendar();
             this.Personal = new System.Windows.Forms.TabPage();
             this.Uslugi = new System.Windows.Forms.TabPage();
             this.Sklad = new System.Windows.Forms.TabPage();
@@ -46,7 +46,7 @@
             this.backgroundPictureBox = new System.Windows.Forms.PictureBox();
             this.tabControl.SuspendLayout();
             this.Calendar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.backgroundPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,11 +66,11 @@
             // 
             // Calendar
             // 
-            this.Calendar.Controls.Add(this.CheckEvent);
-            this.Calendar.Controls.Add(this.EditEvent);
-            this.Calendar.Controls.Add(this.AddEvent);
-            this.Calendar.Controls.Add(this.dataGridView1);
-            this.Calendar.Controls.Add(this.monthCalendar1);
+            this.Calendar.Controls.Add(this.checkEvent);
+            this.Calendar.Controls.Add(this.editEvent);
+            this.Calendar.Controls.Add(this.addEvent);
+            this.Calendar.Controls.Add(this.dataGridView);
+            this.Calendar.Controls.Add(this.monthCalendar);
             this.Calendar.Location = new System.Drawing.Point(4, 22);
             this.Calendar.Name = "Calendar";
             this.Calendar.Padding = new System.Windows.Forms.Padding(3);
@@ -80,50 +80,51 @@
             this.Calendar.UseVisualStyleBackColor = true;
             this.Calendar.Click += new System.EventHandler(this.Calendar_Click);
             // 
-            // CheckEvent
+            // checkEvent
             // 
-            this.CheckEvent.Location = new System.Drawing.Point(25, 327);
-            this.CheckEvent.Name = "CheckEvent";
-            this.CheckEvent.Size = new System.Drawing.Size(164, 35);
-            this.CheckEvent.TabIndex = 4;
-            this.CheckEvent.Text = "Исполнено/Неисполнено";
-            this.CheckEvent.UseVisualStyleBackColor = true;
+            this.checkEvent.Location = new System.Drawing.Point(25, 327);
+            this.checkEvent.Name = "checkEvent";
+            this.checkEvent.Size = new System.Drawing.Size(164, 35);
+            this.checkEvent.TabIndex = 4;
+            this.checkEvent.Text = "Исполнено/Неисполнено";
+            this.checkEvent.UseVisualStyleBackColor = true;
             // 
-            // EditEvent
+            // editEvent
             // 
-            this.EditEvent.Location = new System.Drawing.Point(25, 271);
-            this.EditEvent.Name = "EditEvent";
-            this.EditEvent.Size = new System.Drawing.Size(164, 34);
-            this.EditEvent.TabIndex = 3;
-            this.EditEvent.Text = "Изменить событие";
-            this.EditEvent.UseVisualStyleBackColor = true;
-            this.EditEvent.Click += new System.EventHandler(this.EditEvent_Click);
+            this.editEvent.Location = new System.Drawing.Point(25, 271);
+            this.editEvent.Name = "editEvent";
+            this.editEvent.Size = new System.Drawing.Size(164, 34);
+            this.editEvent.TabIndex = 3;
+            this.editEvent.Text = "Изменить событие";
+            this.editEvent.UseVisualStyleBackColor = true;
+            this.editEvent.Click += new System.EventHandler(this.EditEvent_Click);
             // 
-            // AddEvent
+            // addEvent
             // 
-            this.AddEvent.Location = new System.Drawing.Point(25, 213);
-            this.AddEvent.Name = "AddEvent";
-            this.AddEvent.Size = new System.Drawing.Size(164, 38);
-            this.AddEvent.TabIndex = 2;
-            this.AddEvent.Text = "Добавить событие";
-            this.AddEvent.UseVisualStyleBackColor = true;
-            this.AddEvent.Click += new System.EventHandler(this.AddEvent_Click);
+            this.addEvent.Location = new System.Drawing.Point(25, 213);
+            this.addEvent.Name = "addEvent";
+            this.addEvent.Size = new System.Drawing.Size(164, 38);
+            this.addEvent.TabIndex = 2;
+            this.addEvent.Text = "Добавить событие";
+            this.addEvent.UseVisualStyleBackColor = true;
+            this.addEvent.Click += new System.EventHandler(this.AddEvent_Click);
             // 
-            // dataGridView1
+            // dataGridView
             // 
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
+            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Worker,
             this.Worker1,
             this.Worker2,
             this.Worker3});
-            this.dataGridView1.Location = new System.Drawing.Point(210, 27);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1020, 502);
-            this.dataGridView1.TabIndex = 1;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView.Location = new System.Drawing.Point(210, 27);
+            this.dataGridView.Name = "dataGridView";
+            this.dataGridView.ReadOnly = true;
+            this.dataGridView.Size = new System.Drawing.Size(1020, 502);
+            this.dataGridView.TabIndex = 1;
+            this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // Worker
             // 
@@ -145,11 +146,11 @@
             this.Worker3.HeaderText = "Сергей Федоров";
             this.Worker3.Name = "Worker3";
             // 
-            // monthCalendar1
+            // monthCalendar
             // 
-            this.monthCalendar1.Location = new System.Drawing.Point(25, 27);
-            this.monthCalendar1.Name = "monthCalendar1";
-            this.monthCalendar1.TabIndex = 0;
+            this.monthCalendar.Location = new System.Drawing.Point(25, 27);
+            this.monthCalendar.Name = "monthCalendar";
+            this.monthCalendar.TabIndex = 0;
             // 
             // Personal
             // 
@@ -215,7 +216,7 @@
             this.Load += new System.EventHandler(this.AdminForm_Load);
             this.tabControl.ResumeLayout(false);
             this.Calendar.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.backgroundPictureBox)).EndInit();
             this.ResumeLayout(false);
 
@@ -230,11 +231,11 @@
         private System.Windows.Forms.TabPage Uslugi;
         private System.Windows.Forms.TabPage Sklad;
         private MaterialSkin.Controls.MaterialTabSelector materialTabSelector1;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.MonthCalendar monthCalendar1;
-        private System.Windows.Forms.Button EditEvent;
-        private System.Windows.Forms.Button AddEvent;
-        private System.Windows.Forms.Button CheckEvent;
+        private System.Windows.Forms.DataGridView dataGridView;
+        private System.Windows.Forms.MonthCalendar monthCalendar;
+        private System.Windows.Forms.Button editEvent;
+        private System.Windows.Forms.Button addEvent;
+        private System.Windows.Forms.Button checkEvent;
         private System.Windows.Forms.DataGridViewTextBoxColumn Worker;
         private System.Windows.Forms.DataGridViewTextBoxColumn Worker1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Worker2;
