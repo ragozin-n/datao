@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
 using Google.Apis.Auth.OAuth2;
+using System.IO;
+
 namespace DATAO
 {
     static class Program
@@ -13,6 +15,12 @@ namespace DATAO
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            FileInfo asd = new FileInfo(@"..\..\datao.init.xlsx");
+
+            Table.Read(asd);
+
+            /*
 
             //Авторизация
             UserCredential _user = null;
@@ -34,6 +42,7 @@ namespace DATAO
                     Environment.Exit(0);
                     break;
             }
+            */
         }
     }
 }

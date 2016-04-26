@@ -52,6 +52,9 @@
       <HintPath>..\packages\BouncyCastle.1.7.0\lib\Net40-Client\BouncyCastle.Crypto.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="ExcelPackage">
+      <HintPath>..\..\..\New Folder\ExcelPackage.dll</HintPath>
+    </Reference>
     <Reference Include="Google.Apis, Version=1.11.1.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Apis.1.11.1\lib\net45\Google.Apis.dll</HintPath>
       <Private>True</Private>
@@ -110,6 +113,7 @@
       <DependentUpon>AdminForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Authorization.cs" />
+    <Compile Include="Table.cs" />
     <Compile Include="EventForm.cs">
       <SubType>Form</SubType>
     </Compile>
