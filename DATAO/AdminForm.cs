@@ -41,7 +41,35 @@ namespace DATAO
             dataGridView.Rows[19].HeaderCell.Value = "18:30 - 19:00";
             dataGridView.Rows[20].HeaderCell.Value = "19:00 - 19:30";
             dataGridView.Rows[21].HeaderCell.Value = "19:30 - 20:00";
+            this.LoadSklad();
 
+        }
+        private void LoadSklad()
+        {
+            grid1.BorderStyle = BorderStyle.FixedSingle;
+
+            grid1.ColumnsCount = 6;
+            grid1.FixedRows = 1;
+            grid1.Rows.Insert(0);
+            grid1[0, 0] = new SourceGrid.Cells.ColumnHeader("Наименование");
+            grid1[0, 1] = new SourceGrid.Cells.ColumnHeader("Артикул");
+            grid1[0, 2] = new SourceGrid.Cells.ColumnHeader("Поставщик");
+            grid1[0, 3] = new SourceGrid.Cells.ColumnHeader("Стоимость (руб.)");
+            grid1[0, 4] = new SourceGrid.Cells.ColumnHeader("Категория");
+            grid1[0, 5] = new SourceGrid.Cells.ColumnHeader("Остаток ед.");
+            //for (int r = 1; r < 10; r++)
+            //{
+            //пример
+            grid1.Rows.Insert(1);
+            grid1[1, 0] = new SourceGrid.Cells.Cell("nivea for man", typeof(string));
+            grid1[1, 1] = new SourceGrid.Cells.Cell(5684123413, typeof(int));
+            grid1[1, 2] = new SourceGrid.Cells.Cell("ооо шампунькин", typeof(string));
+            grid1[1, 3] = new SourceGrid.Cells.Cell(256, typeof(int));
+            grid1[1, 4] = new SourceGrid.Cells.Cell("шампуни", typeof(CheckBox));
+            grid1[1, 5] = new SourceGrid.Cells.Cell(12, typeof(int));
+
+            //}
+            grid1.AutoSizeCells();
         }
 
         private void AdminForm_Load(object sender, EventArgs e)
@@ -96,33 +124,7 @@ namespace DATAO
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //grid1.BorderStyle = BorderStyle.FixedSingle;
-           
-            grid1.ColumnsCount = 7;
-            grid1.FixedRows = 1;
-            grid1.Rows.Insert(0);
-            grid1[0, 0] = new SourceGrid.Cells.ColumnHeader("ПОНЕДЕЛЬНИК");
-            grid1[0, 1] = new SourceGrid.Cells.ColumnHeader("ВТОРНИК");
-            grid1[0, 2] = new SourceGrid.Cells.ColumnHeader("СРЕДА");
-            grid1[0, 3] = new SourceGrid.Cells.ColumnHeader("ЧЕТВЕРГ");
-            grid1[0, 4] = new SourceGrid.Cells.ColumnHeader("ПЯТНИЦА");
-            grid1[0, 5] = new SourceGrid.Cells.ColumnHeader("СУББОТА");
-            grid1[0, 6] = new SourceGrid.Cells.ColumnHeader("ВОСКРЕСЕНЬЕ");
-            //for (int r = 1; r < 10; r++)
-            //{
             
-                grid1.Rows.Insert(1);
-                grid1[1, 0] = new SourceGrid.Cells.Cell(false, typeof(bool));
-                grid1[1, 1] = new SourceGrid.Cells.Cell(true, typeof(bool));
-                grid1[1, 2] = new SourceGrid.Cells.Cell(false, typeof(bool));
-                grid1[1, 3] = new SourceGrid.Cells.Cell(false, typeof(bool));
-                grid1[1, 4] = new SourceGrid.Cells.Cell(true, typeof(bool));
-                grid1[1, 5] = new SourceGrid.Cells.Cell(false, typeof(bool));
-                grid1[1, 6] = new SourceGrid.Cells.Cell(true, typeof(bool));
-
-            //}
-
-            grid1.AutoSizeCells();
         }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
@@ -133,6 +135,18 @@ namespace DATAO
         private void grid1_Paint(object sender, PaintEventArgs e)
         {
             
+        }
+
+        private void settingButton_Click(object sender, EventArgs e)
+        {
+            SetForm set = new SetForm();
+            set.Show();
+        }
+
+        private void newPersonalButton_Click(object sender, EventArgs e)
+        {
+            AddWorker add = new AddWorker();
+            add.Show();
         }
     }
 }

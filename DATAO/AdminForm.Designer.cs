@@ -28,16 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new string[] {
-            "Шампунь",
-            "3827482374"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem(new string[] {
-            "Машинка",
-            "3242345345"}, -1);
             this.tabControl = new MaterialSkin.Controls.MaterialTabControl();
-            this.Uslugi = new System.Windows.Forms.TabPage();
-            this.Sklad = new System.Windows.Forms.TabPage();
-            this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
             this.Calendar = new System.Windows.Forms.TabPage();
             this.materialRaisedButton1 = new MaterialSkin.Controls.MaterialRaisedButton();
             this.AddButton = new MaterialSkin.Controls.MaterialRaisedButton();
@@ -48,51 +39,70 @@
             this.Worker3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.monthCalendar = new System.Windows.Forms.MonthCalendar();
             this.Personal = new System.Windows.Forms.TabPage();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.newPersonalButton = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.materialCheckBox1 = new MaterialSkin.Controls.MaterialCheckBox();
             this.deletePersonalButton = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.newPersonalButton = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel7 = new MaterialSkin.Controls.MaterialLabel();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
             this.textBox12 = new System.Windows.Forms.TextBox();
+            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.materialLabel7 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
+            this.Uslugi = new System.Windows.Forms.TabPage();
+            this.Sklad = new System.Windows.Forms.TabPage();
             this.grid1 = new SourceGrid.Grid();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
+            this.settingButton = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.tabControl.SuspendLayout();
-            this.Sklad.SuspendLayout();
             this.Calendar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.Personal.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.Sklad.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl
@@ -102,7 +112,7 @@
             this.tabControl.Controls.Add(this.Uslugi);
             this.tabControl.Controls.Add(this.Sklad);
             this.tabControl.Depth = 0;
-            this.tabControl.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
+            this.tabControl.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.tabControl.Location = new System.Drawing.Point(-1, 121);
             this.tabControl.MouseState = MaterialSkin.MouseState.HOVER;
             this.tabControl.Name = "tabControl";
@@ -110,47 +120,9 @@
             this.tabControl.Size = new System.Drawing.Size(1281, 600);
             this.tabControl.TabIndex = 2;
             // 
-            // Uslugi
-            // 
-            this.Uslugi.BackgroundImage = global::DATAO.Properties.Resources.bigstock_Abstract_White_Digital_D_Chao_75094717;
-            this.Uslugi.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Uslugi.Location = new System.Drawing.Point(4, 22);
-            this.Uslugi.Name = "Uslugi";
-            this.Uslugi.Size = new System.Drawing.Size(1273, 574);
-            this.Uslugi.TabIndex = 2;
-            this.Uslugi.Text = "Услуги";
-            this.Uslugi.UseVisualStyleBackColor = true;
-            // 
-            // Sklad
-            // 
-            this.Sklad.BackgroundImage = global::DATAO.Properties.Resources.bigstock_Abstract_White_Digital_D_Chao_75094717;
-            this.Sklad.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Sklad.Controls.Add(this.textBox5);
-            this.Sklad.Controls.Add(this.listView1);
-            this.Sklad.Controls.Add(this.groupBox1);
-            this.Sklad.Controls.Add(this.groupBox2);
-            this.Sklad.Location = new System.Drawing.Point(4, 22);
-            this.Sklad.Name = "Sklad";
-            this.Sklad.Size = new System.Drawing.Size(1273, 574);
-            this.Sklad.TabIndex = 3;
-            this.Sklad.Text = "Склад";
-            this.Sklad.UseVisualStyleBackColor = true;
-            // 
-            // materialTabSelector1
-            // 
-            this.materialTabSelector1.BaseTabControl = this.tabControl;
-            this.materialTabSelector1.Depth = 0;
-            this.materialTabSelector1.Location = new System.Drawing.Point(-1, 63);
-            this.materialTabSelector1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialTabSelector1.Name = "materialTabSelector1";
-            this.materialTabSelector1.Size = new System.Drawing.Size(1281, 62);
-            this.materialTabSelector1.TabIndex = 4;
-            this.materialTabSelector1.Text = "tabSelector";
-            this.materialTabSelector1.Click += new System.EventHandler(this.materialTabSelector1_Click);
-            // 
             // Calendar
             // 
-            this.Calendar.BackgroundImage = global::DATAO.Properties.Resources.bigstock_Abstract_White_Digital_D_Chao_75094717;
+            this.Calendar.BackColor = System.Drawing.Color.DarkSlateGray;
             this.Calendar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Calendar.Controls.Add(this.materialRaisedButton1);
             this.Calendar.Controls.Add(this.AddButton);
@@ -162,7 +134,6 @@
             this.Calendar.Size = new System.Drawing.Size(1273, 574);
             this.Calendar.TabIndex = 0;
             this.Calendar.Text = "Календарь";
-            this.Calendar.UseVisualStyleBackColor = true;
             this.Calendar.Click += new System.EventHandler(this.Calendar_Click);
             // 
             // materialRaisedButton1
@@ -240,11 +211,19 @@
             // 
             // Personal
             // 
-            this.Personal.BackgroundImage = global::DATAO.Properties.Resources.bigstock_Abstract_White_Digital_D_Chao_75094717;
+            this.Personal.BackColor = System.Drawing.Color.DarkSlateGray;
             this.Personal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Personal.Controls.Add(this.grid1);
+            this.Personal.Controls.Add(this.materialCheckBox1);
             this.Personal.Controls.Add(this.deletePersonalButton);
             this.Personal.Controls.Add(this.newPersonalButton);
+            this.Personal.Controls.Add(this.pictureBox8);
+            this.Personal.Controls.Add(this.pictureBox7);
+            this.Personal.Controls.Add(this.pictureBox6);
+            this.Personal.Controls.Add(this.pictureBox5);
+            this.Personal.Controls.Add(this.pictureBox4);
+            this.Personal.Controls.Add(this.pictureBox3);
+            this.Personal.Controls.Add(this.pictureBox2);
+            this.Personal.Controls.Add(this.pictureBox1);
             this.Personal.Controls.Add(this.listBox1);
             this.Personal.Controls.Add(this.groupBox3);
             this.Personal.Location = new System.Drawing.Point(4, 22);
@@ -253,7 +232,48 @@
             this.Personal.Size = new System.Drawing.Size(1273, 574);
             this.Personal.TabIndex = 1;
             this.Personal.Text = "Персонал";
-            this.Personal.UseVisualStyleBackColor = true;
+            // 
+            // materialCheckBox1
+            // 
+            this.materialCheckBox1.AutoSize = true;
+            this.materialCheckBox1.Depth = 0;
+            this.materialCheckBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.materialCheckBox1.ForeColor = System.Drawing.Color.White;
+            this.materialCheckBox1.Location = new System.Drawing.Point(1081, 0);
+            this.materialCheckBox1.Margin = new System.Windows.Forms.Padding(0);
+            this.materialCheckBox1.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.materialCheckBox1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialCheckBox1.Name = "materialCheckBox1";
+            this.materialCheckBox1.Ripple = true;
+            this.materialCheckBox1.Size = new System.Drawing.Size(186, 30);
+            this.materialCheckBox1.TabIndex = 20;
+            this.materialCheckBox1.Text = "Режим редактирования";
+            this.materialCheckBox1.UseVisualStyleBackColor = true;
+            // 
+            // deletePersonalButton
+            // 
+            this.deletePersonalButton.Depth = 0;
+            this.deletePersonalButton.Location = new System.Drawing.Point(136, 496);
+            this.deletePersonalButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.deletePersonalButton.Name = "deletePersonalButton";
+            this.deletePersonalButton.Primary = true;
+            this.deletePersonalButton.Size = new System.Drawing.Size(110, 54);
+            this.deletePersonalButton.TabIndex = 4;
+            this.deletePersonalButton.Text = "Удалить рабочего";
+            this.deletePersonalButton.UseVisualStyleBackColor = true;
+            // 
+            // newPersonalButton
+            // 
+            this.newPersonalButton.Depth = 0;
+            this.newPersonalButton.Location = new System.Drawing.Point(20, 496);
+            this.newPersonalButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.newPersonalButton.Name = "newPersonalButton";
+            this.newPersonalButton.Primary = true;
+            this.newPersonalButton.Size = new System.Drawing.Size(109, 54);
+            this.newPersonalButton.TabIndex = 3;
+            this.newPersonalButton.Text = "Добавить рабочего";
+            this.newPersonalButton.UseVisualStyleBackColor = true;
+            this.newPersonalButton.Click += new System.EventHandler(this.newPersonalButton_Click);
             // 
             // listBox1
             // 
@@ -271,190 +291,6 @@
             this.listBox1.TabIndex = 1;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
-            // newPersonalButton
-            // 
-            this.newPersonalButton.Depth = 0;
-            this.newPersonalButton.Location = new System.Drawing.Point(20, 496);
-            this.newPersonalButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.newPersonalButton.Name = "newPersonalButton";
-            this.newPersonalButton.Primary = true;
-            this.newPersonalButton.Size = new System.Drawing.Size(109, 54);
-            this.newPersonalButton.TabIndex = 3;
-            this.newPersonalButton.Text = "Добавить рабочего";
-            this.newPersonalButton.UseVisualStyleBackColor = true;
-            // 
-            // listView1
-            // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3});
-            this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem3,
-            listViewItem4});
-            this.listView1.Location = new System.Drawing.Point(361, 25);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(847, 522);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(23, 60);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(230, 20);
-            this.textBox1.TabIndex = 2;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(23, 117);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(230, 20);
-            this.textBox2.TabIndex = 3;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.textBox4);
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Location = new System.Drawing.Point(35, 237);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(278, 294);
-            this.groupBox1.TabIndex = 4;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Статистика за месяц";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(23, 41);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Расход";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(23, 98);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(39, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Доход";
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Наименование";
-            this.columnHeader1.Width = 142;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "ID";
-            this.columnHeader2.Width = 105;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Остаток на складе";
-            this.columnHeader3.Width = 123;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(23, 175);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(230, 20);
-            this.textBox3.TabIndex = 6;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(23, 230);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(230, 20);
-            this.textBox4.TabIndex = 7;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(23, 156);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(86, 13);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Пришло единиц";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(23, 211);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(74, 13);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Ушло единиц";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "ID",
-            "Наименование"});
-            this.comboBox1.Location = new System.Drawing.Point(23, 61);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(230, 21);
-            this.comboBox1.TabIndex = 5;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(58, 135);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(230, 20);
-            this.textBox5.TabIndex = 6;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.comboBox1);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Location = new System.Drawing.Point(35, 25);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(278, 173);
-            this.groupBox2.TabIndex = 7;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Поиск";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(23, 97);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(55, 13);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Значение";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(23, 45);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(55, 13);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "Критерий";
-            // 
-            // deletePersonalButton
-            // 
-            this.deletePersonalButton.Depth = 0;
-            this.deletePersonalButton.Location = new System.Drawing.Point(136, 496);
-            this.deletePersonalButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.deletePersonalButton.Name = "deletePersonalButton";
-            this.deletePersonalButton.Primary = true;
-            this.deletePersonalButton.Size = new System.Drawing.Size(110, 54);
-            this.deletePersonalButton.TabIndex = 4;
-            this.deletePersonalButton.Text = "Удалить рабочего";
-            this.deletePersonalButton.UseVisualStyleBackColor = true;
-            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.textBox12);
@@ -471,165 +307,465 @@
             this.groupBox3.Controls.Add(this.materialLabel3);
             this.groupBox3.Controls.Add(this.materialLabel2);
             this.groupBox3.Controls.Add(this.materialLabel1);
-            this.groupBox3.Location = new System.Drawing.Point(336, 25);
+            this.groupBox3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBox3.Location = new System.Drawing.Point(298, 25);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(316, 259);
+            this.groupBox3.Size = new System.Drawing.Size(969, 285);
             this.groupBox3.TabIndex = 11;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Информация";
             // 
-            // materialLabel1
+            // textBox12
             // 
-            this.materialLabel1.AutoSize = true;
-            this.materialLabel1.Depth = 0;
-            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(19, 62);
-            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(75, 19);
-            this.materialLabel1.TabIndex = 1;
-            this.materialLabel1.Text = "Фамилия";
+            this.textBox12.Location = new System.Drawing.Point(109, 238);
+            this.textBox12.Name = "textBox12";
+            this.textBox12.ReadOnly = true;
+            this.textBox12.Size = new System.Drawing.Size(182, 20);
+            this.textBox12.TabIndex = 14;
             // 
-            // materialLabel2
+            // textBox11
             // 
-            this.materialLabel2.AutoSize = true;
-            this.materialLabel2.Depth = 0;
-            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel2.Location = new System.Drawing.Point(19, 33);
-            this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel2.Name = "materialLabel2";
-            this.materialLabel2.Size = new System.Drawing.Size(39, 19);
-            this.materialLabel2.TabIndex = 2;
-            this.materialLabel2.Text = "Имя";
+            this.textBox11.Location = new System.Drawing.Point(109, 205);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.ReadOnly = true;
+            this.textBox11.Size = new System.Drawing.Size(182, 20);
+            this.textBox11.TabIndex = 13;
             // 
-            // materialLabel3
+            // textBox10
             // 
-            this.materialLabel3.AutoSize = true;
-            this.materialLabel3.Depth = 0;
-            this.materialLabel3.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel3.Location = new System.Drawing.Point(19, 94);
-            this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel3.Name = "materialLabel3";
-            this.materialLabel3.Size = new System.Drawing.Size(75, 19);
-            this.materialLabel3.TabIndex = 3;
-            this.materialLabel3.Text = "Отчество";
+            this.textBox10.Location = new System.Drawing.Point(109, 171);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.ReadOnly = true;
+            this.textBox10.Size = new System.Drawing.Size(182, 20);
+            this.textBox10.TabIndex = 12;
             // 
-            // materialLabel4
+            // textBox9
             // 
-            this.materialLabel4.AutoSize = true;
-            this.materialLabel4.Depth = 0;
-            this.materialLabel4.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel4.Location = new System.Drawing.Point(19, 124);
-            this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel4.Name = "materialLabel4";
-            this.materialLabel4.Size = new System.Drawing.Size(72, 19);
-            this.materialLabel4.TabIndex = 4;
-            this.materialLabel4.Text = "Телефон";
+            this.textBox9.Location = new System.Drawing.Point(109, 135);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.ReadOnly = true;
+            this.textBox9.Size = new System.Drawing.Size(182, 20);
+            this.textBox9.TabIndex = 11;
             // 
-            // materialLabel5
+            // textBox8
             // 
-            this.materialLabel5.AutoSize = true;
-            this.materialLabel5.Depth = 0;
-            this.materialLabel5.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel5.Location = new System.Drawing.Point(19, 152);
-            this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel5.Name = "materialLabel5";
-            this.materialLabel5.Size = new System.Drawing.Size(52, 19);
-            this.materialLabel5.TabIndex = 5;
-            this.materialLabel5.Text = "Адрес";
+            this.textBox8.Location = new System.Drawing.Point(109, 99);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.ReadOnly = true;
+            this.textBox8.Size = new System.Drawing.Size(182, 20);
+            this.textBox8.TabIndex = 10;
             // 
-            // materialLabel6
+            // textBox7
             // 
-            this.materialLabel6.AutoSize = true;
-            this.materialLabel6.Depth = 0;
-            this.materialLabel6.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel6.Location = new System.Drawing.Point(19, 181);
-            this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel6.Name = "materialLabel6";
-            this.materialLabel6.Size = new System.Drawing.Size(52, 19);
-            this.materialLabel6.TabIndex = 6;
-            this.materialLabel6.Text = "Почта";
-            // 
-            // materialLabel7
-            // 
-            this.materialLabel7.AutoSize = true;
-            this.materialLabel7.Depth = 0;
-            this.materialLabel7.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel7.Location = new System.Drawing.Point(19, 210);
-            this.materialLabel7.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel7.Name = "materialLabel7";
-            this.materialLabel7.Size = new System.Drawing.Size(56, 19);
-            this.materialLabel7.TabIndex = 7;
-            this.materialLabel7.Text = "Статус";
+            this.textBox7.Location = new System.Drawing.Point(109, 65);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.ReadOnly = true;
+            this.textBox7.Size = new System.Drawing.Size(182, 20);
+            this.textBox7.TabIndex = 9;
             // 
             // textBox6
             // 
             this.textBox6.Location = new System.Drawing.Point(109, 31);
             this.textBox6.Name = "textBox6";
+            this.textBox6.ReadOnly = true;
             this.textBox6.Size = new System.Drawing.Size(182, 20);
             this.textBox6.TabIndex = 8;
             // 
-            // textBox7
+            // materialLabel7
             // 
-            this.textBox7.Location = new System.Drawing.Point(109, 60);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(182, 20);
-            this.textBox7.TabIndex = 9;
+            this.materialLabel7.AutoSize = true;
+            this.materialLabel7.Depth = 0;
+            this.materialLabel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.materialLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel7.Location = new System.Drawing.Point(19, 237);
+            this.materialLabel7.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel7.Name = "materialLabel7";
+            this.materialLabel7.Size = new System.Drawing.Size(56, 18);
+            this.materialLabel7.TabIndex = 7;
+            this.materialLabel7.Text = "Статус";
             // 
-            // textBox8
+            // materialLabel6
             // 
-            this.textBox8.Location = new System.Drawing.Point(109, 92);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(182, 20);
-            this.textBox8.TabIndex = 10;
+            this.materialLabel6.AutoSize = true;
+            this.materialLabel6.Depth = 0;
+            this.materialLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.materialLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel6.Location = new System.Drawing.Point(19, 204);
+            this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel6.Name = "materialLabel6";
+            this.materialLabel6.Size = new System.Drawing.Size(51, 18);
+            this.materialLabel6.TabIndex = 6;
+            this.materialLabel6.Text = "Почта";
             // 
-            // textBox9
+            // materialLabel5
             // 
-            this.textBox9.Location = new System.Drawing.Point(109, 121);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(182, 20);
-            this.textBox9.TabIndex = 11;
+            this.materialLabel5.AutoSize = true;
+            this.materialLabel5.Depth = 0;
+            this.materialLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.materialLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel5.Location = new System.Drawing.Point(19, 169);
+            this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel5.Name = "materialLabel5";
+            this.materialLabel5.Size = new System.Drawing.Size(50, 18);
+            this.materialLabel5.TabIndex = 5;
+            this.materialLabel5.Text = "Адрес";
             // 
-            // textBox10
+            // materialLabel4
             // 
-            this.textBox10.Location = new System.Drawing.Point(109, 150);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(182, 20);
-            this.textBox10.TabIndex = 12;
+            this.materialLabel4.AutoSize = true;
+            this.materialLabel4.Depth = 0;
+            this.materialLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel4.Location = new System.Drawing.Point(19, 135);
+            this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel4.Name = "materialLabel4";
+            this.materialLabel4.Size = new System.Drawing.Size(72, 18);
+            this.materialLabel4.TabIndex = 4;
+            this.materialLabel4.Text = "Телефон";
             // 
-            // textBox11
+            // materialLabel3
             // 
-            this.textBox11.Location = new System.Drawing.Point(109, 179);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(182, 20);
-            this.textBox11.TabIndex = 13;
+            this.materialLabel3.AutoSize = true;
+            this.materialLabel3.Depth = 0;
+            this.materialLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel3.Location = new System.Drawing.Point(17, 101);
+            this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel3.Name = "materialLabel3";
+            this.materialLabel3.Size = new System.Drawing.Size(75, 18);
+            this.materialLabel3.TabIndex = 3;
+            this.materialLabel3.Text = "Отчество";
             // 
-            // textBox12
+            // materialLabel2
             // 
-            this.textBox12.Location = new System.Drawing.Point(109, 209);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(182, 20);
-            this.textBox12.TabIndex = 14;
+            this.materialLabel2.AutoSize = true;
+            this.materialLabel2.Depth = 0;
+            this.materialLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel2.Location = new System.Drawing.Point(19, 33);
+            this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel2.Name = "materialLabel2";
+            this.materialLabel2.Size = new System.Drawing.Size(38, 18);
+            this.materialLabel2.TabIndex = 2;
+            this.materialLabel2.Text = "Имя";
+            // 
+            // materialLabel1
+            // 
+            this.materialLabel1.AutoSize = true;
+            this.materialLabel1.Depth = 0;
+            this.materialLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel1.Location = new System.Drawing.Point(17, 67);
+            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel1.Name = "materialLabel1";
+            this.materialLabel1.Size = new System.Drawing.Size(73, 18);
+            this.materialLabel1.TabIndex = 1;
+            this.materialLabel1.Text = "Фамилия";
+            // 
+            // Uslugi
+            // 
+            this.Uslugi.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.Uslugi.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Uslugi.Location = new System.Drawing.Point(4, 22);
+            this.Uslugi.Name = "Uslugi";
+            this.Uslugi.Size = new System.Drawing.Size(1273, 574);
+            this.Uslugi.TabIndex = 2;
+            this.Uslugi.Text = "Услуги";
+            // 
+            // Sklad
+            // 
+            this.Sklad.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.Sklad.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Sklad.Controls.Add(this.pictureBox9);
+            this.Sklad.Controls.Add(this.grid1);
+            this.Sklad.Controls.Add(this.textBox5);
+            this.Sklad.Controls.Add(this.groupBox1);
+            this.Sklad.Controls.Add(this.groupBox2);
+            this.Sklad.Location = new System.Drawing.Point(4, 22);
+            this.Sklad.Name = "Sklad";
+            this.Sklad.Size = new System.Drawing.Size(1273, 574);
+            this.Sklad.TabIndex = 3;
+            this.Sklad.Text = "Склад";
             // 
             // grid1
             // 
+            this.grid1.AutoStretchColumnsToFitWidth = true;
             this.grid1.EnableSort = true;
-            this.grid1.Location = new System.Drawing.Point(722, 85);
+            this.grid1.Location = new System.Drawing.Point(427, 33);
             this.grid1.Name = "grid1";
             this.grid1.OptimizeMode = SourceGrid.CellOptimizeMode.ForRows;
             this.grid1.SelectionMode = SourceGrid.GridSelectionMode.Cell;
-            this.grid1.Size = new System.Drawing.Size(496, 140);
-            this.grid1.TabIndex = 12;
+            this.grid1.Size = new System.Drawing.Size(793, 514);
+            this.grid1.SpecialKeys = SourceGrid.GridSpecialKeys.Shift;
+            this.grid1.TabIndex = 8;
             this.grid1.TabStop = true;
             this.grid1.ToolTipText = "";
-            this.grid1.Paint += new System.Windows.Forms.PaintEventHandler(this.grid1_Paint);
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(58, 135);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(230, 20);
+            this.textBox5.TabIndex = 6;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.comboBox2);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.textBox4);
+            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBox1.Location = new System.Drawing.Point(35, 252);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(278, 295);
+            this.groupBox1.TabIndex = 4;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Статистика";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(114, 29);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(40, 13);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Месяц";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "Январь",
+            "Февраль",
+            "Март",
+            "Апрель",
+            "Май",
+            "Июнь",
+            "Июль",
+            "Август",
+            "Сентябрь",
+            "Октябрь",
+            "Ноябрь",
+            "Декабрь"});
+            this.comboBox2.Location = new System.Drawing.Point(73, 45);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(121, 21);
+            this.comboBox2.TabIndex = 10;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(23, 211);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(74, 13);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Ушло единиц";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(23, 156);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(86, 13);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Пришло единиц";
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(23, 230);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(230, 20);
+            this.textBox4.TabIndex = 7;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(23, 175);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(230, 20);
+            this.textBox3.TabIndex = 6;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(23, 83);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(43, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Расход";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(23, 112);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(230, 20);
+            this.textBox1.TabIndex = 2;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.comboBox1);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBox2.Location = new System.Drawing.Point(35, 25);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(278, 173);
+            this.groupBox2.TabIndex = 7;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Поиск";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(23, 45);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(55, 13);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "Критерий";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Артикул",
+            "Наименование",
+            "Поставщик",
+            "Остаток",
+            "Стоимость"});
+            this.comboBox1.Location = new System.Drawing.Point(23, 61);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(230, 21);
+            this.comboBox1.TabIndex = 5;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(23, 97);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(55, 13);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Значение";
+            // 
+            // materialTabSelector1
+            // 
+            this.materialTabSelector1.BaseTabControl = this.tabControl;
+            this.materialTabSelector1.Depth = 0;
+            this.materialTabSelector1.Location = new System.Drawing.Point(-1, 63);
+            this.materialTabSelector1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialTabSelector1.Name = "materialTabSelector1";
+            this.materialTabSelector1.Size = new System.Drawing.Size(1281, 62);
+            this.materialTabSelector1.TabIndex = 4;
+            this.materialTabSelector1.Text = "tabSelector";
+            this.materialTabSelector1.Click += new System.EventHandler(this.materialTabSelector1_Click);
+            // 
+            // settingButton
+            // 
+            this.settingButton.Depth = 0;
+            this.settingButton.Location = new System.Drawing.Point(1160, 34);
+            this.settingButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.settingButton.Name = "settingButton";
+            this.settingButton.Primary = true;
+            this.settingButton.Size = new System.Drawing.Size(108, 39);
+            this.settingButton.TabIndex = 5;
+            this.settingButton.Text = "Настройки";
+            this.settingButton.UseVisualStyleBackColor = true;
+            this.settingButton.Click += new System.EventHandler(this.settingButton_Click);
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.BackgroundImage = global::DATAO.Properties.Resources.grafik1;
+            this.pictureBox8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox8.Location = new System.Drawing.Point(1154, 144);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(77, 87);
+            this.pictureBox8.TabIndex = 19;
+            this.pictureBox8.TabStop = false;
+            this.pictureBox8.Visible = false;
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.BackgroundImage = global::DATAO.Properties.Resources.grafik1;
+            this.pictureBox7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox7.Location = new System.Drawing.Point(1071, 144);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(77, 87);
+            this.pictureBox7.TabIndex = 18;
+            this.pictureBox7.TabStop = false;
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.BackgroundImage = global::DATAO.Properties.Resources.grafik1;
+            this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox6.Location = new System.Drawing.Point(988, 144);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(77, 87);
+            this.pictureBox6.TabIndex = 17;
+            this.pictureBox6.TabStop = false;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.BackgroundImage = global::DATAO.Properties.Resources.grafik1;
+            this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox5.Location = new System.Drawing.Point(905, 144);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(77, 87);
+            this.pictureBox5.TabIndex = 16;
+            this.pictureBox5.TabStop = false;
+            this.pictureBox5.Visible = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackgroundImage = global::DATAO.Properties.Resources.grafik1;
+            this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox4.Location = new System.Drawing.Point(833, 144);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(77, 87);
+            this.pictureBox4.TabIndex = 15;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackgroundImage = global::DATAO.Properties.Resources.grafik1;
+            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox3.Location = new System.Drawing.Point(750, 144);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(77, 87);
+            this.pictureBox3.TabIndex = 14;
+            this.pictureBox3.TabStop = false;
+            this.pictureBox3.Visible = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackgroundImage = global::DATAO.Properties.Resources.grafik1;
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox2.Location = new System.Drawing.Point(654, 144);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(77, 87);
+            this.pictureBox2.TabIndex = 13;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::DATAO.Properties.Resources.grafik;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Location = new System.Drawing.Point(629, 37);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(630, 259);
+            this.pictureBox1.TabIndex = 12;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox9
+            // 
+            this.pictureBox9.BackgroundImage = global::DATAO.Properties.Resources.__;
+            this.pictureBox9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox9.Location = new System.Drawing.Point(365, 35);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(56, 48);
+            this.pictureBox9.TabIndex = 9;
+            this.pictureBox9.TabStop = false;
             // 
             // AdminForm
             // 
@@ -637,22 +773,34 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(1280, 720);
+            this.Controls.Add(this.settingButton);
             this.Controls.Add(this.materialTabSelector1);
             this.Controls.Add(this.tabControl);
             this.Name = "AdminForm";
+            this.Text = "\"Название салона\"";
             this.Load += new System.EventHandler(this.AdminForm_Load);
             this.tabControl.ResumeLayout(false);
-            this.Sklad.ResumeLayout(false);
-            this.Sklad.PerformLayout();
             this.Calendar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.Personal.ResumeLayout(false);
+            this.Personal.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.Sklad.ResumeLayout(false);
+            this.Sklad.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -674,15 +822,9 @@
         private System.Windows.Forms.TabPage Sklad;
         private System.Windows.Forms.ListBox listBox1;
         private MaterialSkin.Controls.MaterialRaisedButton newPersonalButton;
-        private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox4;
@@ -708,6 +850,19 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel3;
         private MaterialSkin.Controls.MaterialLabel materialLabel2;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox8;
+        private System.Windows.Forms.PictureBox pictureBox7;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private MaterialSkin.Controls.MaterialCheckBox materialCheckBox1;
         private SourceGrid.Grid grid1;
+        private System.Windows.Forms.PictureBox pictureBox9;
+        private MaterialSkin.Controls.MaterialRaisedButton settingButton;
     }
 }
