@@ -148,5 +148,53 @@ namespace DATAO
             AddWorker add = new AddWorker();
             add.Show();
         }
+
+        private void pictureBox9_Click(object sender, EventArgs e)
+        {
+            grid1.Rows.Insert(1);
+            grid1[1, 0] = new SourceGrid.Cells.Cell("", typeof(string));
+            grid1[1, 1] = new SourceGrid.Cells.Cell(0, typeof(int));
+            grid1[1, 2] = new SourceGrid.Cells.Cell("", typeof(string));
+            grid1[1, 3] = new SourceGrid.Cells.Cell(0, typeof(int));
+            grid1[1, 4] = new SourceGrid.Cells.Cell("", typeof(string));
+            grid1[1, 5] = new SourceGrid.Cells.Cell(0, typeof(int));
+            grid1.AutoSizeCells();
+        }
+
+        private void deleteFromSklad_Click(object sender, EventArgs e)
+        {
+            foreach(SourceGrid.GridRow row in grid1.Rows )
+            {
+                if(grid1.Selection.IsSelectedRow(row.Index))
+                {
+                    grid1.Rows.Remove(row.Index);
+                    break;
+                }
+            }
+        }
+
+        private void materialCheckBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (materialCheckBox1.Checked == true)
+            {
+                textBox6.ReadOnly = false;
+                textBox7.ReadOnly = false;
+                textBox8.ReadOnly = false;
+                textBox9.ReadOnly = false;
+                textBox10.ReadOnly = false;
+                textBox11.ReadOnly = false;
+                textBox12.ReadOnly = false;
+            }
+            if (materialCheckBox1.Checked == false)
+            {
+                textBox6.ReadOnly = true;
+                textBox7.ReadOnly = true;
+                textBox8.ReadOnly = true;
+                textBox9.ReadOnly = true;
+                textBox10.ReadOnly = true;
+                textBox11.ReadOnly = true;
+                textBox12.ReadOnly = true;
+            }
+        }
     }
 }
