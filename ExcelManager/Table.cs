@@ -5,35 +5,27 @@ namespace ExcelManager
 {
     public class Table
     {
-        public static void RenameCompany(FileInfo company, string name)
+        private static ExcelPackage linkToDatao { get; set; }
+        //Добавляю по мере написания листы
+        public static SalonWorkSheet Salon { get; set; }
+        /// <summary>
+        /// Конструктор по умолчанию
+        /// </summary>
+        /// <param name="pathToDataoInit">Путь до файла "datao.init"</param>
+        public static void FillTable(FileInfo pathToDataoInit)
         {
-            using (ExcelPackage xlPackage = new ExcelPackage(company))
-            {
-                xlPackage.Workbook.Worksheets["Салон"].Cells["C4"].Value = name;
-                xlPackage.Save();
-            }
-        }
+            ExcelPackage xlPackage = new ExcelPackage(pathToDataoInit);
+            //Сохраняем линк
+            linkToDatao = xlPackage;
+            //Добавлю по мере написания
+            Salon = new SalonWorkSheet(xlPackage.Workbook.Worksheets["Салон"]);
 
-        public static void ChangeNumber(FileInfo company, string phone)
-        {
-            using (ExcelPackage xlPackage = new ExcelPackage(company))
-            {
-                xlPackage.Workbook.Worksheets["Салон"].Cells["B9"].Value = phone;
-                xlPackage.Save();
-            }
+            //Тут может течь память, в дальнейшем разберемся
+            //xlPackage.Dispose();
         }
-
-        public static void ChangeSchedule(FileInfo company, string[] week)
+        public static void Save()
         {
-            //Пока что передается массив интервалов. В последующем здесь будет DateTime[]
-            using (ExcelPackage xlPackage = new ExcelPackage(company))
-            {
-                for (int i = 1; i < week.Length+1; i++)
-                {
-                    xlPackage.Workbook.Worksheets["Салон"].Cells[2,i].Value = week[i-1];
-                    xlPackage.Save();
-                }
-            }
+            linkToDatao.Save();
         }
     }
 }
