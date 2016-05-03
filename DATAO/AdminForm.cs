@@ -14,7 +14,7 @@ namespace DATAO
         public AdminForm()
         {
             InitializeComponent();
-            this.Text = Table.Salon.SalonName;
+            Text = Table.Salon.SalonName;
             listBox1.ScrollAlwaysVisible = true;
             dataGridView.RowCount = 22;
             dataGridView.RowHeadersWidthSizeMode =
@@ -43,7 +43,7 @@ namespace DATAO
             dataGridView.Rows[19].HeaderCell.Value = "18:30 - 19:00";
             dataGridView.Rows[20].HeaderCell.Value = "19:00 - 19:30";
             dataGridView.Rows[21].HeaderCell.Value = "19:30 - 20:00";
-            this.LoadSklad();
+            LoadSklad();
 
         }
         private void LoadSklad()
@@ -59,9 +59,7 @@ namespace DATAO
             grid1[0, 3] = new SourceGrid.Cells.ColumnHeader("Стоимость (руб.)");
             grid1[0, 4] = new SourceGrid.Cells.ColumnHeader("Категория");
             grid1[0, 5] = new SourceGrid.Cells.ColumnHeader("Остаток ед.");
-            //for (int r = 1; r < 10; r++)
-            //{
-            //пример
+
             grid1.Rows.Insert(1);
             grid1[1, 0] = new SourceGrid.Cells.Cell("nivea for man", typeof(string));
             grid1[1, 1] = new SourceGrid.Cells.Cell(5684123413, typeof(int));
@@ -70,7 +68,6 @@ namespace DATAO
             grid1[1, 4] = new SourceGrid.Cells.Cell("шампуни", typeof(CheckBox));
             grid1[1, 5] = new SourceGrid.Cells.Cell(12, typeof(int));
 
-            //}
             grid1.AutoSizeCells();
         }
 
