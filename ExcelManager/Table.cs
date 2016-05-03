@@ -5,29 +5,33 @@ namespace ExcelManager
 {
     public class Table
     {
-        private static ExcelPackage linkToDatao { get; set; }
+        private static FileInfo dataoFileInfo { get; set; }
+        private static ExcelPackage dataoPackage { get; set; }
         //Добавляю по мере написания листы
         public static SalonWorkSheet Salon { get; set; }
+        
         /// <summary>
         /// Конструктор по умолчанию
         /// </summary>
         /// <param name="pathToDataoInit">Путь до файла "datao.init"</param>
         public static void FillTable(FileInfo pathToDataoInit)
         {
+            dataoFileInfo = pathToDataoInit;
             ExcelPackage xlPackage = new ExcelPackage(pathToDataoInit);
             //Сохраняем линк
-            linkToDatao = xlPackage;
+            dataoPackage = xlPackage;
             //Добавлю по мере написания
             Salon = new SalonWorkSheet(xlPackage.Workbook.Worksheets["Салон"]);
 
-            //Тут может течь память, в дальнейшем разберемся
-            //xlPackage.Dispose();
         }
+
+        /// <summary>
+        /// Сохраняет текущее состояние таблицы
+        /// </summary>
         public static void Save()
         {
-            var oldPackage = linkToDatao;
-            linkToDatao.Save();
-            linkToDatao = oldPackage;
+            dataoPackage.Save();
+            dataoPackage.Load(new FileStream(dataoFileInfo.ToString(), FileMode.Open));
         }
     }
 }
