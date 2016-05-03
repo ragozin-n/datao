@@ -25,7 +25,9 @@ namespace ExcelManager
         }
         public static void Save()
         {
+            var oldPackage = linkToDatao;
             linkToDatao.Save();
+            linkToDatao = oldPackage;
         }
     }
 }
