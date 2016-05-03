@@ -100,6 +100,7 @@ namespace ExcelManager
         /// <param name="schedule">Массив дат через запятую в формате: 00:00 - 00:00</param>
         public void SetSchedule(string[] schedule)
         {
+            Schedule = new List<WorkDay>();
             if (schedule.Length > 7)
             {
                 throw new ArgumentOutOfRangeException();
@@ -108,23 +109,35 @@ namespace ExcelManager
             //Задали свойство
             for (int i = 0; i < schedule.Length; i++)
             {
-                Schedule[i] = new WorkDay(schedule[i]);
+                Schedule.Add(new WorkDay(schedule[i]));
             }
 
             //Обновили таблицу
             for (int j = 1; j < Schedule.Count+1; j++)
             {
-                Core.Cells[2, j].Value = $"{Schedule[j - 1].Start} - {Schedule[j - 1].End}";
+                Core.Cells[2, j+1].Value = $"{Schedule[j - 1].Start} - {Schedule[j - 1].End}";
             }
         }
+        
 
-        /// <summary>
-        /// Конструктор по умолчанию
-        /// </summary>
-        /// <param name="sheet">Лист "Салон"</param>
+            /// <summary>
+            /// Конструктор по умолчанию
+            /// </summary>
+            /// <param name="sheet">Лист "Салон"</param>
         public SalonWorkSheet(ExcelWorksheet sheet)
         {
             Core = sheet;
+            Schedule = new List<WorkDay>();
+
+            //Обновили таблицу
+            for (int j = 1; j < 8; j++)
+            {
+                if (Core.Cells[2, j+1].Value != null)
+                {
+                    Schedule.Add(new WorkDay(Core.Cells[2, j+1].Value.ToString()));
+                }
+                else { Schedule.Clear(); }
+            }
         }
     }
 }

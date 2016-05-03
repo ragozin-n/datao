@@ -1,6 +1,7 @@
 ﻿using System;
 using MaterialSkin.Controls;
 using System.Windows.Forms;
+using ExcelManager;
 
 
 namespace DATAO
@@ -13,6 +14,7 @@ namespace DATAO
         public AdminForm()
         {
             InitializeComponent();
+            this.Text = Table.Salon.SalonName;
             listBox1.ScrollAlwaysVisible = true;
             dataGridView.RowCount = 22;
             dataGridView.RowHeadersWidthSizeMode =
