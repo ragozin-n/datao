@@ -8,7 +8,7 @@ namespace ExcelManager
     {
         //Нужно проверить обновление таблицы. За это отвечает метод ExcelWorkbook.Save()
         private ExcelWorksheet Core { get; set; }
-        public List<WorkDay> Schedule { get; private set; }
+        public List<WorkDay> Schedule { get; private set; } = new List<WorkDay>();
         public string Phone
         {
             get
@@ -108,7 +108,7 @@ namespace ExcelManager
             //Задали свойство
             for (int i = 0; i < schedule.Length; i++)
             {
-                Schedule[i] = new WorkDay(schedule[i]);
+                Schedule.Add(new WorkDay(schedule[i]));
             }
 
             //Обновили таблицу
@@ -125,6 +125,19 @@ namespace ExcelManager
         public SalonWorkSheet(ExcelWorksheet sheet)
         {
             Core = sheet;
+
+            //Обновили таблицу
+            for (int j = 1; j < 8; j++)
+            {
+                try
+                {
+                    Schedule.Add(new WorkDay(Core.Cells[2, j + 1].Value.ToString()));
+                }
+                catch (NullReferenceException)
+                {
+                    //Возникла ошибка при чтении ячейки [2,j+1]
+                }
+            }
         }
     }
 }

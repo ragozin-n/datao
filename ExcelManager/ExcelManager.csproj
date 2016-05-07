@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CalendarWorkSheet.cs" />
+    <Compile Include="Event.cs" />
     <Compile Include="SalonWorkSheet.cs" />
     <Compile Include="Table.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
