@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExcelManager
 {
@@ -12,7 +8,7 @@ namespace ExcelManager
         public TimeSpan End { get; private set; }
         
         /// <summary>
-        /// 
+        /// Конструктор по умолчанию
         /// </summary>
         /// <param name="dayTimeInterval">Интервал времени</param>
         /// <param name="separator">Необязательный параметр: разделитель ('-' по умолчанию)</param>
@@ -26,10 +22,6 @@ namespace ExcelManager
             {
                 Start = _start.TimeOfDay;
                 End = _end.TimeOfDay;
-            }
-            else
-            {
-                throw new ArgumentException();
             }
         }
     }

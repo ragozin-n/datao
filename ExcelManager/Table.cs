@@ -25,6 +25,7 @@ namespace ExcelManager
             //Добавлю по мере написания
             Salon = new SalonWorkSheet(xlPackage.Workbook.Worksheets["Салон"]);
             WorkList = new CalendarWorkSheet(xlPackage.Workbook.Worksheets["Календарь"]);
+            //Персонал еще не готов
         }
 
 
