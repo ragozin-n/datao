@@ -34,17 +34,17 @@
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
-            this.grid1 = new SourceGrid.Grid();
-            this.materialFlatButton1 = new MaterialSkin.Controls.MaterialFlatButton();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2ActualAddress = new System.Windows.Forms.TextBox();
+            this.scheduleGrid = new SourceGrid.Grid();
+            this.confirmFlatButton = new MaterialSkin.Controls.MaterialFlatButton();
+            this.phoneTextBox = new System.Windows.Forms.TextBox();
+            this.actualAddressTextBox = new System.Windows.Forms.TextBox();
             this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
-            this.textBox0 = new System.Windows.Forms.TextBox();
-            this.textBox2LegfalAddress = new System.Windows.Forms.TextBox();
+            this.nameOrgTextBox = new System.Windows.Forms.TextBox();
+            this.legfalAddressTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.tinTextBox = new System.Windows.Forms.TextBox();
+            this.accountNumberTextBox = new System.Windows.Forms.MaskedTextBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
@@ -113,50 +113,49 @@
             this.materialLabel5.TabIndex = 4;
             this.materialLabel5.Text = "График:";
             // 
-            // grid1
+            // scheduleGrid
             // 
-            this.grid1.AutoStretchColumnsToFitWidth = true;
-            this.grid1.AutoStretchRowsToFitHeight = true;
-            this.grid1.EnableSort = true;
-            this.grid1.Location = new System.Drawing.Point(129, 274);
-            this.grid1.Name = "grid1";
-            this.grid1.OptimizeMode = SourceGrid.CellOptimizeMode.ForColumns;
-            this.grid1.SelectionMode = SourceGrid.GridSelectionMode.Cell;
-            this.grid1.Size = new System.Drawing.Size(429, 79);
-            this.grid1.TabIndex = 5;
-            this.grid1.TabStop = true;
-            this.grid1.ToolTipText = "";
+            this.scheduleGrid.AutoStretchColumnsToFitWidth = true;
+            this.scheduleGrid.AutoStretchRowsToFitHeight = true;
+            this.scheduleGrid.EnableSort = true;
+            this.scheduleGrid.Location = new System.Drawing.Point(129, 274);
+            this.scheduleGrid.Name = "scheduleGrid";
+            this.scheduleGrid.OptimizeMode = SourceGrid.CellOptimizeMode.ForColumns;
+            this.scheduleGrid.SelectionMode = SourceGrid.GridSelectionMode.Cell;
+            this.scheduleGrid.Size = new System.Drawing.Size(429, 79);
+            this.scheduleGrid.TabIndex = 5;
+            this.scheduleGrid.TabStop = true;
+            this.scheduleGrid.ToolTipText = "";
             // 
-            // materialFlatButton1
+            // confirmFlatButton
             // 
-            this.materialFlatButton1.AutoSize = true;
-            this.materialFlatButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialFlatButton1.Depth = 0;
-            this.materialFlatButton1.Location = new System.Drawing.Point(32, 362);
-            this.materialFlatButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialFlatButton1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialFlatButton1.Name = "materialFlatButton1";
-            this.materialFlatButton1.Primary = false;
-            this.materialFlatButton1.Size = new System.Drawing.Size(112, 36);
-            this.materialFlatButton1.TabIndex = 6;
-            this.materialFlatButton1.Text = "Подтвердить";
-            this.materialFlatButton1.UseVisualStyleBackColor = true;
-            this.materialFlatButton1.Click += new System.EventHandler(this.materialFlatButton1_Click);
+            this.confirmFlatButton.AutoSize = true;
+            this.confirmFlatButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.confirmFlatButton.Depth = 0;
+            this.confirmFlatButton.Location = new System.Drawing.Point(32, 362);
+            this.confirmFlatButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.confirmFlatButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.confirmFlatButton.Name = "confirmFlatButton";
+            this.confirmFlatButton.Primary = false;
+            this.confirmFlatButton.Size = new System.Drawing.Size(112, 36);
+            this.confirmFlatButton.TabIndex = 6;
+            this.confirmFlatButton.Text = "Подтвердить";
+            this.confirmFlatButton.UseVisualStyleBackColor = true;
+            this.confirmFlatButton.Click += new System.EventHandler(this.confirmlFlatButton_Click);
             // 
-            // textBox1
+            // phoneTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(129, 119);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(429, 20);
-            this.textBox1.TabIndex = 7;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.phoneTextBox.Location = new System.Drawing.Point(129, 119);
+            this.phoneTextBox.Name = "phoneTextBox";
+            this.phoneTextBox.Size = new System.Drawing.Size(429, 20);
+            this.phoneTextBox.TabIndex = 7;
             // 
-            // textBox2ActualAddress
+            // actualAddressTextBox
             // 
-            this.textBox2ActualAddress.Location = new System.Drawing.Point(129, 164);
-            this.textBox2ActualAddress.Name = "textBox2ActualAddress";
-            this.textBox2ActualAddress.Size = new System.Drawing.Size(194, 20);
-            this.textBox2ActualAddress.TabIndex = 8;
+            this.actualAddressTextBox.Location = new System.Drawing.Point(129, 164);
+            this.actualAddressTextBox.Name = "actualAddressTextBox";
+            this.actualAddressTextBox.Size = new System.Drawing.Size(194, 20);
+            this.actualAddressTextBox.TabIndex = 8;
             // 
             // materialLabel6
             // 
@@ -171,19 +170,19 @@
             this.materialLabel6.TabIndex = 11;
             this.materialLabel6.Text = "Название";
             // 
-            // textBox0
+            // nameOrgTextBox
             // 
-            this.textBox0.Location = new System.Drawing.Point(129, 85);
-            this.textBox0.Name = "textBox0";
-            this.textBox0.Size = new System.Drawing.Size(429, 20);
-            this.textBox0.TabIndex = 12;
+            this.nameOrgTextBox.Location = new System.Drawing.Point(129, 85);
+            this.nameOrgTextBox.Name = "nameOrgTextBox";
+            this.nameOrgTextBox.Size = new System.Drawing.Size(429, 20);
+            this.nameOrgTextBox.TabIndex = 12;
             // 
-            // textBox2LegfalAddress
+            // legfalAddressTextBox
             // 
-            this.textBox2LegfalAddress.Location = new System.Drawing.Point(330, 164);
-            this.textBox2LegfalAddress.Name = "textBox2LegfalAddress";
-            this.textBox2LegfalAddress.Size = new System.Drawing.Size(228, 20);
-            this.textBox2LegfalAddress.TabIndex = 13;
+            this.legfalAddressTextBox.Location = new System.Drawing.Point(330, 164);
+            this.legfalAddressTextBox.Name = "legfalAddressTextBox";
+            this.legfalAddressTextBox.Size = new System.Drawing.Size(228, 20);
+            this.legfalAddressTextBox.TabIndex = 13;
             // 
             // label1
             // 
@@ -203,20 +202,20 @@
             this.label2.TabIndex = 15;
             this.label2.Text = "Юридический";
             // 
-            // textBox3
+            // tinTextBox
             // 
-            this.textBox3.Location = new System.Drawing.Point(129, 203);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(429, 20);
-            this.textBox3.TabIndex = 9;
+            this.tinTextBox.Location = new System.Drawing.Point(129, 203);
+            this.tinTextBox.Name = "tinTextBox";
+            this.tinTextBox.Size = new System.Drawing.Size(429, 20);
+            this.tinTextBox.TabIndex = 9;
             // 
-            // maskedTextBox1
+            // accountNumberTextBox
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(129, 238);
-            this.maskedTextBox1.Mask = "00000000000000000000";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(429, 20);
-            this.maskedTextBox1.TabIndex = 16;
+            this.accountNumberTextBox.Location = new System.Drawing.Point(129, 238);
+            this.accountNumberTextBox.Mask = "00000000000000000000";
+            this.accountNumberTextBox.Name = "accountNumberTextBox";
+            this.accountNumberTextBox.Size = new System.Drawing.Size(429, 20);
+            this.accountNumberTextBox.TabIndex = 16;
             // 
             // SetForm
             // 
@@ -224,17 +223,17 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(590, 422);
-            this.Controls.Add(this.maskedTextBox1);
+            this.Controls.Add(this.accountNumberTextBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox2LegfalAddress);
-            this.Controls.Add(this.textBox0);
+            this.Controls.Add(this.legfalAddressTextBox);
+            this.Controls.Add(this.nameOrgTextBox);
             this.Controls.Add(this.materialLabel6);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2ActualAddress);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.materialFlatButton1);
-            this.Controls.Add(this.grid1);
+            this.Controls.Add(this.tinTextBox);
+            this.Controls.Add(this.actualAddressTextBox);
+            this.Controls.Add(this.phoneTextBox);
+            this.Controls.Add(this.confirmFlatButton);
+            this.Controls.Add(this.scheduleGrid);
             this.Controls.Add(this.materialLabel5);
             this.Controls.Add(this.materialLabel4);
             this.Controls.Add(this.materialLabel3);
@@ -256,17 +255,17 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel3;
         private MaterialSkin.Controls.MaterialLabel materialLabel4;
         private MaterialSkin.Controls.MaterialLabel materialLabel5;
-        private SourceGrid.Grid grid1;
-        private MaterialSkin.Controls.MaterialFlatButton materialFlatButton1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2ActualAddress;
+        private SourceGrid.Grid scheduleGrid;
+        private MaterialSkin.Controls.MaterialFlatButton confirmFlatButton;
+        private System.Windows.Forms.TextBox phoneTextBox;
+        private System.Windows.Forms.TextBox actualAddressTextBox;
         private MaterialSkin.Controls.MaterialLabel materialLabel6;
-        private System.Windows.Forms.TextBox textBox0;
-        private System.Windows.Forms.TextBox textBox2LegfalAddress;
+        private System.Windows.Forms.TextBox nameOrgTextBox;
+        private System.Windows.Forms.TextBox legfalAddressTextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.TextBox tinTextBox;
+        private System.Windows.Forms.MaskedTextBox accountNumberTextBox;
         private System.Windows.Forms.ToolTip toolTip1;
     }
 }

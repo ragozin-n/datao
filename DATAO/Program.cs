@@ -30,7 +30,7 @@ namespace DATAO
             //Table.Salon.SalonName = DateTime.Now.Millisecond.ToString();
             //MessageBox.Show(Table.Salon.SalonName);
             //Table.Save();
-            Table.Save();
+            //Table.Save();
             
 
 

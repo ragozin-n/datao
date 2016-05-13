@@ -14,93 +14,84 @@ namespace DATAO
 {
     public partial class SetForm : MaterialForm
     {
-        public SetForm()
+        AdminForm adF;
+        public SetForm(AdminForm af)
         {
             InitializeComponent();
             loadrasp();
+            this.adF = af;
         }
 
         private void SetForm_Load(object sender, EventArgs e)
         {
-            this.textBox0.Text = Table.Salon.SalonName;
-            this.textBox1.Text = Table.Salon.Phone;
-            this.textBox2ActualAddress.Text = Table.Salon.ActualAddress;
-            this.textBox3.Text = Table.Salon.TIN;
-            this.maskedTextBox1.Mask = "00000000000000000000";
-            maskedTextBox1.MaskInputRejected += new MaskInputRejectedEventHandler(maskedTextBox1_MaskInputRejected);
-            this.maskedTextBox1.Text = Table.Salon.AccountNumber.ToString();  
+            this.nameOrgTextBox.Text = Table.Salon.SalonName;
+            this.phoneTextBox.Text = Table.Salon.Phone;
+            this.actualAddressTextBox.Text = Table.Salon.ActualAddress;
+            this.tinTextBox.Text = Table.Salon.TIN;
+            this.accountNumberTextBox.Mask = "00000000000000000000";
+            accountNumberTextBox.MaskInputRejected += new MaskInputRejectedEventHandler(accountNumberTextBox_MaskInputRejected);
+            this.accountNumberTextBox.Text = Table.Salon.AccountNumber.ToString();  
         }
-        private void maskedTextBox1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        private void accountNumberTextBox_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
             toolTip1.ToolTipTitle = "Непраильный ввод";
-            toolTip1.Show("Номер счета должен состоять из 20 цифр", maskedTextBox1, this.maskedTextBox1.Location, 5000);
+            toolTip1.Show("Номер счета должен состоять из 20 цифр", accountNumberTextBox, this.accountNumberTextBox.Location, 5000);
         }
         private void loadrasp()
         {
-            grid1.BorderStyle = BorderStyle.FixedSingle;
-            grid1.ColumnsCount = 7;
-            grid1.FixedRows = 1;
-            grid1.Rows.Insert(0);
-            grid1[0, 0] = new SourceGrid.Cells.ColumnHeader("Понедельник");
-            grid1[0, 1] = new SourceGrid.Cells.ColumnHeader("Вторник");
-            grid1[0, 2] = new SourceGrid.Cells.ColumnHeader("Среда");
-            grid1[0, 3] = new SourceGrid.Cells.ColumnHeader("Четверг");
-            grid1[0, 4] = new SourceGrid.Cells.ColumnHeader("Пятница");
-            grid1[0, 5] = new SourceGrid.Cells.ColumnHeader("Суббота");
-            grid1[0, 6] = new SourceGrid.Cells.ColumnHeader("Воскресенье");
-            //for (int r = 1; r < 10; r++)
-            //{
-            //пример
+            scheduleGrid.BorderStyle = BorderStyle.FixedSingle;
+            scheduleGrid.ColumnsCount = 7;
+            scheduleGrid.FixedRows = 1;
+            scheduleGrid.Rows.Insert(0);
+            scheduleGrid[0, 0] = new SourceGrid.Cells.ColumnHeader("Понедельник");
+            scheduleGrid[0, 1] = new SourceGrid.Cells.ColumnHeader("Вторник");
+            scheduleGrid[0, 2] = new SourceGrid.Cells.ColumnHeader("Среда");
+            scheduleGrid[0, 3] = new SourceGrid.Cells.ColumnHeader("Четверг");
+            scheduleGrid[0, 4] = new SourceGrid.Cells.ColumnHeader("Пятница");
+            scheduleGrid[0, 5] = new SourceGrid.Cells.ColumnHeader("Суббота");
+            scheduleGrid[0, 6] = new SourceGrid.Cells.ColumnHeader("Воскресенье");
             if (Table.Salon.Schedule != null)
             {
-                grid1.Rows.Insert(1);
+                scheduleGrid.Rows.Insert(1);
                 for (int i = 0; i < 7; i++)
-                { grid1[1, i] = new SourceGrid.Cells.Cell(Table.Salon.Schedule[i].Start, typeof(TimeSpan)); }
+                { scheduleGrid[1, i] = new SourceGrid.Cells.Cell(Table.Salon.Schedule[i].Start, typeof(TimeSpan)); }
 
-                grid1.Rows.Insert(2);
+                scheduleGrid.Rows.Insert(2);
                 for (int i = 0; i < 7; i++)
-                { grid1[2, i] = new SourceGrid.Cells.Cell(Table.Salon.Schedule[i].End, typeof(TimeSpan)); }
+                { scheduleGrid[2, i] = new SourceGrid.Cells.Cell(Table.Salon.Schedule[i].End, typeof(TimeSpan)); }
             }
             else {
-                grid1.Rows.Insert(1);
+                scheduleGrid.Rows.Insert(1);
                 for (int i = 0; i < 7; i++)
-                { grid1[1, i] = new SourceGrid.Cells.Cell("", typeof(TimeSpan)); }
+                { scheduleGrid[1, i] = new SourceGrid.Cells.Cell("", typeof(TimeSpan)); }
                 
 
-                grid1.Rows.Insert(2);
+                scheduleGrid.Rows.Insert(2);
                 for (int i = 0; i < 7; i++)
-                { grid1[2, i] = new SourceGrid.Cells.Cell("", typeof(TimeSpan)); }
+                { scheduleGrid[2, i] = new SourceGrid.Cells.Cell("", typeof(TimeSpan)); }
             }
-
-            //}
-            grid1.AutoSizeCells();
+            scheduleGrid.AutoSizeCells();
         }
 
-        private void materialFlatButton1_Click(object sender, EventArgs e)
+        private void confirmlFlatButton_Click(object sender, EventArgs e)
         {
-            Table.Salon.SalonName = this.textBox0.Text;
-            Table.Salon.Phone = this.textBox1.Text;
-            Table.Salon.ActualAddress = this.textBox2ActualAddress.Text;
-            Table.Salon.TIN = this.textBox3.Text;
+            Table.Salon.SalonName = this.nameOrgTextBox.Text;
+            Table.Salon.Phone = this.phoneTextBox.Text;
+            Table.Salon.ActualAddress = this.actualAddressTextBox.Text;
+            Table.Salon.TIN = this.tinTextBox.Text;
             uint accnumb = 0;
-            UInt32.TryParse(this.maskedTextBox1.Text, out accnumb);
+            UInt32.TryParse(this.accountNumberTextBox.Text, out accnumb);
             Table.Salon.AccountNumber = accnumb;
             string[] rasp = {
-                grid1[1, 0] + "-" + grid1[2, 0], grid1[1, 1] + "-" + grid1[2, 1],
-                grid1[1, 2] + "-" + grid1[2, 2], grid1[1, 3] + "-" + grid1[2, 3],
-                grid1[1, 4] + "-" + grid1[2, 4], grid1[1, 5] + "-" + grid1[2, 5],
-                grid1[1, 6] + "-" + grid1[2, 6]
+                scheduleGrid[1, 0] + "-" + scheduleGrid[2, 0], scheduleGrid[1, 1] + "-" + scheduleGrid[2, 1],
+                scheduleGrid[1, 2] + "-" + scheduleGrid[2, 2], scheduleGrid[1, 3] + "-" + scheduleGrid[2, 3],
+                scheduleGrid[1, 4] + "-" + scheduleGrid[2, 4], scheduleGrid[1, 5] + "-" + scheduleGrid[2, 5],
+                scheduleGrid[1, 6] + "-" + scheduleGrid[2, 6]
             };
             Table.Salon.SetSchedule(rasp);
             Table.Save();
+            adF.loadname();
             this.Close();
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        
+        }        
     }
 }
