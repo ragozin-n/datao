@@ -27,6 +27,7 @@ namespace DATAO
             this.nameOrgTextBox.Text = Table.Salon.SalonName;
             this.phoneTextBox.Text = Table.Salon.Phone;
             this.actualAddressTextBox.Text = Table.Salon.ActualAddress;
+            this.legfalAddressTextBox.Text = Table.Salon.LegalAddress;
             this.tinTextBox.Text = Table.Salon.TIN;
             this.accountNumberTextBox.Mask = "00000000000000000000";
             accountNumberTextBox.MaskInputRejected += new MaskInputRejectedEventHandler(accountNumberTextBox_MaskInputRejected);
@@ -78,6 +79,7 @@ namespace DATAO
             Table.Salon.SalonName = this.nameOrgTextBox.Text;
             Table.Salon.Phone = this.phoneTextBox.Text;
             Table.Salon.ActualAddress = this.actualAddressTextBox.Text;
+            Table.Salon.LegalAddress = this.legfalAddressTextBox.Text;
             Table.Salon.TIN = this.tinTextBox.Text;
             uint accnumb = 0;
             UInt32.TryParse(this.accountNumberTextBox.Text, out accnumb);

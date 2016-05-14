@@ -8,7 +8,7 @@ namespace ExcelManager
     {
         //Нужно проверить обновление таблицы. За это отвечает метод ExcelWorkbook.Save()
         private ExcelWorksheet Core { get; set; }
-        public List<WorkDay> Schedule { get; private set; }
+        public List<WorkDay> Schedule { get; private set; } = new List<WorkDay>();
         public string Phone
         {
             get
@@ -100,7 +100,6 @@ namespace ExcelManager
         /// <param name="schedule">Массив дат через запятую в формате: 00:00 - 00:00</param>
         public void SetSchedule(string[] schedule)
         {
-            Schedule = new List<WorkDay>();
             if (schedule.Length > 7)
             {
                 throw new ArgumentOutOfRangeException();
@@ -113,28 +112,27 @@ namespace ExcelManager
             }
 
             //Обновили таблицу
-            for (int j = 1; j < Schedule.Count+1; j++)
+            for (int j = 1; j < Schedule.Count + 1; j++)
             {
-                Core.Cells[2, j+1].Value = $"{Schedule[j - 1].Start} - {Schedule[j - 1].End}";
+                Core.Cells[2, j + 1].Value = $"{Schedule[j - 1].Start} - {Schedule[j - 1].End}";
             }
         }
-        
 
-            /// <summary>
-            /// Конструктор по умолчанию
-            /// </summary>
-            /// <param name="sheet">Лист "Салон"</param>
+
+        /// <summary>
+        /// Конструктор по умолчанию
+        /// </summary>
+        /// <param name="sheet">Лист "Салон"</param>
         public SalonWorkSheet(ExcelWorksheet sheet)
         {
             Core = sheet;
-            Schedule = new List<WorkDay>();
 
             //Обновили таблицу
             for (int j = 1; j < 8; j++)
             {
-                if (Core.Cells[2, j+1].Value != null)
+                if (Core.Cells[2, j + 1].Value != null)
                 {
-                    Schedule.Add(new WorkDay(Core.Cells[2, j+1].Value.ToString()));
+                    Schedule.Add(new WorkDay(Core.Cells[2, j + 1].Value.ToString()));
                 }
                 else { Schedule.Clear(); }
             }
