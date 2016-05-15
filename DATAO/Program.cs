@@ -25,7 +25,6 @@ namespace DATAO
 
             
             //Таблица
-            //Разберись с FileInfo. Сейчас тут путь до шаблона.
             Table.FillTable(new System.IO.FileInfo(@"..\..\datao.init.xlsx"));
 
             /*

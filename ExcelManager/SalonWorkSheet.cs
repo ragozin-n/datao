@@ -112,11 +112,12 @@ namespace ExcelManager
             }
 
             //Обновили таблицу
-            for (int j = 1; j < Schedule.Count+1; j++)
+            for (int j = 1; j < Schedule.Count + 1; j++)
             {
-                Core.Cells[2, j].Value = $"{Schedule[j - 1].Start} - {Schedule[j - 1].End}";
+                Core.Cells[2, j + 1].Value = $"{Schedule[j - 1].Start} - {Schedule[j - 1].End}";
             }
         }
+
 
         /// <summary>
         /// Конструктор по умолчанию
@@ -129,6 +130,7 @@ namespace ExcelManager
             //Обновили таблицу
             for (int j = 1; j < 8; j++)
             {
+<<<<<<< HEAD
                 try
                 {
                     Schedule.Add(new WorkDay(Core.Cells[2, j + 1].Value.ToString()));
@@ -137,6 +139,13 @@ namespace ExcelManager
                 {
                     //Возникла ошибка при чтении ячейки [2,j+1]
                 }
+=======
+                if (Core.Cells[2, j + 1].Value != null)
+                {
+                    Schedule.Add(new WorkDay(Core.Cells[2, j + 1].Value.ToString()));
+                }
+                else { Schedule.Clear(); }
+>>>>>>> test
             }
         }
     }
