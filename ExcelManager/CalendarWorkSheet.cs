@@ -21,16 +21,16 @@ namespace ExcelManager
             {
                 j++;
             }
-            //Core.Cells[j, 1].Style.Numberformat.Format = "mm/dd/yy";
-            Core.Cells[j, 1].Value = $"=ДАТА({_event.Date.Year},{_event.Date.Month},{_event.Date.Day})";
+            Core.Cells[j, 1].Style.Numberformat.Format = "dd/mm/yy";
+            Core.Cells[j, 1].Formula = $"DATE({_event.Date.Year},{_event.Date.Month},{_event.Date.Day})";
             Core.Cells[j, 1].Calculate();
 
-            //Core.Cells[j, 2].Style.Numberformat.Format = "hh:mm";
-            Core.Cells[j, 2].Value = $"=ВРЕМЯ({_event.StartAt.Hours},{_event.StartAt.Minutes},{_event.StartAt.Seconds})";
+            Core.Cells[j, 2].Style.Numberformat.Format = "hh:mm";
+            Core.Cells[j, 2].Formula = $"TIME({_event.StartAt.Hours},{_event.StartAt.Minutes},{_event.StartAt.Seconds})";
             Core.Cells[j, 2].Calculate();
 
-            //Core.Cells[j, 3].Style.Numberformat.Format = "hh:mm";
-            Core.Cells[j, 3].Value = $"=ВРЕМЯ({_event.EndAt.Hours},{_event.EndAt.Minutes},{_event.EndAt.Seconds})";
+            Core.Cells[j, 3].Style.Numberformat.Format = "hh:mm";
+            Core.Cells[j, 3].Formula = $"TIME({_event.EndAt.Hours},{_event.EndAt.Minutes},{_event.EndAt.Seconds})";
             Core.Cells[j, 3].Calculate();
 
             Core.Cells[j, 4].Value = _event.ClientName;
@@ -78,13 +78,13 @@ namespace ExcelManager
         public void RemoveEventFromCalendar(int row)
         {
             Event _event = new Event(
-                   DateTime.Parse(Core.Cells[row, 1].Value.ToString()),
-                   DateTime.Parse(Core.Cells[row, 2].Value.ToString()).TimeOfDay,
-                   DateTime.Parse(Core.Cells[row, 3].Value.ToString()).TimeOfDay,
-                   Core.Cells[row, 4].Value.ToString(),
-                   uint.Parse(Core.Cells[row, 5].Value.ToString()),
-                   uint.Parse(Core.Cells[row, 6].Value.ToString())
-                       );
+                    DateTime.FromOADate(long.Parse(Core.Cells[j, 1].Value.ToString())).Date,
+                    TimeSpan.FromHours(double.Parse(Core.Cells[j, 2].Value.ToString())),
+                    TimeSpan.FromHours(double.Parse(Core.Cells[j, 3].Value.ToString())),
+                    Core.Cells[j, 4].Value.ToString(),
+                    uint.Parse(Core.Cells[j, 5].Value.ToString()),
+                    uint.Parse(Core.Cells[j, 6].Value.ToString())
+                    );
             Calendar.Remove(_event);
             Core.DeleteRow(row);
         }
@@ -101,9 +101,9 @@ namespace ExcelManager
                 if (Core.Cells[j, 1].Value.ToString() == date.ToString())
                 {
                     Event _event = new Event(
-                    DateTime.Parse(Core.Cells[j, 1].Value.ToString()),
-                    DateTime.Parse(Core.Cells[j, 2].Value.ToString()).TimeOfDay,
-                    DateTime.Parse(Core.Cells[j, 3].Value.ToString()).TimeOfDay,
+                    DateTime.FromOADate(long.Parse(Core.Cells[j, 1].Value.ToString())).Date,
+                    TimeSpan.FromHours(double.Parse(Core.Cells[j, 2].Value.ToString())),
+                    TimeSpan.FromHours(double.Parse(Core.Cells[j, 3].Value.ToString())),
                     Core.Cells[j, 4].Value.ToString(),
                     uint.Parse(Core.Cells[j, 5].Value.ToString()),
                     uint.Parse(Core.Cells[j, 6].Value.ToString())
@@ -131,9 +131,9 @@ namespace ExcelManager
                 if (Core.Cells[j, 6].Value.ToString() == workerID.ToString())
                 {
                     Event _event = new Event(
-                    DateTime.Parse(Core.Cells[j, 1].Value.ToString()),
-                    DateTime.Parse(Core.Cells[j, 2].Value.ToString()).TimeOfDay,
-                    DateTime.Parse(Core.Cells[j, 3].Value.ToString()).TimeOfDay,
+                    DateTime.FromOADate(long.Parse(Core.Cells[j, 1].Value.ToString())).Date,
+                    TimeSpan.FromHours(double.Parse(Core.Cells[j, 2].Value.ToString())),
+                    TimeSpan.FromHours(double.Parse(Core.Cells[j, 3].Value.ToString())),
                     Core.Cells[j, 4].Value.ToString(),
                     uint.Parse(Core.Cells[j, 5].Value.ToString()),
                     uint.Parse(Core.Cells[j, 6].Value.ToString())
@@ -158,9 +158,9 @@ namespace ExcelManager
                 if (Core.Cells[j, 5].Value.ToString() == serviceID.ToString())
                 {
                     Event _event = new Event(
-                    DateTime.Parse(Core.Cells[j, 1].Value.ToString()),
-                    DateTime.Parse(Core.Cells[j, 2].Value.ToString()).TimeOfDay,
-                    DateTime.Parse(Core.Cells[j, 3].Value.ToString()).TimeOfDay,
+                    DateTime.FromOADate(long.Parse(Core.Cells[j, 1].Value.ToString())).Date,
+                    TimeSpan.FromHours(double.Parse(Core.Cells[j, 2].Value.ToString())),
+                    TimeSpan.FromHours(double.Parse(Core.Cells[j, 3].Value.ToString())),
                     Core.Cells[j, 4].Value.ToString(),
                     uint.Parse(Core.Cells[j, 5].Value.ToString()),
                     uint.Parse(Core.Cells[j, 6].Value.ToString())
@@ -184,13 +184,10 @@ namespace ExcelManager
             {
                 if (Core.Cells[j, 4].Value.ToString() == clientName)
                 {
-                    Core.Cells[j, 1].Style.Numberformat.Format = "dd/mm/yy";
-                    Core.Cells[j, 2].Style.Numberformat.Format = "hh:mm";
-                    Core.Cells[j, 3].Style.Numberformat.Format = "hh:mm";
                     Event _event = new Event(
-                    DateTime.Parse(Core.Cells[j, 1].Value.ToString()).Date,
-                    DateTime.Parse(Core.Cells[j, 2].Value.ToString()).TimeOfDay,
-                    DateTime.Parse(Core.Cells[j, 3].Value.ToString()).TimeOfDay,
+                    DateTime.FromOADate(long.Parse(Core.Cells[j, 1].Value.ToString())).Date,
+                    TimeSpan.FromHours(double.Parse(Core.Cells[j, 2].Value.ToString())),
+                    TimeSpan.FromHours(double.Parse(Core.Cells[j, 3].Value.ToString())),
                     Core.Cells[j, 4].Value.ToString(),
                     uint.Parse(Core.Cells[j, 5].Value.ToString()),
                     uint.Parse(Core.Cells[j, 6].Value.ToString())
@@ -219,13 +216,13 @@ namespace ExcelManager
                 try
                 {
                     Event _event = new Event(
-                    DateTime.Parse(Core.Cells[j, 1].Value.ToString()),
-                    DateTime.Parse(Core.Cells[j, 2].Value.ToString()).TimeOfDay,
-                    DateTime.Parse(Core.Cells[j, 3].Value.ToString()).TimeOfDay,
-                    Core.Cells[j, 4].Value != null ? Core.Cells[j, 4].Value.ToString() : "Default",
+                    DateTime.FromOADate(long.Parse(Core.Cells[j, 1].Value.ToString())).Date,
+                    TimeSpan.FromHours(double.Parse(Core.Cells[j, 2].Value.ToString())),
+                    TimeSpan.FromHours(double.Parse(Core.Cells[j, 3].Value.ToString())),
+                    Core.Cells[j, 4].Value.ToString(),
                     uint.Parse(Core.Cells[j, 5].Value.ToString()),
                     uint.Parse(Core.Cells[j, 6].Value.ToString())
-                        );
+                    );
 
                     Calendar.Add(_event);
                     j++;

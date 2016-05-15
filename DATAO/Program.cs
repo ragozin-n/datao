@@ -38,8 +38,9 @@ namespace DATAO
             Table.WorkList.AddEventToCalendar(_event);
             Table.WorkList.AddEventToCalendar(_event);
             Table.Save();
-            //Table.WorkList.RemoveEventFromCalendar("Tester");
-            //Table.Save();
+
+            Table.WorkList.RemoveEventFromCalendar("Tester");
+            Table.Save();
 
             /*
 
