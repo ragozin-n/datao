@@ -16,12 +16,12 @@ namespace DATAO
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            /*
+            
             //Авторизация
             UserCredential _user = null;
             Authorization.FillCredentials(ref _user);
             bool? isOnline = Authorization.GetDataoInit(ref _user);
-            */
+            
 
             
             //Таблица

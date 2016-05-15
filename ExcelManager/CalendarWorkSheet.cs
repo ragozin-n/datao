@@ -78,12 +78,12 @@ namespace ExcelManager
         public void RemoveEventFromCalendar(int row)
         {
             Event _event = new Event(
-                    DateTime.FromOADate(long.Parse(Core.Cells[j, 1].Value.ToString())).Date,
-                    TimeSpan.FromHours(double.Parse(Core.Cells[j, 2].Value.ToString())),
-                    TimeSpan.FromHours(double.Parse(Core.Cells[j, 3].Value.ToString())),
-                    Core.Cells[j, 4].Value.ToString(),
-                    uint.Parse(Core.Cells[j, 5].Value.ToString()),
-                    uint.Parse(Core.Cells[j, 6].Value.ToString())
+                    DateTime.FromOADate(long.Parse(Core.Cells[row, 1].Value.ToString())).Date,
+                    TimeSpan.FromHours(double.Parse(Core.Cells[row, 2].Value.ToString())),
+                    TimeSpan.FromHours(double.Parse(Core.Cells[row, 3].Value.ToString())),
+                    Core.Cells[row, 4].Value.ToString(),
+                    uint.Parse(Core.Cells[row, 5].Value.ToString()),
+                    uint.Parse(Core.Cells[row, 6].Value.ToString())
                     );
             Calendar.Remove(_event);
             Core.DeleteRow(row);
