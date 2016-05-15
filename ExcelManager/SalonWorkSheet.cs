@@ -6,7 +6,6 @@ namespace ExcelManager
 {
     public class SalonWorkSheet
     {
-        //Нужно проверить обновление таблицы. За это отвечает метод ExcelWorkbook.Save()
         private ExcelWorksheet Core { get; set; }
         public List<WorkDay> Schedule { get; private set; } = new List<WorkDay>();
         public string Phone
@@ -105,6 +104,7 @@ namespace ExcelManager
                 throw new ArgumentOutOfRangeException();
             }
 
+            Schedule.Clear();
             //Задали свойство
             for (int i = 0; i < schedule.Length; i++)
             {
@@ -112,11 +112,12 @@ namespace ExcelManager
             }
 
             //Обновили таблицу
-            for (int j = 1; j < Schedule.Count+1; j++)
+            for (int j = 1; j < Schedule.Count + 1; j++)
             {
-                Core.Cells[2, j].Value = $"{Schedule[j - 1].Start} - {Schedule[j - 1].End}";
+                Core.Cells[2, j + 1].Value = $"{Schedule[j - 1].Start} - {Schedule[j - 1].End}";
             }
         }
+
 
         /// <summary>
         /// Конструктор по умолчанию

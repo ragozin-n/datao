@@ -15,5 +15,39 @@ namespace ExcelManager
         public string Patronymic { get; private set; }
         public string Status { get; private set; }
         public uint HoursWorked { get; private set; }
+        public string Rate { get; private set; }
+        public bool[] Schedule { get; private set; } = new bool[7] { true, true, true, true , true, true, false};
+        public string Tel { get; private set; }
+        public string Addres { get; private set; }
+
+        /// <summary>
+        /// Конструктор по умолчанию
+        /// </summary>
+        /// <param name="id">ID работника</param>
+        /// <param name="name">Имя</param>
+        /// <param name="surname">Фамилия</param>
+        /// <param name="patronymic">Отчество</param>
+        /// <param name="status">Статус</param>
+        /// <param name="hoursWorked">Отработанные часы</param>
+        /// <param name="rate">Ставка</param>
+        /// <param name="tel">Контактный телефон</param>
+        /// <param name="addres">Адрес проживания</param>
+        /// <param name="schedule">Расписание</param>
+        public Human(uint id, string name, string surname, 
+                     string patronymic, string status, uint hoursWorked, 
+                     string rate, string tel, string addres, bool[] schedule)
+        {
+            ID = id;
+            Name = name;
+            Surname = surname;
+            Patronymic = patronymic;
+            Status = status;
+            HoursWorked = hoursWorked;
+            Rate = rate;
+            Tel = tel;
+            Addres = addres;
+            Schedule = schedule;
+        }
+
     }
 }

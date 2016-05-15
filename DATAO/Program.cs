@@ -16,25 +16,17 @@ namespace DATAO
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            /*
+            
             //Авторизация
             UserCredential _user = null;
             Authorization.FillCredentials(ref _user);
             bool? isOnline = Authorization.GetDataoInit(ref _user);
-            */
-
             
             //Таблица
-            //Разберись с FileInfo. Сейчас тут путь до шаблона.
             Table.FillTable(new System.IO.FileInfo(@"..\..\datao.init.xlsx"));
-
-            /*
-            //В качестве примера меняется имя предприятие на количество секунд при запуске программы
-            Table.Salon.SalonName = DateTime.Now.Millisecond.ToString();
-            MessageBox.Show(Table.Salon.SalonName);
+            Table.Salon.SalonName = "upload_from_google_drive_ver2.0";
             Table.Save();
-            Table.Save();
-            */
+            Authorization.UploadDatao(ref _user);
 
             /*
 
