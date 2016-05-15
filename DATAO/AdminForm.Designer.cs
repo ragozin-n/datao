@@ -777,6 +777,7 @@
             this.Controls.Add(this.tabControl);
             this.Name = "AdminForm";
             this.Text = "\"Название салона\"";
+            this.Load += new System.EventHandler(this.AdminForm_FormClosing);
             this.tabControl.ResumeLayout(false);
             this.Calendar.ResumeLayout(false);
             this.Calendar.PerformLayout();

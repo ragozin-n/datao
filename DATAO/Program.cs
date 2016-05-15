@@ -28,7 +28,7 @@ namespace DATAO
             Table.Save();
             Authorization.UploadDatao(ref _user);
 
-            /*
+            
 
             //Должна принимать таблицу в любом формате
             switch (isOnline)
@@ -36,6 +36,7 @@ namespace DATAO
                 case true:
                     //С таблицей из диска
                     Application.Run(new AdminForm());
+                    Authorization.UploadDatao(ref _user);
                     break;
                 case false:
                     //С шаблоном
@@ -46,7 +47,7 @@ namespace DATAO
                     break;
             }
 
-            */
+            
         }
     }
 }

@@ -51,7 +51,7 @@ namespace DATAO
             scheduleGrid[0, 4] = new SourceGrid.Cells.ColumnHeader("Пятница");
             scheduleGrid[0, 5] = new SourceGrid.Cells.ColumnHeader("Суббота");
             scheduleGrid[0, 6] = new SourceGrid.Cells.ColumnHeader("Воскресенье");
-            if (Table.Salon.Schedule != null)
+            try
             {
                 scheduleGrid.Rows.Insert(1);
                 for (int i = 0; i < 7; i++)
@@ -61,7 +61,8 @@ namespace DATAO
                 for (int i = 0; i < 7; i++)
                 { scheduleGrid[2, i] = new SourceGrid.Cells.Cell(Table.Salon.Schedule[i].End, typeof(TimeSpan)); }
             }
-            else {
+            catch (ArgumentOutOfRangeException)
+            {
                 scheduleGrid.Rows.Insert(1);
                 for (int i = 0; i < 7; i++)
                 { scheduleGrid[1, i] = new SourceGrid.Cells.Cell("", typeof(TimeSpan)); }

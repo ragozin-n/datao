@@ -67,16 +67,23 @@ namespace DATAO
             }
             ScheduleGrid.FixedRows = 1;
             int j = 1;
-            for (TimeSpan i = Table.Salon.Schedule[IndexDay() - 1].Start; i< Table.Salon.Schedule[IndexDay() - 1].End; i=i+DateTime.Parse("00:30:00").TimeOfDay)
+            try
             {
-                ScheduleGrid.Rows.Insert(j);
-                ScheduleGrid[j, 0] = new SourceGrid.Cells.RowHeader(i + "-" + (i + DateTime.Parse("00:30:00").TimeOfDay));
-                for(int k = 1;k<ScheduleGrid.ColumnsCount;k++)
+                for (TimeSpan i = Table.Salon.Schedule[IndexDay() - 1].Start; i < Table.Salon.Schedule[IndexDay() - 1].End; i = i + DateTime.Parse("00:30:00").TimeOfDay)
                 {
-                    //тут грузить из таблицы
-                    ScheduleGrid[j, k] = new SourceGrid.Cells.Cell("", typeof(string));
+                    ScheduleGrid.Rows.Insert(j);
+                    ScheduleGrid[j, 0] = new SourceGrid.Cells.RowHeader(i + "-" + (i + DateTime.Parse("00:30:00").TimeOfDay));
+                    for (int k = 1; k < ScheduleGrid.ColumnsCount; k++)
+                    {
+                        //тут грузить из таблицы
+                        ScheduleGrid[j, k] = new SourceGrid.Cells.Cell("", typeof(string));
+                    }
+                    j++;
                 }
-                j++;
+            }
+            catch(ArgumentOutOfRangeException)
+            {
+                ScheduleGrid.Rows.RemoveRange(0, ScheduleGrid.Rows.Count);
             }
             ScheduleGrid.AutoSizeCells();
         }
@@ -183,8 +190,16 @@ namespace DATAO
 
         private void monthCalendar_DateChanged(object sender, DateRangeEventArgs e)
         {
-            ScheduleGrid.Rows.RemoveRange(0, ScheduleGrid.Rows.Count);
+            if (ScheduleGrid.Rows.Count != 0)
+            {
+                ScheduleGrid.Rows.RemoveRange(0, ScheduleGrid.Rows.Count);
+            }
             LoadSchedule();
+        }
+
+        private void AdminForm_FormClosing(object sender, EventArgs e)
+        {
+            //Authorization.UploadDatao(ref _user);
         }
     }
 }
