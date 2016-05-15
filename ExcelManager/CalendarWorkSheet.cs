@@ -9,26 +9,199 @@ namespace ExcelManager
         private ExcelWorksheet Core { get; set; }
         public List<Event> Calendar { get; private set; } = new List<Event>();
 
-        public void AddEventToCalendar(Event _event)
-        {
-            Calendar.Add(_event);
-        }
-
         /// <summary>
         /// Добавляет новое событие в календарь записей
         /// </summary>
-        /// <param name="date">Дата события</param>
-        /// <param name="startAt">Время начала</param>
-        /// <param name="endAt">Время завершения</param>
-        /// <param name="clientName">Имя клиента</param>
-        /// <param name="serviceId">ID Услуги</param>
-        /// <param name="workerId">ID Мастера</param>
-        public void AddEventToCalendar(DateTime date, TimeSpan startAt, TimeSpan endAt, string clientName, uint serviceId, uint workerId)
+        /// <param name="_event">Текущее событие</param>
+        public void AddEventToCalendar(Event _event)
         {
-            Calendar.Add(new Event(date, startAt, endAt, clientName, serviceId, workerId));
+            Calendar.Add(_event);
+            int j = 2;
+            while (Core.Cells[j, 1].Value != null)
+            {
+                j++;
+            }
+            //Core.Cells[j, 1].Style.Numberformat.Format = "mm/dd/yy";
+            Core.Cells[j, 1].Value = $"=ДАТА({_event.Date.Year},{_event.Date.Month},{_event.Date.Day})";
+            Core.Cells[j, 1].Calculate();
+
+            //Core.Cells[j, 2].Style.Numberformat.Format = "hh:mm";
+            Core.Cells[j, 2].Value = $"=ВРЕМЯ({_event.StartAt.Hours},{_event.StartAt.Minutes},{_event.StartAt.Seconds})";
+            Core.Cells[j, 2].Calculate();
+
+            //Core.Cells[j, 3].Style.Numberformat.Format = "hh:mm";
+            Core.Cells[j, 3].Value = $"=ВРЕМЯ({_event.EndAt.Hours},{_event.EndAt.Minutes},{_event.EndAt.Seconds})";
+            Core.Cells[j, 3].Calculate();
+
+            Core.Cells[j, 4].Value = _event.ClientName;
+            Core.Cells[j, 5].Value = _event.ServiceID;
+            Core.Cells[j, 6].Value = _event.WorkerID;
         }
 
-        //Можно дописать сортировку по дате, но таблица может и сама отсортировать
+        /// <summary>
+        /// Удаляет событие из календаря
+        /// </summary>
+        /// <param name="_event">Текущее событие</param>
+        public void RemoveEventFromCalendar(Event _event)
+        {
+            int j = 2;
+            while (Core.Cells[j, 1].Value != null)
+            {
+                if (Core.Cells[j, 1].Value.ToString() == _event.Date.ToString())
+                {
+                    if (Core.Cells[j, 2].Value.ToString() == _event.StartAt.ToString())
+                    {
+                        if (Core.Cells[j, 3].Value.ToString() == _event.EndAt.ToString())
+                        {
+                            if (Core.Cells[j, 4].Value.ToString() == _event.ClientName.ToString())
+                            {
+                                if (Core.Cells[j, 5].Value.ToString() == _event.ServiceID.ToString())
+                                {
+                                    if (Core.Cells[j, 6].Value.ToString() == _event.WorkerID.ToString())
+                                    {
+                                        Core.DeleteRow(j);
+                                        Calendar.Remove(_event);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                j++;
+            }
+        }
+
+        /// <summary>
+        /// Удаляет событие из календаря
+        /// </summary>
+        /// <param name="row">Номер ряда, который нужно удалить</param>
+        public void RemoveEventFromCalendar(int row)
+        {
+            Event _event = new Event(
+                   DateTime.Parse(Core.Cells[row, 1].Value.ToString()),
+                   DateTime.Parse(Core.Cells[row, 2].Value.ToString()).TimeOfDay,
+                   DateTime.Parse(Core.Cells[row, 3].Value.ToString()).TimeOfDay,
+                   Core.Cells[row, 4].Value.ToString(),
+                   uint.Parse(Core.Cells[row, 5].Value.ToString()),
+                   uint.Parse(Core.Cells[row, 6].Value.ToString())
+                       );
+            Calendar.Remove(_event);
+            Core.DeleteRow(row);
+        }
+
+        /// <summary>
+        /// Удаляет соыбтие из календаря
+        /// </summary>
+        /// <param name="date">Дата событий для удаления</param>
+        public void RemoveEventFromCalendar(DateTime date)
+        {
+            int j = 2;
+            while (Core.Cells[j, 1].Value != null)
+            {
+                if (Core.Cells[j, 1].Value.ToString() == date.ToString())
+                {
+                    Event _event = new Event(
+                    DateTime.Parse(Core.Cells[j, 1].Value.ToString()),
+                    DateTime.Parse(Core.Cells[j, 2].Value.ToString()).TimeOfDay,
+                    DateTime.Parse(Core.Cells[j, 3].Value.ToString()).TimeOfDay,
+                    Core.Cells[j, 4].Value.ToString(),
+                    uint.Parse(Core.Cells[j, 5].Value.ToString()),
+                    uint.Parse(Core.Cells[j, 6].Value.ToString())
+                    );
+
+                    Calendar.Remove(_event);
+                    Core.DeleteRow(j);
+                }
+                j++;
+            }
+        }
+
+        /// <summary>
+        /// Удаляет событие из календаря
+        /// </summary>
+        /// <param name="workerID">ID рабочего</param>
+        public void RemoveEventFromCalendar(uint workerID, uint serviceId = 0)
+        {
+            //Это хитрый метод для удаления только событий данного рабочего!
+            //Так как нельзя определить два void метода с параметрами uint
+            //Здесь используется serviceID, который можно задавать как угодно, по умолчанию он 0
+            int j = 2;
+            while (Core.Cells[j, 1].Value != null)
+            {
+                if (Core.Cells[j, 6].Value.ToString() == workerID.ToString())
+                {
+                    Event _event = new Event(
+                    DateTime.Parse(Core.Cells[j, 1].Value.ToString()),
+                    DateTime.Parse(Core.Cells[j, 2].Value.ToString()).TimeOfDay,
+                    DateTime.Parse(Core.Cells[j, 3].Value.ToString()).TimeOfDay,
+                    Core.Cells[j, 4].Value.ToString(),
+                    uint.Parse(Core.Cells[j, 5].Value.ToString()),
+                    uint.Parse(Core.Cells[j, 6].Value.ToString())
+                    );
+
+                    Calendar.Remove(_event);
+                    Core.DeleteRow(j);
+                }
+                j++;
+            }
+        }
+
+        /// <summary>
+        /// Удаляет событие из календаря
+        /// </summary>
+        /// <param name="serviceID">ID услуги</param>
+        public void RemoveEventFromCalendar(uint serviceID)
+        {
+            int j = 2;
+            while (Core.Cells[j, 1].Value != null)
+            {
+                if (Core.Cells[j, 5].Value.ToString() == serviceID.ToString())
+                {
+                    Event _event = new Event(
+                    DateTime.Parse(Core.Cells[j, 1].Value.ToString()),
+                    DateTime.Parse(Core.Cells[j, 2].Value.ToString()).TimeOfDay,
+                    DateTime.Parse(Core.Cells[j, 3].Value.ToString()).TimeOfDay,
+                    Core.Cells[j, 4].Value.ToString(),
+                    uint.Parse(Core.Cells[j, 5].Value.ToString()),
+                    uint.Parse(Core.Cells[j, 6].Value.ToString())
+                    );
+
+                    Calendar.Remove(_event);
+                    Core.DeleteRow(j);
+                }
+                j++;
+            }
+        }
+
+        /// <summary>
+        /// Удаляет событие из календаря
+        /// </summary>
+        /// <param name="clientName">Имя клиента</param>
+        public void RemoveEventFromCalendar(string clientName)
+        {
+            int j = 2;
+            while (Core.Cells[j, 1].Value != null)
+            {
+                if (Core.Cells[j, 4].Value.ToString() == clientName)
+                {
+                    Core.Cells[j, 1].Style.Numberformat.Format = "dd/mm/yy";
+                    Core.Cells[j, 2].Style.Numberformat.Format = "hh:mm";
+                    Core.Cells[j, 3].Style.Numberformat.Format = "hh:mm";
+                    Event _event = new Event(
+                    DateTime.Parse(Core.Cells[j, 1].Value.ToString()).Date,
+                    DateTime.Parse(Core.Cells[j, 2].Value.ToString()).TimeOfDay,
+                    DateTime.Parse(Core.Cells[j, 3].Value.ToString()).TimeOfDay,
+                    Core.Cells[j, 4].Value.ToString(),
+                    uint.Parse(Core.Cells[j, 5].Value.ToString()),
+                    uint.Parse(Core.Cells[j, 6].Value.ToString())
+                    );
+
+                    Calendar.Remove(_event);
+                    Core.DeleteRow(j);
+                }
+                j++;
+            }
+        }
 
         /// <summary>
         /// Конструктор по умолчанию
@@ -37,27 +210,27 @@ namespace ExcelManager
         public CalendarWorkSheet(ExcelWorksheet sheet)
         {
             Core = sheet;
-
             //Обновляем лист событий
             //TODO: Исправить выход за пределы массива
-            var j = 1;
-            while (Core.Cells[j, 0].Value != null)
+            int j = 2;
+            //Удивительно, но первая ячейка в таблице это 1,1
+            while (Core.Cells[j, 1].Value != null)
             {
                 try
                 {
                     Event _event = new Event(
-                        DateTime.Parse(Core.Cells[j, 1].Value.ToString()),
-                        TimeSpan.Parse(Core.Cells[j, 2].Value.ToString()),
-                        TimeSpan.Parse(Core.Cells[j, 3].Value.ToString()),
-                        Core.Cells[j, 4].Value != null ? Core.Cells[j, 4].Value.ToString() : "Default",
-                        uint.Parse(Core.Cells[j, 5].Value.ToString()),
-                        uint.Parse(Core.Cells[j, 6].Value.ToString())
+                    DateTime.Parse(Core.Cells[j, 1].Value.ToString()),
+                    DateTime.Parse(Core.Cells[j, 2].Value.ToString()).TimeOfDay,
+                    DateTime.Parse(Core.Cells[j, 3].Value.ToString()).TimeOfDay,
+                    Core.Cells[j, 4].Value != null ? Core.Cells[j, 4].Value.ToString() : "Default",
+                    uint.Parse(Core.Cells[j, 5].Value.ToString()),
+                    uint.Parse(Core.Cells[j, 6].Value.ToString())
                         );
 
                     Calendar.Add(_event);
                     j++;
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
                     //Возникла ошибка чтения строки
                     j++;

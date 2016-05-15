@@ -26,6 +26,20 @@ namespace DATAO
             
             //Таблица
             Table.FillTable(new System.IO.FileInfo(@"..\..\datao.init.xlsx"));
+            Event _event = new Event(
+                DateTime.Now.Date,
+                DateTime.Now.TimeOfDay,
+                DateTime.Now.TimeOfDay,
+                "Tester",
+                555,
+                345
+                );
+            Table.WorkList.AddEventToCalendar(_event);
+            Table.WorkList.AddEventToCalendar(_event);
+            Table.WorkList.AddEventToCalendar(_event);
+            Table.Save();
+            //Table.WorkList.RemoveEventFromCalendar("Tester");
+            //Table.Save();
 
             /*
 
