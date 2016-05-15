@@ -24,30 +24,13 @@ namespace DATAO
             
             //Таблица
             Table.FillTable(new System.IO.FileInfo(@"..\..\datao.init.xlsx"));
-            Table.Salon.SalonName = "upload_from_google_drive_ver2.0";
+
+            //Отрисовка формы
+            Application.Run(new AdminForm());
+
+            //Сохранее при закрытие формы и отправка на сервер
             Table.Save();
             Authorization.UploadDatao(ref _user);
-
-            
-
-            //Должна принимать таблицу в любом формате
-            switch (isOnline)
-            {
-                case true:
-                    //С таблицей из диска
-                    Application.Run(new AdminForm());
-                    Authorization.UploadDatao(ref _user);
-                    break;
-                case false:
-                    //С шаблоном
-                    Application.Run(new AdminForm());
-                    break;
-                case null:
-                    Environment.Exit(0);
-                    break;
-            }
-
-            
         }
     }
 }
