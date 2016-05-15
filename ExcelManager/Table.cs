@@ -10,6 +10,7 @@ namespace ExcelManager
         //Добавляю по мере написания листы
         public static SalonWorkSheet Salon { get; set; }
         public static CalendarWorkSheet WorkList { get; set; }
+        public static PersonalWorkSheet PersonalList { get; set; }
         
         
         /// <summary>
@@ -25,7 +26,7 @@ namespace ExcelManager
             //Добавлю по мере написания
             Salon = new SalonWorkSheet(xlPackage.Workbook.Worksheets["Салон"]);
             WorkList = new CalendarWorkSheet(xlPackage.Workbook.Worksheets["Календарь"]);
-            //Персонал еще не готов
+            PersonalList = new PersonalWorkSheet(xlPackage.Workbook.Worksheets["Персонал"]);
         }
 
 

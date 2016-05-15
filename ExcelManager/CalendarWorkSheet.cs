@@ -227,7 +227,7 @@ namespace ExcelManager
                     Calendar.Add(_event);
                     j++;
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     //Возникла ошибка чтения строки
                     j++;
