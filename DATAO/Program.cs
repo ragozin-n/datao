@@ -25,6 +25,9 @@ namespace DATAO
             
             //Таблица
             Table.FillTable(new System.IO.FileInfo(@"..\..\datao.init.xlsx"));
+            Table.Salon.SalonName = "upload_from_google_drive_ver2.0";
+            Table.Save();
+            Authorization.UploadDatao(ref _user);
 
             /*
 
