@@ -12,7 +12,7 @@ namespace DATAO
 {
     sealed class Authorization
     {
-
+        private static string DataoID { get; set;}
         public static UserCredential FillCredentials(ref UserCredential credential)
         {
             string[] scopes = { DriveService.Scope.Drive };
@@ -90,9 +90,8 @@ namespace DATAO
                         stream.Close();
                         //MessageBox.Show("We are success downloaded datao.init file!\nPress OK to continue...");
 
-                        //Почему-то не работает
-                        service.Files.Delete(file.Id).Execute();
-
+                        //Сохраняем ссылку на текущий datao.init файл, для последующего его удаления
+                        DataoID = file.Id;
                         return true;
                     }
                 }
@@ -144,6 +143,7 @@ namespace DATAO
                 request.Upload();
             }
             File.Delete(@"..\..\datao.init.xlsx");
+            service.Files.Delete(DataoID).Execute();
         }
     }
 }
