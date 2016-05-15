@@ -22,7 +22,6 @@ namespace DATAO
             Authorization.FillCredentials(ref _user);
             bool? isOnline = Authorization.GetDataoInit(ref _user);
             
-            
             //Таблица
             Table.FillTable(new System.IO.FileInfo(@"..\..\datao.init.xlsx"));
             Table.Salon.SalonName = "upload_from_google_drive_ver2.0";

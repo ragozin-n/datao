@@ -43,9 +43,9 @@ namespace ExcelManager
         public static void Save()
         {
             dataoPackage.Save();
-            var f = new FileStream(dataoFileInfo.ToString(), FileMode.Open);
-            dataoPackage.Load(f);
-            f.Close();
+            var _file = new FileStream(dataoFileInfo.ToString(), FileMode.Open);
+            dataoPackage.Load(_file);
+            _file.Close();
         }
     }
 }

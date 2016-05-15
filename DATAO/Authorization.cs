@@ -85,8 +85,8 @@ namespace DATAO
                         request.Download(stream);
                         
                         //Сохраняем локально
-                        byte[] a = stream.ToArray();
-                        File.WriteAllBytes(@"..\..\datao.init.xlsx", a);
+                        byte[] fileFromServer = stream.ToArray();
+                        File.WriteAllBytes(@"..\..\datao.init.xlsx", fileFromServer);
                         stream.Close();
                         //MessageBox.Show("We are success downloaded datao.init file!\nPress OK to continue...");
 
