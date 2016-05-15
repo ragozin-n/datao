@@ -39,6 +39,7 @@ namespace ExcelManager
             Core = sheet;
 
             //Обновляем лист событий
+            //TODO: Исправить выход за пределы массива
             var j = 1;
             while (Core.Cells[j, 0].Value != null)
             {

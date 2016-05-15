@@ -6,7 +6,6 @@ namespace ExcelManager
 {
     public class SalonWorkSheet
     {
-        //Нужно проверить обновление таблицы. За это отвечает метод ExcelWorkbook.Save()
         private ExcelWorksheet Core { get; set; }
         public List<WorkDay> Schedule { get; private set; } = new List<WorkDay>();
         public string Phone
@@ -105,6 +104,7 @@ namespace ExcelManager
                 throw new ArgumentOutOfRangeException();
             }
 
+            Schedule.Clear();
             //Задали свойство
             for (int i = 0; i < schedule.Length; i++)
             {
@@ -130,7 +130,6 @@ namespace ExcelManager
             //Обновили таблицу
             for (int j = 1; j < 8; j++)
             {
-<<<<<<< HEAD
                 try
                 {
                     Schedule.Add(new WorkDay(Core.Cells[2, j + 1].Value.ToString()));
@@ -139,13 +138,6 @@ namespace ExcelManager
                 {
                     //Возникла ошибка при чтении ячейки [2,j+1]
                 }
-=======
-                if (Core.Cells[2, j + 1].Value != null)
-                {
-                    Schedule.Add(new WorkDay(Core.Cells[2, j + 1].Value.ToString()));
-                }
-                else { Schedule.Clear(); }
->>>>>>> test
             }
         }
     }
