@@ -12,7 +12,7 @@ namespace DATAO
 {
     sealed class Authorization
     {
-
+        private static string DataoID { get; set;}
         public static UserCredential FillCredentials(ref UserCredential credential)
         {
             string[] scopes = { DriveService.Scope.Drive };
@@ -83,12 +83,15 @@ namespace DATAO
                         var request = service.Files.Export(file.Id, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
                         var stream = new MemoryStream();
                         request.Download(stream);
-
+                        
                         //Сохраняем локально
-                        byte[] a = stream.ToArray();
-                        File.WriteAllBytes("datao.init.xlsx", a);
-
+                        byte[] fileFromServer = stream.ToArray();
+                        File.WriteAllBytes(@"..\..\datao.init.xlsx", fileFromServer);
+                        stream.Close();
                         //MessageBox.Show("We are success downloaded datao.init file!\nPress OK to continue...");
+
+                        //Сохраняем ссылку на текущий datao.init файл, для последующего его удаления
+                        DataoID = file.Id;
                         return true;
                     }
                 }
@@ -116,6 +119,31 @@ namespace DATAO
             }
             //Закрываем программу в случае отрицательного ответа
             return null;
+        }
+
+        public static void UploadDatao(ref UserCredential credential)
+        {
+            DriveService service;
+            Google.Apis.Drive.v3.Data.File fileMetadata = new Google.Apis.Drive.v3.Data.File();
+            fileMetadata.Name = "datao.init";
+            fileMetadata.MimeType = "application/vnd.google-apps.spreadsheet";
+            FilesResource.CreateMediaUpload request;
+            using (var stream = new FileStream(@"..\..\datao.init.xlsx",
+                                    FileMode.Open))
+            {
+                service = new DriveService(new BaseClientService.Initializer()
+                {
+                    HttpClientInitializer = credential,
+                    ApplicationName = "datao",
+                });
+
+                request = service.Files.Create(
+                    fileMetadata, stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+                request.Fields = "id";
+                request.Upload();
+            }
+            File.Delete(@"..\..\datao.init.xlsx");
+            service.Files.Delete(DataoID).Execute();
         }
     }
 }
