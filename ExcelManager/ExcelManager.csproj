@@ -48,6 +48,8 @@
     <Compile Include="Human.cs" />
     <Compile Include="PersonalWorkSheet.cs" />
     <Compile Include="SalonWorkSheet.cs" />
+    <Compile Include="Service.cs" />
+    <Compile Include="ServiceWorkSheet.cs" />
     <Compile Include="Table.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WorkDay.cs" />
