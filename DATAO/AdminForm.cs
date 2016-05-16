@@ -19,6 +19,7 @@ namespace DATAO
             loadname();
             personalListBox.ScrollAlwaysVisible = true;
             LoadSchedule();
+            LoadPersonal();
             LoadSkladGrid();
             schedulePersonalGrid.Visible = false;
             schedulePersonalGrid.BorderStyle = BorderStyle.None;
@@ -35,9 +36,17 @@ namespace DATAO
             schedulePersonalGrid.Rows.Insert(1);
             for (int i = 0; i < 7; i++)
             {
-                schedulePersonalGrid[1, i] = new SourceGrid.Cells.CheckBox("", false);
+                schedulePersonalGrid[1, i] = new SourceGrid.Cells.CheckBox("",false);
             }
             schedulePersonalGrid.AutoSizeCells();
+        }
+
+        private void LoadPersonal()
+        {
+            foreach (Human worker in Table.PersonalList.Workers)
+            {
+                personalListBox.Items.Add(worker.Name+" "+worker.Surname);
+            }
         }
 
         private int IndexDay()
@@ -56,14 +65,12 @@ namespace DATAO
         public void LoadSchedule()
         {
             ScheduleGrid.BorderStyle = BorderStyle.None;
-            //далее смотреть количество рабочих(+1)
-            ScheduleGrid.ColumnsCount = 4+1;
+            ScheduleGrid.ColumnsCount = Table.PersonalList.Workers.Count + 1;
             ScheduleGrid.Rows.Insert(0);
             ScheduleGrid[0,0]= new SourceGrid.Cells.ColumnHeader("");
             for (int e=1;e<ScheduleGrid.ColumnsCount;e++)
             {
-                //грузить из списка рабочих
-                ScheduleGrid[0, e] = new SourceGrid.Cells.ColumnHeader("Иван Иванов");
+                ScheduleGrid[0, e] = new SourceGrid.Cells.ColumnHeader(Table.PersonalList.Workers[e-1].Name +" "+ Table.PersonalList.Workers[e - 1].Surname);
             }
             ScheduleGrid.FixedRows = 1;
             int j = 1;
@@ -129,8 +136,23 @@ namespace DATAO
 
         private void newPersonalButton_Click(object sender, EventArgs e)
         {
-            AddWorker add = new AddWorker();
-            add.Show();
+            //AddWorker add = new AddWorker();
+            //add.Show();
+            uint id = (uint)GetHashCode();
+            bool[] schedulePersonal =
+            {
+                Boolean.Parse(schedulePersonalGrid[1,0].Value.ToString()),
+                Boolean.Parse(schedulePersonalGrid[1,1].Value.ToString()),
+                Boolean.Parse(schedulePersonalGrid[1,2].Value.ToString()),
+                Boolean.Parse(schedulePersonalGrid[1,3].Value.ToString()),
+                Boolean.Parse(schedulePersonalGrid[1,4].Value.ToString()),
+                Boolean.Parse(schedulePersonalGrid[1,5].Value.ToString()),
+                Boolean.Parse(schedulePersonalGrid[1,6].Value.ToString())
+            };
+            Table.PersonalList.AddWorker(new Human(id, nameTextBox.Text, surnameTextBox.Text,patronymicTextBox.Text,
+                statusTextBox.Text, 0,rateTextBox.Text, phonePersonalTextBox.Text, addressTextBox.Text
+                , schedulePersonal));
+            editPersonalCheckBox.CheckState = CheckState.Unchecked;
         }
 
         private void addToSkladPictureBox_Click(object sender, EventArgs e)
@@ -166,7 +188,7 @@ namespace DATAO
                 patronymicTextBox.ReadOnly = false;
                 phonePersonalTextBox.ReadOnly = false;
                 addressTextBox.ReadOnly = false;
-                mailTextBox.ReadOnly = false;
+                rateTextBox.ReadOnly = false;
                 statusTextBox.ReadOnly = false;
                 schedulePersonalGrid.Visible = true;
             }
@@ -177,9 +199,10 @@ namespace DATAO
                 patronymicTextBox.ReadOnly = true;
                 phonePersonalTextBox.ReadOnly = true;
                 addressTextBox.ReadOnly = true;
-                mailTextBox.ReadOnly = true;
+                rateTextBox.ReadOnly = true;
                 statusTextBox.ReadOnly = true;
                 schedulePersonalGrid.Visible = false;
+
             }
         }
 
@@ -200,6 +223,35 @@ namespace DATAO
         private void AdminForm_FormClosing(object sender, EventArgs e)
         {
             //Authorization.UploadDatao(ref _user);
+        }
+
+        private void personalListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            nameTextBox.Text = Table.PersonalList.Workers[personalListBox.SelectedIndex].Name;
+            surnameTextBox.Text = Table.PersonalList.Workers[personalListBox.SelectedIndex].Surname;
+            patronymicTextBox.Text = Table.PersonalList.Workers[personalListBox.SelectedIndex].Patronymic;
+            phonePersonalTextBox.Text = Table.PersonalList.Workers[personalListBox.SelectedIndex].Tel;
+            addressTextBox.Text = Table.PersonalList.Workers[personalListBox.SelectedIndex].Addres;
+            rateTextBox.Text = Table.PersonalList.Workers[personalListBox.SelectedIndex].Rate;
+            statusTextBox.Text = Table.PersonalList.Workers[personalListBox.SelectedIndex].Status;
+            okPicture1.Visible = Table.PersonalList.Workers[personalListBox.SelectedIndex].Schedule[0];
+            okPicture2.Visible = Table.PersonalList.Workers[personalListBox.SelectedIndex].Schedule[1];
+            okPicture3.Visible = Table.PersonalList.Workers[personalListBox.SelectedIndex].Schedule[2];
+            okPicture4.Visible = Table.PersonalList.Workers[personalListBox.SelectedIndex].Schedule[3];
+            okPicture5.Visible = Table.PersonalList.Workers[personalListBox.SelectedIndex].Schedule[4];
+            okPicture6.Visible = Table.PersonalList.Workers[personalListBox.SelectedIndex].Schedule[5];
+            okPicture7.Visible = Table.PersonalList.Workers[personalListBox.SelectedIndex].Schedule[6];
+        }
+
+        private void deletePersonalButton_Click(object sender, EventArgs e)
+        {
+            try {
+                Table.PersonalList.RemoveWorker(Table.PersonalList.Workers[personalListBox.SelectedIndex].ID);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Не выбран рабочий!");
+            }
         }
     }
 }

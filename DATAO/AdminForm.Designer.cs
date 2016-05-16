@@ -44,10 +44,10 @@
             this.okPicture4 = new System.Windows.Forms.PictureBox();
             this.okPicture3 = new System.Windows.Forms.PictureBox();
             this.personalListBox = new System.Windows.Forms.ListBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBoxPersonal = new System.Windows.Forms.GroupBox();
             this.schedulePersonalGrid = new SourceGrid.Grid();
             this.statusTextBox = new System.Windows.Forms.TextBox();
-            this.mailTextBox = new System.Windows.Forms.TextBox();
+            this.rateTextBox = new System.Windows.Forms.TextBox();
             this.addressTextBox = new System.Windows.Forms.TextBox();
             this.phonePersonalTextBox = new System.Windows.Forms.TextBox();
             this.patronymicTextBox = new System.Windows.Forms.TextBox();
@@ -92,7 +92,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.okPicture5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.okPicture4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.okPicture3)).BeginInit();
-            this.groupBox3.SuspendLayout();
+            this.groupBoxPersonal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.okPicture2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.okPicture1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.schedulePersonalPicture)).BeginInit();
@@ -195,7 +195,7 @@
             this.Personal.Controls.Add(this.okPicture4);
             this.Personal.Controls.Add(this.okPicture3);
             this.Personal.Controls.Add(this.personalListBox);
-            this.Personal.Controls.Add(this.groupBox3);
+            this.Personal.Controls.Add(this.groupBoxPersonal);
             this.Personal.Location = new System.Drawing.Point(4, 22);
             this.Personal.Name = "Personal";
             this.Personal.Padding = new System.Windows.Forms.Padding(3);
@@ -209,7 +209,7 @@
             this.editPersonalCheckBox.Depth = 0;
             this.editPersonalCheckBox.Font = new System.Drawing.Font("Roboto", 10F);
             this.editPersonalCheckBox.ForeColor = System.Drawing.Color.Transparent;
-            this.editPersonalCheckBox.Location = new System.Drawing.Point(1081, 0);
+            this.editPersonalCheckBox.Location = new System.Drawing.Point(1064, 0);
             this.editPersonalCheckBox.Margin = new System.Windows.Forms.Padding(0);
             this.editPersonalCheckBox.MouseLocation = new System.Drawing.Point(-1, -1);
             this.editPersonalCheckBox.MouseState = MaterialSkin.MouseState.HOVER;
@@ -232,6 +232,7 @@
             this.deletePersonalButton.TabIndex = 4;
             this.deletePersonalButton.Text = "Удалить рабочего";
             this.deletePersonalButton.UseVisualStyleBackColor = true;
+            this.deletePersonalButton.Click += new System.EventHandler(this.deletePersonalButton_Click);
             // 
             // newPersonalButton
             // 
@@ -305,41 +306,39 @@
             this.personalListBox.ForeColor = System.Drawing.SystemColors.Window;
             this.personalListBox.FormattingEnabled = true;
             this.personalListBox.ItemHeight = 24;
-            this.personalListBox.Items.AddRange(new object[] {
-            "Иван Иванов",
-            "Софья Петровна"});
             this.personalListBox.Location = new System.Drawing.Point(20, 25);
             this.personalListBox.Name = "personalListBox";
             this.personalListBox.Size = new System.Drawing.Size(226, 460);
             this.personalListBox.TabIndex = 1;
+            this.personalListBox.SelectedIndexChanged += new System.EventHandler(this.personalListBox_SelectedIndexChanged);
             // 
-            // groupBox3
+            // groupBoxPersonal
             // 
-            this.groupBox3.Controls.Add(this.schedulePersonalGrid);
-            this.groupBox3.Controls.Add(this.statusTextBox);
-            this.groupBox3.Controls.Add(this.mailTextBox);
-            this.groupBox3.Controls.Add(this.addressTextBox);
-            this.groupBox3.Controls.Add(this.phonePersonalTextBox);
-            this.groupBox3.Controls.Add(this.patronymicTextBox);
-            this.groupBox3.Controls.Add(this.surnameTextBox);
-            this.groupBox3.Controls.Add(this.nameTextBox);
-            this.groupBox3.Controls.Add(this.materialLabel7);
-            this.groupBox3.Controls.Add(this.okPicture2);
-            this.groupBox3.Controls.Add(this.materialLabel6);
-            this.groupBox3.Controls.Add(this.okPicture1);
-            this.groupBox3.Controls.Add(this.schedulePersonalPicture);
-            this.groupBox3.Controls.Add(this.materialLabel5);
-            this.groupBox3.Controls.Add(this.materialLabel4);
-            this.groupBox3.Controls.Add(this.materialLabel3);
-            this.groupBox3.Controls.Add(this.materialLabel2);
-            this.groupBox3.Controls.Add(this.materialLabel1);
-            this.groupBox3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.groupBox3.Location = new System.Drawing.Point(298, 25);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(969, 285);
-            this.groupBox3.TabIndex = 11;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Информация";
+            this.groupBoxPersonal.Controls.Add(this.schedulePersonalGrid);
+            this.groupBoxPersonal.Controls.Add(this.statusTextBox);
+            this.groupBoxPersonal.Controls.Add(this.rateTextBox);
+            this.groupBoxPersonal.Controls.Add(this.addressTextBox);
+            this.groupBoxPersonal.Controls.Add(this.phonePersonalTextBox);
+            this.groupBoxPersonal.Controls.Add(this.patronymicTextBox);
+            this.groupBoxPersonal.Controls.Add(this.surnameTextBox);
+            this.groupBoxPersonal.Controls.Add(this.nameTextBox);
+            this.groupBoxPersonal.Controls.Add(this.materialLabel7);
+            this.groupBoxPersonal.Controls.Add(this.okPicture2);
+            this.groupBoxPersonal.Controls.Add(this.materialLabel6);
+            this.groupBoxPersonal.Controls.Add(this.okPicture1);
+            this.groupBoxPersonal.Controls.Add(this.materialLabel5);
+            this.groupBoxPersonal.Controls.Add(this.materialLabel4);
+            this.groupBoxPersonal.Controls.Add(this.materialLabel3);
+            this.groupBoxPersonal.Controls.Add(this.materialLabel2);
+            this.groupBoxPersonal.Controls.Add(this.materialLabel1);
+            this.groupBoxPersonal.Controls.Add(this.schedulePersonalPicture);
+            this.groupBoxPersonal.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBoxPersonal.Location = new System.Drawing.Point(281, 25);
+            this.groupBoxPersonal.Name = "groupBoxPersonal";
+            this.groupBoxPersonal.Size = new System.Drawing.Size(969, 285);
+            this.groupBoxPersonal.TabIndex = 11;
+            this.groupBoxPersonal.TabStop = false;
+            this.groupBoxPersonal.Text = "Информация";
             // 
             // schedulePersonalGrid
             // 
@@ -361,13 +360,13 @@
             this.statusTextBox.Size = new System.Drawing.Size(182, 20);
             this.statusTextBox.TabIndex = 14;
             // 
-            // mailTextBox
+            // rateTextBox
             // 
-            this.mailTextBox.Location = new System.Drawing.Point(109, 205);
-            this.mailTextBox.Name = "mailTextBox";
-            this.mailTextBox.ReadOnly = true;
-            this.mailTextBox.Size = new System.Drawing.Size(182, 20);
-            this.mailTextBox.TabIndex = 13;
+            this.rateTextBox.Location = new System.Drawing.Point(109, 205);
+            this.rateTextBox.Name = "rateTextBox";
+            this.rateTextBox.ReadOnly = true;
+            this.rateTextBox.Size = new System.Drawing.Size(182, 20);
+            this.rateTextBox.TabIndex = 13;
             // 
             // addressTextBox
             // 
@@ -442,9 +441,9 @@
             this.materialLabel6.Location = new System.Drawing.Point(19, 204);
             this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel6.Name = "materialLabel6";
-            this.materialLabel6.Size = new System.Drawing.Size(52, 19);
+            this.materialLabel6.Size = new System.Drawing.Size(59, 19);
             this.materialLabel6.TabIndex = 6;
-            this.materialLabel6.Text = "Почта";
+            this.materialLabel6.Text = "Ставка";
             // 
             // okPicture1
             // 
@@ -788,8 +787,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.okPicture5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.okPicture4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.okPicture3)).EndInit();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.groupBoxPersonal.ResumeLayout(false);
+            this.groupBoxPersonal.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.okPicture2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.okPicture1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.schedulePersonalPicture)).EndInit();
@@ -830,9 +829,9 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBoxPersonal;
         private System.Windows.Forms.TextBox statusTextBox;
-        private System.Windows.Forms.TextBox mailTextBox;
+        private System.Windows.Forms.TextBox rateTextBox;
         private System.Windows.Forms.TextBox addressTextBox;
         private System.Windows.Forms.TextBox phonePersonalTextBox;
         private System.Windows.Forms.TextBox patronymicTextBox;

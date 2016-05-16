@@ -26,7 +26,7 @@ namespace ExcelManager
                 try
                 {
                     List<bool> _schedule = new List<bool>();
-                    for (int i = 0; i < 8; i++)
+                    for (int i = 0; i < 7; i++)
                     {
                         _schedule.Add(bool.Parse(Core.Cells[j, 8 + i].Value.ToString()));
                     }
@@ -38,8 +38,8 @@ namespace ExcelManager
                         Core.Cells[j, 5].Value.ToString(),
                         uint.Parse(Core.Cells[j, 6].Value.ToString()),
                         Core.Cells[j, 7].Value.ToString(),
+                        Core.Cells[j, 15].Value.ToString(),
                         Core.Cells[j, 16].Value.ToString(),
-                        Core.Cells[j, 17].Value.ToString(),
                         _schedule.ToArray()
                         ));
                     j++;
@@ -71,12 +71,12 @@ namespace ExcelManager
             Core.Cells[j, 5].Value = _human.Status;
             Core.Cells[j, 6].Value = _human.HoursWorked;
             Core.Cells[j, 7].Value = _human.Rate;
-            for (int i = 8; i < 16; i++)
+            for (int i = 8; i < 15; i++)
             {
                 Core.Cells[j, i].Value = _human.Schedule[i - 8];
             }
-            Core.Cells[j, 16].Value = _human.Tel;
-            Core.Cells[j, 17].Value = _human.Addres;
+            Core.Cells[j, 15].Value = _human.Tel;
+            Core.Cells[j, 16].Value = _human.Addres;
         }
 
         /// <summary>
