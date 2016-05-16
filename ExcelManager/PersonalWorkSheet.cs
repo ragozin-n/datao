@@ -93,6 +93,7 @@ namespace ExcelManager
                     Core.DeleteRow(j);
                     Workers.Remove(Workers.First(w => w.ID == _workerId));
                 }
+                j++;
             }
         }
     }
