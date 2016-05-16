@@ -57,12 +57,12 @@
             this.okPicture2 = new System.Windows.Forms.PictureBox();
             this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
             this.okPicture1 = new System.Windows.Forms.PictureBox();
-            this.schedulePersonalPicture = new System.Windows.Forms.PictureBox();
             this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
+            this.schedulePersonalPicture = new System.Windows.Forms.PictureBox();
             this.Uslugi = new System.Windows.Forms.TabPage();
             this.Sklad = new System.Windows.Forms.TabPage();
             this.deleteFromSkladPictureBox = new System.Windows.Forms.PictureBox();
@@ -455,16 +455,6 @@
             this.okPicture1.TabIndex = 13;
             this.okPicture1.TabStop = false;
             // 
-            // schedulePersonalPicture
-            // 
-            this.schedulePersonalPicture.BackgroundImage = global::DATAO.Properties.Resources.grafik;
-            this.schedulePersonalPicture.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.schedulePersonalPicture.Location = new System.Drawing.Point(333, 65);
-            this.schedulePersonalPicture.Name = "schedulePersonalPicture";
-            this.schedulePersonalPicture.Size = new System.Drawing.Size(630, 157);
-            this.schedulePersonalPicture.TabIndex = 12;
-            this.schedulePersonalPicture.TabStop = false;
-            // 
             // materialLabel5
             // 
             this.materialLabel5.AutoSize = true;
@@ -530,6 +520,16 @@
             this.materialLabel1.Size = new System.Drawing.Size(75, 19);
             this.materialLabel1.TabIndex = 1;
             this.materialLabel1.Text = "Фамилия";
+            // 
+            // schedulePersonalPicture
+            // 
+            this.schedulePersonalPicture.BackgroundImage = global::DATAO.Properties.Resources.grafik;
+            this.schedulePersonalPicture.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.schedulePersonalPicture.Location = new System.Drawing.Point(333, 65);
+            this.schedulePersonalPicture.Name = "schedulePersonalPicture";
+            this.schedulePersonalPicture.Size = new System.Drawing.Size(630, 157);
+            this.schedulePersonalPicture.TabIndex = 12;
+            this.schedulePersonalPicture.TabStop = false;
             // 
             // Uslugi
             // 

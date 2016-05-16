@@ -10,8 +10,6 @@ namespace DATAO
 {
     public partial class AdminForm : MaterialForm
     {
-        //В той форме label'ы нужно сделать из MaterialSkin
-        private EventForm eventform = new EventForm();
 
         public AdminForm()
         {
@@ -108,6 +106,17 @@ namespace DATAO
                     {
                         //тут грузить из таблицы
                         ScheduleGrid[j, k] = new SourceGrid.Cells.Cell("", typeof(string));
+                        foreach (Event ev in Table.WorkList.Calendar)
+                        {
+                            foreach (Human w in Table.PersonalList.Workers)
+                            {
+                                if (ev.WorkerID == w.ID && ev.Date.DayOfWeek == monthCalendar.SelectionStart.DayOfWeek
+                                    && ev.StartAt == ParseTimeFromCells(ScheduleGrid[j, k].Value.ToString(), true))
+                                {
+                                    ScheduleGrid[j, k].View.BackColor = System.Drawing.Color.Blue;
+                                }
+                            }
+                        }
                     }
                     j++;
                 }
@@ -147,8 +156,53 @@ namespace DATAO
             skladGrid.AutoSizeCells();
         }
 
+        private TimeSpan ParseTimeFromCells(string time, bool startTime, char separator = '-')
+        {
+            string[] timeInterval = new string[2];
+            timeInterval = time.Split(separator);
+            DateTime _start, _end;
+            TimeSpan Start = DateTime.Parse("00:00:00").TimeOfDay;
+            TimeSpan End = DateTime.Parse("00:00:00").TimeOfDay;
+            if (DateTime.TryParse(timeInterval[0], out _start) && DateTime.TryParse(timeInterval[1], out _end))
+            {
+                Start = _start.TimeOfDay;
+                End = _end.TimeOfDay;
+            }
+            if (startTime == true) { return Start; }
+            else { return End; }
+        }
+
         private void AddEventButton_Click(object sender, EventArgs e)
         {
+            TimeSpan start = DateTime.Now.TimeOfDay;
+            TimeSpan end = DateTime.Now.TimeOfDay;
+            string nameWorker = "";
+            for(int c = 1; c<ScheduleGrid.ColumnsCount;c++)
+            {
+                int j = 0;
+                for (int i = 1; i <= ScheduleGrid.RowsCount; i++)
+                {
+                    if (ScheduleGrid.Selection.IsSelectedCell(new SourceGrid.Position(i, c)))
+                    {
+                        if (j == 0)
+                        {
+                            start = ParseTimeFromCells(ScheduleGrid[i, 0].Value.ToString(), true);
+                            end = ParseTimeFromCells(ScheduleGrid[i, 0].Value.ToString(), false);
+                            j++;
+                            nameWorker = ScheduleGrid[0, c].Value.ToString();
+                        }
+                        else
+                        {
+                            end = ParseTimeFromCells(ScheduleGrid[i, 0].Value.ToString(), false);
+                        }
+                    }
+                }
+            }
+            EventForm eventform = new EventForm(monthCalendar.SelectionStart,       //день
+                start,     //время начала
+                end,       //время конца
+                nameWorker  //персонал
+                );
             eventform.Show();
         }
 
@@ -237,7 +291,8 @@ namespace DATAO
 
         private void doneEventButton_Click(object sender, EventArgs e)
         {
-
+            //нужно найти какое это было событие (стрижка или маникюр, например)
+            //и сделать +1 в статистике по этому событию
         }
 
         private void monthCalendar_DateChanged(object sender, DateRangeEventArgs e)
