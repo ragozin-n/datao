@@ -66,12 +66,35 @@ namespace DATAO
         public void LoadSchedule()
         {
             ScheduleGrid.BorderStyle = BorderStyle.None;
-            ScheduleGrid.ColumnsCount = Table.PersonalList.Workers.Count + 1;
+            //ScheduleGrid.ColumnsCount = Table.PersonalList.Workers.Count + 1;
             ScheduleGrid.Rows.Insert(0);
-            ScheduleGrid[0,0]= new SourceGrid.Cells.ColumnHeader("");
-            for (int e=1;e<ScheduleGrid.ColumnsCount;e++)
+            int e = 0;
+            foreach (Human worker in Table.PersonalList.Workers)
             {
-                ScheduleGrid[0, e] = new SourceGrid.Cells.ColumnHeader(Table.PersonalList.Workers[e-1].Name +" "+ Table.PersonalList.Workers[e - 1].Surname);
+                for (int k = 0; k < 7; k++)
+                {
+                    if (worker.Schedule[k] && k == IndexDay() - 1)
+                    {
+                        e++;
+                    }
+                }
+            }
+            ScheduleGrid.ColumnsCount = e+1;
+            ScheduleGrid[0, 0] = new SourceGrid.Cells.ColumnHeader("");
+            e = 0;
+            foreach (Human worker in Table.PersonalList.Workers)
+            {
+                for (int k = 0; k < 7; k++)
+                {
+                    if (worker.Schedule[k]&&k==IndexDay()-1)
+                    {
+                        e++;
+                        ScheduleGrid.Update();
+                        ScheduleGrid.ColumnsCount = e + 1;
+                        ScheduleGrid[0, e] = new SourceGrid.Cells.ColumnHeader(worker.Name
+                            + " " + worker.Surname);
+                    }
+                }
             }
             ScheduleGrid.FixedRows = 1;
             int j = 1;
