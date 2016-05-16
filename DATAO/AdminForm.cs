@@ -43,6 +43,7 @@ namespace DATAO
 
         private void LoadPersonal()
         {
+            personalListBox.Items.Clear();
             foreach (Human worker in Table.PersonalList.Workers)
             {
                 personalListBox.Items.Add(worker.Name+" "+worker.Surname);
@@ -136,11 +137,12 @@ namespace DATAO
 
         private void newPersonalButton_Click(object sender, EventArgs e)
         {
-            //AddWorker add = new AddWorker();
-            //add.Show();
-            uint id = (uint)GetHashCode();
-            bool[] schedulePersonal =
+            if (editPersonalCheckBox.Checked)
             {
+                personalListBox.Update();
+                uint id = (uint)GetHashCode();
+                bool[] schedulePersonal =
+                {
                 Boolean.Parse(schedulePersonalGrid[1,0].Value.ToString()),
                 Boolean.Parse(schedulePersonalGrid[1,1].Value.ToString()),
                 Boolean.Parse(schedulePersonalGrid[1,2].Value.ToString()),
@@ -148,11 +150,15 @@ namespace DATAO
                 Boolean.Parse(schedulePersonalGrid[1,4].Value.ToString()),
                 Boolean.Parse(schedulePersonalGrid[1,5].Value.ToString()),
                 Boolean.Parse(schedulePersonalGrid[1,6].Value.ToString())
-            };
-            Table.PersonalList.AddWorker(new Human(id, nameTextBox.Text, surnameTextBox.Text,patronymicTextBox.Text,
-                statusTextBox.Text, 0,rateTextBox.Text, phonePersonalTextBox.Text, addressTextBox.Text
-                , schedulePersonal));
-            editPersonalCheckBox.CheckState = CheckState.Unchecked;
+                };
+                Table.PersonalList.AddWorker(new Human(id, nameTextBox.Text, surnameTextBox.Text, patronymicTextBox.Text,
+                    statusTextBox.Text, 0, rateTextBox.Text, phonePersonalTextBox.Text, addressTextBox.Text
+                    , schedulePersonal));
+                editPersonalCheckBox.CheckState = CheckState.Unchecked;
+                LoadPersonal();
+                personalListBox.EndUpdate();
+            }
+            else { MessageBox.Show("Активируйте режим редактирования"); }
         }
 
         private void addToSkladPictureBox_Click(object sender, EventArgs e)
@@ -246,12 +252,18 @@ namespace DATAO
         private void deletePersonalButton_Click(object sender, EventArgs e)
         {
             try {
+                personalListBox.Update();
+                //int i = personalListBox.SelectedIndex;
+                //personalListBox.Items.RemoveAt(i);
                 Table.PersonalList.RemoveWorker(Table.PersonalList.Workers[personalListBox.SelectedIndex].ID);
+                LoadPersonal();
+                personalListBox.EndUpdate();
             }
             catch (Exception)
             {
                 MessageBox.Show("Не выбран рабочий!");
             }
+            
         }
     }
 }
