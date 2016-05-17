@@ -56,5 +56,36 @@ namespace ExcelManager
             }
         }
 
+        public void UpdateHuman(string name, string surname, string patronumic)
+        {
+            Name = name;
+            Surname = surname;
+            Patronymic = patronumic;
+        }
+        public void UpdateHuman(string status, string rate, string tel, string addres)
+        {
+            Status = status;
+            Rate = rate;
+            Tel = tel;
+            Addres = addres;
+        }
+        public void UpdateHuman(string name, string surname, string patronumic, string status, string rate, string tel, string addres)
+        {
+            UpdateHuman(name, surname, patronumic);
+            UpdateHuman(status,rate, tel,addres);
+        }
+        public void UpdateHuman(uint hoursWorked)
+        {
+            HoursWorked = hoursWorked;
+        }
+        public void UpdateHuman(bool[] schedule)
+        {
+            Schedule = schedule;
+        }
+        public void UpdateHuman(uint hoursWorked, bool[] schedule)
+        {
+            UpdateHuman(hoursWorked);
+            UpdateHuman(schedule);
+        }
     }
 }
