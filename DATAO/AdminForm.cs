@@ -65,35 +65,14 @@ namespace DATAO
         public void LoadSchedule()
         {
             ScheduleGrid.BorderStyle = BorderStyle.None;
-            //ScheduleGrid.ColumnsCount = Table.PersonalList.Workers.Count + 1;
             ScheduleGrid.Rows.Insert(0);
-            int e = 0;
-            foreach (Human worker in Table.PersonalList.Workers)
-            {
-                for (int k = 0; k < 7; k++)
-                {
-                    if (worker.Schedule[k] && k == IndexDay() - 1)
-                    {
-                        e++;
-                    }
-                }
-            }
-            ScheduleGrid.ColumnsCount = e+1;
+            List<Human> todayWorker = Table.PersonalList.Workers.FindAll(date => date.Schedule[IndexDay() - 1] == true);            
+            ScheduleGrid.ColumnsCount = todayWorker.Count+1;
             ScheduleGrid[0, 0] = new SourceGrid.Cells.ColumnHeader("");
-            e = 0;
-            foreach (Human worker in Table.PersonalList.Workers)
+            for(int i = 1;i<=todayWorker.Count;i++)
             {
-                for (int k = 0; k < 7; k++)
-                {
-                    if (worker.Schedule[k]&&k==IndexDay()-1)
-                    {
-                        e++;
-                        ScheduleGrid.Update();
-                        ScheduleGrid.ColumnsCount = e + 1;
-                        ScheduleGrid[0, e] = new SourceGrid.Cells.ColumnHeader(worker.Name
-                            + " " + worker.Surname);
-                    }
-                }
+                ScheduleGrid[0,i] = new SourceGrid.Cells.ColumnHeader(todayWorker[i-1].Name
+                            + " " + todayWorker[i-1].Surname);
             }
             ScheduleGrid.FixedRows = 1;
             int j = 1;
@@ -125,16 +104,15 @@ namespace DATAO
             foreach (Event ev in todayEvent)
             {
                 int rowIndex = 1;
-                while(rowIndex<ScheduleGrid.RowsCount)
+                while (rowIndex < ScheduleGrid.RowsCount)
                 {
-                    if(ev.StartAt == ParseTimeFromCells(ScheduleGrid[rowIndex,0].Value.ToString(),true))
+                    if (ev.StartAt == ParseTimeFromCells(ScheduleGrid[rowIndex, 0].Value.ToString(), true))
                     {
-                        for(int colIndex = 1; colIndex <= todayWorker.Count; colIndex++)
+                        for (int colIndex = 1; colIndex <= todayWorker.Count; colIndex++)
                         {
-                            if (todayWorker[colIndex-1].ID==ev.ServiceID)
+                            if (todayWorker[colIndex - 1].ID == ev.ServiceID)
                             {
                                 ScheduleGrid[rowIndex, colIndex].Value = "Занято";
-                                //ScheduleGrid[rowIndex, colIndex].View.BackColor = System.Drawing.Color.Blue;
                                 break;
                             }
                         }
@@ -322,11 +300,7 @@ namespace DATAO
 
         private void monthCalendar_DateChanged(object sender, DateRangeEventArgs e)
         {
-            if (ScheduleGrid.Rows.Count != 0)
-            {
-                ScheduleGrid.Rows.RemoveRange(0, ScheduleGrid.Rows.Count);
-            }
-            LoadSchedule();
+            UpdateSchedule();
         }
 
         private void AdminForm_FormClosing(object sender, EventArgs e)
