@@ -33,11 +33,10 @@ namespace ExcelManager
         /// <param name="tel">Контактный телефон</param>
         /// <param name="addres">Адрес проживания</param>
         /// <param name="schedule">Расписание</param>
-        public Human(uint id, string name, string surname, 
+        public Human(string name, string surname, 
                      string patronymic, string status, uint hoursWorked, 
-                     string rate, string tel, string addres, bool[] schedule)
+                     string rate, string tel, string addres, bool[] schedule, uint id = 0)
         {
-            ID = id;
             Name = name;
             Surname = surname;
             Patronymic = patronymic;
@@ -47,6 +46,14 @@ namespace ExcelManager
             Tel = tel;
             Addres = addres;
             Schedule = schedule;
+            if (id != 0)
+            {
+                ID = (uint)GetHashCode();
+            }
+            else
+            {
+                ID = id;
+            }
         }
 
     }

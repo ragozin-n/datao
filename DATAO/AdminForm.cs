@@ -228,9 +228,9 @@ namespace DATAO
                 Boolean.Parse(schedulePersonalGrid[1,5].Value.ToString()),
                 Boolean.Parse(schedulePersonalGrid[1,6].Value.ToString())
                 };
-                Table.PersonalList.AddWorker(new Human(id, nameTextBox.Text, surnameTextBox.Text, patronymicTextBox.Text,
+                Table.PersonalList.AddWorker(new Human(nameTextBox.Text, surnameTextBox.Text, patronymicTextBox.Text,
                     statusTextBox.Text, 0, rateTextBox.Text, phonePersonalTextBox.Text, addressTextBox.Text
-                    , schedulePersonal));
+                    , schedulePersonal, id));
                 editPersonalCheckBox.CheckState = CheckState.Unchecked;
                 LoadPersonal();
                 personalListBox.EndUpdate();

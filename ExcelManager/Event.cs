@@ -12,14 +12,21 @@ namespace ExcelManager
         public uint ServiceID { get; private set; }
         public uint WorkerID { get; private set; }
 
-        public Event(DateTime date, TimeSpan startAt, TimeSpan endAt, string clientName, uint serviceId, uint workerId)
+        public Event(DateTime date, TimeSpan startAt, TimeSpan endAt, string clientName, uint workerId, uint serviceId = 0)
         {
             Date = date;
             StartAt = startAt;
             EndAt = endAt;
             ClientName = clientName;
-            ServiceID = serviceId;
             WorkerID = workerId;
+            if (serviceId != 0)
+            {
+                ServiceID = (uint)GetHashCode();
+            }
+            else
+            {
+                ServiceID = serviceId;
+            }
         }
     }
 }

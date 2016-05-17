@@ -31,7 +31,6 @@ namespace ExcelManager
                         _schedule.Add(bool.Parse(Core.Cells[j, 8 + i].Value.ToString()));
                     }
                     Workers.Add(new Human(
-                        uint.Parse(Core.Cells[j, 1].Value.ToString()),
                         Core.Cells[j, 2].Value.ToString(),
                         Core.Cells[j, 3].Value.ToString(),
                         Core.Cells[j, 4].Value.ToString(),
@@ -40,7 +39,8 @@ namespace ExcelManager
                         Core.Cells[j, 7].Value.ToString(),
                         Core.Cells[j, 15].Value.ToString(),
                         Core.Cells[j, 16].Value.ToString(),
-                        _schedule.ToArray()
+                        _schedule.ToArray(),
+                        uint.Parse(Core.Cells[j, 1].Value.ToString())
                         ));
                     j++;
                 }
