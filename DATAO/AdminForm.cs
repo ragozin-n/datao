@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using ExcelManager;
 using MaterialSkin.Animations;
 using MaterialSkin;
-
+using System.Collections.Generic;
 
 namespace DATAO
 {
@@ -17,6 +17,7 @@ namespace DATAO
             loadname();
             personalListBox.ScrollAlwaysVisible = true;
             LoadSchedule();
+            LoadEvent();
             LoadPersonal();
             LoadSkladGrid();
             schedulePersonalGrid.Visible = false;
@@ -106,17 +107,6 @@ namespace DATAO
                     {
                         //тут грузить из таблицы
                         ScheduleGrid[j, k] = new SourceGrid.Cells.Cell("", typeof(string));
-                        foreach (Event ev in Table.WorkList.Calendar)
-                        {
-                            foreach (Human w in Table.PersonalList.Workers)
-                            {
-                                if (ev.WorkerID == w.ID && ev.Date.DayOfWeek == monthCalendar.SelectionStart.DayOfWeek
-                                    && ev.StartAt == ParseTimeFromCells(ScheduleGrid[j, k].Value.ToString(), true))
-                                {
-                                    ScheduleGrid[j, k].View.BackColor = System.Drawing.Color.Blue;
-                                }
-                            }
-                        }
                     }
                     j++;
                 }
@@ -127,10 +117,46 @@ namespace DATAO
             }
             ScheduleGrid.AutoSizeCells();
         }
+
+        public void LoadEvent()
+        {
+            List<Event> todayEvent = Table.WorkList.Calendar.FindAll(date => date.Date == monthCalendar.SelectionStart);
+            List<Human> todayWorker = Table.PersonalList.Workers.FindAll(date => date.Schedule[IndexDay() - 1] == true);
+            foreach (Event ev in todayEvent)
+            {
+                int rowIndex = 1;
+                while(rowIndex<ScheduleGrid.RowsCount)
+                {
+                    if(ev.StartAt == ParseTimeFromCells(ScheduleGrid[rowIndex,0].Value.ToString(),true))
+                    {
+                        for(int colIndex = 1; colIndex <= todayWorker.Count; colIndex++)
+                        {
+                            if (todayWorker[colIndex-1].ID==ev.ServiceID)
+                            {
+                                ScheduleGrid[rowIndex, colIndex].Value = "Занято";
+                                //ScheduleGrid[rowIndex, colIndex].View.BackColor = System.Drawing.Color.Blue;
+                                break;
+                            }
+                        }
+                        break;
+                    }
+                    rowIndex++;
+                }
+            }
+        }
+
+        public void UpdateSchedule()
+        {
+            ScheduleGrid.Rows.RemoveRange(0, ScheduleGrid.RowsCount);
+            LoadSchedule();
+            LoadEvent();
+        }
+
         public void loadname()
         {
             Text = Table.Salon.SalonName;
         }
+
         private void LoadSkladGrid()
         {
             skladGrid.BorderStyle = BorderStyle.FixedSingle;
@@ -177,7 +203,7 @@ namespace DATAO
             TimeSpan start = DateTime.Now.TimeOfDay;
             TimeSpan end = DateTime.Now.TimeOfDay;
             string nameWorker = "";
-            for(int c = 1; c<ScheduleGrid.ColumnsCount;c++)
+            for(int c = 1; c<=ScheduleGrid.ColumnsCount;c++)
             {
                 int j = 0;
                 for (int i = 1; i <= ScheduleGrid.RowsCount; i++)
@@ -198,7 +224,7 @@ namespace DATAO
                     }
                 }
             }
-            EventForm eventform = new EventForm(monthCalendar.SelectionStart,       //день
+            EventForm eventform = new EventForm(this, monthCalendar.SelectionStart,       //день
                 start,     //время начала
                 end,       //время конца
                 nameWorker  //персонал
@@ -217,7 +243,6 @@ namespace DATAO
             if (editPersonalCheckBox.Checked)
             {
                 personalListBox.Update();
-                uint id = (uint)GetHashCode();
                 bool[] schedulePersonal =
                 {
                 Boolean.Parse(schedulePersonalGrid[1,0].Value.ToString()),
@@ -230,7 +255,7 @@ namespace DATAO
                 };
                 Table.PersonalList.AddWorker(new Human(nameTextBox.Text, surnameTextBox.Text, patronymicTextBox.Text,
                     statusTextBox.Text, 0, rateTextBox.Text, phonePersonalTextBox.Text, addressTextBox.Text
-                    , schedulePersonal, id));
+                    , schedulePersonal));
                 editPersonalCheckBox.CheckState = CheckState.Unchecked;
                 LoadPersonal();
                 personalListBox.EndUpdate();
@@ -342,6 +367,32 @@ namespace DATAO
                 MessageBox.Show("Не выбран рабочий!");
             }
             
+        }
+
+        private void deleteEventButton_Click(object sender, EventArgs e)
+        {
+            TimeSpan start = DateTime.Now.TimeOfDay;
+            uint id = 0;
+            for (int c = 1; c <= ScheduleGrid.ColumnsCount; c++)
+            {
+                for (int i = 1; i <= ScheduleGrid.RowsCount; i++)
+                {
+                    if (ScheduleGrid.Selection.IsSelectedCell(new SourceGrid.Position(i, c)))
+                    {
+                            start = ParseTimeFromCells(ScheduleGrid[i, 0].Value.ToString(), true);
+                        foreach (Human w in Table.PersonalList.Workers)
+                        {
+                            if(w.Name+" "+w.Surname == ScheduleGrid[0, c].Value.ToString())
+                            {
+                                id = w.ID;
+                            }
+                        }                       
+                    }
+                }
+            }
+            MessageBox.Show(monthCalendar.SelectionStart.ToString()+" "+start.ToString()+" "+id);
+            Table.WorkList.RemoveEventFromCalendar(monthCalendar.SelectionStart, start, id);
+            UpdateSchedule();
         }
     }
 }

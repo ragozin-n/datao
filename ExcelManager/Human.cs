@@ -48,11 +48,11 @@ namespace ExcelManager
             Schedule = schedule;
             if (id != 0)
             {
-                ID = (uint)GetHashCode();
+                ID = id;
             }
             else
             {
-                ID = id;
+                ID = (uint)GetHashCode();
             }
         }
 

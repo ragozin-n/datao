@@ -18,10 +18,11 @@ namespace DATAO
         TimeSpan startTime;
         TimeSpan endTime;
         string nameWorker;
-
-        public EventForm(DateTime data1, TimeSpan startTime1, TimeSpan endTime1, string nameWorker1)
+        AdminForm ad;
+        public EventForm(AdminForm adF, DateTime data1, TimeSpan startTime1, TimeSpan endTime1, string nameWorker1)
         {
             InitializeComponent();
+            ad = adF;
             data = data1;
             startTime = startTime1;
             endTime = endTime1;
@@ -45,22 +46,24 @@ namespace DATAO
             if (data != null && startTime != null && endTime != null && nameWorker != null && clientName.Text != "")
             {
                 uint idWorker = 0;
-                uint idService = 0;
-                foreach (Human w in Table.PersonalList.Workers)
+                uint idService = Table.Services.ServiceList.Find(x => x.Name == selectService.Text).ID;
+                foreach(Human w in Table.PersonalList.Workers)
                 {
-                    if (w.Name + " " + w.Surname == nameWorker) idWorker = w.ID;
+                    if (w.Name + " " + w.Surname == nameWorker)
+                    {
+                        idWorker = w.ID;
+                        break;
+                    }
                 }
-                foreach (Service s in Table.Services.ServiceList)
-                {
-                    if (s.Name == selectService.Text) idService = s.ID;
-                }
+                MessageBox.Show(idWorker.ToString());
                 if (idWorker == 0 && idService == 0) { MessageBox.Show("нет услуги или рабочего"); Hide(); }
                 else {
                     Event currentEvent = new Event(data,
-                        startTime, endTime, clientName.Text, idService,
-                        idWorker
+                        startTime, endTime, clientName.Text, idWorker,
+                        idService
                         );
                     Table.WorkList.AddEventToCalendar(currentEvent);
+                    ad.UpdateSchedule();
                     Hide();
                 }
             }

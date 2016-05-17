@@ -84,6 +84,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
             this.settingButton = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.deleteEventButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.tabControl.SuspendLayout();
             this.Calendar.SuspendLayout();
             this.Personal.SuspendLayout();
@@ -122,6 +123,7 @@
             // 
             this.Calendar.BackColor = System.Drawing.Color.DarkSlateGray;
             this.Calendar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Calendar.Controls.Add(this.deleteEventButton);
             this.Calendar.Controls.Add(this.ScheduleGrid);
             this.Calendar.Controls.Add(this.doneEventButton);
             this.Calendar.Controls.Add(this.AddEventButton);
@@ -765,6 +767,19 @@
             this.settingButton.UseVisualStyleBackColor = true;
             this.settingButton.Click += new System.EventHandler(this.settingButton_Click);
             // 
+            // deleteEventButton
+            // 
+            this.deleteEventButton.Depth = 0;
+            this.deleteEventButton.Location = new System.Drawing.Point(25, 335);
+            this.deleteEventButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.deleteEventButton.Name = "deleteEventButton";
+            this.deleteEventButton.Primary = true;
+            this.deleteEventButton.Size = new System.Drawing.Size(164, 39);
+            this.deleteEventButton.TabIndex = 5;
+            this.deleteEventButton.Text = "Удалить";
+            this.deleteEventButton.UseVisualStyleBackColor = true;
+            this.deleteEventButton.Click += new System.EventHandler(this.deleteEventButton_Click);
+            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -861,5 +876,6 @@
         private System.Windows.Forms.PictureBox deleteFromSkladPictureBox;
         private SourceGrid.Grid schedulePersonalGrid;
         private SourceGrid.Grid ScheduleGrid;
+        private MaterialSkin.Controls.MaterialRaisedButton deleteEventButton;
     }
 }

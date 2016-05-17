@@ -93,7 +93,7 @@ namespace DATAO
             };
             Table.Salon.SetSchedule(rasp);
             Table.Save();
-            adF.loadname();
+            adF.UpdateSchedule();
             this.Close();
         }        
     }

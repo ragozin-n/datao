@@ -21,11 +21,11 @@ namespace ExcelManager
             WorkerID = workerId;
             if (serviceId != 0)
             {
-                ServiceID = (uint)GetHashCode();
+                ServiceID = serviceId;
             }
             else
             {
-                ServiceID = serviceId;
+                ServiceID = (uint)GetHashCode();
             }
         }
     }
