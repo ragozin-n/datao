@@ -201,6 +201,40 @@ namespace ExcelManager
         }
 
         /// <summary>
+        /// Удаляет событие из календаря
+        /// </summary>
+        /// <param name="date">Дата</param>
+        /// <param name="startAt">Время начала</param>
+        /// <param name="workerID">ID мастера</param>
+        public void RemoveEventFromCalendar(DateTime date, TimeSpan startAt, uint workerID)
+        {
+            int j = 2;
+            while (Core.Cells[j, 1].Value != null)
+            {
+                if (Core.Cells[j, 1].Value.ToString() == date.ToString())
+                {
+                    if (Core.Cells[j, 2].Value.ToString() == startAt.ToString())
+                    {
+                        if (Core.Cells[j, 6].Value.ToString() == workerID.ToString())
+                        {
+                            Event _event = new Event(
+                                DateTime.FromOADate(long.Parse(Core.Cells[j, 1].Value.ToString())).Date,
+                                TimeSpan.FromHours(double.Parse(Core.Cells[j, 2].Value.ToString())),
+                                TimeSpan.FromHours(double.Parse(Core.Cells[j, 3].Value.ToString())),
+                                Core.Cells[j, 4].Value.ToString(),
+                                uint.Parse(Core.Cells[j, 5].Value.ToString()),
+                                uint.Parse(Core.Cells[j, 6].Value.ToString())
+                             );
+
+                            Calendar.Remove(_event);
+                            Core.DeleteRow(j);
+                        }
+                    }
+                }
+                j++;
+            }
+        }
+        /// <summary>
         /// Конструктор по умолчанию
         /// </summary>
         /// <param name="sheet">Лист "Календарь"</param>
