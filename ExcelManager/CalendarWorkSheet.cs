@@ -242,7 +242,6 @@ namespace ExcelManager
         {
             Core = sheet;
             //Обновляем лист событий
-            //TODO: Исправить выход за пределы массива
             int j = 2;
             //Удивительно, но первая ячейка в таблице это 1,1
             while (Core.Cells[j, 1].Value != null)
@@ -250,9 +249,9 @@ namespace ExcelManager
                 try
                 {
                     Event _event = new Event(
-                    DateTime.FromOADate(long.Parse(Core.Cells[j, 1].Value.ToString())).Date,
-                    TimeSpan.FromHours(double.Parse(Core.Cells[j, 2].Value.ToString())),
-                    TimeSpan.FromHours(double.Parse(Core.Cells[j, 3].Value.ToString())),
+                    DateTime.Parse(Core.Cells[j, 1].Value.ToString()).Date,
+                    TimeSpan.Parse(Core.Cells[j, 2].Value.ToString()),
+                    TimeSpan.Parse(Core.Cells[j, 3].Value.ToString()),
                     Core.Cells[j, 4].Value.ToString(),
                     uint.Parse(Core.Cells[j, 5].Value.ToString()),
                     uint.Parse(Core.Cells[j, 6].Value.ToString())

@@ -26,7 +26,7 @@ namespace DATAO
             Table.FillTable(new System.IO.FileInfo(@"..\..\datao.init.xlsx"));
 
             //Отрисовка формы
-            Application.Run(new AdminForm());
+            //Application.Run(new AdminForm());
 
             //Сохранее при закрытие формы и отправка на сервер
             Table.Save();
