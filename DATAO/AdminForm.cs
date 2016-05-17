@@ -112,7 +112,15 @@ namespace DATAO
                         {
                             if (todayWorker[colIndex - 1].ID == ev.ServiceID)
                             {
-                                ScheduleGrid[rowIndex, colIndex].Value = "Занято";
+                                if (ev.EndAt - ev.StartAt >= DateTime.Parse("00:30:00").TimeOfDay)
+                                {
+                                    int count = 0;
+                                    for(TimeSpan t = ev.StartAt;t<ev.EndAt;t+=DateTime.Parse("00:30:00").TimeOfDay)
+                                    {
+                                        ScheduleGrid[rowIndex + count, colIndex].Value = "Занято";
+                                        count++;                                        
+                                    }
+                                }
                                 break;
                             }
                         }

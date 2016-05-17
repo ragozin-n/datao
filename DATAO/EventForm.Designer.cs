@@ -73,6 +73,7 @@
             this.selectService.Name = "selectService";
             this.selectService.Size = new System.Drawing.Size(199, 21);
             this.selectService.TabIndex = 3;
+            this.selectService.SelectedIndexChanged += new System.EventHandler(this.selectService_SelectedIndexChanged);
             // 
             // label3
             // 

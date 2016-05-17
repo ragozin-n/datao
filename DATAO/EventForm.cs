@@ -27,13 +27,16 @@ namespace DATAO
             startTime = startTime1;
             endTime = endTime1;
             nameWorker = nameWorker1;
-            foreach(Service s in Table.Services.ServiceList)
-            {
-                selectService.Items.Add(s.Name);
-            }
             selectWorker.Text = nameWorker1;
             selectTimeStart.Text = startTime1.ToString();
             selectTimeEnd.Text = endTime1.ToString();
+            foreach (Service s in Table.Services.ServiceList)
+            {
+                if ((endTime1 - startTime1) >= s.Duration)
+                {
+                    selectService.Items.Add(s.Name);
+                }
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -67,6 +70,11 @@ namespace DATAO
                     Hide();
                 }
             }
+        }
+
+        private void selectService_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

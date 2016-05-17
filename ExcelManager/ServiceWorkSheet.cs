@@ -28,7 +28,7 @@ namespace ExcelManager
                         uint.Parse(Core.Cells[j, 1].Value.ToString()),
                         Core.Cells[j, 2].Value.ToString(),
                         uint.Parse(Core.Cells[j, 3].Value.ToString()),
-                        TimeSpan.FromHours(double.Parse(Core.Cells[j, 1].Value.ToString()))
+                        DateTime.Parse(Core.Cells[j, 5].Value.ToString()).TimeOfDay
                         );
                     ServiceList.Add(_service);
                     j++;
