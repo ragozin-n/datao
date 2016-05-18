@@ -215,6 +215,8 @@ namespace ExcelManager
         public CalendarWorkSheet(ExcelWorksheet sheet)
         {
             Core = sheet;
+            //Не знаю, нужно ли
+            Calendar.Clear();
             //Обновляем лист событий
             int j = 2;
             //Удивительно, но первая ячейка в таблице это 1,1

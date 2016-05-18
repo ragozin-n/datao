@@ -139,6 +139,8 @@ namespace DATAO
                     ApplicationName = "datao",
                 });
 
+                //НИКАКИХ УДАЛЕНИЙ НАХУЙ БОЛЬШЕ НИКОГДА
+                /*
                 //Определяем параметры запроса удаление всех datao.init находящихся на сервере
                 FilesResource.ListRequest listRequest = service.Files.List();
                 listRequest.PageSize = 50;
@@ -155,6 +157,7 @@ namespace DATAO
                         service.Files.Delete(file.Id).Execute();
                     }
                 }
+                */
                 //Заполняем параметры запроса на создание файла
                 request = service.Files.Create(
                     fileMetadata, stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
@@ -163,7 +166,8 @@ namespace DATAO
             }
 
             //Удаляем локальную копию (опционально)
-            File.Delete(@"..\..\datao.init.xlsx");
+            //ПУКАН БОМБАНУЛ БОЛЬШЕ НИЧЕГО НЕ УДАЛЯЕМ
+            //File.Delete(@"..\..\datao.init.xlsx");
         }
     }
 }

@@ -12,6 +12,7 @@ namespace ExcelManager
         public static CalendarWorkSheet WorkList { get; set; }
         public static PersonalWorkSheet PersonalList { get; set; }
         public static ServiceWorkSheet Services { get; set; }
+        public static StorehouseWorkSheet Storehouse { get; set; }
         
         
         /// <summary>
@@ -29,7 +30,7 @@ namespace ExcelManager
             WorkList = new CalendarWorkSheet(xlPackage.Workbook.Worksheets["Календарь"]);
             PersonalList = new PersonalWorkSheet(xlPackage.Workbook.Worksheets["Персонал"]);
             Services = new ServiceWorkSheet(xlPackage.Workbook.Worksheets["Услуги"]);
-            //Склад
+            Storehouse = new StorehouseWorkSheet(xlPackage.Workbook.Worksheets["Склад"]);
             //Расходы
             //Доходы
         }
