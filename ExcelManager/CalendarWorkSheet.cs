@@ -209,9 +209,10 @@ namespace ExcelManager
         public void RemoveEventFromCalendar(DateTime date, TimeSpan startAt, uint workerID)
         {
             int j = 2;
+            //TODO: Отдебажить метод
             while (Core.Cells[j, 1].Value != null)
             {
-                if (Core.Cells[j, 1].Value.ToString() == date.ToString())
+                if (Core.Cells[j, 1].Value.ToString() == date.Date.ToString())
                 {
                     if (Core.Cells[j, 2].Value.ToString() == startAt.ToString())
                     {
@@ -225,7 +226,6 @@ namespace ExcelManager
                                 uint.Parse(Core.Cells[j, 5].Value.ToString()),
                                 uint.Parse(Core.Cells[j, 6].Value.ToString())
                              );
-
                             Calendar.Remove(_event);
                             Core.DeleteRow(j);
                         }
