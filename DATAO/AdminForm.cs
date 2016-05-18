@@ -62,32 +62,19 @@ namespace DATAO
         private int IndexDay()
         {
             return (int)monthCalendar.SelectionStart.DayOfWeek;
-            //DateTime dt = monthCalendar.SelectionStart;
-            //if (dt.DayOfWeek == DayOfWeek.Monday) return 1;
-            //if (dt.DayOfWeek == DayOfWeek.Tuesday) return 2;
-            //if (dt.DayOfWeek == DayOfWeek.Wednesday) return 3;
-            //if (dt.DayOfWeek == DayOfWeek.Thursday) return 4;
-            //if (dt.DayOfWeek == DayOfWeek.Friday) return 5;
-            //if (dt.DayOfWeek == DayOfWeek.Saturday) return 6;
-            //if (dt.DayOfWeek == DayOfWeek.Sunday) return 7;
-            //else return -1;
         }
 
-        public void LoadSchedule()
+        private void LoadSchedule()
         {
             ScheduleGrid.BorderStyle = BorderStyle.None;
             ScheduleGrid.Rows.Insert(0);
-
             List<Human> todayWorker = Table.PersonalList.Workers.FindAll(date => date.Schedule[IndexDay() - 1] == true);
-
             ScheduleGrid.ColumnsCount = todayWorker.Count+1;
             ScheduleGrid[0, 0] = new SourceGrid.Cells.ColumnHeader(string.Empty);
-
             for (int i = 1;i<=todayWorker.Count;i++)
             {
                 ScheduleGrid[0,i] = new SourceGrid.Cells.ColumnHeader($"{todayWorker[i-1].Name} {todayWorker[i-1].Surname}");
             }
-
             ScheduleGrid.FixedRows = 1;
             int j = 1;
             try
@@ -98,7 +85,6 @@ namespace DATAO
                     ScheduleGrid[j, 0] = new SourceGrid.Cells.RowHeader($"{i} - {(i + DateTime.Parse("00:30:00").TimeOfDay)}");
                     for (int k = 1; k < ScheduleGrid.ColumnsCount; k++)
                     {
-                        //тут грузить из таблицы
                         ScheduleGrid[j, k] = new SourceGrid.Cells.Cell(string.Empty, typeof(string));
                     }
                     j++;
@@ -111,37 +97,34 @@ namespace DATAO
             ScheduleGrid.AutoSizeCells();
         }
 
-        public void LoadEvent()
+        private void LoadEvent()
         {
             List<Event> todayEvent = Table.WorkList.Calendar.FindAll(date => date.Date == monthCalendar.SelectionStart);
             List<Human> todayWorker = Table.PersonalList.Workers.FindAll(date => date.Schedule[IndexDay() - 1] == true);
-
             foreach (Event ev in todayEvent)
             {
-                int rowIndex = 1;
-                while (rowIndex < ScheduleGrid.RowsCount)
+                foreach(Human w in todayWorker)
                 {
-                    if (ev.StartAt == ParseTimeFromCells(ScheduleGrid[rowIndex, 0].Value.ToString(), true))
+                    if(ev.WorkerID==w.ID)
                     {
-                        for (int colIndex = 1; colIndex <= todayWorker.Count; colIndex++)
+                        for(int rowIndex = 1; rowIndex < ScheduleGrid.RowsCount; rowIndex++)
                         {
-                            if (todayWorker[colIndex - 1].ID == ev.ServiceID)
+                            if(ev.StartAt == ParseTimeFromCells(ScheduleGrid[rowIndex, 0].Value.ToString(), true))
                             {
                                 if (ev.EndAt - ev.StartAt >= DateTime.Parse("00:30:00").TimeOfDay)
                                 {
                                     int count = 0;
                                     for (TimeSpan t = ev.StartAt; t < ev.EndAt; t += DateTime.Parse("00:30:00").TimeOfDay)
                                     {
-                                        ScheduleGrid[rowIndex + count, colIndex].Value = "Занято";
+                                        ScheduleGrid[rowIndex + count, todayWorker.IndexOf(w) + 1].ToolTipText = ev.ClientName+"-"
+                                            +Table.Services.ServiceList.Find(serv=>serv.ID==ev.ServiceID).Name;
+                                        ScheduleGrid[rowIndex + count, todayWorker.IndexOf(w)+1].Value = "Занято";
                                         count++;
                                     }
                                 }
-                                break;
                             }
                         }
-                        //break;
                     }
-                    rowIndex++;
                 }
             }
         }
@@ -406,9 +389,11 @@ namespace DATAO
             MessageBox.Show($"{monthCalendar.SelectionStart.ToString()} {start.ToString()} {id}");
             if(id != 0)
             {
-                Table.WorkList.RemoveEventFromCalendar(monthCalendar.SelectionStart, start, id);
+                Table.WorkList.RemoveEventFromCalendar(monthCalendar.SelectionStart.Date, start, id);
                 UpdateSchedule();
             }
         }
+
+
     }
 }

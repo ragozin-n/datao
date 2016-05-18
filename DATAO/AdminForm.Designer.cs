@@ -30,6 +30,7 @@
         {
             this.tabControl = new MaterialSkin.Controls.MaterialTabControl();
             this.Calendar = new System.Windows.Forms.TabPage();
+            this.deleteEventButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.ScheduleGrid = new SourceGrid.Grid();
             this.doneEventButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.AddEventButton = new MaterialSkin.Controls.MaterialRaisedButton();
@@ -84,7 +85,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
             this.settingButton = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.deleteEventButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.tabControl.SuspendLayout();
             this.Calendar.SuspendLayout();
             this.Personal.SuspendLayout();
@@ -134,6 +134,19 @@
             this.Calendar.Size = new System.Drawing.Size(1273, 574);
             this.Calendar.TabIndex = 0;
             this.Calendar.Text = "Календарь";
+            // 
+            // deleteEventButton
+            // 
+            this.deleteEventButton.Depth = 0;
+            this.deleteEventButton.Location = new System.Drawing.Point(25, 335);
+            this.deleteEventButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.deleteEventButton.Name = "deleteEventButton";
+            this.deleteEventButton.Primary = true;
+            this.deleteEventButton.Size = new System.Drawing.Size(164, 39);
+            this.deleteEventButton.TabIndex = 5;
+            this.deleteEventButton.Text = "Удалить";
+            this.deleteEventButton.UseVisualStyleBackColor = true;
+            this.deleteEventButton.Click += new System.EventHandler(this.deleteEventButton_Click);
             // 
             // ScheduleGrid
             // 
@@ -766,19 +779,6 @@
             this.settingButton.Text = "Настройки";
             this.settingButton.UseVisualStyleBackColor = true;
             this.settingButton.Click += new System.EventHandler(this.settingButton_Click);
-            // 
-            // deleteEventButton
-            // 
-            this.deleteEventButton.Depth = 0;
-            this.deleteEventButton.Location = new System.Drawing.Point(25, 335);
-            this.deleteEventButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.deleteEventButton.Name = "deleteEventButton";
-            this.deleteEventButton.Primary = true;
-            this.deleteEventButton.Size = new System.Drawing.Size(164, 39);
-            this.deleteEventButton.TabIndex = 5;
-            this.deleteEventButton.Text = "Удалить";
-            this.deleteEventButton.UseVisualStyleBackColor = true;
-            this.deleteEventButton.Click += new System.EventHandler(this.deleteEventButton_Click);
             // 
             // AdminForm
             // 
