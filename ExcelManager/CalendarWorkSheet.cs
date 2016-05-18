@@ -212,9 +212,12 @@ namespace ExcelManager
             //TODO: Отдебажить метод
             while (Core.Cells[j, 1].Value != null)
             {
-                if (Core.Cells[j, 1].Value.ToString() == date.Date.ToString())
+                string temp = Core.Cells[j, 1].Value.ToString();
+                string[] temp1 = temp.Split('/');
+                string temp2 = date.Date.ToString();
+                if (temp1[0] + "." + temp1[1] + "." + "20"+temp1[2]+" 0:00:00" == temp2)
                 {
-                    if (Core.Cells[j, 2].Value.ToString() == startAt.ToString())
+                    if (DateTime.Parse(Core.Cells[j, 2].Value.ToString()).TimeOfDay == startAt)
                     {
                         if (Core.Cells[j, 6].Value.ToString() == workerID.ToString())
                         {

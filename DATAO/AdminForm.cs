@@ -139,7 +139,7 @@ namespace DATAO
                                 break;
                             }
                         }
-                        break;
+                        //break;
                     }
                     rowIndex++;
                 }
@@ -399,20 +399,16 @@ namespace DATAO
                         start = ParseTimeFromCells(ScheduleGrid[i, 0].Value.ToString(), true);
 
                         string[] name = ScheduleGrid[0, c].Value.ToString().Split(' ');
-                        Table.PersonalList.Workers.Remove(Table.PersonalList.Workers.First(worker => (worker.Name == name[0] && worker.Surname == name[1])));
-                        //foreach (Human w in Table.PersonalList.Workers)
-                        //{
-                        //    if ($"{w.Name} {w.Surname}" == ScheduleGrid[0, c].Value.ToString())
-                        //    {
-                        //        id = w.ID;
-                        //    }
-                        //}
+                        id = Table.PersonalList.Workers.First(worker => (worker.Name == name[0] && worker.Surname == name[1])).ID;
                     }
                 }
             }
             MessageBox.Show($"{monthCalendar.SelectionStart.ToString()} {start.ToString()} {id}");
-            Table.WorkList.RemoveEventFromCalendar(monthCalendar.SelectionStart, start, id);
-            UpdateSchedule();
+            if(id!=0)
+            {
+                Table.WorkList.RemoveEventFromCalendar(monthCalendar.SelectionStart, start, id);
+                UpdateSchedule();
+            }
         }
     }
 }
