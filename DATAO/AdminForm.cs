@@ -404,7 +404,7 @@ namespace DATAO
                 }
             }
             MessageBox.Show($"{monthCalendar.SelectionStart.ToString()} {start.ToString()} {id}");
-            if(id!=0)
+            if(id != 0)
             {
                 Table.WorkList.RemoveEventFromCalendar(monthCalendar.SelectionStart, start, id);
                 UpdateSchedule();

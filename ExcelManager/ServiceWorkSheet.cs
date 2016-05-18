@@ -73,12 +73,12 @@ namespace ExcelManager
             {
                 if (Core.Cells[j,1].Value.ToString() == ID.ToString())
                 {
+                    ServiceList.Remove(ServiceList.First(s => s.ID == ID));
                     Core.DeleteRow(j);
                     j++;
                 }
                 j++;
             }
-            ServiceList.Remove(ServiceList.First(s => s.ID == ID));
         }
     }
 }
