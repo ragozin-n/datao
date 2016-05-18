@@ -212,19 +212,16 @@ namespace ExcelManager
             //TODO: Отдебажить метод
             while (Core.Cells[j, 1].Value != null)
             {
-                string temp = Core.Cells[j, 1].Value.ToString();
-                string[] temp1 = temp.Split('/');
-                string temp2 = date.Date.ToString();
-                if (temp1[0] + "." + temp1[1] + "." + "20"+temp1[2]+" 0:00:00" == temp2)
+                if (Core.Cells[j, 1].Value.ToString() == date.Date.ToString())
                 {
                     if (DateTime.Parse(Core.Cells[j, 2].Value.ToString()).TimeOfDay == startAt)
                     {
                         if (Core.Cells[j, 6].Value.ToString() == workerID.ToString())
                         {
                             Event _event = new Event(
-                                DateTime.FromOADate(long.Parse(Core.Cells[j, 1].Value.ToString())).Date,
-                                TimeSpan.FromHours(double.Parse(Core.Cells[j, 2].Value.ToString())),
-                                TimeSpan.FromHours(double.Parse(Core.Cells[j, 3].Value.ToString())),
+                                DateTime.Parse(Core.Cells[j, 1].Value.ToString()).Date,
+                                TimeSpan.Parse(Core.Cells[j, 2].Value.ToString()),
+                                TimeSpan.Parse(Core.Cells[j, 3].Value.ToString()),
                                 Core.Cells[j, 4].Value.ToString(),
                                 uint.Parse(Core.Cells[j, 5].Value.ToString()),
                                 uint.Parse(Core.Cells[j, 6].Value.ToString())
@@ -233,8 +230,8 @@ namespace ExcelManager
                             Core.DeleteRow(j);
                         }
                     }
-                }
-                j++;
+            }
+            j++;
             }
         }
         /// <summary>
