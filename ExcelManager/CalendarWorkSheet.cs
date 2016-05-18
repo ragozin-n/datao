@@ -1,6 +1,7 @@
 ﻿using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ExcelManager
 {
@@ -217,14 +218,7 @@ namespace ExcelManager
                     {
                         if (Core.Cells[j, 6].Value.ToString() == workerID.ToString())
                         {
-                            Event _event = new Event(
-                                DateTime.Parse(Core.Cells[j, 1].Value.ToString()).Date,
-                                TimeSpan.Parse(Core.Cells[j, 2].Value.ToString()),
-                                TimeSpan.Parse(Core.Cells[j, 3].Value.ToString()),
-                                Core.Cells[j, 4].Value.ToString(),
-                                uint.Parse(Core.Cells[j, 5].Value.ToString()),
-                                uint.Parse(Core.Cells[j, 6].Value.ToString())
-                             );
+                            var _event = Calendar.First(_e => (_e.Date == date && _e.StartAt == startAt && _e.WorkerID == workerID));
                             Calendar.Remove(_event);
                             Core.DeleteRow(j);
                         }
