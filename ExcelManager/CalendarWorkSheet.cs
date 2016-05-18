@@ -209,12 +209,11 @@ namespace ExcelManager
         public void RemoveEventFromCalendar(DateTime date, TimeSpan startAt, uint workerID)
         {
             int j = 2;
-            //TODO: Отдебажить метод
             while (Core.Cells[j, 1].Value != null)
-            {
-                if (Core.Cells[j, 1].Value.ToString() == date.Date.ToString())
+            { 
+                if (DateTime.Parse(Core.Cells[j, 1].Value.ToString()).ToString() == date.ToString())
                 {
-                    if (DateTime.Parse(Core.Cells[j, 2].Value.ToString()).TimeOfDay == startAt)
+                    if (TimeSpan.Parse(Core.Cells[j, 2].Value.ToString()).ToString() == startAt.ToString())
                     {
                         if (Core.Cells[j, 6].Value.ToString() == workerID.ToString())
                         {
