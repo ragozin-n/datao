@@ -22,7 +22,7 @@ namespace DATAO
             LoadEvent();
             LoadPersonal();
             LoadSkladGrid();
-
+            LoadService(1);
             schedulePersonalGrid.Visible = false;
             schedulePersonalGrid.BorderStyle = BorderStyle.None;
             schedulePersonalGrid.ColumnsCount = 7;
@@ -34,13 +34,6 @@ namespace DATAO
             {
                 schedulePersonalGrid[0, i] = new SourceGrid.Cells.ColumnHeader(week[i]);
             }
-            //schedulePersonalGrid[0, 0] = new SourceGrid.Cells.ColumnHeader("Понедельник");
-            //schedulePersonalGrid[0, 1] = new SourceGrid.Cells.ColumnHeader("Вторник");
-            //schedulePersonalGrid[0, 2] = new SourceGrid.Cells.ColumnHeader("Среда");
-            //schedulePersonalGrid[0, 3] = new SourceGrid.Cells.ColumnHeader("Четверг");
-            //schedulePersonalGrid[0, 4] = new SourceGrid.Cells.ColumnHeader("Пятница");
-            //schedulePersonalGrid[0, 5] = new SourceGrid.Cells.ColumnHeader("Суббота");
-            //schedulePersonalGrid[0, 6] = new SourceGrid.Cells.ColumnHeader("Воскресенье");
             schedulePersonalGrid.Rows.Insert(1);
 
             for (int i = 0; i < 7; i++)
@@ -48,6 +41,88 @@ namespace DATAO
                 schedulePersonalGrid[1, i] = new SourceGrid.Cells.CheckBox(string.Empty, false);
             }
             schedulePersonalGrid.AutoSizeCells();
+        }
+
+        private void LoadService(int currentPage)
+        {
+            if ((Table.Services.ServiceList.Count / 4) + 1 >= currentPage)
+            {
+                numberPageLabel.Text = currentPage.ToString();
+                List<Service> current4Service = new List<Service>();
+                for (int i = 4; i > 0; i--)
+                {
+                    try
+                    {
+                        current4Service.Add(Table.Services.ServiceList[(currentPage * 4) - i]);
+                    }
+                    catch(ArgumentOutOfRangeException)
+                    {
+                        break;
+                    }
+                }
+
+                if (current4Service != null)
+                {
+                    if (current4Service.Count == 1)
+                    {
+                        serviceBox.Visible = true;
+                        nameServiceLabel.Text = current4Service[0].Name;
+                        costService.Text = current4Service[0].Cost.ToString() + "рублей";
+                        timeService.Text = current4Service[0].Duration.ToString().Substring(0, 5) + "минут";
+                        serviceBox1.Visible = false;
+                        serviceBox2.Visible = false;
+                        serviceBox3.Visible = false;
+                    }
+                    if (current4Service.Count == 2)
+                    {
+                        serviceBox.Visible = true;
+                        nameServiceLabel.Text = current4Service[0].Name;
+                        costService.Text = current4Service[0].Cost.ToString() + "рублей";
+                        timeService.Text = current4Service[0].Duration.ToString().Substring(0, 5) + "минут";
+                        serviceBox1.Visible = true;
+                        nameServiceLabel1.Text = current4Service[1].Name;
+                        costService1.Text = current4Service[1].Cost.ToString() + "рублей";
+                        timeService1.Text = current4Service[1].Duration.ToString().Substring(0, 5) + "минут";
+                        serviceBox2.Visible = false;
+                        serviceBox3.Visible = false;
+                    }
+                    if (current4Service.Count == 3)
+                    {
+                        serviceBox.Visible = true;
+                        nameServiceLabel.Text = current4Service[0].Name;
+                        costService.Text = current4Service[0].Cost.ToString() + "рублей";
+                        timeService.Text = current4Service[0].Duration.ToString().Substring(0, 5) + "минут";
+                        serviceBox1.Visible = true;
+                        nameServiceLabel1.Text = current4Service[1].Name;
+                        costService1.Text = current4Service[1].Cost.ToString() + "рублей";
+                        timeService1.Text = current4Service[1].Duration.ToString().Substring(0, 5) + "минут";
+                        serviceBox2.Visible = true;
+                        nameServiceLabel2.Text = current4Service[2].Name;
+                        costService2.Text = current4Service[2].Cost.ToString() + "рублей";
+                        timeService2.Text = current4Service[2].Duration.ToString().Substring(0, 5) + "минут";
+                        serviceBox3.Visible = false;
+                    }
+                    if (current4Service.Count == 4)
+                    {
+                        serviceBox.Visible = true;
+                        nameServiceLabel.Text = current4Service[0].Name;
+                        costService.Text = current4Service[0].Cost.ToString() + "рублей";
+                        timeService.Text = current4Service[0].Duration.ToString().Substring(0, 5) + "минут";
+                        serviceBox1.Visible = true;
+                        nameServiceLabel1.Text = current4Service[1].Name;
+                        costService1.Text = current4Service[1].Cost.ToString() + "рублей";
+                        timeService1.Text = current4Service[1].Duration.ToString().Substring(0, 5) + "минут";
+                        serviceBox2.Visible = true;
+                        nameServiceLabel2.Text = current4Service[2].Name;
+                        costService2.Text = current4Service[2].Cost.ToString() + "рублей";
+                        timeService2.Text = current4Service[2].Duration.ToString().Substring(0, 5) + "минут";
+                        serviceBox3.Visible = true;
+                        nameServiceLabel3.Text = current4Service[3].Name;
+                        costService3.Text = current4Service[3].Cost.ToString() + "рублей";
+                        timeService3.Text = current4Service[3].Duration.ToString().Substring(0, 5) + "минут";
+                    }
+                }
+            }
         }
 
         private void LoadPersonal()
@@ -131,7 +206,10 @@ namespace DATAO
 
         public void UpdateSchedule()
         {
-            ScheduleGrid.Rows.RemoveRange(0, ScheduleGrid.RowsCount);
+            if (ScheduleGrid.RowsCount != 0)
+            {
+                ScheduleGrid.Rows.RemoveRange(0, ScheduleGrid.RowsCount);
+            }
             LoadSchedule();
             LoadEvent();
         }
@@ -394,6 +472,37 @@ namespace DATAO
             }
         }
 
+        private void newServiceButton_Click(object sender, EventArgs e)
+        {
+            newServiceBox.Visible = true;
+            saveServiceButton.Visible = true;
+            newNameServiceTextBox.Text = "";
+            newCostServiceTextBox.Text = "";
+            newTimeServiceTextBox.Text = "";
+        }
 
+        private void saveServiceButton_Click(object sender, EventArgs e)
+        {
+            Service newService = new Service(newNameServiceTextBox.Text,
+                UInt32.Parse(newCostServiceTextBox.Text), DateTime.Parse(newTimeServiceTextBox.Text).TimeOfDay
+                );
+            Table.Services.AddNewService(newService);
+            newServiceBox.Visible = false;
+            saveServiceButton.Visible = false;
+            LoadService(1);
+        }
+
+        private void leftButton_Click(object sender, EventArgs e)
+        {
+            if(Int32.Parse(numberPageLabel.Text) > 1)
+            {
+                LoadService(Int32.Parse(numberPageLabel.Text)-1);
+            }
+        }
+
+        private void rightButton_Click(object sender, EventArgs e)
+        {
+            LoadService(Int32.Parse(numberPageLabel.Text) + 1);
+        }
     }
 }

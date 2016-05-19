@@ -52,9 +52,6 @@
       <HintPath>..\packages\BouncyCastle.1.7.0\lib\Net40-Client\BouncyCastle.Crypto.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="ExcelManager">
-      <HintPath>..\ExcelManager\bin\Debug\ExcelManager.dll</HintPath>
-    </Reference>
     <Reference Include="Google.Apis, Version=1.11.1.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Apis.1.11.1\lib\net45\Google.Apis.dll</HintPath>
       <Private>True</Private>
@@ -86,6 +83,9 @@
     <Reference Include="MaterialSkin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialSkin.0.2.1\lib\MaterialSkin.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -191,9 +191,17 @@
   <ItemGroup>
     <None Include="Resources\-.png" />
     <None Include="Resources\+-.png" />
+    <None Include="Resources\changeservice.png" />
+    <None Include="Resources\deleteservice.png" />
     <Content Include="Resources\grafik.png" />
     <None Include="Resources\set.png" />
     <None Include="Resources\grafik1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ExcelManager\ExcelManager.csproj">
+      <Project>{7245203a-666c-4f74-9090-e2e4e304e117}</Project>
+      <Name>ExcelManager</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

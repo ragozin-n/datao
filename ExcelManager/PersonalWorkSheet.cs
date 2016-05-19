@@ -65,8 +65,8 @@ namespace ExcelManager
                 j++;
             }
             Core.Cells[j, 1].Value = _human.ID;
-            Core.Cells[j, 2].Value = _human.Surname;
-            Core.Cells[j, 3].Value = _human.Name;
+            Core.Cells[j, 2].Value = _human.Name;
+            Core.Cells[j, 3].Value = _human.Surname;
             Core.Cells[j, 4].Value = _human.Patronymic;
             Core.Cells[j, 5].Value = _human.Status;
             Core.Cells[j, 6].Value = _human.HoursWorked;

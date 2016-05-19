@@ -25,10 +25,10 @@ namespace ExcelManager
                 try
                 {
                     Service _service = new Service(
-                        uint.Parse(Core.Cells[j, 1].Value.ToString()),
                         Core.Cells[j, 2].Value.ToString(),
                         uint.Parse(Core.Cells[j, 3].Value.ToString()),
-                        DateTime.Parse(Core.Cells[j, 5].Value.ToString()).TimeOfDay
+                        DateTime.Parse(Core.Cells[j, 5].Value.ToString()).TimeOfDay,
+                        uint.Parse(Core.Cells[j, 1].Value.ToString())
                         );
                     ServiceList.Add(_service);
                     j++;

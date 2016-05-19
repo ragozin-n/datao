@@ -18,9 +18,13 @@ namespace ExcelManager
         /// <param name="name">Название услуги</param>
         /// <param name="cost">Цена</param>
         /// <param name="duration">Длительность</param>
-        public Service(uint id, string name, uint cost, TimeSpan duration)
+        public Service(string name, uint cost, TimeSpan duration, uint id = 0)
         {
-            ID = id;
+            if (id!= 0)
+            {
+                ID = id;
+            }
+            else { ID = (uint)GetHashCode(); }
             Name = name;
             Cost = cost;
             Duration = duration;
