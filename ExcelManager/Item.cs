@@ -17,20 +17,20 @@ namespace ExcelManager
         //Общий остаток
         public uint TotalResidue { get; private set; }
 
-        public Dictionary<Months, uint[]> Balance { get; set; } = new Dictionary<Months, uint[]>
+        public Dictionary<Months, uint> Balance { get; set; } = new Dictionary<Months, uint>
         {
             //Остаток, израсходовано
-            [Months.January] = new uint[] { 0, 0 },
-            [Months.February] = new uint[] { 0, 0 },
-            [Months.March] = new uint[] { 0, 0 },
-            [Months.April] = new uint[] { 0, 0 },
-            [Months.June] = new uint[] { 0, 0 },
-            [Months.July] = new uint[] { 0, 0 },
-            [Months.August] = new uint[] { 0, 0 },
-            [Months.September] = new uint[] { 0, 0 },
-            [Months.October] = new uint[] { 0, 0 },
-            [Months.November] = new uint[] { 0, 0 },
-            [Months.December] = new uint[] { 0, 0 },
+            [Months.January] = 0,
+            [Months.February] = 0,
+            [Months.March] = 0,
+            [Months.April] = 0,
+            [Months.June] = 0,
+            [Months.July] = 0,
+            [Months.August] = 0,
+            [Months.September] = 0,
+            [Months.October] = 0,
+            [Months.November] = 0,
+            [Months.December] = 0
         };
 
         public enum Months
@@ -39,7 +39,7 @@ namespace ExcelManager
             February, March, April, May, June, July, August, September, October, November, December
         }
 
-        public Item(string codeNumber, string name, string supplier, uint cost, uint total, Dictionary<Months,uint[]> balance)
+        public Item(string codeNumber, string name, string supplier, uint cost, uint total, Dictionary<Months,uint> balance)
         {
             CodeNumber = codeNumber;
             Name = name;
@@ -76,7 +76,7 @@ namespace ExcelManager
         {
             TotalResidue = total;
         }
-        public void UpdateItem(Dictionary<Months,uint[]> balance)
+        public void UpdateItem(Dictionary<Months,uint> balance)
         {
             if (balance.Count != 12)
             {
