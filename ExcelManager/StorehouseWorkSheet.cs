@@ -55,7 +55,7 @@ namespace ExcelManager
             {
                 try
                 {
-                    Dictionary<Item.Months, uint[]> balance = new Dictionary<Item.Months, uint[]>();
+                    Dictionary<Item.Months, uint> balance = new Dictionary<Item.Months, uint>();
                     Item _item = new Item(
                         Core.Cells[j, 1].Value.ToString(),
                         Core.Cells[j, 2].Value.ToString(),
@@ -66,12 +66,7 @@ namespace ExcelManager
                         );
                     for (int i = 6; i < 18; i++)
                     {
-                        var data = Core.Cells[j, i].Value.ToString().Split('/');
-                        balance.Add((Item.Months)i - 6, new uint[]
-                        {
-                            uint.Parse(data[0]),
-                            uint.Parse(data[1])
-                        });
+                        balance.Add((Item.Months)i - 6, uint.Parse(Core.Cells[j, i].Value.ToString()));
                     }
                     j++;
                 }
