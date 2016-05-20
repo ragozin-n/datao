@@ -20,17 +20,18 @@ namespace ExcelManager
         /// <param name="duration">Длительность</param>
         public Service(string name, uint cost, TimeSpan duration, uint id = 0)
         {
-            if (id!= 0)
+            Name = name;
+            Cost = cost;
+            Duration = duration;
+            if (id != 0)
             {
                 ID = id;
             }
             else
             {
-                ID = (uint)GetHashCode();
+                Random _randomizer = new Random();
+                ID = (uint)_randomizer.Next(0,99999);
             }
-            Name = name;
-            Cost = cost;
-            Duration = duration;
         }
     }
 }
