@@ -44,7 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CalendarWorkSheet.cs" />
+    <Compile Include="Evidence.cs" />
     <Compile Include="Event.cs" />
+    <Compile Include="BalanceWorkSheet.cs" />
     <Compile Include="Human.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="PersonalWorkSheet.cs" />

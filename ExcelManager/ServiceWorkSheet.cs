@@ -73,7 +73,6 @@ namespace ExcelManager
             {
                 if (Core.Cells[j,1].Value.ToString() == _service.ID.ToString())
                 {
-                    // ServiceList.Remove(ServiceList.First(s => s.ID == _service.ID));
                     ServiceList.Remove(_service);
                     Core.DeleteRow(j);
                     j++;

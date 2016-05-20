@@ -13,8 +13,10 @@ namespace ExcelManager
         public static PersonalWorkSheet PersonalList { get; set; }
         public static ServiceWorkSheet Services { get; set; }
         public static StorehouseWorkSheet Storehouse { get; set; }
-        
-        
+        public static BalanceWorkSheet Expences { get; set; }
+        public static BalanceWorkSheet Earnings { get; set; }
+
+
         /// <summary>
         /// Конструктор по умолчанию
         /// </summary>
@@ -32,7 +34,9 @@ namespace ExcelManager
             Services = new ServiceWorkSheet(xlPackage.Workbook.Worksheets["Услуги"]);
             Storehouse = new StorehouseWorkSheet(xlPackage.Workbook.Worksheets["Склад"]);
             //Расходы
+            Expences = new BalanceWorkSheet(xlPackage.Workbook.Worksheets["Расходы"]);
             //Доходы
+            Earnings = new BalanceWorkSheet(xlPackage.Workbook.Worksheets["Доходы"]);
         }
 
 
