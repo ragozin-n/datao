@@ -47,7 +47,13 @@ namespace DATAO
         {
             if ((Table.Services.ServiceList.Count / 4) + 1 >= currentPage)
             {
-                numberPageLabel.Text = currentPage.ToString();
+                if (Table.Services.ServiceList.Count < 5)
+                {
+                    numberPageLabel.Text = "1";
+                }
+                else {
+                    numberPageLabel.Text = currentPage.ToString();
+                }
                 List<Service> current4Service = new List<Service>();
                 for (int i = 4; i > 0; i--)
                 {
@@ -67,8 +73,8 @@ namespace DATAO
                     {
                         serviceBox.Visible = true;
                         nameServiceLabel.Text = current4Service[0].Name;
-                        costService.Text = current4Service[0].Cost.ToString() + "рублей";
-                        timeService.Text = current4Service[0].Duration.ToString().Substring(0, 5) + "минут";
+                        costService.Text = $"{current4Service[0].Cost.ToString()} рублей";
+                        timeService.Text = $"{current4Service[0].Duration.ToString().Substring(0, 5)} минут";
                         serviceBox1.Visible = false;
                         serviceBox2.Visible = false;
                         serviceBox3.Visible = false;
@@ -77,12 +83,12 @@ namespace DATAO
                     {
                         serviceBox.Visible = true;
                         nameServiceLabel.Text = current4Service[0].Name;
-                        costService.Text = current4Service[0].Cost.ToString() + "рублей";
-                        timeService.Text = current4Service[0].Duration.ToString().Substring(0, 5) + "минут";
+                        costService.Text = $"{current4Service[0].Cost.ToString()} рублей";
+                        timeService.Text = $"{current4Service[0].Duration.ToString().Substring(0, 5)} минут";
                         serviceBox1.Visible = true;
                         nameServiceLabel1.Text = current4Service[1].Name;
-                        costService1.Text = current4Service[1].Cost.ToString() + "рублей";
-                        timeService1.Text = current4Service[1].Duration.ToString().Substring(0, 5) + "минут";
+                        costService1.Text = $"{current4Service[1].Cost.ToString()} рублей";
+                        timeService1.Text = $"{current4Service[1].Duration.ToString().Substring(0, 5)} минут";
                         serviceBox2.Visible = false;
                         serviceBox3.Visible = false;
                     }
@@ -91,15 +97,15 @@ namespace DATAO
                         serviceBox.Visible = true;
                         nameServiceLabel.Text = current4Service[0].Name;
                         costService.Text = current4Service[0].Cost.ToString() + "рублей";
-                        timeService.Text = current4Service[0].Duration.ToString().Substring(0, 5) + "минут";
+                        timeService.Text = current4Service[0].Duration.ToString().Substring(0, 5) + " минут";
                         serviceBox1.Visible = true;
                         nameServiceLabel1.Text = current4Service[1].Name;
-                        costService1.Text = current4Service[1].Cost.ToString() + "рублей";
-                        timeService1.Text = current4Service[1].Duration.ToString().Substring(0, 5) + "минут";
+                        costService1.Text = $"{current4Service[1].Cost.ToString()} рублей";
+                        timeService1.Text = current4Service[1].Duration.ToString().Substring(0, 5) + " минут";
                         serviceBox2.Visible = true;
                         nameServiceLabel2.Text = current4Service[2].Name;
-                        costService2.Text = current4Service[2].Cost.ToString() + "рублей";
-                        timeService2.Text = current4Service[2].Duration.ToString().Substring(0, 5) + "минут";
+                        costService2.Text = $"{current4Service[2].Cost.ToString()} рублей";
+                        timeService2.Text = current4Service[2].Duration.ToString().Substring(0, 5) + " минут";
                         serviceBox3.Visible = false;
                     }
                     if (current4Service.Count == 4)
@@ -107,19 +113,19 @@ namespace DATAO
                         serviceBox.Visible = true;
                         nameServiceLabel.Text = current4Service[0].Name;
                         costService.Text = current4Service[0].Cost.ToString() + "рублей";
-                        timeService.Text = current4Service[0].Duration.ToString().Substring(0, 5) + "минут";
+                        timeService.Text = current4Service[0].Duration.ToString().Substring(0, 5) + " минут";
                         serviceBox1.Visible = true;
                         nameServiceLabel1.Text = current4Service[1].Name;
-                        costService1.Text = current4Service[1].Cost.ToString() + "рублей";
-                        timeService1.Text = current4Service[1].Duration.ToString().Substring(0, 5) + "минут";
+                        costService1.Text = $"{current4Service[1].Cost.ToString()} рублей";
+                        timeService1.Text = current4Service[1].Duration.ToString().Substring(0, 5) + " минут";
                         serviceBox2.Visible = true;
                         nameServiceLabel2.Text = current4Service[2].Name;
-                        costService2.Text = current4Service[2].Cost.ToString() + "рублей";
-                        timeService2.Text = current4Service[2].Duration.ToString().Substring(0, 5) + "минут";
+                        costService2.Text = $"{current4Service[2].Cost.ToString()} рублей";
+                        timeService2.Text = current4Service[2].Duration.ToString().Substring(0, 5) + " минут";
                         serviceBox3.Visible = true;
                         nameServiceLabel3.Text = current4Service[3].Name;
-                        costService3.Text = current4Service[3].Cost.ToString() + "рублей";
-                        timeService3.Text = current4Service[3].Duration.ToString().Substring(0, 5) + "минут";
+                        costService3.Text = $"{current4Service[3].Cost.ToString()} рублей";
+                        timeService3.Text = current4Service[3].Duration.ToString().Substring(0, 5) + " минут";
                     }
                 }
             }
@@ -143,7 +149,9 @@ namespace DATAO
         {
             ScheduleGrid.BorderStyle = BorderStyle.None;
             ScheduleGrid.Rows.Insert(0);
+
             List<Human> todayWorker = Table.PersonalList.Workers.FindAll(date => date.Schedule[IndexDay() - 1] == true);
+
             ScheduleGrid.ColumnsCount = todayWorker.Count+1;
             ScheduleGrid[0, 0] = new SourceGrid.Cells.ColumnHeader(string.Empty);
             for (int i = 1;i<=todayWorker.Count;i++)
@@ -151,6 +159,7 @@ namespace DATAO
                 ScheduleGrid[0,i] = new SourceGrid.Cells.ColumnHeader($"{todayWorker[i-1].Name} {todayWorker[i-1].Surname}");
             }
             ScheduleGrid.FixedRows = 1;
+
             int j = 1;
             try
             {
@@ -165,11 +174,14 @@ namespace DATAO
                     j++;
                 }
             }
-            catch(ArgumentOutOfRangeException)
+            catch (ArgumentOutOfRangeException)
             {
                 ScheduleGrid.Rows.RemoveRange(0, ScheduleGrid.Rows.Count);
             }
-            ScheduleGrid.AutoSizeCells();
+            finally
+            {
+                ScheduleGrid.AutoSizeCells();
+            }
         }
 
         private void LoadEvent()
@@ -231,12 +243,6 @@ namespace DATAO
             {
                 skladGrid[0, i] = new SourceGrid.Cells.ColumnHeader(names[i]);
             }
-            //skladGrid[0, 0] = new SourceGrid.Cells.ColumnHeader("Наименование");
-            //skladGrid[0, 1] = new SourceGrid.Cells.ColumnHeader("Артикул");
-            //skladGrid[0, 2] = new SourceGrid.Cells.ColumnHeader("Поставщик");
-            //skladGrid[0, 3] = new SourceGrid.Cells.ColumnHeader("Стоимость (руб.)");
-            //skladGrid[0, 4] = new SourceGrid.Cells.ColumnHeader("Категория");
-            //skladGrid[0, 5] = new SourceGrid.Cells.ColumnHeader("Остаток ед.");
             
             //пример
             skladGrid.Rows.Insert(1);
@@ -256,20 +262,22 @@ namespace DATAO
             DateTime _start, _end;
             TimeSpan Start = DateTime.Parse("00:00:00").TimeOfDay;
             TimeSpan End = DateTime.Parse("00:00:00").TimeOfDay;
+
             if (DateTime.TryParse(timeInterval[0], out _start) && DateTime.TryParse(timeInterval[1], out _end))
             {
                 Start = _start.TimeOfDay;
                 End = _end.TimeOfDay;
             }
 
-            if (startTime == true)
-            {
-                return Start;
-            }
-            else
-            {
-                return End;
-            }
+            return (startTime ? Start : End);
+            //if (startTime == true)
+            //{
+            //    return Start;
+            //}
+            //else
+            //{
+            //    return End;
+            //}
         }
 
         private void AddEventButton_Click(object sender, EventArgs e)
@@ -392,7 +400,6 @@ namespace DATAO
                 rateTextBox.ReadOnly = true;
                 statusTextBox.ReadOnly = true;
                 schedulePersonalGrid.Visible = false;
-
             }
         }
 
@@ -434,8 +441,6 @@ namespace DATAO
         {
             try {
                 personalListBox.Update();
-                //int i = personalListBox.SelectedIndex;
-                //personalListBox.Items.RemoveAt(i);
                 Table.PersonalList.RemoveWorker(Table.PersonalList.Workers[personalListBox.SelectedIndex].ID);
                 LoadPersonal();
                 personalListBox.EndUpdate();
@@ -450,7 +455,7 @@ namespace DATAO
         private void deleteEventButton_Click(object sender, EventArgs e)
         {
             TimeSpan start = DateTime.Now.TimeOfDay;
-            uint id = 0;
+            uint? id = null;
             for (int c = 1; c <= ScheduleGrid.ColumnsCount; c++)
             {
                 for (int i = 1; i <= ScheduleGrid.RowsCount; i++)
@@ -464,10 +469,10 @@ namespace DATAO
                     }
                 }
             }
-            MessageBox.Show($"{monthCalendar.SelectionStart.ToString()} {start.ToString()} {id}");
-            if(id != 0)
+            //MessageBox.Show($"{monthCalendar.SelectionStart.ToString()} {start.ToString()} {id}");
+            if(id != null)
             {
-                Table.WorkList.RemoveEventFromCalendar(monthCalendar.SelectionStart.Date, start, id);
+                Table.WorkList.RemoveEventFromCalendar(monthCalendar.SelectionStart.Date, start, (uint)id);
                 UpdateSchedule();
             }
         }
@@ -476,16 +481,17 @@ namespace DATAO
         {
             newServiceBox.Visible = true;
             saveServiceButton.Visible = true;
-            newNameServiceTextBox.Text = "";
-            newCostServiceTextBox.Text = "";
-            newTimeServiceTextBox.Text = "";
+            newNameServiceTextBox.Text = string.Empty;
+            newCostServiceTextBox.Text = string.Empty;
+            newTimeServiceTextBox.Text = string.Empty;
         }
 
         private void saveServiceButton_Click(object sender, EventArgs e)
         {
             Service newService = new Service(newNameServiceTextBox.Text,
-                UInt32.Parse(newCostServiceTextBox.Text), DateTime.Parse(newTimeServiceTextBox.Text).TimeOfDay
+                uint.Parse(newCostServiceTextBox.Text), DateTime.Parse(newTimeServiceTextBox.Text).TimeOfDay
                 );
+
             Table.Services.AddNewService(newService);
             newServiceBox.Visible = false;
             saveServiceButton.Visible = false;
@@ -494,15 +500,39 @@ namespace DATAO
 
         private void leftButton_Click(object sender, EventArgs e)
         {
-            if(Int32.Parse(numberPageLabel.Text) > 1)
+            if(int.Parse(numberPageLabel.Text) > 1)
             {
-                LoadService(Int32.Parse(numberPageLabel.Text)-1);
+                LoadService(int.Parse(numberPageLabel.Text)-1);
             }
         }
 
         private void rightButton_Click(object sender, EventArgs e)
         {
-            LoadService(Int32.Parse(numberPageLabel.Text) + 1);
+            LoadService(int.Parse(numberPageLabel.Text) + 1);
+        }
+
+        private void deleteServicePicture_Click(object sender, EventArgs e)
+        {
+            Table.Services.RemoveService(Table.Services.ServiceList[(int.Parse(numberPageLabel.Text) * 4) - 4]);
+            LoadService(1);
+        }
+
+        private void deleteServicePicture1_Click(object sender, EventArgs e)
+        {
+            Table.Services.RemoveService(Table.Services.ServiceList[(int.Parse(numberPageLabel.Text) * 4) - 3]);
+            LoadService(1);
+        }
+
+        private void deleteServicePicture2_Click(object sender, EventArgs e)
+        {
+            Table.Services.RemoveService(Table.Services.ServiceList[(int.Parse(numberPageLabel.Text) * 4) - 2]);
+            LoadService(1);
+        }
+
+        private void deleteServicePicture3_Click(object sender, EventArgs e)
+        {
+            Table.Services.RemoveService(Table.Services.ServiceList[(int.Parse(numberPageLabel.Text) * 4) - 1]);
+            LoadService(1);
         }
     }
 }

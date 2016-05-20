@@ -66,14 +66,15 @@ namespace ExcelManager
         /// Удаляет заданную услугу из перечня услуг
         /// </summary>
         /// <param name="ID">ID услуги</param>
-        public void RemoveService(uint ID)
+        public void RemoveService(Service _service)
         {
             int j = 2;
             while (Core.Cells[j, 1].Value != null)
             {
-                if (Core.Cells[j,1].Value.ToString() == ID.ToString())
+                if (Core.Cells[j,1].Value.ToString() == _service.ID.ToString())
                 {
-                    ServiceList.Remove(ServiceList.First(s => s.ID == ID));
+                    // ServiceList.Remove(ServiceList.First(s => s.ID == _service.ID));
+                    ServiceList.Remove(_service);
                     Core.DeleteRow(j);
                     j++;
                 }

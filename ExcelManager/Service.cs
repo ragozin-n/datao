@@ -24,7 +24,10 @@ namespace ExcelManager
             {
                 ID = id;
             }
-            else { ID = (uint)GetHashCode(); }
+            else
+            {
+                ID = (uint)GetHashCode();
+            }
             Name = name;
             Cost = cost;
             Duration = duration;

@@ -65,6 +65,18 @@
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.schedulePersonalPicture = new System.Windows.Forms.PictureBox();
             this.Uslugi = new System.Windows.Forms.TabPage();
+            this.newServiceBox = new System.Windows.Forms.GroupBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.newTimeServiceTextBox = new System.Windows.Forms.TextBox();
+            this.newCostServiceTextBox = new System.Windows.Forms.TextBox();
+            this.newNameServiceTextBox = new System.Windows.Forms.TextBox();
+            this.saveServiceButton = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.newServiceButton = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.rightButton = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.leftButton = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.numberPageLabel = new System.Windows.Forms.Label();
             this.serviceBox3 = new System.Windows.Forms.GroupBox();
             this.deleteServicePicture3 = new System.Windows.Forms.PictureBox();
             this.changePicture3 = new System.Windows.Forms.PictureBox();
@@ -115,18 +127,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
             this.settingButton = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.numberPageLabel = new System.Windows.Forms.Label();
-            this.leftButton = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.rightButton = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.newServiceButton = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.saveServiceButton = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.newServiceBox = new System.Windows.Forms.GroupBox();
-            this.newNameServiceTextBox = new System.Windows.Forms.TextBox();
-            this.newCostServiceTextBox = new System.Windows.Forms.TextBox();
-            this.newTimeServiceTextBox = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.Calendar.SuspendLayout();
             this.Personal.SuspendLayout();
@@ -140,6 +140,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.okPicture1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.schedulePersonalPicture)).BeginInit();
             this.Uslugi.SuspendLayout();
+            this.newServiceBox.SuspendLayout();
             this.serviceBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.deleteServicePicture3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.changePicture3)).BeginInit();
@@ -158,7 +159,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.addToSkladPictureBox)).BeginInit();
             this.statisticsSkladBox.SuspendLayout();
             this.searchSkladBox.SuspendLayout();
-            this.newServiceBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl
@@ -624,6 +624,136 @@
             this.Uslugi.TabIndex = 2;
             this.Uslugi.Text = "Услуги";
             // 
+            // newServiceBox
+            // 
+            this.newServiceBox.Controls.Add(this.label11);
+            this.newServiceBox.Controls.Add(this.label10);
+            this.newServiceBox.Controls.Add(this.label9);
+            this.newServiceBox.Controls.Add(this.newTimeServiceTextBox);
+            this.newServiceBox.Controls.Add(this.newCostServiceTextBox);
+            this.newServiceBox.Controls.Add(this.newNameServiceTextBox);
+            this.newServiceBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.newServiceBox.Location = new System.Drawing.Point(635, 382);
+            this.newServiceBox.Name = "newServiceBox";
+            this.newServiceBox.Size = new System.Drawing.Size(235, 136);
+            this.newServiceBox.TabIndex = 10;
+            this.newServiceBox.TabStop = false;
+            this.newServiceBox.Text = "Новая услуга";
+            this.newServiceBox.Visible = false;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(16, 97);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(56, 13);
+            this.label11.TabIndex = 5;
+            this.label11.Text = "Интервал";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(14, 63);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(62, 13);
+            this.label10.TabIndex = 4;
+            this.label10.Text = "Стоимость";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(14, 30);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(57, 13);
+            this.label9.TabIndex = 3;
+            this.label9.Text = "Название";
+            // 
+            // newTimeServiceTextBox
+            // 
+            this.newTimeServiceTextBox.Location = new System.Drawing.Point(82, 94);
+            this.newTimeServiceTextBox.Name = "newTimeServiceTextBox";
+            this.newTimeServiceTextBox.Size = new System.Drawing.Size(132, 20);
+            this.newTimeServiceTextBox.TabIndex = 2;
+            // 
+            // newCostServiceTextBox
+            // 
+            this.newCostServiceTextBox.Location = new System.Drawing.Point(82, 60);
+            this.newCostServiceTextBox.Name = "newCostServiceTextBox";
+            this.newCostServiceTextBox.Size = new System.Drawing.Size(132, 20);
+            this.newCostServiceTextBox.TabIndex = 1;
+            // 
+            // newNameServiceTextBox
+            // 
+            this.newNameServiceTextBox.Location = new System.Drawing.Point(82, 25);
+            this.newNameServiceTextBox.Name = "newNameServiceTextBox";
+            this.newNameServiceTextBox.Size = new System.Drawing.Size(132, 20);
+            this.newNameServiceTextBox.TabIndex = 0;
+            // 
+            // saveServiceButton
+            // 
+            this.saveServiceButton.Depth = 0;
+            this.saveServiceButton.Location = new System.Drawing.Point(921, 436);
+            this.saveServiceButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.saveServiceButton.Name = "saveServiceButton";
+            this.saveServiceButton.Primary = true;
+            this.saveServiceButton.Size = new System.Drawing.Size(115, 34);
+            this.saveServiceButton.TabIndex = 9;
+            this.saveServiceButton.Text = "Сохранить";
+            this.saveServiceButton.UseVisualStyleBackColor = true;
+            this.saveServiceButton.Visible = false;
+            this.saveServiceButton.Click += new System.EventHandler(this.saveServiceButton_Click);
+            // 
+            // newServiceButton
+            // 
+            this.newServiceButton.Depth = 0;
+            this.newServiceButton.Location = new System.Drawing.Point(921, 396);
+            this.newServiceButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.newServiceButton.Name = "newServiceButton";
+            this.newServiceButton.Primary = true;
+            this.newServiceButton.Size = new System.Drawing.Size(115, 34);
+            this.newServiceButton.TabIndex = 8;
+            this.newServiceButton.Text = "Новая услуга";
+            this.newServiceButton.UseVisualStyleBackColor = true;
+            this.newServiceButton.Click += new System.EventHandler(this.newServiceButton_Click);
+            // 
+            // rightButton
+            // 
+            this.rightButton.Depth = 0;
+            this.rightButton.Location = new System.Drawing.Point(1150, 394);
+            this.rightButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.rightButton.Name = "rightButton";
+            this.rightButton.Primary = true;
+            this.rightButton.Size = new System.Drawing.Size(58, 34);
+            this.rightButton.TabIndex = 7;
+            this.rightButton.Text = "->";
+            this.rightButton.UseVisualStyleBackColor = true;
+            this.rightButton.Click += new System.EventHandler(this.rightButton_Click);
+            // 
+            // leftButton
+            // 
+            this.leftButton.Depth = 0;
+            this.leftButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.leftButton.Location = new System.Drawing.Point(1051, 394);
+            this.leftButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.leftButton.Name = "leftButton";
+            this.leftButton.Primary = true;
+            this.leftButton.Size = new System.Drawing.Size(57, 34);
+            this.leftButton.TabIndex = 6;
+            this.leftButton.Text = "<-";
+            this.leftButton.UseVisualStyleBackColor = true;
+            this.leftButton.Click += new System.EventHandler(this.leftButton_Click);
+            // 
+            // numberPageLabel
+            // 
+            this.numberPageLabel.AutoSize = true;
+            this.numberPageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numberPageLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.numberPageLabel.Location = new System.Drawing.Point(1114, 396);
+            this.numberPageLabel.Name = "numberPageLabel";
+            this.numberPageLabel.Size = new System.Drawing.Size(33, 37);
+            this.numberPageLabel.TabIndex = 5;
+            this.numberPageLabel.Text = "1";
+            // 
             // serviceBox3
             // 
             this.serviceBox3.Controls.Add(this.deleteServicePicture3);
@@ -648,6 +778,7 @@
             this.deleteServicePicture3.Size = new System.Drawing.Size(30, 29);
             this.deleteServicePicture3.TabIndex = 4;
             this.deleteServicePicture3.TabStop = false;
+            this.deleteServicePicture3.Click += new System.EventHandler(this.deleteServicePicture3_Click);
             // 
             // changePicture3
             // 
@@ -662,11 +793,11 @@
             // timeService3
             // 
             this.timeService3.AutoSize = true;
-            this.timeService3.Font = new System.Drawing.Font("Monotype Corsiva", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.timeService3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.timeService3.ForeColor = System.Drawing.SystemColors.Highlight;
             this.timeService3.Location = new System.Drawing.Point(14, 202);
             this.timeService3.Name = "timeService3";
-            this.timeService3.Size = new System.Drawing.Size(119, 22);
+            this.timeService3.Size = new System.Drawing.Size(140, 24);
             this.timeService3.TabIndex = 2;
             this.timeService3.Text = "Длительность";
             // 
@@ -685,11 +816,11 @@
             // 
             this.nameServiceLabel3.AutoEllipsis = true;
             this.nameServiceLabel3.AutoSize = true;
-            this.nameServiceLabel3.Font = new System.Drawing.Font("Monotype Corsiva", 27.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nameServiceLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nameServiceLabel3.ForeColor = System.Drawing.Color.Orange;
             this.nameServiceLabel3.Location = new System.Drawing.Point(6, 69);
             this.nameServiceLabel3.Name = "nameServiceLabel3";
-            this.nameServiceLabel3.Size = new System.Drawing.Size(152, 45);
+            this.nameServiceLabel3.Size = new System.Drawing.Size(189, 42);
             this.nameServiceLabel3.TabIndex = 0;
             this.nameServiceLabel3.Text = "Название";
             // 
@@ -717,6 +848,7 @@
             this.deleteServicePicture2.Size = new System.Drawing.Size(30, 29);
             this.deleteServicePicture2.TabIndex = 4;
             this.deleteServicePicture2.TabStop = false;
+            this.deleteServicePicture2.Click += new System.EventHandler(this.deleteServicePicture2_Click);
             // 
             // changePicture2
             // 
@@ -731,11 +863,11 @@
             // timeService2
             // 
             this.timeService2.AutoSize = true;
-            this.timeService2.Font = new System.Drawing.Font("Monotype Corsiva", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.timeService2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.timeService2.ForeColor = System.Drawing.SystemColors.Highlight;
             this.timeService2.Location = new System.Drawing.Point(14, 202);
             this.timeService2.Name = "timeService2";
-            this.timeService2.Size = new System.Drawing.Size(119, 22);
+            this.timeService2.Size = new System.Drawing.Size(140, 24);
             this.timeService2.TabIndex = 2;
             this.timeService2.Text = "Длительность";
             // 
@@ -754,11 +886,11 @@
             // 
             this.nameServiceLabel2.AutoEllipsis = true;
             this.nameServiceLabel2.AutoSize = true;
-            this.nameServiceLabel2.Font = new System.Drawing.Font("Monotype Corsiva", 27.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nameServiceLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nameServiceLabel2.ForeColor = System.Drawing.Color.Orange;
             this.nameServiceLabel2.Location = new System.Drawing.Point(6, 69);
             this.nameServiceLabel2.Name = "nameServiceLabel2";
-            this.nameServiceLabel2.Size = new System.Drawing.Size(152, 45);
+            this.nameServiceLabel2.Size = new System.Drawing.Size(189, 42);
             this.nameServiceLabel2.TabIndex = 0;
             this.nameServiceLabel2.Text = "Название";
             // 
@@ -786,6 +918,7 @@
             this.deleteServicePicture1.Size = new System.Drawing.Size(30, 29);
             this.deleteServicePicture1.TabIndex = 4;
             this.deleteServicePicture1.TabStop = false;
+            this.deleteServicePicture1.Click += new System.EventHandler(this.deleteServicePicture1_Click);
             // 
             // changePicture1
             // 
@@ -800,11 +933,11 @@
             // timeService1
             // 
             this.timeService1.AutoSize = true;
-            this.timeService1.Font = new System.Drawing.Font("Monotype Corsiva", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.timeService1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.timeService1.ForeColor = System.Drawing.SystemColors.Highlight;
             this.timeService1.Location = new System.Drawing.Point(14, 202);
             this.timeService1.Name = "timeService1";
-            this.timeService1.Size = new System.Drawing.Size(119, 22);
+            this.timeService1.Size = new System.Drawing.Size(140, 24);
             this.timeService1.TabIndex = 2;
             this.timeService1.Text = "Длительность";
             // 
@@ -823,11 +956,11 @@
             // 
             this.nameServiceLabel1.AutoEllipsis = true;
             this.nameServiceLabel1.AutoSize = true;
-            this.nameServiceLabel1.Font = new System.Drawing.Font("Monotype Corsiva", 27.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nameServiceLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nameServiceLabel1.ForeColor = System.Drawing.Color.Orange;
             this.nameServiceLabel1.Location = new System.Drawing.Point(6, 69);
             this.nameServiceLabel1.Name = "nameServiceLabel1";
-            this.nameServiceLabel1.Size = new System.Drawing.Size(152, 45);
+            this.nameServiceLabel1.Size = new System.Drawing.Size(189, 42);
             this.nameServiceLabel1.TabIndex = 0;
             this.nameServiceLabel1.Text = "Название";
             // 
@@ -849,11 +982,11 @@
             // statisticsOutputLabel
             // 
             this.statisticsOutputLabel.AutoSize = true;
-            this.statisticsOutputLabel.Font = new System.Drawing.Font("Open Sans", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.statisticsOutputLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.statisticsOutputLabel.ForeColor = System.Drawing.Color.Tan;
             this.statisticsOutputLabel.Location = new System.Drawing.Point(50, 74);
             this.statisticsOutputLabel.Name = "statisticsOutputLabel";
-            this.statisticsOutputLabel.Size = new System.Drawing.Size(355, 28);
+            this.statisticsOutputLabel.Size = new System.Drawing.Size(347, 25);
             this.statisticsOutputLabel.TabIndex = 4;
             this.statisticsOutputLabel.Text = "За январь выполнено 50 стрижек";
             // 
@@ -915,6 +1048,7 @@
             this.deleteServicePicture.Size = new System.Drawing.Size(30, 29);
             this.deleteServicePicture.TabIndex = 4;
             this.deleteServicePicture.TabStop = false;
+            this.deleteServicePicture.Click += new System.EventHandler(this.deleteServicePicture_Click);
             // 
             // changePicture
             // 
@@ -929,11 +1063,11 @@
             // timeService
             // 
             this.timeService.AutoSize = true;
-            this.timeService.Font = new System.Drawing.Font("Monotype Corsiva", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.timeService.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.timeService.ForeColor = System.Drawing.SystemColors.Highlight;
             this.timeService.Location = new System.Drawing.Point(14, 202);
             this.timeService.Name = "timeService";
-            this.timeService.Size = new System.Drawing.Size(119, 22);
+            this.timeService.Size = new System.Drawing.Size(140, 24);
             this.timeService.TabIndex = 2;
             this.timeService.Text = "Длительность";
             // 
@@ -952,11 +1086,11 @@
             // 
             this.nameServiceLabel.AutoEllipsis = true;
             this.nameServiceLabel.AutoSize = true;
-            this.nameServiceLabel.Font = new System.Drawing.Font("Monotype Corsiva", 27.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nameServiceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nameServiceLabel.ForeColor = System.Drawing.Color.Orange;
             this.nameServiceLabel.Location = new System.Drawing.Point(6, 69);
             this.nameServiceLabel.Name = "nameServiceLabel";
-            this.nameServiceLabel.Size = new System.Drawing.Size(152, 45);
+            this.nameServiceLabel.Size = new System.Drawing.Size(189, 42);
             this.nameServiceLabel.TabIndex = 0;
             this.nameServiceLabel.Text = "Название";
             // 
@@ -1184,136 +1318,6 @@
             this.settingButton.UseVisualStyleBackColor = true;
             this.settingButton.Click += new System.EventHandler(this.settingButton_Click);
             // 
-            // numberPageLabel
-            // 
-            this.numberPageLabel.AutoSize = true;
-            this.numberPageLabel.Font = new System.Drawing.Font("Modern No. 20", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numberPageLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.numberPageLabel.Location = new System.Drawing.Point(1114, 396);
-            this.numberPageLabel.Name = "numberPageLabel";
-            this.numberPageLabel.Size = new System.Drawing.Size(30, 34);
-            this.numberPageLabel.TabIndex = 5;
-            this.numberPageLabel.Text = "1";
-            // 
-            // leftButton
-            // 
-            this.leftButton.Depth = 0;
-            this.leftButton.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.leftButton.Location = new System.Drawing.Point(1051, 394);
-            this.leftButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.leftButton.Name = "leftButton";
-            this.leftButton.Primary = true;
-            this.leftButton.Size = new System.Drawing.Size(57, 34);
-            this.leftButton.TabIndex = 6;
-            this.leftButton.Text = "<-";
-            this.leftButton.UseVisualStyleBackColor = true;
-            this.leftButton.Click += new System.EventHandler(this.leftButton_Click);
-            // 
-            // rightButton
-            // 
-            this.rightButton.Depth = 0;
-            this.rightButton.Location = new System.Drawing.Point(1150, 394);
-            this.rightButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.rightButton.Name = "rightButton";
-            this.rightButton.Primary = true;
-            this.rightButton.Size = new System.Drawing.Size(58, 34);
-            this.rightButton.TabIndex = 7;
-            this.rightButton.Text = "->";
-            this.rightButton.UseVisualStyleBackColor = true;
-            this.rightButton.Click += new System.EventHandler(this.rightButton_Click);
-            // 
-            // newServiceButton
-            // 
-            this.newServiceButton.Depth = 0;
-            this.newServiceButton.Location = new System.Drawing.Point(921, 396);
-            this.newServiceButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.newServiceButton.Name = "newServiceButton";
-            this.newServiceButton.Primary = true;
-            this.newServiceButton.Size = new System.Drawing.Size(115, 34);
-            this.newServiceButton.TabIndex = 8;
-            this.newServiceButton.Text = "Новая услуга";
-            this.newServiceButton.UseVisualStyleBackColor = true;
-            this.newServiceButton.Click += new System.EventHandler(this.newServiceButton_Click);
-            // 
-            // saveServiceButton
-            // 
-            this.saveServiceButton.Depth = 0;
-            this.saveServiceButton.Location = new System.Drawing.Point(921, 436);
-            this.saveServiceButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.saveServiceButton.Name = "saveServiceButton";
-            this.saveServiceButton.Primary = true;
-            this.saveServiceButton.Size = new System.Drawing.Size(115, 34);
-            this.saveServiceButton.TabIndex = 9;
-            this.saveServiceButton.Text = "Сохранить";
-            this.saveServiceButton.UseVisualStyleBackColor = true;
-            this.saveServiceButton.Visible = false;
-            this.saveServiceButton.Click += new System.EventHandler(this.saveServiceButton_Click);
-            // 
-            // newServiceBox
-            // 
-            this.newServiceBox.Controls.Add(this.label11);
-            this.newServiceBox.Controls.Add(this.label10);
-            this.newServiceBox.Controls.Add(this.label9);
-            this.newServiceBox.Controls.Add(this.newTimeServiceTextBox);
-            this.newServiceBox.Controls.Add(this.newCostServiceTextBox);
-            this.newServiceBox.Controls.Add(this.newNameServiceTextBox);
-            this.newServiceBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.newServiceBox.Location = new System.Drawing.Point(635, 382);
-            this.newServiceBox.Name = "newServiceBox";
-            this.newServiceBox.Size = new System.Drawing.Size(235, 136);
-            this.newServiceBox.TabIndex = 10;
-            this.newServiceBox.TabStop = false;
-            this.newServiceBox.Text = "Новая услуга";
-            this.newServiceBox.Visible = false;
-            // 
-            // newNameServiceTextBox
-            // 
-            this.newNameServiceTextBox.Location = new System.Drawing.Point(82, 25);
-            this.newNameServiceTextBox.Name = "newNameServiceTextBox";
-            this.newNameServiceTextBox.Size = new System.Drawing.Size(132, 20);
-            this.newNameServiceTextBox.TabIndex = 0;
-            // 
-            // newCostServiceTextBox
-            // 
-            this.newCostServiceTextBox.Location = new System.Drawing.Point(82, 60);
-            this.newCostServiceTextBox.Name = "newCostServiceTextBox";
-            this.newCostServiceTextBox.Size = new System.Drawing.Size(132, 20);
-            this.newCostServiceTextBox.TabIndex = 1;
-            // 
-            // newTimeServiceTextBox
-            // 
-            this.newTimeServiceTextBox.Location = new System.Drawing.Point(82, 94);
-            this.newTimeServiceTextBox.Name = "newTimeServiceTextBox";
-            this.newTimeServiceTextBox.Size = new System.Drawing.Size(132, 20);
-            this.newTimeServiceTextBox.TabIndex = 2;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(14, 30);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(57, 13);
-            this.label9.TabIndex = 3;
-            this.label9.Text = "Название";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(14, 63);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(62, 13);
-            this.label10.TabIndex = 4;
-            this.label10.Text = "Стоимость";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(16, 97);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(56, 13);
-            this.label11.TabIndex = 5;
-            this.label11.Text = "Интервал";
-            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1343,6 +1347,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.schedulePersonalPicture)).EndInit();
             this.Uslugi.ResumeLayout(false);
             this.Uslugi.PerformLayout();
+            this.newServiceBox.ResumeLayout(false);
+            this.newServiceBox.PerformLayout();
             this.serviceBox3.ResumeLayout(false);
             this.serviceBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.deleteServicePicture3)).EndInit();
@@ -1369,8 +1375,6 @@
             this.statisticsSkladBox.PerformLayout();
             this.searchSkladBox.ResumeLayout(false);
             this.searchSkladBox.PerformLayout();
-            this.newServiceBox.ResumeLayout(false);
-            this.newServiceBox.PerformLayout();
             this.ResumeLayout(false);
 
         }

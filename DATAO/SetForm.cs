@@ -35,7 +35,7 @@ namespace DATAO
         }
         private void accountNumberTextBox_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
-            toolTip1.ToolTipTitle = "Непраильный ввод";
+            toolTip1.ToolTipTitle = "Неправильный ввод";
             toolTip1.Show("Номер счета должен состоять из 20 цифр", accountNumberTextBox, this.accountNumberTextBox.Location, 5000);
         }
         private void loadrasp()
@@ -44,6 +44,7 @@ namespace DATAO
             scheduleGrid.ColumnsCount = 7;
             scheduleGrid.FixedRows = 1;
             scheduleGrid.Rows.Insert(0);
+            //Массив
             scheduleGrid[0, 0] = new SourceGrid.Cells.ColumnHeader("Понедельник");
             scheduleGrid[0, 1] = new SourceGrid.Cells.ColumnHeader("Вторник");
             scheduleGrid[0, 2] = new SourceGrid.Cells.ColumnHeader("Среда");
@@ -65,25 +66,25 @@ namespace DATAO
             {
                 scheduleGrid.Rows.Insert(1);
                 for (int i = 0; i < 7; i++)
-                { scheduleGrid[1, i] = new SourceGrid.Cells.Cell("", typeof(TimeSpan)); }
+                { scheduleGrid[1, i] = new SourceGrid.Cells.Cell(string.Empty, typeof(TimeSpan)); }
                 
 
                 scheduleGrid.Rows.Insert(2);
                 for (int i = 0; i < 7; i++)
-                { scheduleGrid[2, i] = new SourceGrid.Cells.Cell("", typeof(TimeSpan)); }
+                { scheduleGrid[2, i] = new SourceGrid.Cells.Cell(string.Empty, typeof(TimeSpan)); }
             }
             scheduleGrid.AutoSizeCells();
         }
 
         private void confirmlFlatButton_Click(object sender, EventArgs e)
         {
-            Table.Salon.SalonName = this.nameOrgTextBox.Text;
-            Table.Salon.Phone = this.phoneTextBox.Text;
-            Table.Salon.ActualAddress = this.actualAddressTextBox.Text;
-            Table.Salon.LegalAddress = this.legfalAddressTextBox.Text;
-            Table.Salon.TIN = this.tinTextBox.Text;
+            Table.Salon.SalonName = nameOrgTextBox.Text;
+            Table.Salon.Phone = phoneTextBox.Text;
+            Table.Salon.ActualAddress = actualAddressTextBox.Text;
+            Table.Salon.LegalAddress = legfalAddressTextBox.Text;
+            Table.Salon.TIN = tinTextBox.Text;
             uint accnumb = 0;
-            UInt32.TryParse(this.accountNumberTextBox.Text, out accnumb);
+            uint.TryParse(accountNumberTextBox.Text, out accnumb);
             Table.Salon.AccountNumber = accnumb;
             string[] rasp = {
                 scheduleGrid[1, 0] + "-" + scheduleGrid[2, 0], scheduleGrid[1, 1] + "-" + scheduleGrid[2, 1],
@@ -94,7 +95,7 @@ namespace DATAO
             Table.Salon.SetSchedule(rasp);
             Table.Save();
             adF.UpdateSchedule();
-            this.Close();
+            Close();
         }        
     }
 }

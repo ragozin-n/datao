@@ -41,7 +41,7 @@ namespace DATAO
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            MessageBox.Show(data.ToString()+" "+startTime.ToString()+" "+endTime.ToString()+" "+nameWorker);
+            //MessageBox.Show(data.ToString()+" "+startTime.ToString()+" "+endTime.ToString()+" "+nameWorker);
         }
 
         private void confirmButton_Click(object sender, EventArgs e)
@@ -58,7 +58,7 @@ namespace DATAO
                         break;
                     }
                 }
-                MessageBox.Show(idWorker.ToString());
+                //MessageBox.Show(idWorker.ToString());
                 if (idWorker == 0 && idService == 0) { MessageBox.Show("нет услуги или рабочего"); Hide(); }
                 else {
                     Event currentEvent = new Event(data,
