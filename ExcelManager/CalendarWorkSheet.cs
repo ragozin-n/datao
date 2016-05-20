@@ -73,25 +73,6 @@ namespace ExcelManager
         }
 
         /// <summary>
-        /// Удаляет событие из календаря
-        /// </summary>
-        /// <param name="row">Номер ряда, который нужно удалить</param>
-        public void RemoveEventFromCalendar(int row)
-        {
-            //Не нужно
-            //Event _event = new Event(
-            //        DateTime.FromOADate(long.Parse(Core.Cells[row, 1].Value.ToString())).Date,
-            //        TimeSpan.FromHours(double.Parse(Core.Cells[row, 2].Value.ToString())),
-            //        TimeSpan.FromHours(double.Parse(Core.Cells[row, 3].Value.ToString())),
-            //        Core.Cells[row, 4].Value.ToString(),
-            //        uint.Parse(Core.Cells[row, 5].Value.ToString()),
-            //        uint.Parse(Core.Cells[row, 6].Value.ToString())
-            //        );
-            //Calendar.Remove(_event);
-            //Core.DeleteRow(row);
-        }
-
-        /// <summary>
         /// Удаляет соыбтие из календаря
         /// </summary>
         /// <param name="date">Дата событий для удаления</param>
@@ -120,26 +101,33 @@ namespace ExcelManager
             //Так как нельзя определить два void метода с параметрами uint
             //Здесь используется serviceID, который можно задавать как угодно, по умолчанию он 0
 
-            //Не нужен ваще по-моему
-            //int j = 2;
-            //while (Core.Cells[j, 1].Value != null)
-            //{
-            //    if (Core.Cells[j, 6].Value.ToString() == workerID.ToString())
-            //    {
-            //        Event _event = new Event(
-            //        DateTime.FromOADate(long.Parse(Core.Cells[j, 1].Value.ToString())).Date,
-            //        TimeSpan.FromHours(double.Parse(Core.Cells[j, 2].Value.ToString())),
-            //        TimeSpan.FromHours(double.Parse(Core.Cells[j, 3].Value.ToString())),
-            //        Core.Cells[j, 4].Value.ToString(),
-            //        uint.Parse(Core.Cells[j, 5].Value.ToString()),
-            //        uint.Parse(Core.Cells[j, 6].Value.ToString())
-            //        );
+            int j = 2;
+            while (Core.Cells[j, 1].Value != null)
+            {
+                if (Core.Cells[j, 6].Value.ToString() == workerID.ToString())
+                {
+                    Event _event = null;
+                    try
+                    {
+                        _event = new Event(
+                            DateTime.Parse(Core.Cells[j, 1].Value.ToString()),
+                            TimeSpan.Parse(Core.Cells[j, 2].Value.ToString()),
+                            TimeSpan.Parse(Core.Cells[j, 3].Value.ToString()),
+                            Core.Cells[j, 4].Value.ToString(),
+                            uint.Parse(Core.Cells[j, 6].Value.ToString()),
+                            uint.Parse(Core.Cells[j, 5].Value.ToString())
+                        );
+                    }
+                    catch (Exception ex) when (ex is FormatException || ex is NullReferenceException)
+                    {
+                        //Проверьте правильность записанных данных в таблице
+                    }
 
-            //        Calendar.Remove(_event);
-            //        Core.DeleteRow(j);
-            //    }
-            //    j++;
-            //}
+                    Calendar.Remove(_event);
+                    Core.DeleteRow(j);
+                }
+                j++;
+            }
         }
 
         /// <summary>
@@ -153,9 +141,7 @@ namespace ExcelManager
             {
                 if (Core.Cells[j, 5].Value.ToString() == serviceID.ToString())
                 {
-                    //Первое вхождение
-                    var _event = Calendar.First(_e => _e.ServiceID == serviceID);
-                    Calendar.Remove(_event);
+                    Calendar.Remove(Calendar.First(_e => _e.ServiceID == serviceID));
                     Core.DeleteRow(j);
                 }
                 j++;
@@ -173,9 +159,7 @@ namespace ExcelManager
             {
                 if (Core.Cells[j, 4].Value.ToString() == clientName)
                 {
-                    //Первое вхождение
-                    var _event = Calendar.First(_e => _e.ClientName == clientName);
-                    Calendar.Remove(_event);
+                    Calendar.Remove(Calendar.First(_e => _e.ClientName == clientName));
                     Core.DeleteRow(j);
                 }
                 j++;
@@ -199,8 +183,7 @@ namespace ExcelManager
                     {
                         if (Core.Cells[j, 6].Value.ToString() == workerID.ToString())
                         {
-                            var _event = Calendar.First(_e => (_e.Date == date && _e.StartAt == startAt && _e.WorkerID == workerID));
-                            Calendar.Remove(_event);
+                            Calendar.Remove(Calendar.First(_e => (_e.Date == date && _e.StartAt == startAt && _e.WorkerID == workerID)));
                             Core.DeleteRow(j);
                         }
                     }
@@ -215,16 +198,16 @@ namespace ExcelManager
         public CalendarWorkSheet(ExcelWorksheet sheet)
         {
             Core = sheet;
-            //Не знаю, нужно ли
-            Calendar.Clear();
+
             //Обновляем лист событий
             int j = 2;
             //Удивительно, но первая ячейка в таблице это 1,1
             while (Core.Cells[j, 1].Value != null)
             {
+                Event _event = null;
                 try
                 {
-                    Event _event = new Event(
+                    _event = new Event(
                         DateTime.Parse(Core.Cells[j, 1].Value.ToString()),
                         TimeSpan.Parse(Core.Cells[j, 2].Value.ToString()),
                         TimeSpan.Parse(Core.Cells[j, 3].Value.ToString()),
@@ -232,12 +215,15 @@ namespace ExcelManager
                         uint.Parse(Core.Cells[j, 6].Value.ToString()),
                         uint.Parse(Core.Cells[j, 5].Value.ToString())
                     );
-                    Calendar.Add(_event);
-                    j++;
                 }
-                catch (Exception)
+                catch (Exception ex) when (ex is FormatException || ex is NullReferenceException)
                 {
                     //Возникла ошибка чтения строки
+                    j++;
+                }
+                finally
+                {
+                    Calendar.Add(_event);
                     j++;
                 }
             }

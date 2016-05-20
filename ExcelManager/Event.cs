@@ -25,7 +25,8 @@ namespace ExcelManager
             }
             else
             {
-                ServiceID = (uint)GetHashCode();
+                Random _randomizer = new Random();
+                ServiceID = (uint)_randomizer.Next(0, 99999);
             }
         }
     }

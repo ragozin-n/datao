@@ -52,7 +52,8 @@ namespace ExcelManager
             }
             else
             {
-                ID = (uint)GetHashCode();
+                Random _randomizer = new Random();
+                ID = (uint)_randomizer.Next(0, 99999);
             }
         }
 

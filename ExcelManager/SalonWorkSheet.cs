@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using OfficeOpenXml;
+using System.Diagnostics;
 
 namespace ExcelManager
 {
@@ -12,7 +13,15 @@ namespace ExcelManager
         {
             get
             {
-                return Core.Cells["B3"].Value.ToString();
+                try
+                {
+                    return Core.Cells["B3"].Value.ToString();
+                }
+                catch (NullReferenceException ex)
+                {
+                    Debug.WriteLine(ex.Message);
+                    return string.Empty;
+                }
             }
             set
             {
@@ -24,7 +33,15 @@ namespace ExcelManager
         {
             get
             {
-                return Core.Cells["B4"].Value.ToString();
+                try
+                {
+                    return Core.Cells["B4"].Value.ToString();
+                }
+                catch (NullReferenceException ex)
+                {
+                    Debug.WriteLine(ex.Message);
+                    return string.Empty;
+                }
             }
             set
             {
@@ -36,7 +53,15 @@ namespace ExcelManager
         {
             get
             {
-                return Core.Cells["B5"].Value.ToString();
+                try
+                {
+                    return Core.Cells["B5"].Value.ToString();
+                }
+                catch (NullReferenceException ex)
+                {
+                    Debug.WriteLine(ex.Message);
+                    return string.Empty;
+                }
             }
             set
             {
@@ -48,7 +73,15 @@ namespace ExcelManager
         {
             get
             {
-                return Core.Cells["B6"].Value.ToString();
+                try
+                {
+                    return Core.Cells["B6"].Value.ToString();
+                }
+                catch (NullReferenceException ex)
+                {
+                    Debug.WriteLine(ex.Message);
+                    return string.Empty;
+                }
             }
             set
             {
@@ -63,9 +96,10 @@ namespace ExcelManager
                 if(uint.TryParse(Core.Cells["B7"].Value.ToString(), out result))
                 {
                     return result;
-                } else
+                }
+                else
                 {
-                    throw new ArgumentException();
+                    throw new FormatException();
                 }
             }
             set
@@ -77,7 +111,7 @@ namespace ExcelManager
                 }
                 else
                 {
-                    throw new ArgumentException();
+                    throw new FormatException();
                 }
             }
         }
@@ -85,7 +119,15 @@ namespace ExcelManager
         {
             get
             {
-                return Core.Cells["B8"].Value.ToString();
+                try
+                {
+                    return Core.Cells["B8"].Value.ToString();
+                }
+                catch (NullReferenceException ex)
+                {
+                    Debug.WriteLine(ex.Message);
+                    return string.Empty;
+                }
             }
             set
             {
@@ -101,7 +143,7 @@ namespace ExcelManager
         {
             if (schedule.Length > 7)
             {
-                throw new ArgumentOutOfRangeException();
+                throw new FormatException();
             }
 
             Schedule.Clear();
@@ -134,9 +176,11 @@ namespace ExcelManager
                 {
                     Schedule.Add(new WorkDay(Core.Cells[2, j + 1].Value.ToString()));
                 }
-                catch (NullReferenceException)
+                catch (Exception ex) when (ex is FormatException || ex is NullReferenceException)
                 {
-                    //Возникла ошибка при чтении ячейки [2,j+1]
+                    Debug.WriteLine(ex.Message);
+                    //Бросать?
+                    //throw;
                 }
             }
         }

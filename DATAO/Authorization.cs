@@ -44,12 +44,10 @@ namespace DATAO
         }
 
         public static bool? GetDataoInit(ref UserCredential credential)
-        {
+        { 
             FilesResource.ListRequest listRequest;
             DriveService service;
             IList<Google.Apis.Drive.v3.Data.File> files;
-            try
-            {
                 //Создаем сервис запроса на гугл диск
                 service = new DriveService(new BaseClientService.Initializer()
                 {
@@ -61,10 +59,11 @@ namespace DATAO
                 listRequest = service.Files.List();
                 listRequest.PageSize = 50;
                 listRequest.Fields = "nextPageToken, files(id, name)";
-
+            try
+            {
                 //Лист айдишников файлов
                 files = listRequest.Execute()
-                    .Files;
+                .Files;
             }
             catch (Exception ex)
             {
@@ -79,24 +78,39 @@ namespace DATAO
                 {
                     if (file.Name == "datao.init")
                     {
-                        //Загружаем с драйва datao.init
-                        var request = service.Files.Export(file.Id, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
-                        var stream = new MemoryStream();
-                        request.Download(stream);
-                        
-                        //Сохраняем локально
-                        byte[] fileFromServer = stream.ToArray();
-                        File.WriteAllBytes(@"..\..\datao.init.xlsx", fileFromServer);
-                        stream.Close();
-                        //MessageBox.Show("We are success downloaded datao.init file!\nPress OK to continue...");
+                        FilesResource.ExportRequest request = null;
+                        MemoryStream stream = null;
+                        try
+                        {
+                            //Загружаем с драйва datao.init
+                            request = service.Files.Export(file.Id, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+                            stream = new MemoryStream();
+                            request.Download(stream);
 
-                        //Сохраняем ссылку на текущий datao.init файл, для последующего его удаления
-                        DataoID = file.Id;
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Произошла ошибка при загрузке datao.init");
+                            return false;
+                        }
+                        finally
+                        {
+                            if (stream != null)
+                            {
+                                //Сохраняем локально
+                                byte[] fileFromServer = stream.ToArray();
+                                File.WriteAllBytes(@"..\..\datao.init.xlsx", fileFromServer);
+                                stream.Close();
+                                //Сохраняем ссылку на текущий datao.init файл, для последующего его удаления
+                                DataoID = file.Id;
+                            }
+                        }
                         return true;
                     }
                 }
             }
 
+            //Если же не нашли datao.init
             DialogResult dialogResult = MessageBox.Show("Do you want to use our template?\n(Also upload to Drive, if available)", "No datao.init file found!", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {

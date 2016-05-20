@@ -23,6 +23,10 @@ namespace ExcelManager
                 Start = _start.TimeOfDay;
                 End = _end.TimeOfDay;
             }
+            else
+            {
+                throw new FormatException();
+            }
         }
     }
 }

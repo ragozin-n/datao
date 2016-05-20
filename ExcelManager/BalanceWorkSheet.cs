@@ -16,18 +16,25 @@ namespace ExcelManager
         public BalanceWorkSheet(ExcelWorksheet _sheet)
         {
             Core = _sheet;
-            //Не обязательно
-            Balance.Clear();
+
             int j = 2;
             while (Core.Cells[1,j].Value != null)
             {
                 Dictionary<Item.Months, int> _balance = new Dictionary<Item.Months, int>();
                 for (int i = 2; i < 14; i++)
                 {
-                    _balance.Add((Item.Months)i - 2, int.Parse(Core.Cells[i, j].Value.ToString()));
+                    try
+                    {
+                        _balance.Add((Item.Months)i - 2, int.Parse(Core.Cells[i, j].Value.ToString()));
+                    }
+                    catch (Exception ex) when (ex is FormatException || ex is NullReferenceException)
+                    {
+                        j++;
+                    }
                 }
-                Evidence _consumable = new Evidence(Core.Cells[1, j].Value.ToString(), _balance);
+                Evidence _consumable = new Evidence(Core.Cells[1,j].Value != null ? Core.Cells[1,j].Value.ToString() : string.Empty, _balance);
                 Balance.Add(_consumable);
+                j++;
             }
         }
 

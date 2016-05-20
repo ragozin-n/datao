@@ -1,6 +1,7 @@
 ﻿using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,24 +19,29 @@ namespace ExcelManager
         public ServiceWorkSheet(ExcelWorksheet _sheet)
         {
             Core = _sheet;
-            ServiceList.Clear();
+
             int j = 2;
             while (Core.Cells[j, 1].Value != null)
             {
+                Service _service = null;
                 try
                 {
-                    Service _service = new Service(
+                    _service = new Service(
                         Core.Cells[j, 2].Value.ToString(),
                         uint.Parse(Core.Cells[j, 3].Value.ToString()),
                         DateTime.Parse(Core.Cells[j, 5].Value.ToString()).TimeOfDay,
                         uint.Parse(Core.Cells[j, 1].Value.ToString())
                         );
-                    ServiceList.Add(_service);
-                    j++;
                 }
-                catch (Exception)
+                catch (Exception ex) when (ex is FormatException || ex is NullReferenceException)
                 {
                     //Ошибка
+                    Debug.WriteLine(ex.Message);
+                    j++;
+                }
+                finally
+                {
+                    ServiceList.Add(_service);
                     j++;
                 }
             }

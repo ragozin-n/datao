@@ -1,6 +1,7 @@
 ﻿using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,33 +20,50 @@ namespace ExcelManager
         public PersonalWorkSheet(ExcelWorksheet _sheet)
         {
             Core = _sheet;
-            Workers.Clear();
+
             int j = 2;
             while (Core.Cells[j, 1].Value != null)
             {
-                try
+                List<bool> _schedule = new List<bool>();
+                for (int i = 0; i < 7; i++)
                 {
-                    List<bool> _schedule = new List<bool>();
-                    for (int i = 0; i < 7; i++)
+                    try
                     {
                         _schedule.Add(bool.Parse(Core.Cells[j, 8 + i].Value.ToString()));
                     }
-                    Workers.Add(new Human(
-                        Core.Cells[j, 2].Value.ToString(),
-                        Core.Cells[j, 3].Value.ToString(),
-                        Core.Cells[j, 4].Value.ToString(),
-                        Core.Cells[j, 5].Value.ToString(),
-                        uint.Parse(Core.Cells[j, 6].Value.ToString()),
-                        Core.Cells[j, 7].Value.ToString(),
-                        Core.Cells[j, 15].Value.ToString(),
-                        Core.Cells[j, 16].Value.ToString(),
-                        _schedule.ToArray(),
-                        uint.Parse(Core.Cells[j, 1].Value.ToString())
-                        ));
+                    catch (FormatException ex)
+                    {
+                        //Невозможно распарсить бул
+                        Debug.WriteLine(ex.Message);
+                        throw;
+                    }
+                }
+
+                Human _human = null;
+                try
+                {
+                    _human = new Human(
+                    Core.Cells[j, 2].Value.ToString(),
+                    Core.Cells[j, 3].Value.ToString(),
+                    Core.Cells[j, 4].Value.ToString(),
+                    Core.Cells[j, 5].Value.ToString(),
+                    uint.Parse(Core.Cells[j, 6].Value.ToString()),
+                    Core.Cells[j, 7].Value.ToString(),
+                    Core.Cells[j, 15].Value.ToString(),
+                    Core.Cells[j, 16].Value.ToString(),
+                    _schedule.ToArray(),
+                    uint.Parse(Core.Cells[j, 1].Value.ToString())
+                    );
+                }
+                catch (Exception ex) when (ex is FormatException || ex is NullReferenceException)
+                {
+                    //Ошибка чтения строки из таблицы
+                    Debug.WriteLine(ex.Message);
                     j++;
                 }
-                catch (Exception)
+                finally
                 {
+                    Workers.Add(_human);
                     j++;
                 }
             }
