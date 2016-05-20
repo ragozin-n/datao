@@ -121,14 +121,15 @@ namespace DATAO
                 FilesResource.CreateMediaUpload _request;
 
                 //TODO: Путь до локальной таблицы-шаблона
-                using (var _stream = new FileStream("datao.init.xlsx",
-                                        FileMode.Open))
-                {
-                    _request = service.Files.Create(
-                        fileMetadata, _stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
-                    _request.Fields = "id";
-                    _request.Upload();
-                }
+                //using (var _stream = new FileStream("datao.init.xlsx",
+                //                        FileMode.Open))
+                //{
+                //    _request = service.Files.Create(
+                //        fileMetadata, _stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+                //    _request.Fields = "id";
+                //    _request.Upload();
+                //}
+                MessageBox.Show("Типо загружаем вам на диск файл");
                 return false;
             }
             //Закрываем программу в случае отрицательного ответа
@@ -153,7 +154,7 @@ namespace DATAO
                     ApplicationName = "datao",
                 });
 
-                //НИКАКИХ УДАЛЕНИЙ НАХУЙ БОЛЬШЕ НИКОГДА
+                //НИКАКИХ УДАЛЕНИЙ БОЛЬШЕ НИКОГДА
                 /*
                 //Определяем параметры запроса удаление всех datao.init находящихся на сервере
                 FilesResource.ListRequest listRequest = service.Files.List();
@@ -168,7 +169,15 @@ namespace DATAO
                 {
                     if (file.Name == "datao.init")
                     {
-                        service.Files.Delete(file.Id).Execute();
+                        try
+                        {
+                            service.Files.Delete(file.Id).Execute();
+                        }
+                        catch(Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                            throw;
+                        }
                     }
                 }
                 */
@@ -176,7 +185,15 @@ namespace DATAO
                 request = service.Files.Create(
                     fileMetadata, stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
                 request.Fields = "id";
-                request.Upload();
+                try
+                {
+                    request.Upload();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    throw;
+                }
             }
 
             //Удаляем локальную копию (опционально)
