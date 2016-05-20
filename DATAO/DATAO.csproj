@@ -52,9 +52,6 @@
       <HintPath>..\packages\BouncyCastle.1.7.0\lib\Net40-Client\BouncyCastle.Crypto.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="ExcelManager">
-      <HintPath>..\ExcelManager\bin\Debug\ExcelManager.dll</HintPath>
-    </Reference>
     <Reference Include="Google.Apis, Version=1.11.1.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Apis.1.11.1\lib\net45\Google.Apis.dll</HintPath>
       <Private>True</Private>
@@ -114,12 +111,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddWorker.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AddWorker.Designer.cs">
-      <DependentUpon>AddWorker.cs</DependentUpon>
-    </Compile>
     <Compile Include="AdminForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,9 +132,6 @@
     <Compile Include="SetForm.Designer.cs">
       <DependentUpon>SetForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AddWorker.resx">
-      <DependentUpon>AddWorker.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="AdminForm.resx">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -200,9 +188,17 @@
   <ItemGroup>
     <None Include="Resources\-.png" />
     <None Include="Resources\+-.png" />
+    <None Include="Resources\changeservice.png" />
+    <None Include="Resources\deleteservice.png" />
     <Content Include="Resources\grafik.png" />
     <None Include="Resources\set.png" />
     <None Include="Resources\grafik1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ExcelManager\ExcelManager.csproj">
+      <Project>{7245203a-666c-4f74-9090-e2e4e304e117}</Project>
+      <Name>ExcelManager</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,6 +1,7 @@
 ﻿using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ExcelManager
 {
@@ -77,16 +78,17 @@ namespace ExcelManager
         /// <param name="row">Номер ряда, который нужно удалить</param>
         public void RemoveEventFromCalendar(int row)
         {
-            Event _event = new Event(
-                    DateTime.FromOADate(long.Parse(Core.Cells[row, 1].Value.ToString())).Date,
-                    TimeSpan.FromHours(double.Parse(Core.Cells[row, 2].Value.ToString())),
-                    TimeSpan.FromHours(double.Parse(Core.Cells[row, 3].Value.ToString())),
-                    Core.Cells[row, 4].Value.ToString(),
-                    uint.Parse(Core.Cells[row, 5].Value.ToString()),
-                    uint.Parse(Core.Cells[row, 6].Value.ToString())
-                    );
-            Calendar.Remove(_event);
-            Core.DeleteRow(row);
+            //Не нужно
+            //Event _event = new Event(
+            //        DateTime.FromOADate(long.Parse(Core.Cells[row, 1].Value.ToString())).Date,
+            //        TimeSpan.FromHours(double.Parse(Core.Cells[row, 2].Value.ToString())),
+            //        TimeSpan.FromHours(double.Parse(Core.Cells[row, 3].Value.ToString())),
+            //        Core.Cells[row, 4].Value.ToString(),
+            //        uint.Parse(Core.Cells[row, 5].Value.ToString()),
+            //        uint.Parse(Core.Cells[row, 6].Value.ToString())
+            //        );
+            //Calendar.Remove(_event);
+            //Core.DeleteRow(row);
         }
 
         /// <summary>
@@ -100,15 +102,7 @@ namespace ExcelManager
             {
                 if (Core.Cells[j, 1].Value.ToString() == date.ToString())
                 {
-                    Event _event = new Event(
-                    DateTime.FromOADate(long.Parse(Core.Cells[j, 1].Value.ToString())).Date,
-                    TimeSpan.FromHours(double.Parse(Core.Cells[j, 2].Value.ToString())),
-                    TimeSpan.FromHours(double.Parse(Core.Cells[j, 3].Value.ToString())),
-                    Core.Cells[j, 4].Value.ToString(),
-                    uint.Parse(Core.Cells[j, 5].Value.ToString()),
-                    uint.Parse(Core.Cells[j, 6].Value.ToString())
-                    );
-
+                    var _event = Calendar.First(_e => _e.Date == date);
                     Calendar.Remove(_event);
                     Core.DeleteRow(j);
                 }
@@ -125,25 +119,27 @@ namespace ExcelManager
             //Это хитрый метод для удаления только событий данного рабочего!
             //Так как нельзя определить два void метода с параметрами uint
             //Здесь используется serviceID, который можно задавать как угодно, по умолчанию он 0
-            int j = 2;
-            while (Core.Cells[j, 1].Value != null)
-            {
-                if (Core.Cells[j, 6].Value.ToString() == workerID.ToString())
-                {
-                    Event _event = new Event(
-                    DateTime.FromOADate(long.Parse(Core.Cells[j, 1].Value.ToString())).Date,
-                    TimeSpan.FromHours(double.Parse(Core.Cells[j, 2].Value.ToString())),
-                    TimeSpan.FromHours(double.Parse(Core.Cells[j, 3].Value.ToString())),
-                    Core.Cells[j, 4].Value.ToString(),
-                    uint.Parse(Core.Cells[j, 5].Value.ToString()),
-                    uint.Parse(Core.Cells[j, 6].Value.ToString())
-                    );
 
-                    Calendar.Remove(_event);
-                    Core.DeleteRow(j);
-                }
-                j++;
-            }
+            //Не нужен ваще по-моему
+            //int j = 2;
+            //while (Core.Cells[j, 1].Value != null)
+            //{
+            //    if (Core.Cells[j, 6].Value.ToString() == workerID.ToString())
+            //    {
+            //        Event _event = new Event(
+            //        DateTime.FromOADate(long.Parse(Core.Cells[j, 1].Value.ToString())).Date,
+            //        TimeSpan.FromHours(double.Parse(Core.Cells[j, 2].Value.ToString())),
+            //        TimeSpan.FromHours(double.Parse(Core.Cells[j, 3].Value.ToString())),
+            //        Core.Cells[j, 4].Value.ToString(),
+            //        uint.Parse(Core.Cells[j, 5].Value.ToString()),
+            //        uint.Parse(Core.Cells[j, 6].Value.ToString())
+            //        );
+
+            //        Calendar.Remove(_event);
+            //        Core.DeleteRow(j);
+            //    }
+            //    j++;
+            //}
         }
 
         /// <summary>
@@ -157,15 +153,8 @@ namespace ExcelManager
             {
                 if (Core.Cells[j, 5].Value.ToString() == serviceID.ToString())
                 {
-                    Event _event = new Event(
-                    DateTime.FromOADate(long.Parse(Core.Cells[j, 1].Value.ToString())).Date,
-                    TimeSpan.FromHours(double.Parse(Core.Cells[j, 2].Value.ToString())),
-                    TimeSpan.FromHours(double.Parse(Core.Cells[j, 3].Value.ToString())),
-                    Core.Cells[j, 4].Value.ToString(),
-                    uint.Parse(Core.Cells[j, 5].Value.ToString()),
-                    uint.Parse(Core.Cells[j, 6].Value.ToString())
-                    );
-
+                    //Первое вхождение
+                    var _event = Calendar.First(_e => _e.ServiceID == serviceID);
                     Calendar.Remove(_event);
                     Core.DeleteRow(j);
                 }
@@ -184,15 +173,8 @@ namespace ExcelManager
             {
                 if (Core.Cells[j, 4].Value.ToString() == clientName)
                 {
-                    Event _event = new Event(
-                    DateTime.FromOADate(long.Parse(Core.Cells[j, 1].Value.ToString())).Date,
-                    TimeSpan.FromHours(double.Parse(Core.Cells[j, 2].Value.ToString())),
-                    TimeSpan.FromHours(double.Parse(Core.Cells[j, 3].Value.ToString())),
-                    Core.Cells[j, 4].Value.ToString(),
-                    uint.Parse(Core.Cells[j, 5].Value.ToString()),
-                    uint.Parse(Core.Cells[j, 6].Value.ToString())
-                    );
-
+                    //Первое вхождение
+                    var _event = Calendar.First(_e => _e.ClientName == clientName);
                     Calendar.Remove(_event);
                     Core.DeleteRow(j);
                 }
@@ -201,14 +183,41 @@ namespace ExcelManager
         }
 
         /// <summary>
+        /// Удаляет событие из календаря
+        /// </summary>
+        /// <param name="date">Дата</param>
+        /// <param name="startAt">Время начала</param>
+        /// <param name="workerID">ID мастера</param>
+        public void RemoveEventFromCalendar(DateTime date, TimeSpan startAt, uint workerID)
+        {
+            int j = 2;
+            while (Core.Cells[j, 1].Value != null)
+            {
+                if (DateTime.Parse(Core.Cells[j, 1].Value.ToString()).ToString() == date.ToString())
+                {
+                    if (TimeSpan.Parse(Core.Cells[j, 2].Value.ToString()).ToString() == startAt.ToString())
+                    {
+                        if (Core.Cells[j, 6].Value.ToString() == workerID.ToString())
+                        {
+                            var _event = Calendar.First(_e => (_e.Date == date && _e.StartAt == startAt && _e.WorkerID == workerID));
+                            Calendar.Remove(_event);
+                            Core.DeleteRow(j);
+                        }
+                    }
+                }
+                j++;
+            }
+        }
+        /// <summary>
         /// Конструктор по умолчанию
         /// </summary>
         /// <param name="sheet">Лист "Календарь"</param>
         public CalendarWorkSheet(ExcelWorksheet sheet)
         {
             Core = sheet;
+            //Не знаю, нужно ли
+            Calendar.Clear();
             //Обновляем лист событий
-            //TODO: Исправить выход за пределы массива
             int j = 2;
             //Удивительно, но первая ячейка в таблице это 1,1
             while (Core.Cells[j, 1].Value != null)
@@ -216,14 +225,13 @@ namespace ExcelManager
                 try
                 {
                     Event _event = new Event(
-                    DateTime.FromOADate(long.Parse(Core.Cells[j, 1].Value.ToString())).Date,
-                    TimeSpan.FromHours(double.Parse(Core.Cells[j, 2].Value.ToString())),
-                    TimeSpan.FromHours(double.Parse(Core.Cells[j, 3].Value.ToString())),
-                    Core.Cells[j, 4].Value.ToString(),
-                    uint.Parse(Core.Cells[j, 5].Value.ToString()),
-                    uint.Parse(Core.Cells[j, 6].Value.ToString())
+                        DateTime.Parse(Core.Cells[j, 1].Value.ToString()),
+                        TimeSpan.Parse(Core.Cells[j, 2].Value.ToString()),
+                        TimeSpan.Parse(Core.Cells[j, 3].Value.ToString()),
+                        Core.Cells[j, 4].Value.ToString(),
+                        uint.Parse(Core.Cells[j, 6].Value.ToString()),
+                        uint.Parse(Core.Cells[j, 5].Value.ToString())
                     );
-
                     Calendar.Add(_event);
                     j++;
                 }

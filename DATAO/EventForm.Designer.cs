@@ -33,8 +33,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.selectService = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.selectTime = new System.Windows.Forms.ComboBox();
-            this.confirmButton = new System.Windows.Forms.Button();
+            this.selectTimeStart = new System.Windows.Forms.ComboBox();
+            this.selectTimeEnd = new System.Windows.Forms.ComboBox();
+            this.confirmButton = new MaterialSkin.Controls.MaterialFlatButton();
+            this.clientName = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // selectWorker
@@ -50,9 +53,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(48, 145);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(103, 13);
+            this.label1.Size = new System.Drawing.Size(68, 13);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Выберите мастера";
+            this.label1.Text = "Ваш мастер";
             // 
             // label2
             // 
@@ -70,41 +73,75 @@
             this.selectService.Name = "selectService";
             this.selectService.Size = new System.Drawing.Size(199, 21);
             this.selectService.TabIndex = 3;
+            this.selectService.SelectedIndexChanged += new System.EventHandler(this.selectService_SelectedIndexChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(51, 209);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(92, 13);
+            this.label3.Size = new System.Drawing.Size(99, 13);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Выберите время";
+            this.label3.Text = "Выбранное время";
             // 
-            // selectTime
+            // selectTimeStart
             // 
-            this.selectTime.FormattingEnabled = true;
-            this.selectTime.Location = new System.Drawing.Point(51, 225);
-            this.selectTime.Name = "selectTime";
-            this.selectTime.Size = new System.Drawing.Size(196, 21);
-            this.selectTime.TabIndex = 5;
+            this.selectTimeStart.FormattingEnabled = true;
+            this.selectTimeStart.Location = new System.Drawing.Point(51, 225);
+            this.selectTimeStart.Name = "selectTimeStart";
+            this.selectTimeStart.Size = new System.Drawing.Size(100, 21);
+            this.selectTimeStart.TabIndex = 5;
+            // 
+            // selectTimeEnd
+            // 
+            this.selectTimeEnd.FormattingEnabled = true;
+            this.selectTimeEnd.Location = new System.Drawing.Point(158, 225);
+            this.selectTimeEnd.Name = "selectTimeEnd";
+            this.selectTimeEnd.Size = new System.Drawing.Size(92, 21);
+            this.selectTimeEnd.TabIndex = 7;
             // 
             // confirmButton
             // 
-            this.confirmButton.Location = new System.Drawing.Point(51, 267);
+            this.confirmButton.AutoSize = true;
+            this.confirmButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.confirmButton.Depth = 0;
+            this.confirmButton.Location = new System.Drawing.Point(89, 333);
+            this.confirmButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.confirmButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.confirmButton.Name = "confirmButton";
-            this.confirmButton.Size = new System.Drawing.Size(135, 35);
-            this.confirmButton.TabIndex = 6;
+            this.confirmButton.Primary = false;
+            this.confirmButton.Size = new System.Drawing.Size(112, 36);
+            this.confirmButton.TabIndex = 8;
             this.confirmButton.Text = "Подтвердить";
             this.confirmButton.UseVisualStyleBackColor = true;
-            this.confirmButton.Click += new System.EventHandler(this.button1_Click);
+            this.confirmButton.Click += new System.EventHandler(this.confirmButton_Click);
+            // 
+            // clientName
+            // 
+            this.clientName.Location = new System.Drawing.Point(51, 282);
+            this.clientName.Name = "clientName";
+            this.clientName.Size = new System.Drawing.Size(199, 20);
+            this.clientName.TabIndex = 9;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(51, 263);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(73, 13);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Имя клиента";
             // 
             // EventForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(299, 346);
+            this.ClientSize = new System.Drawing.Size(299, 417);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.clientName);
             this.Controls.Add(this.confirmButton);
-            this.Controls.Add(this.selectTime);
+            this.Controls.Add(this.selectTimeEnd);
+            this.Controls.Add(this.selectTimeStart);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.selectService);
             this.Controls.Add(this.label2);
@@ -125,7 +162,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox selectService;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox selectTime;
-        private System.Windows.Forms.Button confirmButton;
+        private System.Windows.Forms.ComboBox selectTimeStart;
+        private System.Windows.Forms.ComboBox selectTimeEnd;
+        private MaterialSkin.Controls.MaterialFlatButton confirmButton;
+        private System.Windows.Forms.TextBox clientName;
+        private System.Windows.Forms.Label label4;
     }
 }

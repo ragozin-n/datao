@@ -12,7 +12,7 @@ namespace DATAO
 {
     sealed class Authorization
     {
-
+        private static string DataoID { get; set;}
         public static UserCredential FillCredentials(ref UserCredential credential)
         {
             string[] scopes = { DriveService.Scope.Drive };
@@ -90,9 +90,8 @@ namespace DATAO
                         stream.Close();
                         //MessageBox.Show("We are success downloaded datao.init file!\nPress OK to continue...");
 
-                        //Почему-то не работает
-                        service.Files.Delete(file.Id).Execute();
-
+                        //Сохраняем ссылку на текущий datao.init файл, для последующего его удаления
+                        DataoID = file.Id;
                         return true;
                     }
                 }
@@ -129,21 +128,46 @@ namespace DATAO
             fileMetadata.Name = "datao.init";
             fileMetadata.MimeType = "application/vnd.google-apps.spreadsheet";
             FilesResource.CreateMediaUpload request;
+
             using (var stream = new FileStream(@"..\..\datao.init.xlsx",
                                     FileMode.Open))
             {
+                //Создаем запрос
                 service = new DriveService(new BaseClientService.Initializer()
                 {
                     HttpClientInitializer = credential,
                     ApplicationName = "datao",
                 });
 
+                //НИКАКИХ УДАЛЕНИЙ НАХУЙ БОЛЬШЕ НИКОГДА
+                /*
+                //Определяем параметры запроса удаление всех datao.init находящихся на сервере
+                FilesResource.ListRequest listRequest = service.Files.List();
+                listRequest.PageSize = 50;
+                listRequest.Fields = "nextPageToken, files(id, name)";
+
+                //Лист айдишников файлов
+                IList<Google.Apis.Drive.v3.Data.File> files = listRequest.Execute()
+                    .Files;
+
+                foreach (var file in files)
+                {
+                    if (file.Name == "datao.init")
+                    {
+                        service.Files.Delete(file.Id).Execute();
+                    }
+                }
+                */
+                //Заполняем параметры запроса на создание файла
                 request = service.Files.Create(
                     fileMetadata, stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
                 request.Fields = "id";
                 request.Upload();
             }
-            File.Delete(@"..\..\datao.init.xlsx");
+
+            //Удаляем локальную копию (опционально)
+            //ПУКАН БОМБАНУЛ БОЛЬШЕ НИЧЕГО НЕ УДАЛЯЕМ
+            //File.Delete(@"..\..\datao.init.xlsx");
         }
     }
 }

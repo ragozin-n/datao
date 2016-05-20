@@ -11,6 +11,8 @@ namespace ExcelManager
         public static SalonWorkSheet Salon { get; set; }
         public static CalendarWorkSheet WorkList { get; set; }
         public static PersonalWorkSheet PersonalList { get; set; }
+        public static ServiceWorkSheet Services { get; set; }
+        public static StorehouseWorkSheet Storehouse { get; set; }
         
         
         /// <summary>
@@ -27,6 +29,10 @@ namespace ExcelManager
             Salon = new SalonWorkSheet(xlPackage.Workbook.Worksheets["Салон"]);
             WorkList = new CalendarWorkSheet(xlPackage.Workbook.Worksheets["Календарь"]);
             PersonalList = new PersonalWorkSheet(xlPackage.Workbook.Worksheets["Персонал"]);
+            Services = new ServiceWorkSheet(xlPackage.Workbook.Worksheets["Услуги"]);
+            Storehouse = new StorehouseWorkSheet(xlPackage.Workbook.Worksheets["Склад"]);
+            //Расходы
+            //Доходы
         }
 
 
