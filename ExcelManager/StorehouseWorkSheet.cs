@@ -81,10 +81,11 @@ namespace ExcelManager
                             balance.Add((Item.Months)i - 6, uint.Parse(Core.Cells[j, i].Value.ToString()));
                         }
                     }
-                    catch (FormatException ex)
+                    catch (Exception ex) when (ex is FormatException || ex is NullReferenceException)
                     {
                         Debug.WriteLine(ex.Message);
-                        throw;
+                        //throw;
+                        j++;
                     }
                     j++;
                 }

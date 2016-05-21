@@ -4,6 +4,7 @@ using Google.Apis.Services;
 using Google.Apis.Util.Store;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using System.Windows.Forms;
@@ -99,7 +100,14 @@ namespace DATAO
                             {
                                 //Сохраняем локально
                                 byte[] fileFromServer = stream.ToArray();
-                                File.WriteAllBytes(@"..\..\datao.init.xlsx", fileFromServer);
+                                try
+                                {
+                                    File.WriteAllBytes(@"..\..\datao.init.xlsx", fileFromServer);
+                                } catch(IOException ex)
+                                {
+                                    Debug.WriteLine(ex.Message);
+                                    MessageBox.Show("Произошла ошибка при записи таблицы на диск\n " + ex.Message);
+                                }
                                 stream.Close();
                                 //Сохраняем ссылку на текущий datao.init файл, для последующего его удаления
                                 DataoID = file.Id;
