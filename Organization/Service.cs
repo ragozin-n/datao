@@ -22,11 +22,6 @@ namespace Organization
         private double ServiceCost { get; set; }
 
         /// <summary>
-        /// Отвечает за выполнение услуги
-        /// </summary>
-        public bool isComplete { get; set; }
-
-        /// <summary>
         /// Длительность услуги
         /// </summary>
         public TimeSpan Duration { get; set; }
@@ -40,10 +35,5 @@ namespace Organization
         /// Сумма ServiceCost и Expences
         /// </summary>
         public double Cost { get; set; }
-
-        /// <summary>
-        /// Дата записи услуги
-        /// </summary>
-        public DateTime RecordDate { get; set; }
     }
 }

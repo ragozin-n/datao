@@ -25,5 +25,15 @@ namespace Organization
         /// Услуга, которая оказывается клиенту мастером
         /// </summary>
         public Service Service { get; set; }
+
+        /// <summary>
+        /// Отвечает за выполнение услуги в событии
+        /// </summary>
+        public bool isComplete { get; set; }
+
+        /// <summary>
+        /// Дата записи события
+        /// </summary>
+        public DateTime RecordDate { get; set; }
     }
 }
