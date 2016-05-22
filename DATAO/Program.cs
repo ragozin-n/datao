@@ -16,15 +16,14 @@ namespace DATAO
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            
+
             //Авторизация
             //UserCredential _user = null;
             //Authorization.FillCredentials(ref _user);
             //bool? isOnline = Authorization.GetDataoInit(ref _user);
-            
+
             //Таблица
             OldTable.FillTable(new System.IO.FileInfo(@"..\..\datao.init.xlsx"));
-            OldTable.PersonalList.Update();
             //Отрисовка формы
             //Application.Run(new AdminForm());
 

@@ -29,12 +29,14 @@ namespace ExcelManager
             dataoPackage = xlPackage;
             //Добавлю по мере написания
             Salon = new SalonWorkSheet(xlPackage.Workbook.Worksheets["Салон"]);
-            Organization.Enterprise.About.Name = "Updated_name";
             Salon.Update();
 
             PersonalList = new PersonalWorkSheet(xlPackage.Workbook.Worksheets["Персонал"]);
+            PersonalList.Update();
+
+            Services = new ServiceWorkSheet(xlPackage.Workbook.Worksheets["Услуги"]);
+            Services.Update();
             //WorkList = new CalendarWorkSheet(xlPackage.Workbook.Worksheets["Календарь"]);
-            //Services = new ServiceWorkSheet(xlPackage.Workbook.Worksheets["Услуги"]);
             //Storehouse = new StorehouseWorkSheet(xlPackage.Workbook.Worksheets["Склад"]);
             ////Расходы
             //Expences = new BalanceWorkSheet(xlPackage.Workbook.Worksheets["Расходы"]);

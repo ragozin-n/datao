@@ -14,10 +14,10 @@ namespace Organization
         /// <summary>
         /// Информация о услуге
         /// </summary>
-        public Info About { get; set; }
+        public Info About { get; set; } = new Info();
 
         /// <summary>
-        /// Чистая стоимость услуги без учета стоимости расходных материалов
+        /// Чистая стоимость услуги без учета стоимости расходных материалов (пока не учитывается)
         /// </summary>
         private double ServiceCost { get; set; }
 
@@ -27,9 +27,9 @@ namespace Organization
         public TimeSpan Duration { get; set; }
 
         /// <summary>
-        /// Расходы материалов за одну услугу
+        /// Расходы материалов за одну услугу (пока не учитываются)
         /// </summary>
-        private Dictionary<Goods, double> Expences { get; set; }
+        private Dictionary<Goods, double> Expences { get; set; } = new Dictionary<Goods, double>();
 
         /// <summary>
         /// Сумма ServiceCost и Expences

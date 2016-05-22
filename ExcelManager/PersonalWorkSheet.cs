@@ -41,7 +41,7 @@ namespace ExcelManager
                 {
                     _worker.TimeTable.Data.Add(
                         DateTime.Parse(Core.Cells[1, k].Value.ToString()),
-                        new Organization.WorkDay(Core.Cells[j, k].Value.ToString())
+                        new WorkDay(Core.Cells[j, k].Value.ToString())
                         );
                     k++;
                 }
