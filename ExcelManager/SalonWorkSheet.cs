@@ -22,8 +22,11 @@ namespace ExcelManager
             {
                 try
                 {
-                    string[] timeInterval = Core.Cells[1, i].Value.ToString().Split('-');
-                    Enterprise.TimeTable.Add((Days)i - 1, new TimeSpan[] { TimeSpan.Parse(timeInterval[0]), TimeSpan.Parse(timeInterval[1]) });
+                    if (Core.Cells[2, i].Value != null)
+                    {
+                        string[] timeInterval = Core.Cells[2, i].Value.ToString().Split('-');
+                        Enterprise.TimeTable.Add((Days)i - 1, new TimeSpan[] { TimeSpan.Parse(timeInterval[0]), TimeSpan.Parse(timeInterval[1]) });
+                    }
                 }
                 catch (Exception ex) when (ex is FormatException || ex is NullReferenceException)
                 {
@@ -39,6 +42,7 @@ namespace ExcelManager
             while (Core.Cells[j,2].Value != null)
             {
                 Enterprise.About.Fields.Add(Core.Cells[j, 1].Value.ToString(), Core.Cells[j, 2].Value.ToString());
+                j++;
             }
         }
 
@@ -47,7 +51,7 @@ namespace ExcelManager
             //Обновляем расписание
             for (int i = 2; i < 9; i++)
             {
-                string timeInterval = $"{ Enterprise.TimeTable[(Days)i - 2][0].Hours}:{Enterprise.TimeTable[(Days)i - 2][0].Minutes} - { Enterprise.TimeTable[(Days)i - 2][1].Hours}:{Enterprise.TimeTable[(Days)i - 2][1].Minutes}";
+                string timeInterval = $"{ Enterprise.TimeTable[(Days)i-1][0]} - {Enterprise.TimeTable[(Days)i - 1][1]}";
                 Core.Cells[2, i].Value = timeInterval;
             }
 

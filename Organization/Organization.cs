@@ -27,21 +27,21 @@ namespace Organization
         /// <summary>
         /// Персонал предприятия
         /// </summary>
-        public static List<Worker> Personal { get; set; }
+        public static List<Worker> Personal { get; set; } = new List<Worker>();
 
         /// <summary>
         /// Перечень услуг предприятия
         /// </summary>
-        public static List<Service> PriceList { get; set; }
+        public static List<Service> PriceList { get; set; } = new List<Service>();
 
         /// <summary>
         /// Склад предприятия
         /// </summary>
-        public static Dictionary<Goods,Dictionary<Months,uint>> WareHouse { get; set; }
+        public static Dictionary<Goods, Dictionary<Months, uint>> WareHouse { get; set; } = new Dictionary<Goods, Dictionary<Months, uint>>();
 
         /// <summary>
         /// Клиенты (постоянные или не очень) предприятия
         /// </summary>
-        public static List<Client> Clients { get; set; }
+        public static List<Client> Clients { get; set; } = new List<Client>();
     }
 }

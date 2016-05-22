@@ -24,11 +24,12 @@ namespace DATAO
             
             //Таблица
             OldTable.FillTable(new System.IO.FileInfo(@"..\..\datao.init.xlsx"));
+            
             //Отрисовка формы
             //Application.Run(new AdminForm());
 
             //Сохранее при закрытие формы и отправка на сервер
-            //OldTable.Save();
+            OldTable.Save();
             //Authorization.UploadDatao(ref _user);
         }
     }
