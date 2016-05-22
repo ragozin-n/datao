@@ -22,4 +22,10 @@ namespace Organization
         January = 1,
         February, March, April, May, June, July, August, September, October, November, December
     }
+
+    public enum Days
+    {
+        Monday = 1,
+        Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+    }
 }

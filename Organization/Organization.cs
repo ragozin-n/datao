@@ -22,7 +22,7 @@ namespace Organization
         /// 1. Дата рабочего дня
         /// 2. Количество часов работы
         /// </summary>
-        public Dictionary<DateTime, TimeSpan> TimeTable { get; set; } = new Dictionary<DateTime, TimeSpan>(7);
+        public Dictionary<Days, TimeSpan> TimeTable { get; set; } = new Dictionary<Days, TimeSpan>(7);
 
         /// <summary>
         /// Персонал предприятия
