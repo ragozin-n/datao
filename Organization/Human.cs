@@ -14,6 +14,6 @@ namespace Organization
         /// <summary>
         /// Информация о человеке
         /// </summary>
-        public Info About { get; set; }
+        public Info About { get; set; } = new Info();
     }
 }

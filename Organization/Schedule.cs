@@ -14,7 +14,7 @@ namespace Organization
         /// <summary>
         /// Непосредственно расписание объекта
         /// </summary>
-        public Dictionary<DateTime, WorkDay> Data { get; set; }
+        public Dictionary<DateTime, WorkDay> Data { get; set; } = new Dictionary<DateTime, WorkDay>();
     }
 
     public enum Months

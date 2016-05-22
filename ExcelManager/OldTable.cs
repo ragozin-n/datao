@@ -31,7 +31,8 @@ namespace ExcelManager
             Salon = new SalonWorkSheet(xlPackage.Workbook.Worksheets["Салон"]);
             Organization.Enterprise.About.Name = "Updated_name";
             Salon.Update();
-            //PersonalList = new PersonalWorkSheet(xlPackage.Workbook.Worksheets["Персонал"]);
+
+            PersonalList = new PersonalWorkSheet(xlPackage.Workbook.Worksheets["Персонал"]);
             //WorkList = new CalendarWorkSheet(xlPackage.Workbook.Worksheets["Календарь"]);
             //Services = new ServiceWorkSheet(xlPackage.Workbook.Worksheets["Услуги"]);
             //Storehouse = new StorehouseWorkSheet(xlPackage.Workbook.Worksheets["Склад"]);

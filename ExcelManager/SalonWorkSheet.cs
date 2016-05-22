@@ -60,10 +60,10 @@ namespace ExcelManager
 
             //Обновляем дополнительные поля
             int j = 4;
-            foreach (var key in Enterprise.About.Fields.Keys)
+            foreach (var pair in Enterprise.About.Fields)
             {
-                Core.Cells[j, 1].Value = key.ToString();
-                Core.Cells[j, 2].Value = Enterprise.About.Fields[key];
+                Core.Cells[j, 1].Value = pair.Key;
+                Core.Cells[j, 2].Value = pair.Value;
                 j++;
             }
         }

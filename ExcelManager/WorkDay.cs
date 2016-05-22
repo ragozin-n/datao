@@ -14,6 +14,13 @@ namespace ExcelManager
         /// <param name="separator">Необязательный параметр: разделитель ('-' по умолчанию)</param>
         public WorkDay(string dayTimeInterval, char separator = '-')
         {
+            //Для создания нерабочих дней
+            if (dayTimeInterval == string.Empty)
+            {
+                Start = TimeSpan.Parse("00:00:00");
+                End = TimeSpan.Parse("00:00:00");
+            }
+
             string[] timeInterval = new string[2];
             timeInterval = dayTimeInterval.Split(separator);
 

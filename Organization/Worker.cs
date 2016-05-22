@@ -14,7 +14,7 @@ namespace Organization
         /// <summary>
         /// Расписание рабочего
         /// </summary>
-        public Schedule TimeTable { get; set; }
+        public Schedule TimeTable { get; set; } = new Schedule();
 
         /// <summary>
         /// Ставка рабочего (в день/месяц/час нужно выбрать)
