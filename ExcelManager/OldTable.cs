@@ -3,7 +3,7 @@ using System.IO;
 
 namespace ExcelManager
 {
-    public class Table
+    public class OldTable
     {
         private static FileInfo dataoFileInfo { get; set; }
         private static ExcelPackage dataoPackage { get; set; }
@@ -29,14 +29,14 @@ namespace ExcelManager
             dataoPackage = xlPackage;
             //Добавлю по мере написания
             Salon = new SalonWorkSheet(xlPackage.Workbook.Worksheets["Салон"]);
-            WorkList = new CalendarWorkSheet(xlPackage.Workbook.Worksheets["Календарь"]);
-            PersonalList = new PersonalWorkSheet(xlPackage.Workbook.Worksheets["Персонал"]);
-            Services = new ServiceWorkSheet(xlPackage.Workbook.Worksheets["Услуги"]);
-            Storehouse = new StorehouseWorkSheet(xlPackage.Workbook.Worksheets["Склад"]);
-            //Расходы
-            Expences = new BalanceWorkSheet(xlPackage.Workbook.Worksheets["Расходы"]);
-            //Доходы
-            Earnings = new BalanceWorkSheet(xlPackage.Workbook.Worksheets["Доходы"]);
+            //PersonalList = new PersonalWorkSheet(xlPackage.Workbook.Worksheets["Персонал"]);
+            //WorkList = new CalendarWorkSheet(xlPackage.Workbook.Worksheets["Календарь"]);
+            //Services = new ServiceWorkSheet(xlPackage.Workbook.Worksheets["Услуги"]);
+            //Storehouse = new StorehouseWorkSheet(xlPackage.Workbook.Worksheets["Склад"]);
+            ////Расходы
+            //Expences = new BalanceWorkSheet(xlPackage.Workbook.Worksheets["Расходы"]);
+            ////Доходы
+            //Earnings = new BalanceWorkSheet(xlPackage.Workbook.Worksheets["Доходы"]);
         }
 
 
