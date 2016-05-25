@@ -36,7 +36,9 @@ namespace ExcelManager
 
             Services = new ServiceWorkSheet(xlPackage.Workbook.Worksheets["Услуги"]);
             Services.Update();
-            //WorkList = new CalendarWorkSheet(xlPackage.Workbook.Worksheets["Календарь"]);
+
+            WorkList = new CalendarWorkSheet(xlPackage.Workbook.Worksheets["Календарь"]);
+            WorkList.Update();
             //Storehouse = new StorehouseWorkSheet(xlPackage.Workbook.Worksheets["Склад"]);
             ////Расходы
             //Expences = new BalanceWorkSheet(xlPackage.Workbook.Worksheets["Расходы"]);
