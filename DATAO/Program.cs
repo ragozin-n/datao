@@ -23,12 +23,12 @@ namespace DATAO
             bool? isOnline = Authorization.GetDataoInit(ref _user);
 
             //Таблица
-            OldTable.FillTable(new System.IO.FileInfo(@"..\..\datao.init.xlsx"));
+            Table.FillTable(new System.IO.FileInfo(@"..\..\datao.init.xlsx"));
             //Отрисовка формы
             //Application.Run(new AdminForm());
 
             //Сохранее при закрытие формы и отправка на сервер
-            OldTable.Save();
+            Table.Save();
             Authorization.UploadDatao(ref _user);
         }
     }
