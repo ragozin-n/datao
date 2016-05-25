@@ -39,7 +39,9 @@ namespace ExcelManager
 
             WorkList = new CalendarWorkSheet(xlPackage.Workbook.Worksheets["Календарь"]);
             WorkList.Update();
-            //Storehouse = new StorehouseWorkSheet(xlPackage.Workbook.Worksheets["Склад"]);
+            
+            Storehouse = new StorehouseWorkSheet(xlPackage.Workbook.Worksheets["Склад"]);
+            Storehouse.Update();
             ////Расходы
             //Expences = new BalanceWorkSheet(xlPackage.Workbook.Worksheets["Расходы"]);
             ////Доходы

@@ -35,10 +35,15 @@ namespace Organization
         public static List<Service> PriceList { get; set; } = new List<Service>();
 
         /// <summary>
-        /// Склад предприятия
+        /// Расходы товаров со склада по месяцам
         /// </summary>
-        public static Dictionary<Goods, Dictionary<Months, uint>> WareHouse { get; set; } = new Dictionary<Goods, Dictionary<Months, uint>>();
+        public static Dictionary<Goods, Dictionary<Months, uint>> GoodsExpences { get; set; } = new Dictionary<Goods, Dictionary<Months, uint>>();
 
+        /// <summary>
+        /// Доступные товары
+        /// </summary>
+        public static Dictionary<Goods, uint> GoodsAvailability { get; set; } = new Dictionary<Goods, uint>();
+       
         /// <summary>
         /// Клиенты (постоянные или не очень) предприятия
         /// </summary>
