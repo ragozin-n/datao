@@ -199,6 +199,10 @@
       <Project>{7245203a-666c-4f74-9090-e2e4e304e117}</Project>
       <Name>ExcelManager</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Organization\Organization.csproj">
+      <Project>{baeabfec-e555-4a9d-9c56-3343eebdce92}</Project>
+      <Name>Organization</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -36,7 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ExcelManager">
-      <HintPath>..\ExcelManager\bin\Debug\ExcelManager.dll</HintPath>
+      <HintPath>..\ExcelManager\obj\Debug\ExcelManager.dll</HintPath>
     </Reference>
     <Reference Include="Organization">
       <HintPath>..\Organization\bin\Debug\Organization.dll</HintPath>

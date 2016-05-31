@@ -1,11 +1,12 @@
 ﻿using System;
 using MaterialSkin.Controls;
 using System.Windows.Forms;
-using ExcelManager;
+//using ExcelManager;
 using System.Linq;
 using MaterialSkin.Animations;
 using MaterialSkin;
 using System.Collections.Generic;
+using Organization;
 
 namespace DATAO
 {
@@ -45,9 +46,9 @@ namespace DATAO
 
         private void LoadService(int currentPage)
         {
-            if ((Table.Services.ServiceList.Count / 4) + 1 >= currentPage)
+            if ((Enterprise.PriceList.Count / 4) + 1 >= currentPage)
             {
-                if (Table.Services.ServiceList.Count < 5)
+                if (Enterprise.PriceList.Count < 5)
                 {
                     numberPageLabel.Text = "1";
                 }
@@ -59,7 +60,7 @@ namespace DATAO
                 {
                     try
                     {
-                        current4Service.Add(Table.Services.ServiceList[(currentPage * 4) - i]);
+                        current4Service.Add(Enterprise.PriceList[(currentPage * 4) - i]);
                     }
                     catch(ArgumentOutOfRangeException)
                     {
@@ -72,7 +73,7 @@ namespace DATAO
                     if (current4Service.Count == 1)
                     {
                         serviceBox.Visible = true;
-                        nameServiceLabel.Text = current4Service[0].Name;
+                        nameServiceLabel.Text = current4Service[0].About.Name;
                         costService.Text = $"{current4Service[0].Cost.ToString()} рублей";
                         timeService.Text = $"{current4Service[0].Duration.ToString().Substring(0, 5)} минут";
                         serviceBox1.Visible = false;
@@ -82,11 +83,11 @@ namespace DATAO
                     if (current4Service.Count == 2)
                     {
                         serviceBox.Visible = true;
-                        nameServiceLabel.Text = current4Service[0].Name;
+                        nameServiceLabel.Text = current4Service[0].About.Name;
                         costService.Text = $"{current4Service[0].Cost.ToString()} рублей";
                         timeService.Text = $"{current4Service[0].Duration.ToString().Substring(0, 5)} минут";
                         serviceBox1.Visible = true;
-                        nameServiceLabel1.Text = current4Service[1].Name;
+                        nameServiceLabel1.Text = current4Service[1].About.Name;
                         costService1.Text = $"{current4Service[1].Cost.ToString()} рублей";
                         timeService1.Text = $"{current4Service[1].Duration.ToString().Substring(0, 5)} минут";
                         serviceBox2.Visible = false;
@@ -95,15 +96,15 @@ namespace DATAO
                     if (current4Service.Count == 3)
                     {
                         serviceBox.Visible = true;
-                        nameServiceLabel.Text = current4Service[0].Name;
+                        nameServiceLabel.Text = current4Service[0].About.Name;
                         costService.Text = current4Service[0].Cost.ToString() + "рублей";
                         timeService.Text = current4Service[0].Duration.ToString().Substring(0, 5) + " минут";
                         serviceBox1.Visible = true;
-                        nameServiceLabel1.Text = current4Service[1].Name;
+                        nameServiceLabel1.Text = current4Service[1].About.Name;
                         costService1.Text = $"{current4Service[1].Cost.ToString()} рублей";
                         timeService1.Text = current4Service[1].Duration.ToString().Substring(0, 5) + " минут";
                         serviceBox2.Visible = true;
-                        nameServiceLabel2.Text = current4Service[2].Name;
+                        nameServiceLabel2.Text = current4Service[2].About.Name;
                         costService2.Text = $"{current4Service[2].Cost.ToString()} рублей";
                         timeService2.Text = current4Service[2].Duration.ToString().Substring(0, 5) + " минут";
                         serviceBox3.Visible = false;
@@ -111,19 +112,19 @@ namespace DATAO
                     if (current4Service.Count == 4)
                     {
                         serviceBox.Visible = true;
-                        nameServiceLabel.Text = current4Service[0].Name;
+                        nameServiceLabel.Text = current4Service[0].About.Name;
                         costService.Text = current4Service[0].Cost.ToString() + "рублей";
                         timeService.Text = current4Service[0].Duration.ToString().Substring(0, 5) + " минут";
                         serviceBox1.Visible = true;
-                        nameServiceLabel1.Text = current4Service[1].Name;
+                        nameServiceLabel1.Text = current4Service[1].About.Name;
                         costService1.Text = $"{current4Service[1].Cost.ToString()} рублей";
                         timeService1.Text = current4Service[1].Duration.ToString().Substring(0, 5) + " минут";
                         serviceBox2.Visible = true;
-                        nameServiceLabel2.Text = current4Service[2].Name;
+                        nameServiceLabel2.Text = current4Service[2].About.Name;
                         costService2.Text = $"{current4Service[2].Cost.ToString()} рублей";
                         timeService2.Text = current4Service[2].Duration.ToString().Substring(0, 5) + " минут";
                         serviceBox3.Visible = true;
-                        nameServiceLabel3.Text = current4Service[3].Name;
+                        nameServiceLabel3.Text = current4Service[3].About.Name;
                         costService3.Text = $"{current4Service[3].Cost.ToString()} рублей";
                         timeService3.Text = current4Service[3].Duration.ToString().Substring(0, 5) + " минут";
                     }
@@ -134,9 +135,9 @@ namespace DATAO
         private void LoadPersonal()
         {
             personalListBox.Items.Clear();
-            foreach (Human worker in Table.PersonalList.Workers)
+            foreach (Worker worker in Enterprise.Personal)
             {
-                personalListBox.Items.Add($"{worker.Name} {worker.Surname}");
+                personalListBox.Items.Add($"{worker.About.Name}");
             }
         }
 
@@ -149,21 +150,22 @@ namespace DATAO
         {
             ScheduleGrid.BorderStyle = BorderStyle.None;
             ScheduleGrid.Rows.Insert(0);
-
-            List<Human> todayWorker = Table.PersonalList.Workers.FindAll(date => date.Schedule[IndexDay() - 1] == true);
+            List<Worker> todayWorker = Enterprise.Personal.FindAll(date => date.TimeTable.Data.ContainsKey(monthCalendar.SelectionStart));
 
             ScheduleGrid.ColumnsCount = todayWorker.Count+1;
             ScheduleGrid[0, 0] = new SourceGrid.Cells.ColumnHeader(string.Empty);
             for (int i = 1;i<=todayWorker.Count;i++)
             {
-                ScheduleGrid[0,i] = new SourceGrid.Cells.ColumnHeader($"{todayWorker[i-1].Name} {todayWorker[i-1].Surname}");
+                ScheduleGrid[0,i] = new SourceGrid.Cells.ColumnHeader($"{todayWorker[i-1].About.Name}");
             }
             ScheduleGrid.FixedRows = 1;
 
             int j = 1;
             try
             {
-                for (TimeSpan i = Table.Salon.Schedule[IndexDay() - 1].Start; i < Table.Salon.Schedule[IndexDay() - 1].End; i = i + DateTime.Parse("00:30:00").TimeOfDay)
+                for (TimeSpan i = Enterprise.TimeTable[(Days)IndexDay()+1][0];
+                    i < Enterprise.TimeTable[(Days)IndexDay()+1][1]; 
+                    i = i + DateTime.Parse("00:30:00").TimeOfDay)
                 {
                     ScheduleGrid.Rows.Insert(j);
                     ScheduleGrid[j, 0] = new SourceGrid.Cells.RowHeader($"{i} - {(i + DateTime.Parse("00:30:00").TimeOfDay)}");
@@ -186,29 +188,20 @@ namespace DATAO
 
         private void LoadEvent()
         {
-            List<Event> todayEvent = Table.WorkList.Calendar.FindAll(date => date.Date == monthCalendar.SelectionStart);
-            List<Human> todayWorker = Table.PersonalList.Workers.FindAll(date => date.Schedule[IndexDay() - 1] == true);
-            foreach (Event ev in todayEvent)
+            List<Worker> todayWorker = Enterprise.Personal.FindAll(date => date.TimeTable.Data.ContainsKey(monthCalendar.SelectionStart));
+            foreach(Worker w in todayWorker)
             {
-                foreach(Human w in todayWorker)
+                foreach(Event ev in w.Events)
                 {
-                    if(ev.WorkerID==w.ID)
+                    for (int rowIndex = 1; rowIndex < ScheduleGrid.RowsCount; rowIndex++)
                     {
-                        for(int rowIndex = 1; rowIndex < ScheduleGrid.RowsCount; rowIndex++)
+                        if (ev.RecordDate.TimeOfDay == ParseTimeFromCells(ScheduleGrid[rowIndex, 0].Value.ToString(), true))
                         {
-                            if(ev.StartAt == ParseTimeFromCells(ScheduleGrid[rowIndex, 0].Value.ToString(), true))
+                            int count = 0;
+                            for (TimeSpan t = DateTime.Parse("00:30:00").TimeOfDay; t <= ev.Service.Duration; t += DateTime.Parse("00:30:00").TimeOfDay)
                             {
-                                if (ev.EndAt - ev.StartAt >= DateTime.Parse("00:30:00").TimeOfDay)
-                                {
-                                    int count = 0;
-                                    for (TimeSpan t = ev.StartAt; t < ev.EndAt; t += DateTime.Parse("00:30:00").TimeOfDay)
-                                    {
-                                        ScheduleGrid[rowIndex + count, todayWorker.IndexOf(w) + 1].ToolTipText = ev.ClientName+"-"
-                                            +Table.Services.ServiceList.Find(serv=>serv.ID==ev.ServiceID).Name;
-                                        ScheduleGrid[rowIndex + count, todayWorker.IndexOf(w)+1].Value = "Занято";
-                                        count++;
-                                    }
-                                }
+                                ScheduleGrid[rowIndex + count, todayWorker.IndexOf(w) + 1].Value = "Занято";
+                                count++;
                             }
                         }
                     }
@@ -228,7 +221,7 @@ namespace DATAO
 
         public void loadname()
         {
-            Text = Table.Salon.SalonName;
+            Text = Enterprise.About.Name;
         }
 
         private void LoadSkladGrid()
@@ -270,14 +263,6 @@ namespace DATAO
             }
 
             return (startTime ? Start : End);
-            //if (startTime == true)
-            //{
-            //    return Start;
-            //}
-            //else
-            //{
-            //    return End;
-            //}
         }
 
         private void AddEventButton_Click(object sender, EventArgs e)
@@ -327,6 +312,7 @@ namespace DATAO
             if (editPersonalCheckBox.Checked)
             {
                 personalListBox.Update();
+                //как то нужно задавать ему расписание
                 bool[] schedulePersonal =
                 {
                 bool.Parse(schedulePersonalGrid[1,0].Value.ToString()),
@@ -337,10 +323,15 @@ namespace DATAO
                 bool.Parse(schedulePersonalGrid[1,5].Value.ToString()),
                 bool.Parse(schedulePersonalGrid[1,6].Value.ToString())
                 };
+                Worker _worker = new Worker();
+                _worker.About.Name = nameTextBox.Text;
+                _worker.About.Fields.Add("Телефон", phonePersonalTextBox.Text);
+                _worker.About.Fields.Add("Адрес", addressTextBox.Text);
+                _worker.About.Fields.Add("Ставка", rateTextBox.Text);
+                _worker.About.Fields.Add("Статус", statusTextBox.Text);
+                _worker.About.Fields.Add("Отработанные часы", "0");
 
-                Table.PersonalList.AddWorker(new Human(nameTextBox.Text, surnameTextBox.Text, patronymicTextBox.Text,
-                    statusTextBox.Text, 0, rateTextBox.Text, phonePersonalTextBox.Text, addressTextBox.Text
-                    , schedulePersonal));
+                Enterprise.Personal.Add(_worker);
 
                 editPersonalCheckBox.CheckState = CheckState.Unchecked;
                 LoadPersonal();
@@ -381,9 +372,8 @@ namespace DATAO
         {
             if (editPersonalCheckBox.Checked == true)
             {
+                saveChangePersonalButton.Visible = true;
                 nameTextBox.ReadOnly = false;
-                surnameTextBox.ReadOnly = false;
-                patronymicTextBox.ReadOnly = false;
                 phonePersonalTextBox.ReadOnly = false;
                 addressTextBox.ReadOnly = false;
                 rateTextBox.ReadOnly = false;
@@ -392,9 +382,8 @@ namespace DATAO
             }
             if (editPersonalCheckBox.Checked == false)
             {
+                saveChangePersonalButton.Visible = false;
                 nameTextBox.ReadOnly = true;
-                surnameTextBox.ReadOnly = true;
-                patronymicTextBox.ReadOnly = true;
                 phonePersonalTextBox.ReadOnly = true;
                 addressTextBox.ReadOnly = true;
                 rateTextBox.ReadOnly = true;
@@ -405,8 +394,7 @@ namespace DATAO
 
         private void doneEventButton_Click(object sender, EventArgs e)
         {
-            //нужно найти какое это было событие (стрижка или маникюр, например)
-            //и сделать +1 в статистике по этому событию
+            //находим выдленное событие и исКомплит  = тру
         }
 
         private void monthCalendar_DateChanged(object sender, DateRangeEventArgs e)
@@ -421,60 +409,60 @@ namespace DATAO
 
         private void personalListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            nameTextBox.Text = Table.PersonalList.Workers[personalListBox.SelectedIndex].Name;
-            surnameTextBox.Text = Table.PersonalList.Workers[personalListBox.SelectedIndex].Surname;
-            patronymicTextBox.Text = Table.PersonalList.Workers[personalListBox.SelectedIndex].Patronymic;
-            phonePersonalTextBox.Text = Table.PersonalList.Workers[personalListBox.SelectedIndex].Tel;
-            addressTextBox.Text = Table.PersonalList.Workers[personalListBox.SelectedIndex].Addres;
-            rateTextBox.Text = Table.PersonalList.Workers[personalListBox.SelectedIndex].Rate;
-            statusTextBox.Text = Table.PersonalList.Workers[personalListBox.SelectedIndex].Status;
-            okPicture1.Visible = Table.PersonalList.Workers[personalListBox.SelectedIndex].Schedule[0];
-            okPicture2.Visible = Table.PersonalList.Workers[personalListBox.SelectedIndex].Schedule[1];
-            okPicture3.Visible = Table.PersonalList.Workers[personalListBox.SelectedIndex].Schedule[2];
-            okPicture4.Visible = Table.PersonalList.Workers[personalListBox.SelectedIndex].Schedule[3];
-            okPicture5.Visible = Table.PersonalList.Workers[personalListBox.SelectedIndex].Schedule[4];
-            okPicture6.Visible = Table.PersonalList.Workers[personalListBox.SelectedIndex].Schedule[5];
-            okPicture7.Visible = Table.PersonalList.Workers[personalListBox.SelectedIndex].Schedule[6];
+            nameTextBox.Text = Enterprise.Personal[personalListBox.SelectedIndex].About.Name;
+            phonePersonalTextBox.Text = Enterprise.Personal[personalListBox.SelectedIndex].About.Fields["Телефон"];
+            addressTextBox.Text = Enterprise.Personal[personalListBox.SelectedIndex].About.Fields["Адрес"];
+            rateTextBox.Text = Enterprise.Personal[personalListBox.SelectedIndex].About.Fields["Ставка"];
+            statusTextBox.Text = Enterprise.Personal[personalListBox.SelectedIndex].About.Fields["Статус"];
+            //okPicture1.Visible = Table.PersonalList.Workers[personalListBox.SelectedIndex].Schedule[0];
+            //okPicture2.Visible = Table.PersonalList.Workers[personalListBox.SelectedIndex].Schedule[1];
+            //okPicture3.Visible = Table.PersonalList.Workers[personalListBox.SelectedIndex].Schedule[2];
+            //okPicture4.Visible = Table.PersonalList.Workers[personalListBox.SelectedIndex].Schedule[3];
+            //okPicture5.Visible = Table.PersonalList.Workers[personalListBox.SelectedIndex].Schedule[4];
+            //okPicture6.Visible = Table.PersonalList.Workers[personalListBox.SelectedIndex].Schedule[5];
+            //okPicture7.Visible = Table.PersonalList.Workers[personalListBox.SelectedIndex].Schedule[6];
         }
 
         private void deletePersonalButton_Click(object sender, EventArgs e)
         {
-            try {
-                personalListBox.Update();
-                Table.PersonalList.RemoveWorker(Table.PersonalList.Workers[personalListBox.SelectedIndex].ID);
-                LoadPersonal();
-                personalListBox.EndUpdate();
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Не выбран рабочий!");
-            }
+            //возможно удаление больше не нужно будет
+            //try {
+            //    personalListBox.Update();
+            //    Table.PersonalList.RemoveWorker(Table.PersonalList.Workers[personalListBox.SelectedIndex].ID);
+            //    LoadPersonal();
+            //    personalListBox.EndUpdate();
+            //}
+            //catch (Exception)
+            //{
+            //    MessageBox.Show("Не выбран рабочий!");
+            //}
             
         }
 
         private void deleteEventButton_Click(object sender, EventArgs e)
         {
-            TimeSpan start = DateTime.Now.TimeOfDay;
-            uint? id = null;
+            TimeSpan RecordTime = DateTime.Now.TimeOfDay;
+            //uint? id = null;
             for (int c = 1; c <= ScheduleGrid.ColumnsCount; c++)
             {
                 for (int i = 1; i <= ScheduleGrid.RowsCount; i++)
                 {
                     if (ScheduleGrid.Selection.IsSelectedCell(new SourceGrid.Position(i, c)))
                     {
-                        start = ParseTimeFromCells(ScheduleGrid[i, 0].Value.ToString(), true);
-
-                        string[] name = ScheduleGrid[0, c].Value.ToString().Split(' ');
-                        id = Table.PersonalList.Workers.First(worker => (worker.Name == name[0] && worker.Surname == name[1])).ID;
+                        RecordTime = ParseTimeFromCells(ScheduleGrid[i, 0].Value.ToString(), true);
+                        string name = ScheduleGrid[0, c].Value.ToString();
+                        //эта сложная штука по идее должна удалить нужное событие у нужного рабочего
+                        Enterprise.Personal.First(worker => (worker.About.Name == name)).Events.RemoveAll(
+                            ev => (ev.RecordDate.TimeOfDay == RecordTime && ev.RecordDate.Date == monthCalendar.SelectionStart.Date));
                     }
                 }
             }
             //MessageBox.Show($"{monthCalendar.SelectionStart.ToString()} {start.ToString()} {id}");
-            if(id != null)
-            {
-                Table.WorkList.RemoveEventFromCalendar(monthCalendar.SelectionStart.Date, start, (uint)id);
-                UpdateSchedule();
-            }
+            //if(id != null)
+            //{
+            //    Table.WorkList.RemoveEventFromCalendar(monthCalendar.SelectionStart.Date, start, (uint)id);
+            //    UpdateSchedule();
+            //}
         }
 
         private void newServiceButton_Click(object sender, EventArgs e)
@@ -488,11 +476,12 @@ namespace DATAO
 
         private void saveServiceButton_Click(object sender, EventArgs e)
         {
-            Service newService = new Service(newNameServiceTextBox.Text,
-                uint.Parse(newCostServiceTextBox.Text), DateTime.Parse(newTimeServiceTextBox.Text).TimeOfDay
-                );
+            Service newService = new Service();
+            newService.About.Name = newNameServiceTextBox.Text;
+            newService.Duration = DateTime.Parse(newTimeServiceTextBox.Text).TimeOfDay;
+            newService.Cost = uint.Parse(newCostServiceTextBox.Text);
 
-            Table.Services.AddNewService(newService);
+            Enterprise.PriceList.Add(newService);
             newServiceBox.Visible = false;
             saveServiceButton.Visible = false;
             LoadService(1);
@@ -513,26 +502,42 @@ namespace DATAO
 
         private void deleteServicePicture_Click(object sender, EventArgs e)
         {
-            Table.Services.RemoveService(Table.Services.ServiceList[(int.Parse(numberPageLabel.Text) * 4) - 4]);
+            //возможно и тут удалять не надо
+            Enterprise.PriceList.RemoveAt((int.Parse(numberPageLabel.Text) * 4) - 4);
             LoadService(1);
         }
 
         private void deleteServicePicture1_Click(object sender, EventArgs e)
         {
-            Table.Services.RemoveService(Table.Services.ServiceList[(int.Parse(numberPageLabel.Text) * 4) - 3]);
+            //возможно и тут удалять не надо
+            Enterprise.PriceList.RemoveAt((int.Parse(numberPageLabel.Text) * 4) - 3);
             LoadService(1);
         }
 
         private void deleteServicePicture2_Click(object sender, EventArgs e)
         {
-            Table.Services.RemoveService(Table.Services.ServiceList[(int.Parse(numberPageLabel.Text) * 4) - 2]);
+            //возможно и тут удалять не надо
+            Enterprise.PriceList.RemoveAt((int.Parse(numberPageLabel.Text) * 4) - 2);
             LoadService(1);
         }
 
         private void deleteServicePicture3_Click(object sender, EventArgs e)
         {
-            Table.Services.RemoveService(Table.Services.ServiceList[(int.Parse(numberPageLabel.Text) * 4) - 1]);
+            //возможно и тут удалять не надо
+            Enterprise.PriceList.RemoveAt((int.Parse(numberPageLabel.Text) * 4) - 1);
             LoadService(1);
+        }
+
+        private void saveChangePersonalButton_Click(object sender, EventArgs e)
+        {
+            try {
+                Enterprise.Personal[personalListBox.SelectedIndex].About.Name = nameTextBox.Text;
+                Enterprise.Personal[personalListBox.SelectedIndex].About.Fields["Телефон"] = phonePersonalTextBox.Text;
+                Enterprise.Personal[personalListBox.SelectedIndex].About.Fields["Адрес"] = addressTextBox.Text;
+                Enterprise.Personal[personalListBox.SelectedIndex].About.Fields["Статус"] = statusTextBox.Text;
+                editPersonalCheckBox.CheckState = CheckState.Unchecked;
+            }
+            catch(ArgumentOutOfRangeException) { MessageBox.Show("Выберете рабочего"); }
         }
     }
 }

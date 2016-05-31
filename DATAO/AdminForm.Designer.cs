@@ -51,8 +51,6 @@
             this.rateTextBox = new System.Windows.Forms.TextBox();
             this.addressTextBox = new System.Windows.Forms.TextBox();
             this.phonePersonalTextBox = new System.Windows.Forms.TextBox();
-            this.patronymicTextBox = new System.Windows.Forms.TextBox();
-            this.surnameTextBox = new System.Windows.Forms.TextBox();
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.materialLabel7 = new MaterialSkin.Controls.MaterialLabel();
             this.okPicture2 = new System.Windows.Forms.PictureBox();
@@ -60,9 +58,7 @@
             this.okPicture1 = new System.Windows.Forms.PictureBox();
             this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.schedulePersonalPicture = new System.Windows.Forms.PictureBox();
             this.Uslugi = new System.Windows.Forms.TabPage();
             this.newServiceBox = new System.Windows.Forms.GroupBox();
@@ -127,6 +123,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
             this.settingButton = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.saveChangePersonalButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.tabControl.SuspendLayout();
             this.Calendar.SuspendLayout();
             this.Personal.SuspendLayout();
@@ -258,6 +255,7 @@
             // 
             this.Personal.BackColor = System.Drawing.Color.DarkSlateGray;
             this.Personal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Personal.Controls.Add(this.saveChangePersonalButton);
             this.Personal.Controls.Add(this.editPersonalCheckBox);
             this.Personal.Controls.Add(this.deletePersonalButton);
             this.Personal.Controls.Add(this.newPersonalButton);
@@ -391,8 +389,6 @@
             this.groupBoxPersonal.Controls.Add(this.rateTextBox);
             this.groupBoxPersonal.Controls.Add(this.addressTextBox);
             this.groupBoxPersonal.Controls.Add(this.phonePersonalTextBox);
-            this.groupBoxPersonal.Controls.Add(this.patronymicTextBox);
-            this.groupBoxPersonal.Controls.Add(this.surnameTextBox);
             this.groupBoxPersonal.Controls.Add(this.nameTextBox);
             this.groupBoxPersonal.Controls.Add(this.materialLabel7);
             this.groupBoxPersonal.Controls.Add(this.okPicture2);
@@ -400,9 +396,7 @@
             this.groupBoxPersonal.Controls.Add(this.okPicture1);
             this.groupBoxPersonal.Controls.Add(this.materialLabel5);
             this.groupBoxPersonal.Controls.Add(this.materialLabel4);
-            this.groupBoxPersonal.Controls.Add(this.materialLabel3);
             this.groupBoxPersonal.Controls.Add(this.materialLabel2);
-            this.groupBoxPersonal.Controls.Add(this.materialLabel1);
             this.groupBoxPersonal.Controls.Add(this.schedulePersonalPicture);
             this.groupBoxPersonal.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.groupBoxPersonal.Location = new System.Drawing.Point(281, 25);
@@ -426,7 +420,7 @@
             // 
             // statusTextBox
             // 
-            this.statusTextBox.Location = new System.Drawing.Point(109, 238);
+            this.statusTextBox.Location = new System.Drawing.Point(109, 200);
             this.statusTextBox.Name = "statusTextBox";
             this.statusTextBox.ReadOnly = true;
             this.statusTextBox.Size = new System.Drawing.Size(182, 20);
@@ -434,7 +428,7 @@
             // 
             // rateTextBox
             // 
-            this.rateTextBox.Location = new System.Drawing.Point(109, 205);
+            this.rateTextBox.Location = new System.Drawing.Point(109, 167);
             this.rateTextBox.Name = "rateTextBox";
             this.rateTextBox.ReadOnly = true;
             this.rateTextBox.Size = new System.Drawing.Size(182, 20);
@@ -442,7 +436,7 @@
             // 
             // addressTextBox
             // 
-            this.addressTextBox.Location = new System.Drawing.Point(109, 171);
+            this.addressTextBox.Location = new System.Drawing.Point(109, 133);
             this.addressTextBox.Name = "addressTextBox";
             this.addressTextBox.ReadOnly = true;
             this.addressTextBox.Size = new System.Drawing.Size(182, 20);
@@ -450,31 +444,15 @@
             // 
             // phonePersonalTextBox
             // 
-            this.phonePersonalTextBox.Location = new System.Drawing.Point(109, 135);
+            this.phonePersonalTextBox.Location = new System.Drawing.Point(109, 100);
             this.phonePersonalTextBox.Name = "phonePersonalTextBox";
             this.phonePersonalTextBox.ReadOnly = true;
             this.phonePersonalTextBox.Size = new System.Drawing.Size(182, 20);
             this.phonePersonalTextBox.TabIndex = 11;
             // 
-            // patronymicTextBox
-            // 
-            this.patronymicTextBox.Location = new System.Drawing.Point(109, 99);
-            this.patronymicTextBox.Name = "patronymicTextBox";
-            this.patronymicTextBox.ReadOnly = true;
-            this.patronymicTextBox.Size = new System.Drawing.Size(182, 20);
-            this.patronymicTextBox.TabIndex = 10;
-            // 
-            // surnameTextBox
-            // 
-            this.surnameTextBox.Location = new System.Drawing.Point(109, 65);
-            this.surnameTextBox.Name = "surnameTextBox";
-            this.surnameTextBox.ReadOnly = true;
-            this.surnameTextBox.Size = new System.Drawing.Size(182, 20);
-            this.surnameTextBox.TabIndex = 9;
-            // 
             // nameTextBox
             // 
-            this.nameTextBox.Location = new System.Drawing.Point(109, 31);
+            this.nameTextBox.Location = new System.Drawing.Point(109, 66);
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.ReadOnly = true;
             this.nameTextBox.Size = new System.Drawing.Size(182, 20);
@@ -486,7 +464,7 @@
             this.materialLabel7.Depth = 0;
             this.materialLabel7.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel7.Location = new System.Drawing.Point(19, 237);
+            this.materialLabel7.Location = new System.Drawing.Point(19, 199);
             this.materialLabel7.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel7.Name = "materialLabel7";
             this.materialLabel7.Size = new System.Drawing.Size(56, 19);
@@ -510,7 +488,7 @@
             this.materialLabel6.Depth = 0;
             this.materialLabel6.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel6.Location = new System.Drawing.Point(19, 204);
+            this.materialLabel6.Location = new System.Drawing.Point(19, 166);
             this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel6.Name = "materialLabel6";
             this.materialLabel6.Size = new System.Drawing.Size(59, 19);
@@ -533,7 +511,7 @@
             this.materialLabel5.Depth = 0;
             this.materialLabel5.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel5.Location = new System.Drawing.Point(19, 169);
+            this.materialLabel5.Location = new System.Drawing.Point(19, 131);
             this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel5.Name = "materialLabel5";
             this.materialLabel5.Size = new System.Drawing.Size(52, 19);
@@ -546,25 +524,12 @@
             this.materialLabel4.Depth = 0;
             this.materialLabel4.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel4.Location = new System.Drawing.Point(19, 135);
+            this.materialLabel4.Location = new System.Drawing.Point(19, 100);
             this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel4.Name = "materialLabel4";
             this.materialLabel4.Size = new System.Drawing.Size(72, 19);
             this.materialLabel4.TabIndex = 4;
             this.materialLabel4.Text = "Телефон";
-            // 
-            // materialLabel3
-            // 
-            this.materialLabel3.AutoSize = true;
-            this.materialLabel3.Depth = 0;
-            this.materialLabel3.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel3.Location = new System.Drawing.Point(17, 101);
-            this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel3.Name = "materialLabel3";
-            this.materialLabel3.Size = new System.Drawing.Size(75, 19);
-            this.materialLabel3.TabIndex = 3;
-            this.materialLabel3.Text = "Отчество";
             // 
             // materialLabel2
             // 
@@ -573,25 +538,12 @@
             this.materialLabel2.Depth = 0;
             this.materialLabel2.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel2.Location = new System.Drawing.Point(19, 33);
+            this.materialLabel2.Location = new System.Drawing.Point(19, 68);
             this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel2.Name = "materialLabel2";
             this.materialLabel2.Size = new System.Drawing.Size(39, 19);
             this.materialLabel2.TabIndex = 2;
             this.materialLabel2.Text = "Имя";
-            // 
-            // materialLabel1
-            // 
-            this.materialLabel1.AutoSize = true;
-            this.materialLabel1.Depth = 0;
-            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(17, 67);
-            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(75, 19);
-            this.materialLabel1.TabIndex = 1;
-            this.materialLabel1.Text = "Фамилия";
             // 
             // schedulePersonalPicture
             // 
@@ -1318,6 +1270,21 @@
             this.settingButton.UseVisualStyleBackColor = true;
             this.settingButton.Click += new System.EventHandler(this.settingButton_Click);
             // 
+            // saveChangePersonalButton
+            // 
+            this.saveChangePersonalButton.Depth = 0;
+            this.saveChangePersonalButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.saveChangePersonalButton.Location = new System.Drawing.Point(970, 4);
+            this.saveChangePersonalButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.saveChangePersonalButton.Name = "saveChangePersonalButton";
+            this.saveChangePersonalButton.Primary = true;
+            this.saveChangePersonalButton.Size = new System.Drawing.Size(91, 23);
+            this.saveChangePersonalButton.TabIndex = 21;
+            this.saveChangePersonalButton.Text = "Сохранить";
+            this.saveChangePersonalButton.UseVisualStyleBackColor = true;
+            this.saveChangePersonalButton.Visible = false;
+            this.saveChangePersonalButton.Click += new System.EventHandler(this.saveChangePersonalButton_Click);
+            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1409,16 +1376,12 @@
         private System.Windows.Forms.TextBox rateTextBox;
         private System.Windows.Forms.TextBox addressTextBox;
         private System.Windows.Forms.TextBox phonePersonalTextBox;
-        private System.Windows.Forms.TextBox patronymicTextBox;
-        private System.Windows.Forms.TextBox surnameTextBox;
         private System.Windows.Forms.TextBox nameTextBox;
         private MaterialSkin.Controls.MaterialLabel materialLabel7;
         private MaterialSkin.Controls.MaterialLabel materialLabel6;
         private MaterialSkin.Controls.MaterialLabel materialLabel5;
         private MaterialSkin.Controls.MaterialLabel materialLabel4;
-        private MaterialSkin.Controls.MaterialLabel materialLabel3;
         private MaterialSkin.Controls.MaterialLabel materialLabel2;
-        private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.PictureBox schedulePersonalPicture;
@@ -1479,5 +1442,6 @@
         private System.Windows.Forms.TextBox newTimeServiceTextBox;
         private System.Windows.Forms.TextBox newCostServiceTextBox;
         private System.Windows.Forms.TextBox newNameServiceTextBox;
+        private MaterialSkin.Controls.MaterialRaisedButton saveChangePersonalButton;
     }
 }
