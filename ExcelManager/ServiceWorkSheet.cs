@@ -5,13 +5,13 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Organization;
 
 namespace ExcelManager
 {
     public class ServiceWorkSheet
     {
         private ExcelWorksheet Core { get; set; }
+        public List<Service> ServiceList { get; private set; } = new List<Service>();
         /// <summary>
         /// Конструктор по умолчанию
         /// </summary>
@@ -21,52 +21,69 @@ namespace ExcelManager
             Core = _sheet;
 
             int j = 2;
-            while (Core.Cells[j,1].Value != null)
+            while (Core.Cells[j, 1].Value != null)
             {
-                Service _service = new Service();
-                _service.About.Name = Core.Cells[j, 1].Value.ToString();
-                _service.Cost = double.Parse(Core.Cells[j, 2].Value.ToString());
-                _service.Duration = TimeSpan.Parse(Core.Cells[j, 3].Value.ToString().Split(' ')[1]);
-
-                int k = 4;
-                while (Core.Cells[j, k].Value != null)
+                Service _service = null;
+                try
                 {
-                    _service.About.Fields.Add(Core.Cells[1, k].Value.ToString(), Core.Cells[j, k].Value.ToString());
-                    k++;
+                    _service = new Service(
+                        Core.Cells[j, 2].Value.ToString(),
+                        uint.Parse(Core.Cells[j, 3].Value.ToString()),
+                        DateTime.Parse(Core.Cells[j, 5].Value.ToString()).TimeOfDay,
+                        uint.Parse(Core.Cells[j, 1].Value.ToString())
+                        );
                 }
-                Enterprise.PriceList.Add(_service);
-                j++;
+                catch (Exception ex) when (ex is FormatException || ex is NullReferenceException)
+                {
+                    //Ошибка
+                    Debug.WriteLine(ex.Message);
+                    j++;
+                }
+                finally
+                {
+                    ServiceList.Add(_service);
+                    j++;
+                }
             }
         }
 
-        public void Update()
+        /// <summary>
+        /// Добавляет услугу в перечень услуг
+        /// </summary>
+        /// <param name="_service">Услуга</param>
+        public void AddNewService(Service _service)
         {
-            Core.Cells[1, 1].Value = "Название";
-            Core.Cells[1, 2].Value = "Стоимость";
-            Core.Cells[1, 3].Value = "Длительность";
-
-            int j = 4;
-            foreach (var pair in Enterprise.PriceList[0].About.Fields)
-            {
-                Core.Cells[1, j].Value = pair.Key;
-                j++;
-            }
-
-            j = 2;
+            ServiceList.Add(_service);
+            int j = 2;
             while (Core.Cells[j, 1].Value != null)
             {
-                foreach (var _service in Enterprise.PriceList)
-                {
-                    Core.Cells[j, 1].Value = _service.About.Name;
-                    Core.Cells[j, 2].Value = _service.Cost;
-                    Core.Cells[j, 3].Value = _service.Duration;
+                j++;
+            }
+            Core.Cells[j, 1].Value = _service.ID;
+            Core.Cells[j, 2].Value = _service.Name;
+            Core.Cells[j, 3].Value = _service.Cost;
+            Core.Cells[j, 4].Value = _service.AdditionalServiceID;
 
-                    for (int i = 0; i < _service.About.Fields.Count; i++)
-                    {
-                        Core.Cells[j, 4 + i].Value = _service.About.Fields[Core.Cells[1, 4 + i].Value.ToString()];
-                    }
+            Core.Cells[j, 5].Style.Numberformat.Format = "hh:mm";
+            Core.Cells[j, 5].Formula = $"TIME({_service.Duration.Hours},{_service.Duration.Minutes},{_service.Duration.Seconds})";
+            Core.Cells[j, 5].Calculate();
+        }
+        /// <summary>
+        /// Удаляет заданную услугу из перечня услуг
+        /// </summary>
+        /// <param name="ID">ID услуги</param>
+        public void RemoveService(Service _service)
+        {
+            int j = 2;
+            while (Core.Cells[j, 1].Value != null)
+            {
+                if (Core.Cells[j,1].Value.ToString() == _service.ID.ToString())
+                {
+                    ServiceList.Remove(_service);
+                    Core.DeleteRow(j);
                     j++;
                 }
+                j++;
             }
         }
     }

@@ -14,7 +14,7 @@ namespace Organization
         /// <summary>
         /// Информация о товаре
         /// </summary>
-        public Info About { get; set; } = new Info();
+        public Info About { get; set; }
 
         /// <summary>
         /// Поставщик товара

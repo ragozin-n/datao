@@ -27,17 +27,16 @@ namespace ExcelManager
             ExcelPackage xlPackage = new ExcelPackage(pathToDataoInit);
             //Сохраняем линк
             dataoPackage = xlPackage;
-
+            //Добавлю по мере написания
             Salon = new SalonWorkSheet(xlPackage.Workbook.Worksheets["Салон"]);
+            WorkList = new CalendarWorkSheet(xlPackage.Workbook.Worksheets["Календарь"]);
             PersonalList = new PersonalWorkSheet(xlPackage.Workbook.Worksheets["Персонал"]);
             Services = new ServiceWorkSheet(xlPackage.Workbook.Worksheets["Услуги"]);
-            WorkList = new CalendarWorkSheet(xlPackage.Workbook.Worksheets["Календарь"]);
             Storehouse = new StorehouseWorkSheet(xlPackage.Workbook.Worksheets["Склад"]);
-            
-            ////Расходы
-            //Expences = new BalanceWorkSheet(xlPackage.Workbook.Worksheets["Расходы"]);
-            ////Доходы
-            //Earnings = new BalanceWorkSheet(xlPackage.Workbook.Worksheets["Доходы"]);
+            //Расходы
+            Expences = new BalanceWorkSheet(xlPackage.Workbook.Worksheets["Расходы"]);
+            //Доходы
+            Earnings = new BalanceWorkSheet(xlPackage.Workbook.Worksheets["Доходы"]);
         }
 
 
@@ -46,12 +45,7 @@ namespace ExcelManager
         /// </summary>
         public static void Update()
         {
-            //Пишем в файл
-            Salon.Update();
-            PersonalList.Update();
-            Services.Update();
-            WorkList.Update();
-            Storehouse.Update();
+            FillTable(dataoFileInfo);
         }
 
         /// <summary>

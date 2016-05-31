@@ -10,43 +10,38 @@ namespace Organization
     /// Предприятие, которое оказывает услуги, имеет рабочих и клиентов, а также
     /// свой собственный склад и расписание своей работы.
     /// </summary>
-    public static class Enterprise
+    public class Organization
     {
         /// <summary>
         /// Информация о предприятии
         /// </summary>
-        public static Info About { get; set; } = new Info();
+        public Info About { get; set; }
 
         /// <summary>
         /// Расписание предприятие в формате:
         /// 1. Дата рабочего дня
         /// 2. Количество часов работы
         /// </summary>
-        public static Dictionary<Days, TimeSpan[]> TimeTable { get; set; } = new Dictionary<Days, TimeSpan[]>(7);
+        public Dictionary<Days, TimeSpan> TimeTable { get; set; } = new Dictionary<Days, TimeSpan>(7);
 
         /// <summary>
         /// Персонал предприятия
         /// </summary>
-        public static List<Worker> Personal { get; set; } = new List<Worker>();
+        public List<Worker> Personal { get; set; }
 
         /// <summary>
         /// Перечень услуг предприятия
         /// </summary>
-        public static List<Service> PriceList { get; set; } = new List<Service>();
+        public List<Service> PriceList { get; set; }
 
         /// <summary>
-        /// Расходы товаров со склада по месяцам
+        /// Склад предприятия
         /// </summary>
-        public static Dictionary<Goods, Dictionary<Months, uint>> GoodsExpences { get; set; } = new Dictionary<Goods, Dictionary<Months, uint>>();
+        public Dictionary<Goods,Dictionary<Months,uint>> WareHouse { get; set; }
 
-        /// <summary>
-        /// Доступные товары
-        /// </summary>
-        public static Dictionary<Goods, uint> GoodsAvailability { get; set; } = new Dictionary<Goods, uint>();
-       
         /// <summary>
         /// Клиенты (постоянные или не очень) предприятия
         /// </summary>
-        public static List<Client> Clients { get; set; } = new List<Client>();
+        public List<Client> Clients { get; set; }
     }
 }
