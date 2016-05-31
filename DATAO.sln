@@ -10,6 +10,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DATAO", "DATAO\DATAO.csproj
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelManager", "ExcelManager\ExcelManager.csproj", "{7245203A-666C-4F74-9090-E2E4E304E117}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BAEABFEC-E555-4A9D-9C56-3343EEBDCE92} = {BAEABFEC-E555-4A9D-9C56-3343EEBDCE92}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Organization", "Organization\Organization.csproj", "{BAEABFEC-E555-4A9D-9C56-3343EEBDCE92}"
 EndProject

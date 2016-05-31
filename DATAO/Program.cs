@@ -16,16 +16,16 @@ namespace DATAO
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            
+
             //Авторизация
             UserCredential _user = null;
             Authorization.FillCredentials(ref _user);
             bool? isOnline = Authorization.GetDataoInit(ref _user);
-            
+
             //Таблица
             Table.FillTable(new System.IO.FileInfo(@"..\..\datao.init.xlsx"));
             //Отрисовка формы
-            Application.Run(new AdminForm());
+            //Application.Run(new AdminForm());
 
             //Сохранее при закрытие формы и отправка на сервер
             Table.Save();
