@@ -14,6 +14,16 @@ namespace Organization
         /// <summary>
         /// Записи конкретного клиента
         /// </summary>
-        public List<Event> Events { get; set; }
+        public List<Event> Events { get; set; } = new List<Event>();
+
+        public Client() : base()
+        {
+
+        }
+
+        public Client(uint id) : base(id)
+        {
+
+        }
     }
 }

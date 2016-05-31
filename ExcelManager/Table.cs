@@ -1,4 +1,5 @@
 ﻿using OfficeOpenXml;
+using System;
 using System.IO;
 
 namespace ExcelManager
@@ -13,9 +14,6 @@ namespace ExcelManager
         public static PersonalWorkSheet PersonalList { get; set; }
         public static ServiceWorkSheet Services { get; set; }
         public static StorehouseWorkSheet Storehouse { get; set; }
-        public static BalanceWorkSheet Expences { get; set; }
-        public static BalanceWorkSheet Earnings { get; set; }
-
 
         /// <summary>
         /// Конструктор по умолчанию
@@ -24,7 +22,15 @@ namespace ExcelManager
         public static void FillTable(FileInfo pathToDataoInit)
         {
             dataoFileInfo = pathToDataoInit;
-            ExcelPackage xlPackage = new ExcelPackage(pathToDataoInit);
+            ExcelPackage xlPackage;
+            try
+            {
+                xlPackage = new ExcelPackage(pathToDataoInit);
+            }
+            catch (NullReferenceException)
+            {
+                throw;
+            }
             //Сохраняем линк
             dataoPackage = xlPackage;
 

@@ -15,5 +15,15 @@ namespace Organization
         /// Информация о человеке
         /// </summary>
         public Info About { get; set; } = new Info();
+
+        public Human()
+        {
+
+        }
+
+        public Human(uint id)
+        {
+            About.ID = id;
+        }
     }
 }

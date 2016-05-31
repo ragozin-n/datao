@@ -47,7 +47,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CalendarWorkSheet.cs" />
-    <Compile Include="BalanceWorkSheet.cs" />
     <Compile Include="PersonalWorkSheet.cs" />
     <Compile Include="SalonWorkSheet.cs" />
     <Compile Include="ServiceWorkSheet.cs" />
