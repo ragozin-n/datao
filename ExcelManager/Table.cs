@@ -39,11 +39,6 @@ namespace ExcelManager
             Services = new ServiceWorkSheet(xlPackage.Workbook.Worksheets["Услуги"]);
             WorkList = new CalendarWorkSheet(xlPackage.Workbook.Worksheets["Календарь"]);
             Storehouse = new StorehouseWorkSheet(xlPackage.Workbook.Worksheets["Склад"]);
-            
-            ////Расходы
-            //Expences = new BalanceWorkSheet(xlPackage.Workbook.Worksheets["Расходы"]);
-            ////Доходы
-            //Earnings = new BalanceWorkSheet(xlPackage.Workbook.Worksheets["Доходы"]);
         }
 
 
@@ -52,7 +47,7 @@ namespace ExcelManager
         /// </summary>
         public static void Update()
         {
-            //Пишем в файл
+            //Пишем в Core
             Salon.Update();
             PersonalList.Update();
             Services.Update();

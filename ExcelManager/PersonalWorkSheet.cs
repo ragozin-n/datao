@@ -66,12 +66,14 @@ namespace ExcelManager
             //Размечаем поля вверху таблицы по первому рабочему в таблице
             Core.Cells[1, 1].Value = "Имя";
             int j = 2;
-            foreach (var key in Enterprise.Personal[0].About.Fields.Keys)
+            if (Enterprise.Personal.Count != 0)
             {
-                Core.Cells[1, j].Value = key;
-                j++;
+                foreach (var key in Enterprise.Personal[0].About.Fields.Keys)
+                {
+                    Core.Cells[1, j].Value = key;
+                    j++;
+                }
             }
-
             //Внутрянка информационных полей
             j = 2;
             for (int i = 0; i < Enterprise.Personal.Count; i++)

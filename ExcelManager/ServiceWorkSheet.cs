@@ -46,12 +46,14 @@ namespace ExcelManager
             Core.Cells[1, 3].Value = "Длительность";
 
             int j = 4;
-            foreach (var pair in Enterprise.PriceList[0].About.Fields)
+            if (Enterprise.Personal.Count != 0)
             {
-                Core.Cells[1, j].Value = pair.Key;
-                j++;
+                foreach (var pair in Enterprise.PriceList[0].About.Fields)
+                {
+                    Core.Cells[1, j].Value = pair.Key;
+                    j++;
+                }
             }
-
             j = 2;
             while (Core.Cells[j, 1].Value != null)
             {

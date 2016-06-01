@@ -129,15 +129,15 @@ namespace DATAO
                 FilesResource.CreateMediaUpload _request;
 
                 //TODO: Путь до локальной таблицы-шаблона
-                //using (var _stream = new FileStream("datao.init.xlsx",
-                //                        FileMode.Open))
-                //{
-                //    _request = service.Files.Create(
-                //        fileMetadata, _stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
-                //    _request.Fields = "id";
-                //    _request.Upload();
-                //}
-                MessageBox.Show("Типо загружаем вам на диск файл");
+                using (var _stream = new FileStream("example.init.xlsx",
+                                        FileMode.Open))
+                {
+                    _request = service.Files.Create(
+                        fileMetadata, _stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+                    _request.Fields = "id";
+                    _request.Upload();
+                }
+                MessageBox.Show("Успешно!");
                 return false;
             }
             //Закрываем программу в случае отрицательного ответа
@@ -162,8 +162,6 @@ namespace DATAO
                     ApplicationName = "datao",
                 });
 
-                //НИКАКИХ УДАЛЕНИЙ БОЛЬШЕ НИКОГДА
-                /*
                 //Определяем параметры запроса удаление всех datao.init находящихся на сервере
                 FilesResource.ListRequest listRequest = service.Files.List();
                 listRequest.PageSize = 50;
@@ -188,7 +186,7 @@ namespace DATAO
                         }
                     }
                 }
-                */
+                
                 //Заполняем параметры запроса на создание файла
                 request = service.Files.Create(
                     fileMetadata, stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
@@ -204,9 +202,7 @@ namespace DATAO
                 }
             }
 
-            //Удаляем локальную копию (опционально)
-            //ПУКАН БОМБАНУЛ БОЛЬШЕ НИЧЕГО НЕ УДАЛЯЕМ
-            //File.Delete(@"..\..\datao.init.xlsx");
+            File.Delete(@"..\..\datao.init.xlsx");
         }
     }
 }

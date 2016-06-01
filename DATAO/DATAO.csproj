@@ -149,6 +149,9 @@
     <EmbeddedResource Include="SetForm.resx">
       <DependentUpon>SetForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="example.init.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
