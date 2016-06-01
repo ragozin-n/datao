@@ -17,7 +17,7 @@ namespace DATAO
             InitializeComponent();
             personalListBox.ScrollAlwaysVisible = true;
 
-            loadname();
+            Text = Enterprise.About.Name;
             LoadSchedule();
             LoadEvent();
             LoadPersonal();
@@ -218,11 +218,6 @@ namespace DATAO
             LoadEvent();
         }
 
-        public void loadname()
-        {
-            Text = Enterprise.About.Name;
-        }
-
         private void LoadSkladGrid()
         {
             skladGrid.BorderStyle = BorderStyle.FixedSingle;
@@ -235,16 +230,6 @@ namespace DATAO
             {
                 skladGrid[0, i] = new SourceGrid.Cells.ColumnHeader(names[i]);
             }
-            
-            //пример
-            skladGrid.Rows.Insert(1);
-            skladGrid[1, 0] = new SourceGrid.Cells.Cell("nivea for man", typeof(string));
-            skladGrid[1, 1] = new SourceGrid.Cells.Cell(5684123413, typeof(int));
-            skladGrid[1, 2] = new SourceGrid.Cells.Cell("ооо шампунькин", typeof(string));
-            skladGrid[1, 3] = new SourceGrid.Cells.Cell(256, typeof(int));
-            skladGrid[1, 4] = new SourceGrid.Cells.Cell("шампуни", typeof(CheckBox));
-            skladGrid[1, 5] = new SourceGrid.Cells.Cell(12, typeof(int));
-            skladGrid.AutoSizeCells();
         }
 
         private TimeSpan ParseTimeFromCells(string time, bool startTime, char separator = '-')
@@ -403,7 +388,7 @@ namespace DATAO
 
         private void AdminForm_FormClosing(object sender, EventArgs e)
         {
-            //Authorization.UploadDatao(ref _user);
+            //
         }
 
         private void personalListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -413,29 +398,11 @@ namespace DATAO
             addressTextBox.Text = Enterprise.Personal[personalListBox.SelectedIndex].About.Fields["Адрес"];
             rateTextBox.Text = Enterprise.Personal[personalListBox.SelectedIndex].About.Fields["Ставка"];
             statusTextBox.Text = Enterprise.Personal[personalListBox.SelectedIndex].About.Fields["Статус"];
-            //okPicture1.Visible = Table.PersonalList.Workers[personalListBox.SelectedIndex].Schedule[0];
-            //okPicture2.Visible = Table.PersonalList.Workers[personalListBox.SelectedIndex].Schedule[1];
-            //okPicture3.Visible = Table.PersonalList.Workers[personalListBox.SelectedIndex].Schedule[2];
-            //okPicture4.Visible = Table.PersonalList.Workers[personalListBox.SelectedIndex].Schedule[3];
-            //okPicture5.Visible = Table.PersonalList.Workers[personalListBox.SelectedIndex].Schedule[4];
-            //okPicture6.Visible = Table.PersonalList.Workers[personalListBox.SelectedIndex].Schedule[5];
-            //okPicture7.Visible = Table.PersonalList.Workers[personalListBox.SelectedIndex].Schedule[6];
         }
 
         private void deletePersonalButton_Click(object sender, EventArgs e)
         {
-            //возможно удаление больше не нужно будет
-            //try {
-            //    personalListBox.Update();
-            //    Table.PersonalList.RemoveWorker(Table.PersonalList.Workers[personalListBox.SelectedIndex].ID);
-            //    LoadPersonal();
-            //    personalListBox.EndUpdate();
-            //}
-            //catch (Exception)
-            //{
-            //    MessageBox.Show("Не выбран рабочий!");
-            //}
-            
+            //
         }
 
         private void deleteEventButton_Click(object sender, EventArgs e)
@@ -450,18 +417,12 @@ namespace DATAO
                     {
                         RecordTime = ParseTimeFromCells(ScheduleGrid[i, 0].Value.ToString(), true);
                         string name = ScheduleGrid[0, c].Value.ToString();
-                        //эта сложная штука по идее должна удалить нужное событие у нужного рабочего
+
                         Enterprise.Personal.First(worker => (worker.About.Name == name)).Events.RemoveAll(
                             ev => (ev.RecordDate.TimeOfDay == RecordTime && ev.RecordDate.Date == monthCalendar.SelectionStart.Date));
                     }
                 }
             }
-            //MessageBox.Show($"{monthCalendar.SelectionStart.ToString()} {start.ToString()} {id}");
-            //if(id != null)
-            //{
-            //    Table.WorkList.RemoveEventFromCalendar(monthCalendar.SelectionStart.Date, start, (uint)id);
-            //    UpdateSchedule();
-            //}
         }
 
         private void newServiceButton_Click(object sender, EventArgs e)
@@ -536,7 +497,10 @@ namespace DATAO
                 Enterprise.Personal[personalListBox.SelectedIndex].About.Fields["Статус"] = statusTextBox.Text;
                 editPersonalCheckBox.CheckState = CheckState.Unchecked;
             }
-            catch(ArgumentOutOfRangeException) { MessageBox.Show("Выберете рабочего"); }
+            catch(ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Выберете рабочего");
+            }
         }
     }
 }
