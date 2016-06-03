@@ -61,7 +61,7 @@ namespace DATAO
                     {
                         current4Service.Add(Enterprise.PriceList[(currentPage * 4) - i]);
                     }
-                    catch(ArgumentOutOfRangeException)
+                    catch (ArgumentOutOfRangeException)
                     {
                         break;
                     }
@@ -151,19 +151,19 @@ namespace DATAO
             ScheduleGrid.Rows.Insert(0);
             List<Worker> todayWorker = Enterprise.Personal.FindAll(date => date.TimeTable.Data.ContainsKey(monthCalendar.SelectionStart));
 
-            ScheduleGrid.ColumnsCount = todayWorker.Count+1;
+            ScheduleGrid.ColumnsCount = todayWorker.Count + 1;
             ScheduleGrid[0, 0] = new SourceGrid.Cells.ColumnHeader(string.Empty);
-            for (int i = 1;i<=todayWorker.Count;i++)
+            for (int i = 1; i <= todayWorker.Count; i++)
             {
-                ScheduleGrid[0,i] = new SourceGrid.Cells.ColumnHeader($"{todayWorker[i-1].About.Name}");
+                ScheduleGrid[0, i] = new SourceGrid.Cells.ColumnHeader($"{todayWorker[i - 1].About.Name}");
             }
             ScheduleGrid.FixedRows = 1;
 
             int j = 1;
             try
             {
-                for (TimeSpan i = Enterprise.TimeTable[(Days)IndexDay()+1][0];
-                    i < Enterprise.TimeTable[(Days)IndexDay()+1][1]; 
+                for (TimeSpan i = Enterprise.TimeTable[(Days)IndexDay() + 1][0];
+                    i < Enterprise.TimeTable[(Days)IndexDay() + 1][1];
                     i = i + DateTime.Parse("00:30:00").TimeOfDay)
                 {
                     ScheduleGrid.Rows.Insert(j);
@@ -188,9 +188,9 @@ namespace DATAO
         private void LoadEvent()
         {
             List<Worker> todayWorker = Enterprise.Personal.FindAll(date => date.TimeTable.Data.ContainsKey(monthCalendar.SelectionStart));
-            foreach(Worker w in todayWorker)
+            foreach (Worker w in todayWorker)
             {
-                foreach(Event ev in w.Events)
+                foreach (Event ev in w.Events)
                 {
                     for (int rowIndex = 1; rowIndex < ScheduleGrid.RowsCount; rowIndex++)
                     {
@@ -199,7 +199,14 @@ namespace DATAO
                             int count = 0;
                             for (TimeSpan t = DateTime.Parse("00:30:00").TimeOfDay; t <= ev.Service.Duration; t += DateTime.Parse("00:30:00").TimeOfDay)
                             {
-                                ScheduleGrid[rowIndex + count, todayWorker.IndexOf(w) + 1].Value = "Занято";
+                                if (ev.isComplete == true)
+                                {
+                                    ScheduleGrid[rowIndex + count, todayWorker.IndexOf(w) + 1].Value = "Исполнено";
+                                }
+                                else
+                                {
+                                    ScheduleGrid[rowIndex + count, todayWorker.IndexOf(w) + 1].Value = "Занято";
+                                }
                                 count++;
                             }
                         }
@@ -225,10 +232,21 @@ namespace DATAO
             skladGrid.FixedRows = 1;
             skladGrid.Rows.Insert(0);
 
-            string[] names = {"Наименование", "Артикул", "Поставщик", "Стоимость (руб.)", "Категория", "Остаток ед." };
+            string[] names = { "Артикул", "Наименование", "Поставщик", "Стоимость", "Остаток на складе" };
             for (int i = 0; i < names.Length; i++)
             {
                 skladGrid[0, i] = new SourceGrid.Cells.ColumnHeader(names[i]);
+            }
+            int rowIndex = 1;
+            foreach (KeyValuePair<Goods, uint> good in Enterprise.GoodsAvailability)
+            {
+                skladGrid.Rows.Insert(1);
+                skladGrid[rowIndex, 0] = new SourceGrid.Cells.ColumnHeader(good.Key.About.ID);
+                skladGrid[rowIndex, 1] = new SourceGrid.Cells.ColumnHeader(good.Key.About.Name);
+                skladGrid[rowIndex, 2] = new SourceGrid.Cells.ColumnHeader(good.Key.Provider);
+                skladGrid[rowIndex, 3] = new SourceGrid.Cells.ColumnHeader(good.Key.Cost);
+                skladGrid[rowIndex, 4] = new SourceGrid.Cells.ColumnHeader(good.Value);
+                rowIndex++;
             }
         }
 
@@ -296,17 +314,17 @@ namespace DATAO
             if (editPersonalCheckBox.Checked)
             {
                 personalListBox.Update();
-                //как то нужно задавать ему расписание
-                bool[] schedulePersonal =
-                {
-                bool.Parse(schedulePersonalGrid[1,0].Value.ToString()),
-                bool.Parse(schedulePersonalGrid[1,1].Value.ToString()),
-                bool.Parse(schedulePersonalGrid[1,2].Value.ToString()),
-                bool.Parse(schedulePersonalGrid[1,3].Value.ToString()),
-                bool.Parse(schedulePersonalGrid[1,4].Value.ToString()),
-                bool.Parse(schedulePersonalGrid[1,5].Value.ToString()),
-                bool.Parse(schedulePersonalGrid[1,6].Value.ToString())
-                };
+                ////как то нужно задавать ему расписание
+                //bool[] schedulePersonal =
+                //{
+                //bool.Parse(schedulePersonalGrid[1,0].Value.ToString()),
+                //bool.Parse(schedulePersonalGrid[1,1].Value.ToString()),
+                //bool.Parse(schedulePersonalGrid[1,2].Value.ToString()),
+                //bool.Parse(schedulePersonalGrid[1,3].Value.ToString()),
+                //bool.Parse(schedulePersonalGrid[1,4].Value.ToString()),
+                //bool.Parse(schedulePersonalGrid[1,5].Value.ToString()),
+                //bool.Parse(schedulePersonalGrid[1,6].Value.ToString())
+                //};
                 Worker _worker = new Worker();
                 _worker.About.Name = nameTextBox.Text;
                 _worker.About.Fields.Add("Телефон", phonePersonalTextBox.Text);
@@ -342,9 +360,9 @@ namespace DATAO
         private void deleteFromSkladPictureBox_Click(object sender, EventArgs e)
         {
             //linq
-            foreach(SourceGrid.GridRow row in skladGrid.Rows )
+            foreach (SourceGrid.GridRow row in skladGrid.Rows)
             {
-                if(skladGrid.Selection.IsSelectedRow(row.Index))
+                if (skladGrid.Selection.IsSelectedRow(row.Index))
                 {
                     skladGrid.Rows.Remove(row.Index);
                     break;
@@ -362,6 +380,8 @@ namespace DATAO
                 addressTextBox.ReadOnly = false;
                 rateTextBox.ReadOnly = false;
                 statusTextBox.ReadOnly = false;
+                startPersonalDay.ReadOnly = false;
+                endPersonalDay.ReadOnly = false;
                 schedulePersonalGrid.Visible = true;
             }
             if (editPersonalCheckBox.Checked == false)
@@ -372,6 +392,8 @@ namespace DATAO
                 addressTextBox.ReadOnly = true;
                 rateTextBox.ReadOnly = true;
                 statusTextBox.ReadOnly = true;
+                startPersonalDay.ReadOnly = true;
+                endPersonalDay.ReadOnly = true;
                 schedulePersonalGrid.Visible = false;
             }
         }
@@ -379,6 +401,42 @@ namespace DATAO
         private void doneEventButton_Click(object sender, EventArgs e)
         {
             //находим выдленное событие и исКомплит  = тру
+            TimeSpan start = DateTime.Now.TimeOfDay;
+            TimeSpan end = DateTime.Now.TimeOfDay;
+            string nameWorker = string.Empty;
+
+            for (int c = 1; c <= ScheduleGrid.ColumnsCount; c++)
+            {
+                int j = 0;
+                for (int i = 1; i <= ScheduleGrid.RowsCount; i++)
+                {
+                    if (ScheduleGrid.Selection.IsSelectedCell(new SourceGrid.Position(i, c)))
+                    {
+                        if (j == 0)
+                        {
+                            start = ParseTimeFromCells(ScheduleGrid[i, 0].Value.ToString(), true);
+                            end = ParseTimeFromCells(ScheduleGrid[i, 0].Value.ToString(), false);
+                            j++;
+                            nameWorker = ScheduleGrid[0, c].Value.ToString();
+                        }
+                        else
+                        {
+                            end = ParseTimeFromCells(ScheduleGrid[i, 0].Value.ToString(), false);
+                        }
+                    }
+                }
+            }
+            if (Enterprise.Personal.Find(w => w.About.Name == nameWorker).Events.Find(
+                ev => ((ev.RecordDate == monthCalendar.SelectionStart.Date + start) && (ev.Service.Duration == end - start))).isComplete == true)
+            {
+                Enterprise.Personal.Find(w => w.About.Name == nameWorker).Events.Find(
+                ev => ((ev.RecordDate == monthCalendar.SelectionStart.Date + start) && (ev.Service.Duration == end - start))).isComplete = false;
+            }
+            else
+            {
+                Enterprise.Personal.Find(w => w.About.Name == nameWorker).Events.Find(
+                ev => ((ev.RecordDate == monthCalendar.SelectionStart.Date + start) && (ev.Service.Duration == end - start))).isComplete = true;
+            }
         }
 
         private void monthCalendar_DateChanged(object sender, DateRangeEventArgs e)
@@ -398,6 +456,13 @@ namespace DATAO
             addressTextBox.Text = Enterprise.Personal[personalListBox.SelectedIndex].About.Fields["Адрес"];
             rateTextBox.Text = Enterprise.Personal[personalListBox.SelectedIndex].About.Fields["Ставка"];
             statusTextBox.Text = Enterprise.Personal[personalListBox.SelectedIndex].About.Fields["Статус"];
+            if (Enterprise.Personal[personalListBox.SelectedIndex].TimeTable.Data.ContainsKey(monthCalendarPersonal.SelectionStart.Date))
+            {
+                startPersonalDay.Text = Enterprise.Personal[personalListBox.SelectedIndex].TimeTable.Data
+                    [monthCalendarPersonal.SelectionStart.Date].Start.ToString();
+                endPersonalDay.Text = Enterprise.Personal[personalListBox.SelectedIndex].TimeTable.Data
+                    [monthCalendarPersonal.SelectionStart.Date].End.ToString();
+            }
         }
 
         private void deletePersonalButton_Click(object sender, EventArgs e)
@@ -449,9 +514,9 @@ namespace DATAO
 
         private void leftButton_Click(object sender, EventArgs e)
         {
-            if(int.Parse(numberPageLabel.Text) > 1)
+            if (int.Parse(numberPageLabel.Text) > 1)
             {
-                LoadService(int.Parse(numberPageLabel.Text)-1);
+                LoadService(int.Parse(numberPageLabel.Text) - 1);
             }
         }
 
@@ -495,12 +560,42 @@ namespace DATAO
                 Enterprise.Personal[personalListBox.SelectedIndex].About.Fields["Телефон"] = phonePersonalTextBox.Text;
                 Enterprise.Personal[personalListBox.SelectedIndex].About.Fields["Адрес"] = addressTextBox.Text;
                 Enterprise.Personal[personalListBox.SelectedIndex].About.Fields["Статус"] = statusTextBox.Text;
+                if (Enterprise.Personal[personalListBox.SelectedIndex].TimeTable.Data.ContainsKey(monthCalendarPersonal.SelectionStart.Date))
+                {
+                    Enterprise.Personal[personalListBox.SelectedIndex].TimeTable.Data
+                        [monthCalendarPersonal.SelectionStart.Date].Start = TimeSpan.Parse(startPersonalDay.Text);
+                    Enterprise.Personal[personalListBox.SelectedIndex].TimeTable.Data
+                        [monthCalendarPersonal.SelectionStart.Date].End = TimeSpan.Parse(endPersonalDay.Text);
+                }
+                else
+                {
+                    Enterprise.Personal[personalListBox.SelectedIndex].TimeTable.Data.Add(monthCalendarPersonal.SelectionStart.Date,
+                        new WorkDay (startPersonalDay.Text+"-"+ endPersonalDay.Text));
+                }
                 editPersonalCheckBox.CheckState = CheckState.Unchecked;
             }
-            catch(ArgumentOutOfRangeException)
+            catch (ArgumentOutOfRangeException)
             {
                 MessageBox.Show("Выберете рабочего");
             }
         }
+
+        private void syncSkladButton_Click(object sender, EventArgs e)
+        {
+            SyncSklad();
+        }
+
+        public void SyncSklad()
+        {
+            //for(int rowIndex = 1; rowIndex < skladGrid.RowsCount;rowIndex++)
+            //{
+            //    for(int colIndex = 0; colIndex < skladGrid.ColumnsCount; colIndex ++)
+            //    {
+            //        //можно ли создавать новый дикшинари?
+            //        Enterprise.GoodsAvailability = new
+            //    }
+            //}
+        }
+
     }
 }

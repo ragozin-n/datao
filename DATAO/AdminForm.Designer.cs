@@ -36,6 +36,7 @@
             this.AddEventButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.monthCalendar = new System.Windows.Forms.MonthCalendar();
             this.Personal = new System.Windows.Forms.TabPage();
+            this.saveChangePersonalButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.editPersonalCheckBox = new MaterialSkin.Controls.MaterialCheckBox();
             this.deletePersonalButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.newPersonalButton = new MaterialSkin.Controls.MaterialRaisedButton();
@@ -123,7 +124,13 @@
             this.label5 = new System.Windows.Forms.Label();
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
             this.settingButton = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.saveChangePersonalButton = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.searchSkladShowButton = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.syncSkladButton = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.monthCalendarPersonal = new System.Windows.Forms.MonthCalendar();
+            this.startPersonalDay = new System.Windows.Forms.MaskedTextBox();
+            this.endPersonalDay = new System.Windows.Forms.MaskedTextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.Calendar.SuspendLayout();
             this.Personal.SuspendLayout();
@@ -255,6 +262,11 @@
             // 
             this.Personal.BackColor = System.Drawing.Color.DarkSlateGray;
             this.Personal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Personal.Controls.Add(this.label13);
+            this.Personal.Controls.Add(this.label12);
+            this.Personal.Controls.Add(this.endPersonalDay);
+            this.Personal.Controls.Add(this.startPersonalDay);
+            this.Personal.Controls.Add(this.monthCalendarPersonal);
             this.Personal.Controls.Add(this.saveChangePersonalButton);
             this.Personal.Controls.Add(this.editPersonalCheckBox);
             this.Personal.Controls.Add(this.deletePersonalButton);
@@ -272,6 +284,21 @@
             this.Personal.Size = new System.Drawing.Size(1273, 574);
             this.Personal.TabIndex = 1;
             this.Personal.Text = "Персонал";
+            // 
+            // saveChangePersonalButton
+            // 
+            this.saveChangePersonalButton.Depth = 0;
+            this.saveChangePersonalButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.saveChangePersonalButton.Location = new System.Drawing.Point(970, 4);
+            this.saveChangePersonalButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.saveChangePersonalButton.Name = "saveChangePersonalButton";
+            this.saveChangePersonalButton.Primary = true;
+            this.saveChangePersonalButton.Size = new System.Drawing.Size(91, 23);
+            this.saveChangePersonalButton.TabIndex = 21;
+            this.saveChangePersonalButton.Text = "Сохранить";
+            this.saveChangePersonalButton.UseVisualStyleBackColor = true;
+            this.saveChangePersonalButton.Visible = false;
+            this.saveChangePersonalButton.Click += new System.EventHandler(this.saveChangePersonalButton_Click);
             // 
             // editPersonalCheckBox
             // 
@@ -1050,6 +1077,7 @@
             // 
             this.Sklad.BackColor = System.Drawing.Color.DarkSlateGray;
             this.Sklad.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Sklad.Controls.Add(this.syncSkladButton);
             this.Sklad.Controls.Add(this.deleteFromSkladPictureBox);
             this.Sklad.Controls.Add(this.addToSkladPictureBox);
             this.Sklad.Controls.Add(this.skladGrid);
@@ -1203,13 +1231,14 @@
             // 
             // searchSkladBox
             // 
+            this.searchSkladBox.Controls.Add(this.searchSkladShowButton);
             this.searchSkladBox.Controls.Add(this.label6);
             this.searchSkladBox.Controls.Add(this.comboBox1);
             this.searchSkladBox.Controls.Add(this.label5);
             this.searchSkladBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.searchSkladBox.Location = new System.Drawing.Point(35, 25);
             this.searchSkladBox.Name = "searchSkladBox";
-            this.searchSkladBox.Size = new System.Drawing.Size(278, 173);
+            this.searchSkladBox.Size = new System.Drawing.Size(278, 190);
             this.searchSkladBox.TabIndex = 7;
             this.searchSkladBox.TabStop = false;
             this.searchSkladBox.Text = "Поиск";
@@ -1227,11 +1256,13 @@
             // 
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
-            "Артикул",
+            "Все",
             "Наименование",
+            "Артикул",
             "Поставщик",
-            "Остаток",
-            "Стоимость"});
+            "Стоимость",
+            "Категория",
+            "Остаток"});
             this.comboBox1.Location = new System.Drawing.Point(23, 61);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(230, 21);
@@ -1270,20 +1301,72 @@
             this.settingButton.UseVisualStyleBackColor = true;
             this.settingButton.Click += new System.EventHandler(this.settingButton_Click);
             // 
-            // saveChangePersonalButton
+            // searchSkladShowButton
             // 
-            this.saveChangePersonalButton.Depth = 0;
-            this.saveChangePersonalButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.saveChangePersonalButton.Location = new System.Drawing.Point(970, 4);
-            this.saveChangePersonalButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.saveChangePersonalButton.Name = "saveChangePersonalButton";
-            this.saveChangePersonalButton.Primary = true;
-            this.saveChangePersonalButton.Size = new System.Drawing.Size(91, 23);
-            this.saveChangePersonalButton.TabIndex = 21;
-            this.saveChangePersonalButton.Text = "Сохранить";
-            this.saveChangePersonalButton.UseVisualStyleBackColor = true;
-            this.saveChangePersonalButton.Visible = false;
-            this.saveChangePersonalButton.Click += new System.EventHandler(this.saveChangePersonalButton_Click);
+            this.searchSkladShowButton.Depth = 0;
+            this.searchSkladShowButton.Location = new System.Drawing.Point(86, 149);
+            this.searchSkladShowButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.searchSkladShowButton.Name = "searchSkladShowButton";
+            this.searchSkladShowButton.Primary = true;
+            this.searchSkladShowButton.Size = new System.Drawing.Size(97, 23);
+            this.searchSkladShowButton.TabIndex = 6;
+            this.searchSkladShowButton.Text = "Показать";
+            this.searchSkladShowButton.UseVisualStyleBackColor = true;
+            // 
+            // syncSkladButton
+            // 
+            this.syncSkladButton.Depth = 0;
+            this.syncSkladButton.Location = new System.Drawing.Point(365, 152);
+            this.syncSkladButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.syncSkladButton.Name = "syncSkladButton";
+            this.syncSkladButton.Primary = true;
+            this.syncSkladButton.Size = new System.Drawing.Size(56, 45);
+            this.syncSkladButton.TabIndex = 11;
+            this.syncSkladButton.Text = "Синхр.";
+            this.syncSkladButton.UseVisualStyleBackColor = true;
+            this.syncSkladButton.Click += new System.EventHandler(this.syncSkladButton_Click);
+            // 
+            // monthCalendarPersonal
+            // 
+            this.monthCalendarPersonal.Location = new System.Drawing.Point(390, 335);
+            this.monthCalendarPersonal.Name = "monthCalendarPersonal";
+            this.monthCalendarPersonal.TabIndex = 22;
+            // 
+            // startPersonalDay
+            // 
+            this.startPersonalDay.Location = new System.Drawing.Point(623, 376);
+            this.startPersonalDay.Mask = "00:00";
+            this.startPersonalDay.Name = "startPersonalDay";
+            this.startPersonalDay.Size = new System.Drawing.Size(100, 20);
+            this.startPersonalDay.TabIndex = 23;
+            this.startPersonalDay.ValidatingType = typeof(System.DateTime);
+            // 
+            // endPersonalDay
+            // 
+            this.endPersonalDay.Location = new System.Drawing.Point(623, 435);
+            this.endPersonalDay.Mask = "00:00";
+            this.endPersonalDay.Name = "endPersonalDay";
+            this.endPersonalDay.Size = new System.Drawing.Size(100, 20);
+            this.endPersonalDay.TabIndex = 24;
+            this.endPersonalDay.ValidatingType = typeof(System.DateTime);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(614, 357);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(44, 13);
+            this.label12.TabIndex = 25;
+            this.label12.Text = "Начало";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(614, 416);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(38, 13);
+            this.label13.TabIndex = 26;
+            this.label13.Text = "Конец";
             // 
             // AdminForm
             // 
@@ -1443,5 +1526,12 @@
         private System.Windows.Forms.TextBox newCostServiceTextBox;
         private System.Windows.Forms.TextBox newNameServiceTextBox;
         private MaterialSkin.Controls.MaterialRaisedButton saveChangePersonalButton;
+        private MaterialSkin.Controls.MaterialRaisedButton searchSkladShowButton;
+        private MaterialSkin.Controls.MaterialRaisedButton syncSkladButton;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.MaskedTextBox endPersonalDay;
+        private System.Windows.Forms.MaskedTextBox startPersonalDay;
+        private System.Windows.Forms.MonthCalendar monthCalendarPersonal;
     }
 }
