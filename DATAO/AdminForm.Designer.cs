@@ -131,6 +131,7 @@
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
             this.settingButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.newTimeServiceComboBox = new System.Windows.Forms.ComboBox();
+            this.reportRaisedButton1 = new MaterialSkin.Controls.MaterialRaisedButton();
             this.tabControl.SuspendLayout();
             this.Calendar.SuspendLayout();
             this.Personal.SuspendLayout();
@@ -1375,12 +1376,26 @@
             this.newTimeServiceComboBox.Size = new System.Drawing.Size(132, 21);
             this.newTimeServiceComboBox.TabIndex = 6;
             // 
+            // reportRaisedButton1
+            // 
+            this.reportRaisedButton1.Depth = 0;
+            this.reportRaisedButton1.Location = new System.Drawing.Point(1043, 34);
+            this.reportRaisedButton1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.reportRaisedButton1.Name = "reportRaisedButton1";
+            this.reportRaisedButton1.Primary = true;
+            this.reportRaisedButton1.Size = new System.Drawing.Size(111, 39);
+            this.reportRaisedButton1.TabIndex = 6;
+            this.reportRaisedButton1.Text = "Отчет";
+            this.reportRaisedButton1.UseVisualStyleBackColor = true;
+            this.reportRaisedButton1.Click += new System.EventHandler(this.reportRaisedButton1_Click);
+            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(1280, 720);
+            this.Controls.Add(this.reportRaisedButton1);
             this.Controls.Add(this.settingButton);
             this.Controls.Add(this.materialTabSelector1);
             this.Controls.Add(this.tabControl);
@@ -1540,5 +1555,6 @@
         private System.Windows.Forms.MaskedTextBox startPersonalDay;
         private System.Windows.Forms.MonthCalendar monthCalendarPersonal;
         private System.Windows.Forms.ComboBox newTimeServiceComboBox;
+        private MaterialSkin.Controls.MaterialRaisedButton reportRaisedButton1;
     }
 }

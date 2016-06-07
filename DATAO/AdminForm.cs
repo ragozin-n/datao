@@ -672,5 +672,10 @@ namespace DATAO
                 endPersonalDay.Text = String.Empty;
             }
         }
+
+        private void reportRaisedButton1_Click(object sender, EventArgs e)
+        {
+            //вызываю метод формирования отчета 
+        }
     }
 }
