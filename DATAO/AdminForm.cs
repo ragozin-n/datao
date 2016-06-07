@@ -69,63 +69,92 @@ namespace DATAO
 
                 if (current4Service != null)
                 {
-                    if (current4Service.Count == 1)
+                    if (current4Service.Count >= 1)
                     {
                         serviceBox.Visible = true;
                         nameServiceLabel.Text = current4Service[0].About.Name;
                         costService.Text = $"{current4Service[0].Cost.ToString()} рублей";
-                        timeService.Text = $"{current4Service[0].Duration.ToString().Substring(0, 5)} минут";
+                        switch(current4Service[0].Duration.ToString().Substring(0, 5))
+                        {
+                            case "00:30":
+                                timeService.Text = newTimeServiceComboBox.Items[0].ToString();
+                                break;
+                            case "01:00":
+                                timeService.Text = newTimeServiceComboBox.Items[1].ToString();
+                                break;
+                            case "01:30":
+                                timeService.Text = newTimeServiceComboBox.Items[2].ToString();
+                                break;
+                            case "02:00":
+                                timeService.Text = newTimeServiceComboBox.Items[3].ToString();
+                                break;                               
+                        }
                         serviceBox1.Visible = false;
                         serviceBox2.Visible = false;
                         serviceBox3.Visible = false;
                     }
-                    if (current4Service.Count == 2)
+                    if (current4Service.Count >= 2)
                     {
-                        serviceBox.Visible = true;
-                        nameServiceLabel.Text = current4Service[0].About.Name;
-                        costService.Text = $"{current4Service[0].Cost.ToString()} рублей";
-                        timeService.Text = $"{current4Service[0].Duration.ToString().Substring(0, 5)} минут";
                         serviceBox1.Visible = true;
                         nameServiceLabel1.Text = current4Service[1].About.Name;
                         costService1.Text = $"{current4Service[1].Cost.ToString()} рублей";
-                        timeService1.Text = $"{current4Service[1].Duration.ToString().Substring(0, 5)} минут";
-                        serviceBox2.Visible = false;
-                        serviceBox3.Visible = false;
+                        switch (current4Service[1].Duration.ToString().Substring(0, 5))
+                        {
+                            case "00:30":
+                                timeService1.Text = newTimeServiceComboBox.Items[0].ToString();
+                                break;
+                            case "01:00":
+                                timeService1.Text = newTimeServiceComboBox.Items[1].ToString();
+                                break;
+                            case "01:30":
+                                timeService1.Text = newTimeServiceComboBox.Items[2].ToString();
+                                break;
+                            case "02:00":
+                                timeService1.Text = newTimeServiceComboBox.Items[3].ToString();
+                                break;
+                        }
                     }
-                    if (current4Service.Count == 3)
+                    if (current4Service.Count >= 3)
                     {
-                        serviceBox.Visible = true;
-                        nameServiceLabel.Text = current4Service[0].About.Name;
-                        costService.Text = current4Service[0].Cost.ToString() + "рублей";
-                        timeService.Text = current4Service[0].Duration.ToString().Substring(0, 5) + " минут";
-                        serviceBox1.Visible = true;
-                        nameServiceLabel1.Text = current4Service[1].About.Name;
-                        costService1.Text = $"{current4Service[1].Cost.ToString()} рублей";
-                        timeService1.Text = current4Service[1].Duration.ToString().Substring(0, 5) + " минут";
                         serviceBox2.Visible = true;
                         nameServiceLabel2.Text = current4Service[2].About.Name;
                         costService2.Text = $"{current4Service[2].Cost.ToString()} рублей";
-                        timeService2.Text = current4Service[2].Duration.ToString().Substring(0, 5) + " минут";
-                        serviceBox3.Visible = false;
+                        switch (current4Service[2].Duration.ToString().Substring(0, 5))
+                        {
+                            case "00:30":
+                                timeService2.Text = newTimeServiceComboBox.Items[0].ToString();
+                                break;
+                            case "01:00":
+                                timeService2.Text = newTimeServiceComboBox.Items[1].ToString();
+                                break;
+                            case "01:30":
+                                timeService2.Text = newTimeServiceComboBox.Items[2].ToString();
+                                break;
+                            case "02:00":
+                                timeService2.Text = newTimeServiceComboBox.Items[3].ToString();
+                                break;
+                        }
                     }
                     if (current4Service.Count == 4)
                     {
-                        serviceBox.Visible = true;
-                        nameServiceLabel.Text = current4Service[0].About.Name;
-                        costService.Text = current4Service[0].Cost.ToString() + "рублей";
-                        timeService.Text = current4Service[0].Duration.ToString().Substring(0, 5) + " минут";
-                        serviceBox1.Visible = true;
-                        nameServiceLabel1.Text = current4Service[1].About.Name;
-                        costService1.Text = $"{current4Service[1].Cost.ToString()} рублей";
-                        timeService1.Text = current4Service[1].Duration.ToString().Substring(0, 5) + " минут";
-                        serviceBox2.Visible = true;
-                        nameServiceLabel2.Text = current4Service[2].About.Name;
-                        costService2.Text = $"{current4Service[2].Cost.ToString()} рублей";
-                        timeService2.Text = current4Service[2].Duration.ToString().Substring(0, 5) + " минут";
                         serviceBox3.Visible = true;
                         nameServiceLabel3.Text = current4Service[3].About.Name;
                         costService3.Text = $"{current4Service[3].Cost.ToString()} рублей";
-                        timeService3.Text = current4Service[3].Duration.ToString().Substring(0, 5) + " минут";
+                        switch (current4Service[3].Duration.ToString().Substring(0, 5))
+                        {
+                            case "00:30":
+                                timeService3.Text = newTimeServiceComboBox.Items[0].ToString();
+                                break;
+                            case "01:00":
+                                timeService3.Text = newTimeServiceComboBox.Items[1].ToString();
+                                break;
+                            case "01:30":
+                                timeService3.Text = newTimeServiceComboBox.Items[2].ToString();
+                                break;
+                            case "02:00":
+                                timeService3.Text = newTimeServiceComboBox.Items[3].ToString();
+                                break;
+                        }
                     }
                 }
             }
@@ -170,7 +199,13 @@ namespace DATAO
                     ScheduleGrid[j, 0] = new SourceGrid.Cells.RowHeader($"{i} - {(i + DateTime.Parse("00:30:00").TimeOfDay)}");
                     for (int k = 1; k < ScheduleGrid.ColumnsCount; k++)
                     {
-                        ScheduleGrid[j, k] = new SourceGrid.Cells.Cell(string.Empty, typeof(string));
+                        if (todayWorker[k - 1].TimeTable.Data[monthCalendar.SelectionStart.Date].End <= i)
+                        {
+                            ScheduleGrid[j, k] = new SourceGrid.Cells.Cell("Не работает", typeof(string));
+                        }
+                        else {
+                            ScheduleGrid[j, k] = new SourceGrid.Cells.Cell(string.Empty, typeof(string));
+                        }
                     }
                     j++;
                 }
@@ -190,7 +225,7 @@ namespace DATAO
             List<Worker> todayWorker = Enterprise.Personal.FindAll(date => date.TimeTable.Data.ContainsKey(monthCalendar.SelectionStart));
             foreach (Worker w in todayWorker)
             {
-                foreach (Event ev in w.Events)
+                foreach (Event ev in w.Events.FindAll(ev1 =>ev1.RecordDate.Date == monthCalendar.SelectionStart.Date))
                 {
                     for (int rowIndex = 1; rowIndex < ScheduleGrid.RowsCount; rowIndex++)
                     {
@@ -228,7 +263,7 @@ namespace DATAO
         private void LoadSkladGrid()
         {
             skladGrid.BorderStyle = BorderStyle.FixedSingle;
-            skladGrid.ColumnsCount = 6;
+            skladGrid.ColumnsCount = 5;
             skladGrid.FixedRows = 1;
             skladGrid.Rows.Insert(0);
 
@@ -496,20 +531,42 @@ namespace DATAO
             saveServiceButton.Visible = true;
             newNameServiceTextBox.Text = string.Empty;
             newCostServiceTextBox.Text = string.Empty;
-            newTimeServiceTextBox.Text = string.Empty;
+            newTimeServiceComboBox.Text = string.Empty;
         }
 
         private void saveServiceButton_Click(object sender, EventArgs e)
         {
-            Service newService = new Service();
-            newService.About.Name = newNameServiceTextBox.Text;
-            newService.Duration = DateTime.Parse(newTimeServiceTextBox.Text).TimeOfDay;
-            newService.Cost = uint.Parse(newCostServiceTextBox.Text);
+            try {
+                Service newService = new Service();
+                newService.About.Name = newNameServiceTextBox.Text;
 
-            Enterprise.PriceList.Add(newService);
-            newServiceBox.Visible = false;
-            saveServiceButton.Visible = false;
-            LoadService(1);
+                switch (newTimeServiceComboBox.SelectedIndex)
+                {
+                    case 0:
+                        newService.Duration = DateTime.Parse("00:30:00").TimeOfDay;
+                        break;
+                    case 1:
+                        newService.Duration = DateTime.Parse("01:00:00").TimeOfDay;
+                        break;
+                    case 2:
+                        newService.Duration = DateTime.Parse("01:30:00").TimeOfDay;
+                        break;
+                    case 3:
+                        newService.Duration = DateTime.Parse("02:00:00").TimeOfDay;
+                        break;
+                    default:
+                        newService.Duration = DateTime.Parse("00:30:00").TimeOfDay;
+                        break;
+                }
+
+                newService.Cost = uint.Parse(newCostServiceTextBox.Text);
+
+                Enterprise.PriceList.Add(newService);
+                newServiceBox.Visible = false;
+                saveServiceButton.Visible = false;
+                LoadService(1);
+            }
+            catch(Exception) { MessageBox.Show("Проверьте все поля"); }
         }
 
         private void leftButton_Click(object sender, EventArgs e)
@@ -597,5 +654,23 @@ namespace DATAO
             //}
         }
 
+        private void monthCalendarPersonal_DateChanged(object sender, DateRangeEventArgs e)
+        {
+            try
+            {
+                if(editPersonalCheckBox.Checked == false)
+                {
+                    startPersonalDay.Text = Enterprise.Personal[personalListBox.SelectedIndex].
+                        TimeTable.Data[monthCalendarPersonal.SelectionStart.Date].Start.ToString();
+                    endPersonalDay.Text = Enterprise.Personal[personalListBox.SelectedIndex].
+                        TimeTable.Data[monthCalendarPersonal.SelectionStart.Date].End.ToString();
+                }
+            }
+            catch(Exception)
+            {
+                startPersonalDay.Text = String.Empty;
+                endPersonalDay.Text = String.Empty;
+            }
+        }
     }
 }
