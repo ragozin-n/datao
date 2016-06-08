@@ -46,5 +46,7 @@ namespace Organization
             Service = _service;
             Cost = Service.Cost;
         }
+
+        public Event() { }
     }
 }

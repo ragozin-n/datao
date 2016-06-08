@@ -28,7 +28,7 @@ namespace ExcelManager
                 try
                 {
                     _master = Enterprise.Personal.First(worker => worker.About.Name == Core.Cells[j, 4].Value.ToString());
-                    //исправь
+                    
                     Event _event = new Event();
                     Client _client = null;
                     try
