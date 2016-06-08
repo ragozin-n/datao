@@ -735,6 +735,8 @@ namespace DATAO
                 income.Date = dateIncome.Value.Date;
                 income.Provider = providerIncometextBox.Text;
                 income.Cost = int.Parse(costIncometextBox4.Text);
+                providerIncometextBox.Text = string.Empty;
+                costIncometextBox4.Text = string.Empty;
                 MessageBox.Show("Пожалуйста не забудьте внести все товары в таблицу, и нажать кнопку \"Синхронизировать\"!");
             }
             catch (Exception) { MessageBox.Show("Проверьте поле стоимость (пример : 20000)"); }
