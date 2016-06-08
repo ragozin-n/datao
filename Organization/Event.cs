@@ -35,5 +35,16 @@ namespace Organization
         /// Дата записи события
         /// </summary>
         public DateTime RecordDate { get; set; }
+
+        /// <summary>
+        /// Изменяемая цена события
+        /// </summary>
+        public double Cost { get; set; }
+
+        public Event(Service _service)
+        {
+            Service = _service;
+            Cost = Service.Cost;
+        }
     }
 }

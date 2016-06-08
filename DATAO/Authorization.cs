@@ -138,6 +138,7 @@ namespace DATAO
                     _request.Upload();
                 }
                 MessageBox.Show("Успешно!");
+                //загрузить с диска
                 return false;
             }
             //Закрываем программу в случае отрицательного ответа
