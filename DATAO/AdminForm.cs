@@ -632,18 +632,13 @@ namespace DATAO
 
         private void syncSkladButton_Click(object sender, EventArgs e)
         {
-            try {
-                if (searchComboBox.SelectedIndex == 0)
-                {
-                    SyncSklad();
-                }
-            }
-            catch(Exception) { MessageBox.Show("Пожалуйста выберите критей \"все\""); }
+            SyncSklad();
         }
 
         public void SyncSklad()
         {
-            //ПЕРЕПИСАТЬ ДИКШИНАРИ
+            //Проверить если есть этот ключ на складе, то приплюсавать количество поступившего товара
+            //если нет, до добавить ключ и значение
             //for(int rowIndex = 1; rowIndex < skladGrid.RowsCount;rowIndex++)
             //{
             //    for(int colIndex = 0; colIndex < skladGrid.ColumnsCount; colIndex ++)
@@ -737,7 +732,11 @@ namespace DATAO
                 income.Cost = int.Parse(costIncometextBox4.Text);
                 providerIncometextBox.Text = string.Empty;
                 costIncometextBox4.Text = string.Empty;
-                MessageBox.Show("Пожалуйста не забудьте внести все товары в таблицу, и нажать кнопку \"Синхронизировать\"!");
+                for(int i = skladGrid.RowsCount-1; i>0;i--)
+                {
+                    skladGrid.Rows.Remove(i);
+                }
+                MessageBox.Show("Теперь добавьтие принятый товар в таблицу, и нажмите кнопку \"Синхронизировать\"!");
             }
             catch (Exception) { MessageBox.Show("Проверьте поле стоимость (пример : 20000)"); }
         }
