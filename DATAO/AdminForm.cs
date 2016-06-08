@@ -394,7 +394,6 @@ namespace DATAO
 
         private void deleteFromSkladPictureBox_Click(object sender, EventArgs e)
         {
-            //linq
             foreach (SourceGrid.GridRow row in skladGrid.Rows)
             {
                 if (skladGrid.Selection.IsSelectedRow(row.Index))
@@ -566,7 +565,10 @@ namespace DATAO
                 saveServiceButton.Visible = false;
                 LoadService(1);
             }
-            catch(Exception) { MessageBox.Show("Проверьте все поля"); }
+            catch(Exception)
+            {
+                MessageBox.Show("Проверьте все поля");
+            }
         }
 
         private void leftButton_Click(object sender, EventArgs e)

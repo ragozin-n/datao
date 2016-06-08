@@ -44,6 +44,7 @@
     <Compile Include="Event.cs" />
     <Compile Include="Goods.cs" />
     <Compile Include="Human.cs" />
+    <Compile Include="Income.cs" />
     <Compile Include="Info.cs" />
     <Compile Include="Organization.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

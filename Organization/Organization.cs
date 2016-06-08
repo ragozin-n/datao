@@ -43,7 +43,12 @@ namespace Organization
         /// Доступные товары
         /// </summary>
         public static Dictionary<Goods, uint> GoodsAvailability { get; set; } = new Dictionary<Goods, uint>();
-       
+
+        /// <summary>
+        /// Лист событий, происходящих при привозе товара (приходов)
+        /// </summary>
+        public static List<Income> Earnings { get; set; } = new List<Income>();
+
         /// <summary>
         /// Клиенты (постоянные или не очень) предприятия
         /// </summary>
