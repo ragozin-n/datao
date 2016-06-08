@@ -44,9 +44,7 @@ namespace ExcelManager
 
                     _event.Master = _master;
                     _event.RecordDate = DateTime.FromOADate(double.Parse(Core.Cells[j,1].Value.ToString()));
-                    //интересная штука, тут по идее поиск ничего не должен вернуть, тк вначале загружается календарь
-                    //и только после него прайслист, то есть в запросе ты ищешь еще не существующую услугу
-                    //и вероятно это все наебнется, если мы попытаемся выдать чек, не не созданное через форму событие, а сабытие загруженное из таблицы
+
                     try
                     {
                         _event.Service = Enterprise.PriceList.First(service => service.About.Name == Core.Cells[j,3].Value.ToString());

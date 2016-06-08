@@ -51,7 +51,8 @@ namespace DATAO
                 {
                     numberPageLabel.Text = "1";
                 }
-                else {
+                else
+                {
                     numberPageLabel.Text = currentPage.ToString();
                 }
                 List<Service> current4Service = new List<Service>();
@@ -330,10 +331,12 @@ namespace DATAO
                 }
             }
 
-            EventForm eventform = new EventForm(this, monthCalendar.SelectionStart,       //день
-                start,     //время начала
-                end,       //время конца
-                nameWorker  //персонал
+            EventForm eventform = new EventForm(
+                this,
+                monthCalendar.SelectionStart,
+                start,
+                end,
+                nameWorker
                 );
             eventform.Show();
         }
@@ -383,12 +386,23 @@ namespace DATAO
         private void addToSkladPictureBox_Click(object sender, EventArgs e)
         {
             skladGrid.Rows.Insert(1);
-            skladGrid[1, 0] = new SourceGrid.Cells.Cell(string.Empty, typeof(string));
-            skladGrid[1, 1] = new SourceGrid.Cells.Cell(0, typeof(int));
-            skladGrid[1, 2] = new SourceGrid.Cells.Cell(string.Empty, typeof(string));
-            skladGrid[1, 3] = new SourceGrid.Cells.Cell(0, typeof(int));
-            skladGrid[1, 4] = new SourceGrid.Cells.Cell(string.Empty, typeof(string));
-            skladGrid[1, 5] = new SourceGrid.Cells.Cell(0, typeof(int));
+            for (int i = 0; i < 6; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    skladGrid[1, i] = new SourceGrid.Cells.Cell(string.Empty, typeof(string));
+                }
+                else
+                {
+                    skladGrid[1, i] = new SourceGrid.Cells.Cell(0, typeof(int));
+                }
+            }
+            //skladGrid[1, 0] = new SourceGrid.Cells.Cell(string.Empty, typeof(string));
+            //skladGrid[1, 1] = new SourceGrid.Cells.Cell(0, typeof(int));
+            //skladGrid[1, 2] = new SourceGrid.Cells.Cell(string.Empty, typeof(string));
+            //skladGrid[1, 3] = new SourceGrid.Cells.Cell(0, typeof(int));
+            //skladGrid[1, 4] = new SourceGrid.Cells.Cell(string.Empty, typeof(string));
+            //skladGrid[1, 5] = new SourceGrid.Cells.Cell(0, typeof(int));
             skladGrid.AutoSizeCells();
         }
 
@@ -406,30 +420,40 @@ namespace DATAO
 
         private void materialCheckBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if (editPersonalCheckBox.Checked == true)
-            {
-                saveChangePersonalButton.Visible = true;
-                nameTextBox.ReadOnly = false;
-                phonePersonalTextBox.ReadOnly = false;
-                addressTextBox.ReadOnly = false;
-                rateTextBox.ReadOnly = false;
-                statusTextBox.ReadOnly = false;
-                startPersonalDay.ReadOnly = false;
-                endPersonalDay.ReadOnly = false;
-                schedulePersonalGrid.Visible = true;
-            }
-            if (editPersonalCheckBox.Checked == false)
-            {
-                saveChangePersonalButton.Visible = false;
-                nameTextBox.ReadOnly = true;
-                phonePersonalTextBox.ReadOnly = true;
-                addressTextBox.ReadOnly = true;
-                rateTextBox.ReadOnly = true;
-                statusTextBox.ReadOnly = true;
-                startPersonalDay.ReadOnly = true;
-                endPersonalDay.ReadOnly = true;
-                schedulePersonalGrid.Visible = false;
-            }
+            saveChangePersonalButton.Visible = !saveChangePersonalButton.Visible;
+            nameTextBox.ReadOnly = !nameTextBox.ReadOnly;
+            phonePersonalTextBox.ReadOnly = !phonePersonalTextBox.ReadOnly;
+            addressTextBox.ReadOnly = !addressTextBox.ReadOnly;
+            rateTextBox.ReadOnly = !rateTextBox.ReadOnly;
+            statusTextBox.ReadOnly = !statusTextBox.ReadOnly;
+            startPersonalDay.ReadOnly = !startPersonalDay.ReadOnly;
+            endPersonalDay.ReadOnly = !endPersonalDay.ReadOnly;
+            schedulePersonalGrid.Visible = !schedulePersonalGrid.Visible;
+
+            //if (editPersonalCheckBox.Checked == true)
+            //{
+            //    saveChangePersonalButton.Visible = true;
+            //    nameTextBox.ReadOnly = false;
+            //    phonePersonalTextBox.ReadOnly = false;
+            //    addressTextBox.ReadOnly = false;
+            //    rateTextBox.ReadOnly = false;
+            //    statusTextBox.ReadOnly = false;
+            //    startPersonalDay.ReadOnly = false;
+            //    endPersonalDay.ReadOnly = false;
+            //    schedulePersonalGrid.Visible = true;
+            //}
+            //if (editPersonalCheckBox.Checked == false)
+            //{
+            //    saveChangePersonalButton.Visible = false;
+            //    nameTextBox.ReadOnly = true;
+            //    phonePersonalTextBox.ReadOnly = true;
+            //    addressTextBox.ReadOnly = true;
+            //    rateTextBox.ReadOnly = true;
+            //    statusTextBox.ReadOnly = true;
+            //    startPersonalDay.ReadOnly = true;
+            //    endPersonalDay.ReadOnly = true;
+            //    schedulePersonalGrid.Visible = false;
+            //}
         }
 
         private void checkEventButton_Click(object sender, EventArgs e)
@@ -456,6 +480,7 @@ namespace DATAO
             addressTextBox.Text = Enterprise.Personal[personalListBox.SelectedIndex].About.Fields["Адрес"];
             rateTextBox.Text = Enterprise.Personal[personalListBox.SelectedIndex].About.Fields["Ставка"];
             statusTextBox.Text = Enterprise.Personal[personalListBox.SelectedIndex].About.Fields["Статус"];
+
             if (Enterprise.Personal[personalListBox.SelectedIndex].TimeTable.Data.ContainsKey(monthCalendarPersonal.SelectionStart.Date))
             {
                 startPersonalDay.Text = Enterprise.Personal[personalListBox.SelectedIndex].TimeTable.Data
@@ -636,8 +661,8 @@ namespace DATAO
             }
             catch(Exception)
             {
-                startPersonalDay.Text = String.Empty;
-                endPersonalDay.Text = String.Empty;
+                startPersonalDay.Text = string.Empty;
+                endPersonalDay.Text = string.Empty;
             }
         }
 
@@ -692,7 +717,10 @@ namespace DATAO
                     MessageBox.Show("Чек уже был выдан!");
                 }
             }
-            catch(Exception) { MessageBox.Show("Убедитесь в правильности ввода (Пример : 200)"); }
+            catch(Exception)
+            {
+                MessageBox.Show("Убедитесь в правильности ввода (Пример : 200)");
+            }
         }
     }
 }
