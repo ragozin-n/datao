@@ -44,7 +44,14 @@ namespace DATAO
             }
 
             //Отрисовка формы
-            Application.Run(new AdminForm());
+            try
+            {
+                Application.Run(new AdminForm());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
             //Сохранее при закрытие формы и отправка на сервер
             Table.Update();
