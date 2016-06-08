@@ -330,15 +330,17 @@ namespace DATAO
                     }
                 }
             }
-
-            EventForm eventform = new EventForm(
-                this,
-                monthCalendar.SelectionStart,
-                start,
-                end,
-                nameWorker
-                );
-            eventform.Show();
+            if (nameWorker != string.Empty)
+            {
+                EventForm eventform = new EventForm(
+                    this,
+                    monthCalendar.SelectionStart,
+                    start,
+                    end,
+                    nameWorker
+                    );
+                eventform.Show();
+            }
         }
 
         private void settingButton_Click(object sender, EventArgs e)
@@ -352,17 +354,6 @@ namespace DATAO
             if (editPersonalCheckBox.Checked)
             {
                 personalListBox.Update();
-                ////как то нужно задавать ему расписание
-                //bool[] schedulePersonal =
-                //{
-                //bool.Parse(schedulePersonalGrid[1,0].Value.ToString()),
-                //bool.Parse(schedulePersonalGrid[1,1].Value.ToString()),
-                //bool.Parse(schedulePersonalGrid[1,2].Value.ToString()),
-                //bool.Parse(schedulePersonalGrid[1,3].Value.ToString()),
-                //bool.Parse(schedulePersonalGrid[1,4].Value.ToString()),
-                //bool.Parse(schedulePersonalGrid[1,5].Value.ToString()),
-                //bool.Parse(schedulePersonalGrid[1,6].Value.ToString())
-                //};
                 Worker _worker = new Worker();
                 _worker.About.Name = nameTextBox.Text;
                 _worker.About.Fields.Add("Телефон", phonePersonalTextBox.Text);
@@ -386,7 +377,7 @@ namespace DATAO
         private void addToSkladPictureBox_Click(object sender, EventArgs e)
         {
             skladGrid.Rows.Insert(1);
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 5; i++)
             {
                 if (i % 2 == 0)
                 {
@@ -397,12 +388,6 @@ namespace DATAO
                     skladGrid[1, i] = new SourceGrid.Cells.Cell(0, typeof(int));
                 }
             }
-            //skladGrid[1, 0] = new SourceGrid.Cells.Cell(string.Empty, typeof(string));
-            //skladGrid[1, 1] = new SourceGrid.Cells.Cell(0, typeof(int));
-            //skladGrid[1, 2] = new SourceGrid.Cells.Cell(string.Empty, typeof(string));
-            //skladGrid[1, 3] = new SourceGrid.Cells.Cell(0, typeof(int));
-            //skladGrid[1, 4] = new SourceGrid.Cells.Cell(string.Empty, typeof(string));
-            //skladGrid[1, 5] = new SourceGrid.Cells.Cell(0, typeof(int));
             skladGrid.AutoSizeCells();
         }
 
@@ -418,7 +403,7 @@ namespace DATAO
             }
         }
 
-        private void materialCheckBox1_CheckedChanged(object sender, EventArgs e)
+        private void editPersonalCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             saveChangePersonalButton.Visible = !saveChangePersonalButton.Visible;
             nameTextBox.ReadOnly = !nameTextBox.ReadOnly;
@@ -429,38 +414,53 @@ namespace DATAO
             startPersonalDay.ReadOnly = !startPersonalDay.ReadOnly;
             endPersonalDay.ReadOnly = !endPersonalDay.ReadOnly;
             schedulePersonalGrid.Visible = !schedulePersonalGrid.Visible;
-
-            //if (editPersonalCheckBox.Checked == true)
-            //{
-            //    saveChangePersonalButton.Visible = true;
-            //    nameTextBox.ReadOnly = false;
-            //    phonePersonalTextBox.ReadOnly = false;
-            //    addressTextBox.ReadOnly = false;
-            //    rateTextBox.ReadOnly = false;
-            //    statusTextBox.ReadOnly = false;
-            //    startPersonalDay.ReadOnly = false;
-            //    endPersonalDay.ReadOnly = false;
-            //    schedulePersonalGrid.Visible = true;
-            //}
-            //if (editPersonalCheckBox.Checked == false)
-            //{
-            //    saveChangePersonalButton.Visible = false;
-            //    nameTextBox.ReadOnly = true;
-            //    phonePersonalTextBox.ReadOnly = true;
-            //    addressTextBox.ReadOnly = true;
-            //    rateTextBox.ReadOnly = true;
-            //    statusTextBox.ReadOnly = true;
-            //    startPersonalDay.ReadOnly = true;
-            //    endPersonalDay.ReadOnly = true;
-            //    schedulePersonalGrid.Visible = false;
-            //}
+            //почему с рид онли не прокатывает
+            //startPersonalDay.ReadOnly = !startPersonalDay.ReadOnly;
+            //endPersonalDay.ReadOnly = !endPersonalDay.ReadOnly;
         }
 
         private void checkEventButton_Click(object sender, EventArgs e)
         {
-            label14.Visible = true;
-            costEventTextBox.Visible = true;
-            checkConfirmButton.Visible = true;
+            TimeSpan start = DateTime.Now.TimeOfDay;
+            TimeSpan end = DateTime.Now.TimeOfDay;
+            string nameWorker = string.Empty;
+
+            for (int c = 1; c <= ScheduleGrid.ColumnsCount; c++)
+            {
+                int j = 0;
+                for (int i = 1; i <= ScheduleGrid.RowsCount; i++)
+                {
+                    if (ScheduleGrid.Selection.IsSelectedCell(new SourceGrid.Position(i, c)))
+                    {
+                        if (j == 0)
+                        {
+                            start = ParseTimeFromCells(ScheduleGrid[i, 0].Value.ToString(), true);
+                            end = ParseTimeFromCells(ScheduleGrid[i, 0].Value.ToString(), false);
+                            j++;
+                            nameWorker = ScheduleGrid[0, c].Value.ToString();
+                        }
+                        else
+                        {
+                            end = ParseTimeFromCells(ScheduleGrid[i, 0].Value.ToString(), false);
+                        }
+                    }
+                }
+            }
+            try {
+                if (Enterprise.Personal.Find(w => w.About.Name == nameWorker).Events.Find(
+                        ev => ((ev.RecordDate == monthCalendar.SelectionStart.Date + start) && (ev.Service.Duration == end - start))).isComplete == false)
+                {
+                    checkEventButton.Visible = false;
+                    label14.Visible = true;
+                    costEventTextBox.Visible = true;
+                    checkConfirmButton.Visible = true;
+                }
+                else
+                {
+                    MessageBox.Show("Чек уже был выдан!");
+                }
+            }
+            catch(Exception) { }
         }
 
         private void monthCalendar_DateChanged(object sender, DateRangeEventArgs e)
@@ -632,11 +632,18 @@ namespace DATAO
 
         private void syncSkladButton_Click(object sender, EventArgs e)
         {
-            SyncSklad();
+            try {
+                if (searchComboBox.SelectedIndex == 0)
+                {
+                    SyncSklad();
+                }
+            }
+            catch(Exception) { MessageBox.Show("Пожалуйста выберите критей \"все\""); }
         }
 
         public void SyncSklad()
         {
+            //ПЕРЕПИСАТЬ ДИКШИНАРИ
             //for(int rowIndex = 1; rowIndex < skladGrid.RowsCount;rowIndex++)
             //{
             //    for(int colIndex = 0; colIndex < skladGrid.ColumnsCount; colIndex ++)
@@ -701,26 +708,36 @@ namespace DATAO
                         }
                     }
                 }
-                if (Enterprise.Personal.Find(w => w.About.Name == nameWorker).Events.Find(
-                    ev => ((ev.RecordDate == monthCalendar.SelectionStart.Date + start) && (ev.Service.Duration == end - start))).isComplete == false)
+                Event currentEvent = Enterprise.Personal.Find(w => w.About.Name == nameWorker).Events.Find(
+                ev => ((ev.RecordDate == monthCalendar.SelectionStart.Date + start) && (ev.Service.Duration == end - start)));
+                currentEvent.isComplete = true;
+                if (costEventTextBox.Text != string.Empty)
                 {
-                    Event currentEvent = Enterprise.Personal.Find(w => w.About.Name == nameWorker).Events.Find(
-                    ev => ((ev.RecordDate == monthCalendar.SelectionStart.Date + start) && (ev.Service.Duration == end - start)));
-                    currentEvent.isComplete = true;
                     currentEvent.Cost = int.Parse(costEventTextBox.Text);
-                    label14.Visible = false;
-                    costEventTextBox.Visible = false;
-                    checkConfirmButton.Visible = false;
                 }
-                else
-                {
-                    MessageBox.Show("Чек уже был выдан!");
-                }
+                checkEventButton.Visible = true;
+                label14.Visible = false;
+                costEventTextBox.Visible = false;
+                checkConfirmButton.Visible = false;
+                UpdateSchedule();
             }
             catch(Exception)
             {
                 MessageBox.Show("Убедитесь в правильности ввода (Пример : 200)");
             }
+        }
+
+        private void confirmIncomeRaisedButton1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Income income = new Income();
+                income.Date = dateIncome.Value.Date;
+                income.Provider = providerIncometextBox.Text;
+                income.Cost = int.Parse(costIncometextBox4.Text);
+                MessageBox.Show("Пожалуйста не забудьте внести все товары в таблицу, и нажать кнопку \"Синхронизировать\"!");
+            }
+            catch (Exception) { MessageBox.Show("Проверьте поле стоимость (пример : 20000)"); }
         }
     }
 }

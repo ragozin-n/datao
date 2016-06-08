@@ -119,18 +119,17 @@
             this.skladGrid = new SourceGrid.Grid();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.statisticsSkladBox = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.confirmIncomeRaisedButton1 = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.dateIncome = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.costIncometextBox4 = new System.Windows.Forms.TextBox();
+            this.providerIncometextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.searchSkladBox = new System.Windows.Forms.GroupBox();
             this.searchSkladShowButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.label6 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.searchComboBox = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
             this.settingButton = new MaterialSkin.Controls.MaterialRaisedButton();
@@ -206,7 +205,7 @@
             // checkConfirmButton
             // 
             this.checkConfirmButton.Depth = 0;
-            this.checkConfirmButton.Location = new System.Drawing.Point(25, 438);
+            this.checkConfirmButton.Location = new System.Drawing.Point(25, 441);
             this.checkConfirmButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.checkConfirmButton.Name = "checkConfirmButton";
             this.checkConfirmButton.Primary = true;
@@ -221,15 +220,16 @@
             // 
             this.label14.AutoSize = true;
             this.label14.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label14.Location = new System.Drawing.Point(32, 400);
+            this.label14.Location = new System.Drawing.Point(9, 391);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(51, 13);
+            this.label14.Size = new System.Drawing.Size(198, 13);
             this.label14.TabIndex = 7;
-            this.label14.Text = "к оплате";
+            this.label14.Text = "к оплате (если хотите изменить цену)";
+            this.label14.Visible = false;
             // 
             // costEventTextBox
             // 
-            this.costEventTextBox.Location = new System.Drawing.Point(89, 397);
+            this.costEventTextBox.Location = new System.Drawing.Point(58, 412);
             this.costEventTextBox.Name = "costEventTextBox";
             this.costEventTextBox.Size = new System.Drawing.Size(100, 20);
             this.costEventTextBox.TabIndex = 6;
@@ -398,7 +398,7 @@
             this.editPersonalCheckBox.TabIndex = 20;
             this.editPersonalCheckBox.Text = "Режим редактирования";
             this.editPersonalCheckBox.UseVisualStyleBackColor = true;
-            this.editPersonalCheckBox.CheckedChanged += new System.EventHandler(this.materialCheckBox1_CheckedChanged);
+            this.editPersonalCheckBox.CheckedChanged += new System.EventHandler(this.editPersonalCheckBox_CheckedChanged);
             // 
             // deletePersonalButton
             // 
@@ -1236,105 +1236,87 @@
             // 
             // statisticsSkladBox
             // 
-            this.statisticsSkladBox.Controls.Add(this.label2);
-            this.statisticsSkladBox.Controls.Add(this.comboBox2);
+            this.statisticsSkladBox.Controls.Add(this.confirmIncomeRaisedButton1);
+            this.statisticsSkladBox.Controls.Add(this.dateIncome);
             this.statisticsSkladBox.Controls.Add(this.label4);
             this.statisticsSkladBox.Controls.Add(this.label3);
-            this.statisticsSkladBox.Controls.Add(this.textBox4);
-            this.statisticsSkladBox.Controls.Add(this.textBox3);
+            this.statisticsSkladBox.Controls.Add(this.costIncometextBox4);
+            this.statisticsSkladBox.Controls.Add(this.providerIncometextBox);
             this.statisticsSkladBox.Controls.Add(this.label1);
-            this.statisticsSkladBox.Controls.Add(this.textBox1);
             this.statisticsSkladBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.statisticsSkladBox.Location = new System.Drawing.Point(35, 252);
             this.statisticsSkladBox.Name = "statisticsSkladBox";
             this.statisticsSkladBox.Size = new System.Drawing.Size(278, 295);
             this.statisticsSkladBox.TabIndex = 4;
             this.statisticsSkladBox.TabStop = false;
-            this.statisticsSkladBox.Text = "Статистика";
+            this.statisticsSkladBox.Text = "Прием товара";
             // 
-            // label2
+            // confirmIncomeRaisedButton1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(114, 29);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(40, 13);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "Месяц";
+            this.confirmIncomeRaisedButton1.Depth = 0;
+            this.confirmIncomeRaisedButton1.Location = new System.Drawing.Point(73, 235);
+            this.confirmIncomeRaisedButton1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.confirmIncomeRaisedButton1.Name = "confirmIncomeRaisedButton1";
+            this.confirmIncomeRaisedButton1.Primary = true;
+            this.confirmIncomeRaisedButton1.Size = new System.Drawing.Size(133, 38);
+            this.confirmIncomeRaisedButton1.TabIndex = 11;
+            this.confirmIncomeRaisedButton1.Text = "Принять";
+            this.confirmIncomeRaisedButton1.UseVisualStyleBackColor = true;
+            this.confirmIncomeRaisedButton1.Click += new System.EventHandler(this.confirmIncomeRaisedButton1_Click);
             // 
-            // comboBox2
+            // dateIncome
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "Январь",
-            "Февраль",
-            "Март",
-            "Апрель",
-            "Май",
-            "Июнь",
-            "Июль",
-            "Август",
-            "Сентябрь",
-            "Октябрь",
-            "Ноябрь",
-            "Декабрь"});
-            this.comboBox2.Location = new System.Drawing.Point(73, 45);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
-            this.comboBox2.TabIndex = 10;
+            this.dateIncome.Location = new System.Drawing.Point(26, 65);
+            this.dateIncome.Name = "dateIncome";
+            this.dateIncome.Size = new System.Drawing.Size(200, 20);
+            this.dateIncome.TabIndex = 10;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(23, 211);
+            this.label4.Location = new System.Drawing.Point(23, 172);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(74, 13);
+            this.label4.Size = new System.Drawing.Size(133, 13);
             this.label4.TabIndex = 9;
-            this.label4.Text = "Ушло единиц";
+            this.label4.Text = "Стоимость всего заказа";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(23, 156);
+            this.label3.Location = new System.Drawing.Point(23, 106);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(86, 13);
+            this.label3.Size = new System.Drawing.Size(65, 13);
             this.label3.TabIndex = 8;
-            this.label3.Text = "Пришло единиц";
+            this.label3.Text = "Поставщик";
             // 
-            // textBox4
+            // costIncometextBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(23, 230);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(230, 20);
-            this.textBox4.TabIndex = 7;
+            this.costIncometextBox4.Location = new System.Drawing.Point(23, 192);
+            this.costIncometextBox4.Name = "costIncometextBox4";
+            this.costIncometextBox4.Size = new System.Drawing.Size(230, 20);
+            this.costIncometextBox4.TabIndex = 7;
             // 
-            // textBox3
+            // providerIncometextBox
             // 
-            this.textBox3.Location = new System.Drawing.Point(23, 175);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(230, 20);
-            this.textBox3.TabIndex = 6;
+            this.providerIncometextBox.Location = new System.Drawing.Point(23, 127);
+            this.providerIncometextBox.Name = "providerIncometextBox";
+            this.providerIncometextBox.Size = new System.Drawing.Size(230, 20);
+            this.providerIncometextBox.TabIndex = 6;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(23, 83);
+            this.label1.Location = new System.Drawing.Point(23, 40);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 13);
+            this.label1.Size = new System.Drawing.Size(33, 13);
             this.label1.TabIndex = 4;
-            this.label1.Text = "Расход";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(23, 112);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(230, 20);
-            this.textBox1.TabIndex = 2;
+            this.label1.Text = "Дата";
             // 
             // searchSkladBox
             // 
             this.searchSkladBox.Controls.Add(this.searchSkladShowButton);
             this.searchSkladBox.Controls.Add(this.label6);
-            this.searchSkladBox.Controls.Add(this.comboBox1);
+            this.searchSkladBox.Controls.Add(this.searchComboBox);
             this.searchSkladBox.Controls.Add(this.label5);
             this.searchSkladBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.searchSkladBox.Location = new System.Drawing.Point(35, 25);
@@ -1365,10 +1347,10 @@
             this.label6.TabIndex = 1;
             this.label6.Text = "Критерий";
             // 
-            // comboBox1
+            // searchComboBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.searchComboBox.FormattingEnabled = true;
+            this.searchComboBox.Items.AddRange(new object[] {
             "Все",
             "Наименование",
             "Артикул",
@@ -1376,10 +1358,10 @@
             "Стоимость",
             "Категория",
             "Остаток"});
-            this.comboBox1.Location = new System.Drawing.Point(23, 61);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(230, 21);
-            this.comboBox1.TabIndex = 5;
+            this.searchComboBox.Location = new System.Drawing.Point(23, 61);
+            this.searchComboBox.Name = "searchComboBox";
+            this.searchComboBox.Size = new System.Drawing.Size(230, 21);
+            this.searchComboBox.TabIndex = 5;
             // 
             // label5
             // 
@@ -1503,16 +1485,15 @@
         private MaterialSkin.Controls.MaterialRaisedButton newPersonalButton;
         private System.Windows.Forms.GroupBox statisticsSkladBox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox costIncometextBox4;
+        private System.Windows.Forms.TextBox providerIncometextBox;
         private MaterialSkin.Controls.MaterialRaisedButton deletePersonalButton;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.GroupBox searchSkladBox;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox searchComboBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox groupBoxPersonal;
         private System.Windows.Forms.TextBox statusTextBox;
@@ -1525,8 +1506,6 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel5;
         private MaterialSkin.Controls.MaterialLabel materialLabel4;
         private MaterialSkin.Controls.MaterialLabel materialLabel2;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.PictureBox schedulePersonalPicture;
         private System.Windows.Forms.PictureBox okPicture1;
         private System.Windows.Forms.PictureBox okPicture7;
@@ -1597,5 +1576,7 @@
         private MaterialSkin.Controls.MaterialRaisedButton checkConfirmButton;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox costEventTextBox;
+        private System.Windows.Forms.DateTimePicker dateIncome;
+        private MaterialSkin.Controls.MaterialRaisedButton confirmIncomeRaisedButton1;
     }
 }

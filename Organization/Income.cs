@@ -16,7 +16,7 @@ namespace Organization
         /// <summary>
         /// Непосредственно товар, который привезли
         /// </summary>
-        public Goods Good { get; set; }
+        public string Provider { get; set; }
 
         /// <summary>
         /// Стоимость прихода

@@ -35,7 +35,7 @@ namespace Organization
         public static List<Service> PriceList { get; set; } = new List<Service>();
 
         /// <summary>
-        /// Расходы товаров
+        /// Расходы товаров ЭТА ШТУКА НЕ НУЖНА ТЕПЕРЬ
         /// </summary>
         public static Dictionary<Goods, Dictionary<Months, uint>> GoodsExpences { get; set; } = new Dictionary<Goods, Dictionary<Months, uint>>();
         
