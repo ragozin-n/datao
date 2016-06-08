@@ -41,8 +41,7 @@ namespace DATAO
         {
             if (data != null && startTime != null && endTime != null && nameWorker != null && clientName.Text != "")
             {
-                Event currentEvent = new Event();
-                currentEvent.Service = Enterprise.PriceList.Find(pl => pl.About.Name == selectService.SelectedItem.ToString());
+                Event currentEvent = new Event(Enterprise.PriceList.Find(pl => pl.About.Name == selectService.SelectedItem.ToString()));
                 currentEvent.RecordDate = data + startTime;
                 currentEvent.Master = Enterprise.Personal.Find(w => w.About.Name == nameWorker);
                 Client customer = new Client();

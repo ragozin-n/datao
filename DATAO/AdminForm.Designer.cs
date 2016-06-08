@@ -30,9 +30,12 @@
         {
             this.tabControl = new MaterialSkin.Controls.MaterialTabControl();
             this.Calendar = new System.Windows.Forms.TabPage();
+            this.checkConfirmButton = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.label14 = new System.Windows.Forms.Label();
+            this.costEventTextBox = new System.Windows.Forms.TextBox();
             this.deleteEventButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.ScheduleGrid = new SourceGrid.Grid();
-            this.doneEventButton = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.checkEventButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.AddEventButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.monthCalendar = new System.Windows.Forms.MonthCalendar();
             this.Personal = new System.Windows.Forms.TabPage();
@@ -68,6 +71,7 @@
             this.schedulePersonalPicture = new System.Windows.Forms.PictureBox();
             this.Uslugi = new System.Windows.Forms.TabPage();
             this.newServiceBox = new System.Windows.Forms.GroupBox();
+            this.newTimeServiceComboBox = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -130,7 +134,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
             this.settingButton = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.newTimeServiceComboBox = new System.Windows.Forms.ComboBox();
             this.reportRaisedButton1 = new MaterialSkin.Controls.MaterialRaisedButton();
             this.tabControl.SuspendLayout();
             this.Calendar.SuspendLayout();
@@ -185,9 +188,12 @@
             // 
             this.Calendar.BackColor = System.Drawing.Color.DarkSlateGray;
             this.Calendar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Calendar.Controls.Add(this.checkConfirmButton);
+            this.Calendar.Controls.Add(this.label14);
+            this.Calendar.Controls.Add(this.costEventTextBox);
             this.Calendar.Controls.Add(this.deleteEventButton);
             this.Calendar.Controls.Add(this.ScheduleGrid);
-            this.Calendar.Controls.Add(this.doneEventButton);
+            this.Calendar.Controls.Add(this.checkEventButton);
             this.Calendar.Controls.Add(this.AddEventButton);
             this.Calendar.Controls.Add(this.monthCalendar);
             this.Calendar.Location = new System.Drawing.Point(4, 22);
@@ -197,10 +203,42 @@
             this.Calendar.TabIndex = 0;
             this.Calendar.Text = "Календарь";
             // 
+            // checkConfirmButton
+            // 
+            this.checkConfirmButton.Depth = 0;
+            this.checkConfirmButton.Location = new System.Drawing.Point(25, 438);
+            this.checkConfirmButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.checkConfirmButton.Name = "checkConfirmButton";
+            this.checkConfirmButton.Primary = true;
+            this.checkConfirmButton.Size = new System.Drawing.Size(164, 37);
+            this.checkConfirmButton.TabIndex = 8;
+            this.checkConfirmButton.Text = "подтвердить";
+            this.checkConfirmButton.UseVisualStyleBackColor = true;
+            this.checkConfirmButton.Visible = false;
+            this.checkConfirmButton.Click += new System.EventHandler(this.checkConfirmButton_Click);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label14.Location = new System.Drawing.Point(32, 400);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(51, 13);
+            this.label14.TabIndex = 7;
+            this.label14.Text = "к оплате";
+            // 
+            // costEventTextBox
+            // 
+            this.costEventTextBox.Location = new System.Drawing.Point(89, 397);
+            this.costEventTextBox.Name = "costEventTextBox";
+            this.costEventTextBox.Size = new System.Drawing.Size(100, 20);
+            this.costEventTextBox.TabIndex = 6;
+            this.costEventTextBox.Visible = false;
+            // 
             // deleteEventButton
             // 
             this.deleteEventButton.Depth = 0;
-            this.deleteEventButton.Location = new System.Drawing.Point(25, 335);
+            this.deleteEventButton.Location = new System.Drawing.Point(25, 279);
             this.deleteEventButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.deleteEventButton.Name = "deleteEventButton";
             this.deleteEventButton.Primary = true;
@@ -225,19 +263,19 @@
             this.ScheduleGrid.TabStop = true;
             this.ScheduleGrid.ToolTipText = "";
             // 
-            // doneEventButton
+            // checkEventButton
             // 
-            this.doneEventButton.Depth = 0;
-            this.doneEventButton.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.doneEventButton.Location = new System.Drawing.Point(25, 280);
-            this.doneEventButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.doneEventButton.Name = "doneEventButton";
-            this.doneEventButton.Primary = true;
-            this.doneEventButton.Size = new System.Drawing.Size(164, 38);
-            this.doneEventButton.TabIndex = 3;
-            this.doneEventButton.Text = "Исполнено/Неисполнено";
-            this.doneEventButton.UseVisualStyleBackColor = true;
-            this.doneEventButton.Click += new System.EventHandler(this.doneEventButton_Click);
+            this.checkEventButton.Depth = 0;
+            this.checkEventButton.Font = new System.Drawing.Font("Palatino Linotype", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkEventButton.Location = new System.Drawing.Point(25, 337);
+            this.checkEventButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.checkEventButton.Name = "checkEventButton";
+            this.checkEventButton.Primary = true;
+            this.checkEventButton.Size = new System.Drawing.Size(164, 38);
+            this.checkEventButton.TabIndex = 3;
+            this.checkEventButton.Text = "Выдать чек";
+            this.checkEventButton.UseVisualStyleBackColor = true;
+            this.checkEventButton.Click += new System.EventHandler(this.checkEventButton_Click);
             // 
             // AddEventButton
             // 
@@ -663,6 +701,19 @@
             this.newServiceBox.TabStop = false;
             this.newServiceBox.Text = "Новая услуга";
             this.newServiceBox.Visible = false;
+            // 
+            // newTimeServiceComboBox
+            // 
+            this.newTimeServiceComboBox.FormattingEnabled = true;
+            this.newTimeServiceComboBox.Items.AddRange(new object[] {
+            "30 минут",
+            "1 час",
+            "1 час 30 минут",
+            "2 часа"});
+            this.newTimeServiceComboBox.Location = new System.Drawing.Point(82, 92);
+            this.newTimeServiceComboBox.Name = "newTimeServiceComboBox";
+            this.newTimeServiceComboBox.Size = new System.Drawing.Size(132, 21);
+            this.newTimeServiceComboBox.TabIndex = 6;
             // 
             // label11
             // 
@@ -1363,19 +1414,6 @@
             this.settingButton.UseVisualStyleBackColor = true;
             this.settingButton.Click += new System.EventHandler(this.settingButton_Click);
             // 
-            // newTimeServiceComboBox
-            // 
-            this.newTimeServiceComboBox.FormattingEnabled = true;
-            this.newTimeServiceComboBox.Items.AddRange(new object[] {
-            "30 минут",
-            "1 час",
-            "1 час 30 минут",
-            "2 часа"});
-            this.newTimeServiceComboBox.Location = new System.Drawing.Point(82, 92);
-            this.newTimeServiceComboBox.Name = "newTimeServiceComboBox";
-            this.newTimeServiceComboBox.Size = new System.Drawing.Size(132, 21);
-            this.newTimeServiceComboBox.TabIndex = 6;
-            // 
             // reportRaisedButton1
             // 
             this.reportRaisedButton1.Depth = 0;
@@ -1458,7 +1496,7 @@
         private MaterialSkin.Controls.MaterialTabSelector materialTabSelector1;
         private System.Windows.Forms.MonthCalendar monthCalendar;
         private MaterialSkin.Controls.MaterialRaisedButton AddEventButton;
-        private MaterialSkin.Controls.MaterialRaisedButton doneEventButton;
+        private MaterialSkin.Controls.MaterialRaisedButton checkEventButton;
         private System.Windows.Forms.TabPage Personal;
         private System.Windows.Forms.TabPage Sklad;
         private System.Windows.Forms.ListBox personalListBox;
@@ -1556,5 +1594,8 @@
         private System.Windows.Forms.MonthCalendar monthCalendarPersonal;
         private System.Windows.Forms.ComboBox newTimeServiceComboBox;
         private MaterialSkin.Controls.MaterialRaisedButton reportRaisedButton1;
+        private MaterialSkin.Controls.MaterialRaisedButton checkConfirmButton;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox costEventTextBox;
     }
 }

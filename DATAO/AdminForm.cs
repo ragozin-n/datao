@@ -432,45 +432,11 @@ namespace DATAO
             }
         }
 
-        private void doneEventButton_Click(object sender, EventArgs e)
+        private void checkEventButton_Click(object sender, EventArgs e)
         {
-            //находим выдленное событие и исКомплит  = тру
-            TimeSpan start = DateTime.Now.TimeOfDay;
-            TimeSpan end = DateTime.Now.TimeOfDay;
-            string nameWorker = string.Empty;
-
-            for (int c = 1; c <= ScheduleGrid.ColumnsCount; c++)
-            {
-                int j = 0;
-                for (int i = 1; i <= ScheduleGrid.RowsCount; i++)
-                {
-                    if (ScheduleGrid.Selection.IsSelectedCell(new SourceGrid.Position(i, c)))
-                    {
-                        if (j == 0)
-                        {
-                            start = ParseTimeFromCells(ScheduleGrid[i, 0].Value.ToString(), true);
-                            end = ParseTimeFromCells(ScheduleGrid[i, 0].Value.ToString(), false);
-                            j++;
-                            nameWorker = ScheduleGrid[0, c].Value.ToString();
-                        }
-                        else
-                        {
-                            end = ParseTimeFromCells(ScheduleGrid[i, 0].Value.ToString(), false);
-                        }
-                    }
-                }
-            }
-            if (Enterprise.Personal.Find(w => w.About.Name == nameWorker).Events.Find(
-                ev => ((ev.RecordDate == monthCalendar.SelectionStart.Date + start) && (ev.Service.Duration == end - start))).isComplete == true)
-            {
-                Enterprise.Personal.Find(w => w.About.Name == nameWorker).Events.Find(
-                ev => ((ev.RecordDate == monthCalendar.SelectionStart.Date + start) && (ev.Service.Duration == end - start))).isComplete = false;
-            }
-            else
-            {
-                Enterprise.Personal.Find(w => w.About.Name == nameWorker).Events.Find(
-                ev => ((ev.RecordDate == monthCalendar.SelectionStart.Date + start) && (ev.Service.Duration == end - start))).isComplete = true;
-            }
+            label14.Visible = true;
+            costEventTextBox.Visible = true;
+            checkConfirmButton.Visible = true;
         }
 
         private void monthCalendar_DateChanged(object sender, DateRangeEventArgs e)
@@ -678,6 +644,55 @@ namespace DATAO
         private void reportRaisedButton1_Click(object sender, EventArgs e)
         {
             //вызываю метод формирования отчета 
+        }
+
+        private void checkConfirmButton_Click(object sender, EventArgs e)
+        {
+            //находим выдленное событие и исКомплит  = тру
+            try
+            {
+                TimeSpan start = DateTime.Now.TimeOfDay;
+                TimeSpan end = DateTime.Now.TimeOfDay;
+                string nameWorker = string.Empty;
+
+                for (int c = 1; c <= ScheduleGrid.ColumnsCount; c++)
+                {
+                    int j = 0;
+                    for (int i = 1; i <= ScheduleGrid.RowsCount; i++)
+                    {
+                        if (ScheduleGrid.Selection.IsSelectedCell(new SourceGrid.Position(i, c)))
+                        {
+                            if (j == 0)
+                            {
+                                start = ParseTimeFromCells(ScheduleGrid[i, 0].Value.ToString(), true);
+                                end = ParseTimeFromCells(ScheduleGrid[i, 0].Value.ToString(), false);
+                                j++;
+                                nameWorker = ScheduleGrid[0, c].Value.ToString();
+                            }
+                            else
+                            {
+                                end = ParseTimeFromCells(ScheduleGrid[i, 0].Value.ToString(), false);
+                            }
+                        }
+                    }
+                }
+                if (Enterprise.Personal.Find(w => w.About.Name == nameWorker).Events.Find(
+                    ev => ((ev.RecordDate == monthCalendar.SelectionStart.Date + start) && (ev.Service.Duration == end - start))).isComplete == false)
+                {
+                    Event currentEvent = Enterprise.Personal.Find(w => w.About.Name == nameWorker).Events.Find(
+                    ev => ((ev.RecordDate == monthCalendar.SelectionStart.Date + start) && (ev.Service.Duration == end - start)));
+                    currentEvent.isComplete = true;
+                    currentEvent.Cost = int.Parse(costEventTextBox.Text);
+                    label14.Visible = false;
+                    costEventTextBox.Visible = false;
+                    checkConfirmButton.Visible = false;
+                }
+                else
+                {
+                    MessageBox.Show("Чек уже был выдан!");
+                }
+            }
+            catch(Exception) { MessageBox.Show("Убедитесь в правильности ввода (Пример : 200)"); }
         }
     }
 }
