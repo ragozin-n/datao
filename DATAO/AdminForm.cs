@@ -41,6 +41,17 @@ namespace DATAO
                 schedulePersonalGrid[1, i] = new SourceGrid.Cells.CheckBox(string.Empty, false);
             }
             schedulePersonalGrid.AutoSizeCells();
+
+            skladGrid.BorderStyle = BorderStyle.FixedSingle;
+            skladGrid.ColumnsCount = 5;
+            skladGrid.FixedRows = 1;
+            skladGrid.Rows.Insert(0);
+
+            string[] names = { "Артикул", "Наименование", "Поставщик", "Стоимость", "Остаток на складе" };
+            for (int i = 0; i < names.Length; i++)
+            {
+                skladGrid[0, i] = new SourceGrid.Cells.ColumnHeader(names[i]);
+            }
         }
 
         private void LoadService(int currentPage)
@@ -263,26 +274,15 @@ namespace DATAO
 
         private void LoadSkladGrid()
         {
-            skladGrid.BorderStyle = BorderStyle.FixedSingle;
-            skladGrid.ColumnsCount = 5;
-            skladGrid.FixedRows = 1;
-            skladGrid.Rows.Insert(0);
-
-            string[] names = { "Артикул", "Наименование", "Поставщик", "Стоимость", "Остаток на складе" };
-            for (int i = 0; i < names.Length; i++)
-            {
-                skladGrid[0, i] = new SourceGrid.Cells.ColumnHeader(names[i]);
-            }
-            int rowIndex = 1;
             foreach (KeyValuePair<Goods, uint> good in Enterprise.GoodsAvailability)
             {
                 skladGrid.Rows.Insert(1);
-                skladGrid[rowIndex, 0] = new SourceGrid.Cells.ColumnHeader(good.Key.About.ID);
-                skladGrid[rowIndex, 1] = new SourceGrid.Cells.ColumnHeader(good.Key.About.Name);
-                skladGrid[rowIndex, 2] = new SourceGrid.Cells.ColumnHeader(good.Key.Provider);
-                skladGrid[rowIndex, 3] = new SourceGrid.Cells.ColumnHeader(good.Key.Cost);
-                skladGrid[rowIndex, 4] = new SourceGrid.Cells.ColumnHeader(good.Value);
-                rowIndex++;
+                skladGrid[1, 0] = new SourceGrid.Cells.Cell(good.Key.About.ID, typeof(uint));
+                skladGrid[1, 1] = new SourceGrid.Cells.Cell(good.Key.About.Name, typeof(string));
+                skladGrid[1, 2] = new SourceGrid.Cells.Cell(good.Key.Provider, typeof(string));
+                skladGrid[1, 3] = new SourceGrid.Cells.Cell(good.Key.Cost, typeof(double));
+                skladGrid[1, 4] = new SourceGrid.Cells.Cell(good.Value, typeof(uint));
+                skladGrid.AutoSizeCells();
             }
         }
 
@@ -377,17 +377,11 @@ namespace DATAO
         private void addToSkladPictureBox_Click(object sender, EventArgs e)
         {
             skladGrid.Rows.Insert(1);
-            for (int i = 0; i < 5; i++)
-            {
-                if (i % 2 == 0)
-                {
-                    skladGrid[1, i] = new SourceGrid.Cells.Cell(string.Empty, typeof(string));
-                }
-                else
-                {
-                    skladGrid[1, i] = new SourceGrid.Cells.Cell(0, typeof(int));
-                }
-            }
+            skladGrid[1, 0] = new SourceGrid.Cells.Cell("0", typeof(uint));
+            skladGrid[1, 1] = new SourceGrid.Cells.Cell("default", typeof(string));
+            skladGrid[1, 2] = new SourceGrid.Cells.Cell("default", typeof(string));
+            skladGrid[1, 3] = new SourceGrid.Cells.Cell("0", typeof(double));
+            skladGrid[1, 4] = new SourceGrid.Cells.Cell("0", typeof(uint));
             skladGrid.AutoSizeCells();
         }
 
@@ -397,6 +391,12 @@ namespace DATAO
             {
                 if (skladGrid.Selection.IsSelectedRow(row.Index))
                 {
+                    try
+                    {
+                        Enterprise.GoodsAvailability.Remove(Enterprise.GoodsAvailability.
+                            First(good => good.Key.About.ID == uint.Parse(skladGrid[row.Index,0].Value.ToString())).Key);
+                    }
+                    catch (InvalidOperationException) { }
                     skladGrid.Rows.Remove(row.Index);
                     break;
                 }
@@ -633,21 +633,10 @@ namespace DATAO
         private void syncSkladButton_Click(object sender, EventArgs e)
         {
             SyncSklad();
+            searchComboBox.Text = string.Empty;
+            searchValueSkladtextBox.Text = string.Empty;
         }
 
-        public void SyncSklad()
-        {
-            //Проверить если есть этот ключ на складе, то приплюсавать количество поступившего товара
-            //если нет, до добавить ключ и значение
-            //for(int rowIndex = 1; rowIndex < skladGrid.RowsCount;rowIndex++)
-            //{
-            //    for(int colIndex = 0; colIndex < skladGrid.ColumnsCount; colIndex ++)
-            //    {
-            //        //можно ли создавать новый дикшинари?
-            //        Enterprise.GoodsAvailability = new
-            //    }
-            //}
-        }
 
         private void monthCalendarPersonal_DateChanged(object sender, DateRangeEventArgs e)
         {
@@ -730,15 +719,142 @@ namespace DATAO
                 income.Date = dateIncome.Value.Date;
                 income.Provider = providerIncometextBox.Text;
                 income.Cost = int.Parse(costIncometextBox4.Text);
+                Enterprise.Earnings.Add(income);
                 providerIncometextBox.Text = string.Empty;
                 costIncometextBox4.Text = string.Empty;
                 for(int i = skladGrid.RowsCount-1; i>0;i--)
                 {
                     skladGrid.Rows.Remove(i);
                 }
-                MessageBox.Show("Теперь добавьтие принятый товар в таблицу, и нажмите кнопку \"Синхронизировать\"!");
+                syncSkladButton.Visible = false;
+                completeIncomeButton.Visible = true;
+                MessageBox.Show("Теперь добавьтие принятый товар в таблицу, и нажмите кнопку \"ОК\"!");
             }
             catch (Exception) { MessageBox.Show("Проверьте поле стоимость (пример : 20000)"); }
+        }
+
+        private void SyncSklad(bool flag = false)
+        {
+            //та же синхронизация только с подсчетом количества если такой товар уде был
+            for (int i = skladGrid.RowsCount - 1; i > 0; i--)
+            {
+                Goods good = new Goods();
+                good.About.ID = uint.Parse(skladGrid[i, 0].Value.ToString());
+                good.About.Name = skladGrid[i, 1].Value.ToString();
+                good.Provider = skladGrid[i, 2].Value.ToString();
+                good.Cost = double.Parse(skladGrid[i, 3].Value.ToString());
+                uint count = 0;
+                try
+                {
+                    if (flag)
+                    {
+                        count = Enterprise.GoodsAvailability.First(good1 => good1.Key.About.ID == good.About.ID).Value;
+                    }
+                    Enterprise.GoodsAvailability.Remove(Enterprise.GoodsAvailability.First(good1 => good1.Key.About.ID == good.About.ID).Key);
+                }
+                catch (InvalidOperationException) { }
+                Enterprise.GoodsAvailability.Add(good, uint.Parse(skladGrid[i, 4].Value.ToString()) + count);
+            }
+            completeIncomeButton.Visible = false;
+            syncSkladButton.Visible = true;
+            for (int i = skladGrid.RowsCount - 1; i > 0; i--)
+            {
+                skladGrid.Rows.Remove(i);
+            }
+            LoadSkladGrid();
+        }
+
+        private void completeIncomeButton_Click(object sender, EventArgs e)
+        {
+            SyncSklad(true);
+        }
+
+        private void searchSkladShowButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                for (int i = skladGrid.RowsCount - 1; i > 0; i--)
+                {
+                    skladGrid.Rows.Remove(i);
+                }
+                switch (searchComboBox.SelectedIndex)
+                {
+                    case 0:
+                        foreach (KeyValuePair<Goods, uint> good in Enterprise.GoodsAvailability.Where(
+                            value => value.Key.About.ID == uint.Parse(searchValueSkladtextBox.Text)))
+                        {
+                            skladGrid.Rows.Insert(1);
+                            skladGrid[1, 0] = new SourceGrid.Cells.Cell(good.Key.About.ID, typeof(uint));
+                            skladGrid[1, 1] = new SourceGrid.Cells.Cell(good.Key.About.Name, typeof(string));
+                            skladGrid[1, 2] = new SourceGrid.Cells.Cell(good.Key.Provider, typeof(string));
+                            skladGrid[1, 3] = new SourceGrid.Cells.Cell(good.Key.Cost, typeof(double));
+                            skladGrid[1, 4] = new SourceGrid.Cells.Cell(good.Value, typeof(uint));
+                            skladGrid.AutoSizeCells();
+                        }
+                        break;
+                    case 1:
+                        foreach (KeyValuePair<Goods, uint> good in Enterprise.GoodsAvailability.Where(
+                            value => value.Key.About.Name == searchValueSkladtextBox.Text))
+                        {
+                            skladGrid.Rows.Insert(1);
+                            skladGrid[1, 0] = new SourceGrid.Cells.Cell(good.Key.About.ID, typeof(uint));
+                            skladGrid[1, 1] = new SourceGrid.Cells.Cell(good.Key.About.Name, typeof(string));
+                            skladGrid[1, 2] = new SourceGrid.Cells.Cell(good.Key.Provider, typeof(string));
+                            skladGrid[1, 3] = new SourceGrid.Cells.Cell(good.Key.Cost, typeof(double));
+                            skladGrid[1, 4] = new SourceGrid.Cells.Cell(good.Value, typeof(uint));
+                            skladGrid.AutoSizeCells();
+                        }
+                        break;
+                    case 2:
+                        foreach (KeyValuePair<Goods, uint> good in Enterprise.GoodsAvailability.Where(
+                            value => value.Key.Provider == searchValueSkladtextBox.Text))
+                        {
+                            skladGrid.Rows.Insert(1);
+                            skladGrid[1, 0] = new SourceGrid.Cells.Cell(good.Key.About.ID, typeof(uint));
+                            skladGrid[1, 1] = new SourceGrid.Cells.Cell(good.Key.About.Name, typeof(string));
+                            skladGrid[1, 2] = new SourceGrid.Cells.Cell(good.Key.Provider, typeof(string));
+                            skladGrid[1, 3] = new SourceGrid.Cells.Cell(good.Key.Cost, typeof(double));
+                            skladGrid[1, 4] = new SourceGrid.Cells.Cell(good.Value, typeof(uint));
+                            skladGrid.AutoSizeCells();
+                        }
+                        break;
+                    case 3:
+                        foreach (KeyValuePair<Goods, uint> good in Enterprise.GoodsAvailability.Where(
+                            value => value.Key.Cost == double.Parse(searchValueSkladtextBox.Text)))
+                        {
+                            skladGrid.Rows.Insert(1);
+                            skladGrid[1, 0] = new SourceGrid.Cells.Cell(good.Key.About.ID, typeof(uint));
+                            skladGrid[1, 1] = new SourceGrid.Cells.Cell(good.Key.About.Name, typeof(string));
+                            skladGrid[1, 2] = new SourceGrid.Cells.Cell(good.Key.Provider, typeof(string));
+                            skladGrid[1, 3] = new SourceGrid.Cells.Cell(good.Key.Cost, typeof(double));
+                            skladGrid[1, 4] = new SourceGrid.Cells.Cell(good.Value, typeof(uint));
+                            skladGrid.AutoSizeCells();
+                        }
+                        break;
+                    case 4:
+                        foreach (KeyValuePair<Goods, uint> good in Enterprise.GoodsAvailability.Where(
+                            value => value.Value == uint.Parse(searchValueSkladtextBox.Text)))
+                        {
+                            skladGrid.Rows.Insert(1);
+                            skladGrid[1, 0] = new SourceGrid.Cells.Cell(good.Key.About.ID, typeof(uint));
+                            skladGrid[1, 1] = new SourceGrid.Cells.Cell(good.Key.About.Name, typeof(string));
+                            skladGrid[1, 2] = new SourceGrid.Cells.Cell(good.Key.Provider, typeof(string));
+                            skladGrid[1, 3] = new SourceGrid.Cells.Cell(good.Key.Cost, typeof(double));
+                            skladGrid[1, 4] = new SourceGrid.Cells.Cell(good.Value, typeof(uint));
+                            skladGrid.AutoSizeCells();
+                        }
+                        break;
+                    default:
+                        MessageBox.Show("Выберите критерий");
+                        LoadSkladGrid();
+                        break;
+                }
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Проверьте правильность ввода значения");
+                LoadSkladGrid();
+            }
         }
     }
 }

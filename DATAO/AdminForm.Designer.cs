@@ -117,7 +117,7 @@
             this.deleteFromSkladPictureBox = new System.Windows.Forms.PictureBox();
             this.addToSkladPictureBox = new System.Windows.Forms.PictureBox();
             this.skladGrid = new SourceGrid.Grid();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.searchValueSkladtextBox = new System.Windows.Forms.TextBox();
             this.statisticsSkladBox = new System.Windows.Forms.GroupBox();
             this.confirmIncomeRaisedButton1 = new MaterialSkin.Controls.MaterialRaisedButton();
             this.dateIncome = new System.Windows.Forms.DateTimePicker();
@@ -134,6 +134,7 @@
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
             this.settingButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.reportRaisedButton1 = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.completeIncomeButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.tabControl.SuspendLayout();
             this.Calendar.SuspendLayout();
             this.Personal.SuspendLayout();
@@ -1165,11 +1166,12 @@
             // 
             this.Sklad.BackColor = System.Drawing.Color.DarkSlateGray;
             this.Sklad.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Sklad.Controls.Add(this.completeIncomeButton);
             this.Sklad.Controls.Add(this.syncSkladButton);
             this.Sklad.Controls.Add(this.deleteFromSkladPictureBox);
             this.Sklad.Controls.Add(this.addToSkladPictureBox);
             this.Sklad.Controls.Add(this.skladGrid);
-            this.Sklad.Controls.Add(this.textBox5);
+            this.Sklad.Controls.Add(this.searchValueSkladtextBox);
             this.Sklad.Controls.Add(this.statisticsSkladBox);
             this.Sklad.Controls.Add(this.searchSkladBox);
             this.Sklad.Location = new System.Drawing.Point(4, 22);
@@ -1215,6 +1217,7 @@
             // 
             // skladGrid
             // 
+            this.skladGrid.AutoSize = true;
             this.skladGrid.AutoStretchColumnsToFitWidth = true;
             this.skladGrid.EnableSort = true;
             this.skladGrid.Location = new System.Drawing.Point(427, 33);
@@ -1227,12 +1230,12 @@
             this.skladGrid.TabStop = true;
             this.skladGrid.ToolTipText = "";
             // 
-            // textBox5
+            // searchValueSkladtextBox
             // 
-            this.textBox5.Location = new System.Drawing.Point(58, 135);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(230, 20);
-            this.textBox5.TabIndex = 6;
+            this.searchValueSkladtextBox.Location = new System.Drawing.Point(58, 135);
+            this.searchValueSkladtextBox.Name = "searchValueSkladtextBox";
+            this.searchValueSkladtextBox.Size = new System.Drawing.Size(230, 20);
+            this.searchValueSkladtextBox.TabIndex = 6;
             // 
             // statisticsSkladBox
             // 
@@ -1337,6 +1340,7 @@
             this.searchSkladShowButton.TabIndex = 6;
             this.searchSkladShowButton.Text = "Показать";
             this.searchSkladShowButton.UseVisualStyleBackColor = true;
+            this.searchSkladShowButton.Click += new System.EventHandler(this.searchSkladShowButton_Click);
             // 
             // label6
             // 
@@ -1351,12 +1355,10 @@
             // 
             this.searchComboBox.FormattingEnabled = true;
             this.searchComboBox.Items.AddRange(new object[] {
-            "Все",
-            "Наименование",
             "Артикул",
+            "Наименование",
             "Поставщик",
             "Стоимость",
-            "Категория",
             "Остаток"});
             this.searchComboBox.Location = new System.Drawing.Point(23, 61);
             this.searchComboBox.Name = "searchComboBox";
@@ -1408,6 +1410,20 @@
             this.reportRaisedButton1.Text = "Отчет";
             this.reportRaisedButton1.UseVisualStyleBackColor = true;
             this.reportRaisedButton1.Click += new System.EventHandler(this.reportRaisedButton1_Click);
+            // 
+            // completeIncomeButton
+            // 
+            this.completeIncomeButton.Depth = 0;
+            this.completeIncomeButton.Location = new System.Drawing.Point(365, 213);
+            this.completeIncomeButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.completeIncomeButton.Name = "completeIncomeButton";
+            this.completeIncomeButton.Primary = true;
+            this.completeIncomeButton.Size = new System.Drawing.Size(56, 37);
+            this.completeIncomeButton.TabIndex = 12;
+            this.completeIncomeButton.Text = "ОК";
+            this.completeIncomeButton.UseVisualStyleBackColor = true;
+            this.completeIncomeButton.Visible = false;
+            this.completeIncomeButton.Click += new System.EventHandler(this.completeIncomeButton_Click);
             // 
             // AdminForm
             // 
@@ -1490,7 +1506,7 @@
         private System.Windows.Forms.TextBox costIncometextBox4;
         private System.Windows.Forms.TextBox providerIncometextBox;
         private MaterialSkin.Controls.MaterialRaisedButton deletePersonalButton;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox searchValueSkladtextBox;
         private System.Windows.Forms.GroupBox searchSkladBox;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox searchComboBox;
@@ -1578,5 +1594,6 @@
         private System.Windows.Forms.TextBox costEventTextBox;
         private System.Windows.Forms.DateTimePicker dateIncome;
         private MaterialSkin.Controls.MaterialRaisedButton confirmIncomeRaisedButton1;
+        private MaterialSkin.Controls.MaterialRaisedButton completeIncomeButton;
     }
 }
