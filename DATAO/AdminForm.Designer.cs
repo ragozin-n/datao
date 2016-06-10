@@ -39,8 +39,6 @@
             this.AddEventButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.monthCalendar = new System.Windows.Forms.MonthCalendar();
             this.Personal = new System.Windows.Forms.TabPage();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             this.endPersonalDay = new System.Windows.Forms.MaskedTextBox();
             this.startPersonalDay = new System.Windows.Forms.MaskedTextBox();
             this.monthCalendarPersonal = new System.Windows.Forms.MonthCalendar();
@@ -48,27 +46,13 @@
             this.editPersonalCheckBox = new MaterialSkin.Controls.MaterialCheckBox();
             this.deletePersonalButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.newPersonalButton = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.okPicture7 = new System.Windows.Forms.PictureBox();
-            this.okPicture6 = new System.Windows.Forms.PictureBox();
-            this.okPicture5 = new System.Windows.Forms.PictureBox();
-            this.okPicture4 = new System.Windows.Forms.PictureBox();
-            this.okPicture3 = new System.Windows.Forms.PictureBox();
             this.personalListBox = new System.Windows.Forms.ListBox();
             this.groupBoxPersonal = new System.Windows.Forms.GroupBox();
-            this.schedulePersonalGrid = new SourceGrid.Grid();
             this.statusTextBox = new System.Windows.Forms.TextBox();
             this.rateTextBox = new System.Windows.Forms.TextBox();
             this.addressTextBox = new System.Windows.Forms.TextBox();
             this.phonePersonalTextBox = new System.Windows.Forms.TextBox();
             this.nameTextBox = new System.Windows.Forms.TextBox();
-            this.materialLabel7 = new MaterialSkin.Controls.MaterialLabel();
-            this.okPicture2 = new System.Windows.Forms.PictureBox();
-            this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
-            this.okPicture1 = new System.Windows.Forms.PictureBox();
-            this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
-            this.schedulePersonalPicture = new System.Windows.Forms.PictureBox();
             this.Uslugi = new System.Windows.Forms.TabPage();
             this.newServiceBox = new System.Windows.Forms.GroupBox();
             this.newTimeServiceComboBox = new System.Windows.Forms.ComboBox();
@@ -83,20 +67,14 @@
             this.leftButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.numberPageLabel = new System.Windows.Forms.Label();
             this.serviceBox3 = new System.Windows.Forms.GroupBox();
-            this.deleteServicePicture3 = new System.Windows.Forms.PictureBox();
-            this.changePicture3 = new System.Windows.Forms.PictureBox();
             this.timeService3 = new System.Windows.Forms.Label();
             this.costService3 = new System.Windows.Forms.Label();
             this.nameServiceLabel3 = new System.Windows.Forms.Label();
             this.serviceBox2 = new System.Windows.Forms.GroupBox();
-            this.deleteServicePicture2 = new System.Windows.Forms.PictureBox();
-            this.changePicture2 = new System.Windows.Forms.PictureBox();
             this.timeService2 = new System.Windows.Forms.Label();
             this.costService2 = new System.Windows.Forms.Label();
             this.nameServiceLabel2 = new System.Windows.Forms.Label();
             this.serviceBox1 = new System.Windows.Forms.GroupBox();
-            this.deleteServicePicture1 = new System.Windows.Forms.PictureBox();
-            this.changePicture1 = new System.Windows.Forms.PictureBox();
             this.timeService1 = new System.Windows.Forms.Label();
             this.costService1 = new System.Windows.Forms.Label();
             this.nameServiceLabel1 = new System.Windows.Forms.Label();
@@ -107,15 +85,12 @@
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.serviceBox = new System.Windows.Forms.GroupBox();
-            this.deleteServicePicture = new System.Windows.Forms.PictureBox();
-            this.changePicture = new System.Windows.Forms.PictureBox();
             this.timeService = new System.Windows.Forms.Label();
             this.costService = new System.Windows.Forms.Label();
             this.nameServiceLabel = new System.Windows.Forms.Label();
             this.Sklad = new System.Windows.Forms.TabPage();
+            this.completeIncomeButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.syncSkladButton = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.deleteFromSkladPictureBox = new System.Windows.Forms.PictureBox();
-            this.addToSkladPictureBox = new System.Windows.Forms.PictureBox();
             this.skladGrid = new SourceGrid.Grid();
             this.searchValueSkladtextBox = new System.Windows.Forms.TextBox();
             this.statisticsSkladBox = new System.Windows.Forms.GroupBox();
@@ -134,39 +109,49 @@
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
             this.settingButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.reportRaisedButton1 = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.completeIncomeButton = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.namePeronalLabel = new System.Windows.Forms.Label();
+            this.phonePeronalLabel = new System.Windows.Forms.Label();
+            this.ratePeronalLabel = new System.Windows.Forms.Label();
+            this.addressPeronalLabel = new System.Windows.Forms.Label();
+            this.statusPeronalLabel = new System.Windows.Forms.Label();
+            this.startPersonalDayView = new System.Windows.Forms.Label();
+            this.endPersonalDayView = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.deleteServicePicture3 = new System.Windows.Forms.PictureBox();
+            this.changePicture3 = new System.Windows.Forms.PictureBox();
+            this.deleteServicePicture2 = new System.Windows.Forms.PictureBox();
+            this.changePicture2 = new System.Windows.Forms.PictureBox();
+            this.deleteServicePicture1 = new System.Windows.Forms.PictureBox();
+            this.changePicture1 = new System.Windows.Forms.PictureBox();
+            this.deleteServicePicture = new System.Windows.Forms.PictureBox();
+            this.changePicture = new System.Windows.Forms.PictureBox();
+            this.deleteFromSkladPictureBox = new System.Windows.Forms.PictureBox();
+            this.addToSkladPictureBox = new System.Windows.Forms.PictureBox();
             this.tabControl.SuspendLayout();
             this.Calendar.SuspendLayout();
             this.Personal.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.okPicture7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.okPicture6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.okPicture5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.okPicture4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.okPicture3)).BeginInit();
             this.groupBoxPersonal.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.okPicture2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.okPicture1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.schedulePersonalPicture)).BeginInit();
             this.Uslugi.SuspendLayout();
             this.newServiceBox.SuspendLayout();
             this.serviceBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.deleteServicePicture3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.changePicture3)).BeginInit();
             this.serviceBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.deleteServicePicture2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.changePicture2)).BeginInit();
             this.serviceBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.deleteServicePicture1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.changePicture1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.serviceBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.deleteServicePicture)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.changePicture)).BeginInit();
             this.Sklad.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.deleteFromSkladPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.addToSkladPictureBox)).BeginInit();
             this.statisticsSkladBox.SuspendLayout();
             this.searchSkladBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deleteServicePicture3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.changePicture3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deleteServicePicture2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.changePicture2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deleteServicePicture1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.changePicture1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deleteServicePicture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.changePicture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deleteFromSkladPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.addToSkladPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl
@@ -302,20 +287,10 @@
             // 
             this.Personal.BackColor = System.Drawing.Color.DarkSlateGray;
             this.Personal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Personal.Controls.Add(this.label13);
-            this.Personal.Controls.Add(this.label12);
-            this.Personal.Controls.Add(this.endPersonalDay);
-            this.Personal.Controls.Add(this.startPersonalDay);
-            this.Personal.Controls.Add(this.monthCalendarPersonal);
             this.Personal.Controls.Add(this.saveChangePersonalButton);
             this.Personal.Controls.Add(this.editPersonalCheckBox);
             this.Personal.Controls.Add(this.deletePersonalButton);
             this.Personal.Controls.Add(this.newPersonalButton);
-            this.Personal.Controls.Add(this.okPicture7);
-            this.Personal.Controls.Add(this.okPicture6);
-            this.Personal.Controls.Add(this.okPicture5);
-            this.Personal.Controls.Add(this.okPicture4);
-            this.Personal.Controls.Add(this.okPicture3);
             this.Personal.Controls.Add(this.personalListBox);
             this.Personal.Controls.Add(this.groupBoxPersonal);
             this.Personal.Location = new System.Drawing.Point(4, 22);
@@ -325,45 +300,29 @@
             this.Personal.TabIndex = 1;
             this.Personal.Text = "Персонал";
             // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(614, 416);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(38, 13);
-            this.label13.TabIndex = 26;
-            this.label13.Text = "Конец";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(614, 357);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(44, 13);
-            this.label12.TabIndex = 25;
-            this.label12.Text = "Начало";
-            // 
             // endPersonalDay
             // 
-            this.endPersonalDay.Location = new System.Drawing.Point(623, 435);
+            this.endPersonalDay.Location = new System.Drawing.Point(582, 222);
             this.endPersonalDay.Mask = "00:00";
             this.endPersonalDay.Name = "endPersonalDay";
-            this.endPersonalDay.Size = new System.Drawing.Size(100, 20);
+            this.endPersonalDay.Size = new System.Drawing.Size(56, 20);
             this.endPersonalDay.TabIndex = 24;
             this.endPersonalDay.ValidatingType = typeof(System.DateTime);
+            this.endPersonalDay.Visible = false;
             // 
             // startPersonalDay
             // 
-            this.startPersonalDay.Location = new System.Drawing.Point(623, 376);
+            this.startPersonalDay.Location = new System.Drawing.Point(580, 112);
             this.startPersonalDay.Mask = "00:00";
             this.startPersonalDay.Name = "startPersonalDay";
-            this.startPersonalDay.Size = new System.Drawing.Size(100, 20);
+            this.startPersonalDay.Size = new System.Drawing.Size(56, 20);
             this.startPersonalDay.TabIndex = 23;
             this.startPersonalDay.ValidatingType = typeof(System.DateTime);
+            this.startPersonalDay.Visible = false;
             // 
             // monthCalendarPersonal
             // 
-            this.monthCalendarPersonal.Location = new System.Drawing.Point(408, 323);
+            this.monthCalendarPersonal.Location = new System.Drawing.Point(335, 96);
             this.monthCalendarPersonal.Name = "monthCalendarPersonal";
             this.monthCalendarPersonal.TabIndex = 22;
             this.monthCalendarPersonal.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendarPersonal_DateChanged);
@@ -372,7 +331,7 @@
             // 
             this.saveChangePersonalButton.Depth = 0;
             this.saveChangePersonalButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.saveChangePersonalButton.Location = new System.Drawing.Point(970, 4);
+            this.saveChangePersonalButton.Location = new System.Drawing.Point(953, 40);
             this.saveChangePersonalButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.saveChangePersonalButton.Name = "saveChangePersonalButton";
             this.saveChangePersonalButton.Primary = true;
@@ -387,9 +346,9 @@
             // 
             this.editPersonalCheckBox.AutoSize = true;
             this.editPersonalCheckBox.Depth = 0;
-            this.editPersonalCheckBox.Font = new System.Drawing.Font("Roboto", 10F);
-            this.editPersonalCheckBox.ForeColor = System.Drawing.Color.Transparent;
-            this.editPersonalCheckBox.Location = new System.Drawing.Point(1064, 0);
+            this.editPersonalCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.editPersonalCheckBox.ForeColor = System.Drawing.Color.White;
+            this.editPersonalCheckBox.Location = new System.Drawing.Point(1058, 36);
             this.editPersonalCheckBox.Margin = new System.Windows.Forms.Padding(0);
             this.editPersonalCheckBox.MouseLocation = new System.Drawing.Point(-1, -1);
             this.editPersonalCheckBox.MouseState = MaterialSkin.MouseState.HOVER;
@@ -427,58 +386,6 @@
             this.newPersonalButton.UseVisualStyleBackColor = true;
             this.newPersonalButton.Click += new System.EventHandler(this.newPersonalButton_Click);
             // 
-            // okPicture7
-            // 
-            this.okPicture7.BackgroundImage = global::DATAO.Properties.Resources.grafik1;
-            this.okPicture7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.okPicture7.Location = new System.Drawing.Point(1141, 144);
-            this.okPicture7.Name = "okPicture7";
-            this.okPicture7.Size = new System.Drawing.Size(77, 87);
-            this.okPicture7.TabIndex = 19;
-            this.okPicture7.TabStop = false;
-            this.okPicture7.Visible = false;
-            // 
-            // okPicture6
-            // 
-            this.okPicture6.BackgroundImage = global::DATAO.Properties.Resources.grafik1;
-            this.okPicture6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.okPicture6.Location = new System.Drawing.Point(1056, 144);
-            this.okPicture6.Name = "okPicture6";
-            this.okPicture6.Size = new System.Drawing.Size(77, 87);
-            this.okPicture6.TabIndex = 18;
-            this.okPicture6.TabStop = false;
-            // 
-            // okPicture5
-            // 
-            this.okPicture5.BackgroundImage = global::DATAO.Properties.Resources.grafik1;
-            this.okPicture5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.okPicture5.Location = new System.Drawing.Point(976, 144);
-            this.okPicture5.Name = "okPicture5";
-            this.okPicture5.Size = new System.Drawing.Size(77, 87);
-            this.okPicture5.TabIndex = 17;
-            this.okPicture5.TabStop = false;
-            // 
-            // okPicture4
-            // 
-            this.okPicture4.BackgroundImage = global::DATAO.Properties.Resources.grafik1;
-            this.okPicture4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.okPicture4.Location = new System.Drawing.Point(897, 144);
-            this.okPicture4.Name = "okPicture4";
-            this.okPicture4.Size = new System.Drawing.Size(77, 87);
-            this.okPicture4.TabIndex = 16;
-            this.okPicture4.TabStop = false;
-            this.okPicture4.Visible = false;
-            // 
-            // okPicture3
-            // 
-            this.okPicture3.BackgroundImage = global::DATAO.Properties.Resources.grafik1;
-            this.okPicture3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.okPicture3.Location = new System.Drawing.Point(819, 144);
-            this.okPicture3.Name = "okPicture3";
-            this.okPicture3.Size = new System.Drawing.Size(77, 87);
-            this.okPicture3.TabIndex = 15;
-            this.okPicture3.TabStop = false;
-            // 
             // personalListBox
             // 
             this.personalListBox.BackColor = System.Drawing.Color.DarkSlateGray;
@@ -494,43 +401,33 @@
             // 
             // groupBoxPersonal
             // 
-            this.groupBoxPersonal.Controls.Add(this.schedulePersonalGrid);
+            this.groupBoxPersonal.Controls.Add(this.pictureBox1);
+            this.groupBoxPersonal.Controls.Add(this.endPersonalDayView);
+            this.groupBoxPersonal.Controls.Add(this.startPersonalDayView);
+            this.groupBoxPersonal.Controls.Add(this.statusPeronalLabel);
+            this.groupBoxPersonal.Controls.Add(this.addressPeronalLabel);
+            this.groupBoxPersonal.Controls.Add(this.ratePeronalLabel);
+            this.groupBoxPersonal.Controls.Add(this.phonePeronalLabel);
+            this.groupBoxPersonal.Controls.Add(this.namePeronalLabel);
+            this.groupBoxPersonal.Controls.Add(this.endPersonalDay);
             this.groupBoxPersonal.Controls.Add(this.statusTextBox);
+            this.groupBoxPersonal.Controls.Add(this.startPersonalDay);
             this.groupBoxPersonal.Controls.Add(this.rateTextBox);
             this.groupBoxPersonal.Controls.Add(this.addressTextBox);
             this.groupBoxPersonal.Controls.Add(this.phonePersonalTextBox);
+            this.groupBoxPersonal.Controls.Add(this.monthCalendarPersonal);
             this.groupBoxPersonal.Controls.Add(this.nameTextBox);
-            this.groupBoxPersonal.Controls.Add(this.materialLabel7);
-            this.groupBoxPersonal.Controls.Add(this.okPicture2);
-            this.groupBoxPersonal.Controls.Add(this.materialLabel6);
-            this.groupBoxPersonal.Controls.Add(this.okPicture1);
-            this.groupBoxPersonal.Controls.Add(this.materialLabel5);
-            this.groupBoxPersonal.Controls.Add(this.materialLabel4);
-            this.groupBoxPersonal.Controls.Add(this.materialLabel2);
-            this.groupBoxPersonal.Controls.Add(this.schedulePersonalPicture);
             this.groupBoxPersonal.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.groupBoxPersonal.Location = new System.Drawing.Point(281, 25);
+            this.groupBoxPersonal.Location = new System.Drawing.Point(281, 76);
             this.groupBoxPersonal.Name = "groupBoxPersonal";
-            this.groupBoxPersonal.Size = new System.Drawing.Size(969, 285);
+            this.groupBoxPersonal.Size = new System.Drawing.Size(969, 334);
             this.groupBoxPersonal.TabIndex = 11;
             this.groupBoxPersonal.TabStop = false;
             this.groupBoxPersonal.Text = "Информация";
             // 
-            // schedulePersonalGrid
-            // 
-            this.schedulePersonalGrid.EnableSort = true;
-            this.schedulePersonalGrid.Location = new System.Drawing.Point(333, 31);
-            this.schedulePersonalGrid.Name = "schedulePersonalGrid";
-            this.schedulePersonalGrid.OptimizeMode = SourceGrid.CellOptimizeMode.ForRows;
-            this.schedulePersonalGrid.SelectionMode = SourceGrid.GridSelectionMode.Cell;
-            this.schedulePersonalGrid.Size = new System.Drawing.Size(434, 38);
-            this.schedulePersonalGrid.TabIndex = 15;
-            this.schedulePersonalGrid.TabStop = true;
-            this.schedulePersonalGrid.ToolTipText = "";
-            // 
             // statusTextBox
             // 
-            this.statusTextBox.Location = new System.Drawing.Point(109, 200);
+            this.statusTextBox.Location = new System.Drawing.Point(109, 237);
             this.statusTextBox.Name = "statusTextBox";
             this.statusTextBox.ReadOnly = true;
             this.statusTextBox.Size = new System.Drawing.Size(182, 20);
@@ -538,7 +435,7 @@
             // 
             // rateTextBox
             // 
-            this.rateTextBox.Location = new System.Drawing.Point(109, 167);
+            this.rateTextBox.Location = new System.Drawing.Point(109, 202);
             this.rateTextBox.Name = "rateTextBox";
             this.rateTextBox.ReadOnly = true;
             this.rateTextBox.Size = new System.Drawing.Size(182, 20);
@@ -546,7 +443,7 @@
             // 
             // addressTextBox
             // 
-            this.addressTextBox.Location = new System.Drawing.Point(109, 133);
+            this.addressTextBox.Location = new System.Drawing.Point(109, 167);
             this.addressTextBox.Name = "addressTextBox";
             this.addressTextBox.ReadOnly = true;
             this.addressTextBox.Size = new System.Drawing.Size(182, 20);
@@ -554,7 +451,7 @@
             // 
             // phonePersonalTextBox
             // 
-            this.phonePersonalTextBox.Location = new System.Drawing.Point(109, 100);
+            this.phonePersonalTextBox.Location = new System.Drawing.Point(109, 132);
             this.phonePersonalTextBox.Name = "phonePersonalTextBox";
             this.phonePersonalTextBox.ReadOnly = true;
             this.phonePersonalTextBox.Size = new System.Drawing.Size(182, 20);
@@ -562,108 +459,11 @@
             // 
             // nameTextBox
             // 
-            this.nameTextBox.Location = new System.Drawing.Point(109, 66);
+            this.nameTextBox.Location = new System.Drawing.Point(109, 96);
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.ReadOnly = true;
             this.nameTextBox.Size = new System.Drawing.Size(182, 20);
             this.nameTextBox.TabIndex = 8;
-            // 
-            // materialLabel7
-            // 
-            this.materialLabel7.AutoSize = true;
-            this.materialLabel7.Depth = 0;
-            this.materialLabel7.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel7.Location = new System.Drawing.Point(19, 199);
-            this.materialLabel7.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel7.Name = "materialLabel7";
-            this.materialLabel7.Size = new System.Drawing.Size(56, 19);
-            this.materialLabel7.TabIndex = 7;
-            this.materialLabel7.Text = "Статус";
-            // 
-            // okPicture2
-            // 
-            this.okPicture2.BackgroundImage = global::DATAO.Properties.Resources.grafik1;
-            this.okPicture2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.okPicture2.Location = new System.Drawing.Point(452, 119);
-            this.okPicture2.Name = "okPicture2";
-            this.okPicture2.Size = new System.Drawing.Size(77, 87);
-            this.okPicture2.TabIndex = 14;
-            this.okPicture2.TabStop = false;
-            this.okPicture2.Visible = false;
-            // 
-            // materialLabel6
-            // 
-            this.materialLabel6.AutoSize = true;
-            this.materialLabel6.Depth = 0;
-            this.materialLabel6.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel6.Location = new System.Drawing.Point(19, 166);
-            this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel6.Name = "materialLabel6";
-            this.materialLabel6.Size = new System.Drawing.Size(59, 19);
-            this.materialLabel6.TabIndex = 6;
-            this.materialLabel6.Text = "Ставка";
-            // 
-            // okPicture1
-            // 
-            this.okPicture1.BackgroundImage = global::DATAO.Properties.Resources.grafik1;
-            this.okPicture1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.okPicture1.Location = new System.Drawing.Point(357, 119);
-            this.okPicture1.Name = "okPicture1";
-            this.okPicture1.Size = new System.Drawing.Size(77, 87);
-            this.okPicture1.TabIndex = 13;
-            this.okPicture1.TabStop = false;
-            // 
-            // materialLabel5
-            // 
-            this.materialLabel5.AutoSize = true;
-            this.materialLabel5.Depth = 0;
-            this.materialLabel5.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel5.Location = new System.Drawing.Point(19, 131);
-            this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel5.Name = "materialLabel5";
-            this.materialLabel5.Size = new System.Drawing.Size(52, 19);
-            this.materialLabel5.TabIndex = 5;
-            this.materialLabel5.Text = "Адрес";
-            // 
-            // materialLabel4
-            // 
-            this.materialLabel4.AutoSize = true;
-            this.materialLabel4.Depth = 0;
-            this.materialLabel4.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel4.Location = new System.Drawing.Point(19, 100);
-            this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel4.Name = "materialLabel4";
-            this.materialLabel4.Size = new System.Drawing.Size(72, 19);
-            this.materialLabel4.TabIndex = 4;
-            this.materialLabel4.Text = "Телефон";
-            // 
-            // materialLabel2
-            // 
-            this.materialLabel2.AutoSize = true;
-            this.materialLabel2.BackColor = System.Drawing.Color.Transparent;
-            this.materialLabel2.Depth = 0;
-            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel2.Location = new System.Drawing.Point(19, 68);
-            this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel2.Name = "materialLabel2";
-            this.materialLabel2.Size = new System.Drawing.Size(39, 19);
-            this.materialLabel2.TabIndex = 2;
-            this.materialLabel2.Text = "Имя";
-            // 
-            // schedulePersonalPicture
-            // 
-            this.schedulePersonalPicture.BackgroundImage = global::DATAO.Properties.Resources.grafik;
-            this.schedulePersonalPicture.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.schedulePersonalPicture.Location = new System.Drawing.Point(333, 65);
-            this.schedulePersonalPicture.Name = "schedulePersonalPicture";
-            this.schedulePersonalPicture.Size = new System.Drawing.Size(630, 157);
-            this.schedulePersonalPicture.TabIndex = 12;
-            this.schedulePersonalPicture.TabStop = false;
             // 
             // Uslugi
             // 
@@ -836,28 +636,6 @@
             this.serviceBox3.TabStop = false;
             this.serviceBox3.Visible = false;
             // 
-            // deleteServicePicture3
-            // 
-            this.deleteServicePicture3.BackgroundImage = global::DATAO.Properties.Resources.deleteservice;
-            this.deleteServicePicture3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.deleteServicePicture3.InitialImage = null;
-            this.deleteServicePicture3.Location = new System.Drawing.Point(236, 23);
-            this.deleteServicePicture3.Name = "deleteServicePicture3";
-            this.deleteServicePicture3.Size = new System.Drawing.Size(30, 29);
-            this.deleteServicePicture3.TabIndex = 4;
-            this.deleteServicePicture3.TabStop = false;
-            this.deleteServicePicture3.Click += new System.EventHandler(this.deleteServicePicture3_Click);
-            // 
-            // changePicture3
-            // 
-            this.changePicture3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.changePicture3.Image = global::DATAO.Properties.Resources.changeservice;
-            this.changePicture3.Location = new System.Drawing.Point(18, 19);
-            this.changePicture3.Name = "changePicture3";
-            this.changePicture3.Size = new System.Drawing.Size(40, 40);
-            this.changePicture3.TabIndex = 3;
-            this.changePicture3.TabStop = false;
-            // 
             // timeService3
             // 
             this.timeService3.AutoSize = true;
@@ -906,28 +684,6 @@
             this.serviceBox2.TabStop = false;
             this.serviceBox2.Visible = false;
             // 
-            // deleteServicePicture2
-            // 
-            this.deleteServicePicture2.BackgroundImage = global::DATAO.Properties.Resources.deleteservice;
-            this.deleteServicePicture2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.deleteServicePicture2.InitialImage = null;
-            this.deleteServicePicture2.Location = new System.Drawing.Point(236, 23);
-            this.deleteServicePicture2.Name = "deleteServicePicture2";
-            this.deleteServicePicture2.Size = new System.Drawing.Size(30, 29);
-            this.deleteServicePicture2.TabIndex = 4;
-            this.deleteServicePicture2.TabStop = false;
-            this.deleteServicePicture2.Click += new System.EventHandler(this.deleteServicePicture2_Click);
-            // 
-            // changePicture2
-            // 
-            this.changePicture2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.changePicture2.Image = global::DATAO.Properties.Resources.changeservice;
-            this.changePicture2.Location = new System.Drawing.Point(18, 19);
-            this.changePicture2.Name = "changePicture2";
-            this.changePicture2.Size = new System.Drawing.Size(40, 40);
-            this.changePicture2.TabIndex = 3;
-            this.changePicture2.TabStop = false;
-            // 
             // timeService2
             // 
             this.timeService2.AutoSize = true;
@@ -975,28 +731,6 @@
             this.serviceBox1.TabIndex = 2;
             this.serviceBox1.TabStop = false;
             this.serviceBox1.Visible = false;
-            // 
-            // deleteServicePicture1
-            // 
-            this.deleteServicePicture1.BackgroundImage = global::DATAO.Properties.Resources.deleteservice;
-            this.deleteServicePicture1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.deleteServicePicture1.InitialImage = null;
-            this.deleteServicePicture1.Location = new System.Drawing.Point(236, 23);
-            this.deleteServicePicture1.Name = "deleteServicePicture1";
-            this.deleteServicePicture1.Size = new System.Drawing.Size(30, 29);
-            this.deleteServicePicture1.TabIndex = 4;
-            this.deleteServicePicture1.TabStop = false;
-            this.deleteServicePicture1.Click += new System.EventHandler(this.deleteServicePicture1_Click);
-            // 
-            // changePicture1
-            // 
-            this.changePicture1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.changePicture1.Image = global::DATAO.Properties.Resources.changeservice;
-            this.changePicture1.Location = new System.Drawing.Point(18, 19);
-            this.changePicture1.Name = "changePicture1";
-            this.changePicture1.Size = new System.Drawing.Size(40, 40);
-            this.changePicture1.TabIndex = 3;
-            this.changePicture1.TabStop = false;
             // 
             // timeService1
             // 
@@ -1106,28 +840,6 @@
             this.serviceBox.TabStop = false;
             this.serviceBox.Visible = false;
             // 
-            // deleteServicePicture
-            // 
-            this.deleteServicePicture.BackgroundImage = global::DATAO.Properties.Resources.deleteservice;
-            this.deleteServicePicture.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.deleteServicePicture.InitialImage = null;
-            this.deleteServicePicture.Location = new System.Drawing.Point(236, 23);
-            this.deleteServicePicture.Name = "deleteServicePicture";
-            this.deleteServicePicture.Size = new System.Drawing.Size(30, 29);
-            this.deleteServicePicture.TabIndex = 4;
-            this.deleteServicePicture.TabStop = false;
-            this.deleteServicePicture.Click += new System.EventHandler(this.deleteServicePicture_Click);
-            // 
-            // changePicture
-            // 
-            this.changePicture.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.changePicture.Image = global::DATAO.Properties.Resources.changeservice;
-            this.changePicture.Location = new System.Drawing.Point(18, 19);
-            this.changePicture.Name = "changePicture";
-            this.changePicture.Size = new System.Drawing.Size(40, 40);
-            this.changePicture.TabIndex = 3;
-            this.changePicture.TabStop = false;
-            // 
             // timeService
             // 
             this.timeService.AutoSize = true;
@@ -1168,17 +880,31 @@
             this.Sklad.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Sklad.Controls.Add(this.completeIncomeButton);
             this.Sklad.Controls.Add(this.syncSkladButton);
-            this.Sklad.Controls.Add(this.deleteFromSkladPictureBox);
-            this.Sklad.Controls.Add(this.addToSkladPictureBox);
             this.Sklad.Controls.Add(this.skladGrid);
             this.Sklad.Controls.Add(this.searchValueSkladtextBox);
             this.Sklad.Controls.Add(this.statisticsSkladBox);
             this.Sklad.Controls.Add(this.searchSkladBox);
+            this.Sklad.Controls.Add(this.deleteFromSkladPictureBox);
+            this.Sklad.Controls.Add(this.addToSkladPictureBox);
             this.Sklad.Location = new System.Drawing.Point(4, 22);
             this.Sklad.Name = "Sklad";
             this.Sklad.Size = new System.Drawing.Size(1273, 574);
             this.Sklad.TabIndex = 3;
             this.Sklad.Text = "Склад";
+            // 
+            // completeIncomeButton
+            // 
+            this.completeIncomeButton.Depth = 0;
+            this.completeIncomeButton.Location = new System.Drawing.Point(365, 213);
+            this.completeIncomeButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.completeIncomeButton.Name = "completeIncomeButton";
+            this.completeIncomeButton.Primary = true;
+            this.completeIncomeButton.Size = new System.Drawing.Size(56, 37);
+            this.completeIncomeButton.TabIndex = 12;
+            this.completeIncomeButton.Text = "ОК";
+            this.completeIncomeButton.UseVisualStyleBackColor = true;
+            this.completeIncomeButton.Visible = false;
+            this.completeIncomeButton.Click += new System.EventHandler(this.completeIncomeButton_Click);
             // 
             // syncSkladButton
             // 
@@ -1192,28 +918,6 @@
             this.syncSkladButton.Text = "Синхр.";
             this.syncSkladButton.UseVisualStyleBackColor = true;
             this.syncSkladButton.Click += new System.EventHandler(this.syncSkladButton_Click);
-            // 
-            // deleteFromSkladPictureBox
-            // 
-            this.deleteFromSkladPictureBox.BackgroundImage = global::DATAO.Properties.Resources._;
-            this.deleteFromSkladPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.deleteFromSkladPictureBox.Location = new System.Drawing.Point(365, 90);
-            this.deleteFromSkladPictureBox.Name = "deleteFromSkladPictureBox";
-            this.deleteFromSkladPictureBox.Size = new System.Drawing.Size(56, 45);
-            this.deleteFromSkladPictureBox.TabIndex = 10;
-            this.deleteFromSkladPictureBox.TabStop = false;
-            this.deleteFromSkladPictureBox.Click += new System.EventHandler(this.deleteFromSkladPictureBox_Click);
-            // 
-            // addToSkladPictureBox
-            // 
-            this.addToSkladPictureBox.BackgroundImage = global::DATAO.Properties.Resources.__;
-            this.addToSkladPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.addToSkladPictureBox.Location = new System.Drawing.Point(365, 35);
-            this.addToSkladPictureBox.Name = "addToSkladPictureBox";
-            this.addToSkladPictureBox.Size = new System.Drawing.Size(56, 48);
-            this.addToSkladPictureBox.TabIndex = 9;
-            this.addToSkladPictureBox.TabStop = false;
-            this.addToSkladPictureBox.Click += new System.EventHandler(this.addToSkladPictureBox_Click);
             // 
             // skladGrid
             // 
@@ -1411,19 +1115,194 @@
             this.reportRaisedButton1.UseVisualStyleBackColor = true;
             this.reportRaisedButton1.Click += new System.EventHandler(this.reportRaisedButton1_Click);
             // 
-            // completeIncomeButton
+            // namePeronalLabel
             // 
-            this.completeIncomeButton.Depth = 0;
-            this.completeIncomeButton.Location = new System.Drawing.Point(365, 213);
-            this.completeIncomeButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.completeIncomeButton.Name = "completeIncomeButton";
-            this.completeIncomeButton.Primary = true;
-            this.completeIncomeButton.Size = new System.Drawing.Size(56, 37);
-            this.completeIncomeButton.TabIndex = 12;
-            this.completeIncomeButton.Text = "ОК";
-            this.completeIncomeButton.UseVisualStyleBackColor = true;
-            this.completeIncomeButton.Visible = false;
-            this.completeIncomeButton.Click += new System.EventHandler(this.completeIncomeButton_Click);
+            this.namePeronalLabel.AutoSize = true;
+            this.namePeronalLabel.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.namePeronalLabel.Location = new System.Drawing.Point(8, 97);
+            this.namePeronalLabel.Name = "namePeronalLabel";
+            this.namePeronalLabel.Size = new System.Drawing.Size(95, 18);
+            this.namePeronalLabel.TabIndex = 27;
+            this.namePeronalLabel.Text = "Имя Фамилия";
+            // 
+            // phonePeronalLabel
+            // 
+            this.phonePeronalLabel.AutoSize = true;
+            this.phonePeronalLabel.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.phonePeronalLabel.Location = new System.Drawing.Point(38, 134);
+            this.phonePeronalLabel.Name = "phonePeronalLabel";
+            this.phonePeronalLabel.Size = new System.Drawing.Size(65, 18);
+            this.phonePeronalLabel.TabIndex = 28;
+            this.phonePeronalLabel.Text = "Телефон";
+            // 
+            // ratePeronalLabel
+            // 
+            this.ratePeronalLabel.AutoSize = true;
+            this.ratePeronalLabel.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ratePeronalLabel.Location = new System.Drawing.Point(54, 204);
+            this.ratePeronalLabel.Name = "ratePeronalLabel";
+            this.ratePeronalLabel.Size = new System.Drawing.Size(49, 18);
+            this.ratePeronalLabel.TabIndex = 29;
+            this.ratePeronalLabel.Text = "Ставка";
+            // 
+            // addressPeronalLabel
+            // 
+            this.addressPeronalLabel.AutoSize = true;
+            this.addressPeronalLabel.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addressPeronalLabel.Location = new System.Drawing.Point(54, 169);
+            this.addressPeronalLabel.Name = "addressPeronalLabel";
+            this.addressPeronalLabel.Size = new System.Drawing.Size(46, 18);
+            this.addressPeronalLabel.TabIndex = 30;
+            this.addressPeronalLabel.Text = "Адрес";
+            // 
+            // statusPeronalLabel
+            // 
+            this.statusPeronalLabel.AutoSize = true;
+            this.statusPeronalLabel.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.statusPeronalLabel.Location = new System.Drawing.Point(54, 239);
+            this.statusPeronalLabel.Name = "statusPeronalLabel";
+            this.statusPeronalLabel.Size = new System.Drawing.Size(49, 18);
+            this.statusPeronalLabel.TabIndex = 31;
+            this.statusPeronalLabel.Text = "Статус";
+            // 
+            // startPersonalDayView
+            // 
+            this.startPersonalDayView.AutoSize = true;
+            this.startPersonalDayView.Font = new System.Drawing.Font("Cooper Black", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.startPersonalDayView.Location = new System.Drawing.Point(532, 135);
+            this.startPersonalDayView.Name = "startPersonalDayView";
+            this.startPersonalDayView.Size = new System.Drawing.Size(85, 36);
+            this.startPersonalDayView.TabIndex = 32;
+            this.startPersonalDayView.Text = "с --:--";
+            // 
+            // endPersonalDayView
+            // 
+            this.endPersonalDayView.AutoSize = true;
+            this.endPersonalDayView.Font = new System.Drawing.Font("Cooper Black", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.endPersonalDayView.Location = new System.Drawing.Point(512, 178);
+            this.endPersonalDayView.Name = "endPersonalDayView";
+            this.endPersonalDayView.Size = new System.Drawing.Size(106, 36);
+            this.endPersonalDayView.TabIndex = 33;
+            this.endPersonalDayView.Text = "до --:--";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::DATAO.Properties.Resources._40599;
+            this.pictureBox1.Location = new System.Drawing.Point(689, 34);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(253, 269);
+            this.pictureBox1.TabIndex = 34;
+            this.pictureBox1.TabStop = false;
+            // 
+            // deleteServicePicture3
+            // 
+            this.deleteServicePicture3.BackgroundImage = global::DATAO.Properties.Resources.deleteservice;
+            this.deleteServicePicture3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.deleteServicePicture3.InitialImage = null;
+            this.deleteServicePicture3.Location = new System.Drawing.Point(236, 23);
+            this.deleteServicePicture3.Name = "deleteServicePicture3";
+            this.deleteServicePicture3.Size = new System.Drawing.Size(30, 29);
+            this.deleteServicePicture3.TabIndex = 4;
+            this.deleteServicePicture3.TabStop = false;
+            this.deleteServicePicture3.Click += new System.EventHandler(this.deleteServicePicture3_Click);
+            // 
+            // changePicture3
+            // 
+            this.changePicture3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.changePicture3.Image = global::DATAO.Properties.Resources.changeservice;
+            this.changePicture3.Location = new System.Drawing.Point(18, 19);
+            this.changePicture3.Name = "changePicture3";
+            this.changePicture3.Size = new System.Drawing.Size(40, 40);
+            this.changePicture3.TabIndex = 3;
+            this.changePicture3.TabStop = false;
+            // 
+            // deleteServicePicture2
+            // 
+            this.deleteServicePicture2.BackgroundImage = global::DATAO.Properties.Resources.deleteservice;
+            this.deleteServicePicture2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.deleteServicePicture2.InitialImage = null;
+            this.deleteServicePicture2.Location = new System.Drawing.Point(236, 23);
+            this.deleteServicePicture2.Name = "deleteServicePicture2";
+            this.deleteServicePicture2.Size = new System.Drawing.Size(30, 29);
+            this.deleteServicePicture2.TabIndex = 4;
+            this.deleteServicePicture2.TabStop = false;
+            this.deleteServicePicture2.Click += new System.EventHandler(this.deleteServicePicture2_Click);
+            // 
+            // changePicture2
+            // 
+            this.changePicture2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.changePicture2.Image = global::DATAO.Properties.Resources.changeservice;
+            this.changePicture2.Location = new System.Drawing.Point(18, 19);
+            this.changePicture2.Name = "changePicture2";
+            this.changePicture2.Size = new System.Drawing.Size(40, 40);
+            this.changePicture2.TabIndex = 3;
+            this.changePicture2.TabStop = false;
+            // 
+            // deleteServicePicture1
+            // 
+            this.deleteServicePicture1.BackgroundImage = global::DATAO.Properties.Resources.deleteservice;
+            this.deleteServicePicture1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.deleteServicePicture1.InitialImage = null;
+            this.deleteServicePicture1.Location = new System.Drawing.Point(236, 23);
+            this.deleteServicePicture1.Name = "deleteServicePicture1";
+            this.deleteServicePicture1.Size = new System.Drawing.Size(30, 29);
+            this.deleteServicePicture1.TabIndex = 4;
+            this.deleteServicePicture1.TabStop = false;
+            this.deleteServicePicture1.Click += new System.EventHandler(this.deleteServicePicture1_Click);
+            // 
+            // changePicture1
+            // 
+            this.changePicture1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.changePicture1.Image = global::DATAO.Properties.Resources.changeservice;
+            this.changePicture1.Location = new System.Drawing.Point(18, 19);
+            this.changePicture1.Name = "changePicture1";
+            this.changePicture1.Size = new System.Drawing.Size(40, 40);
+            this.changePicture1.TabIndex = 3;
+            this.changePicture1.TabStop = false;
+            // 
+            // deleteServicePicture
+            // 
+            this.deleteServicePicture.BackgroundImage = global::DATAO.Properties.Resources.deleteservice;
+            this.deleteServicePicture.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.deleteServicePicture.InitialImage = null;
+            this.deleteServicePicture.Location = new System.Drawing.Point(236, 23);
+            this.deleteServicePicture.Name = "deleteServicePicture";
+            this.deleteServicePicture.Size = new System.Drawing.Size(30, 29);
+            this.deleteServicePicture.TabIndex = 4;
+            this.deleteServicePicture.TabStop = false;
+            this.deleteServicePicture.Click += new System.EventHandler(this.deleteServicePicture_Click);
+            // 
+            // changePicture
+            // 
+            this.changePicture.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.changePicture.Image = global::DATAO.Properties.Resources.changeservice;
+            this.changePicture.Location = new System.Drawing.Point(18, 19);
+            this.changePicture.Name = "changePicture";
+            this.changePicture.Size = new System.Drawing.Size(40, 40);
+            this.changePicture.TabIndex = 3;
+            this.changePicture.TabStop = false;
+            // 
+            // deleteFromSkladPictureBox
+            // 
+            this.deleteFromSkladPictureBox.BackgroundImage = global::DATAO.Properties.Resources._;
+            this.deleteFromSkladPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.deleteFromSkladPictureBox.Location = new System.Drawing.Point(365, 90);
+            this.deleteFromSkladPictureBox.Name = "deleteFromSkladPictureBox";
+            this.deleteFromSkladPictureBox.Size = new System.Drawing.Size(56, 45);
+            this.deleteFromSkladPictureBox.TabIndex = 10;
+            this.deleteFromSkladPictureBox.TabStop = false;
+            this.deleteFromSkladPictureBox.Click += new System.EventHandler(this.deleteFromSkladPictureBox_Click);
+            // 
+            // addToSkladPictureBox
+            // 
+            this.addToSkladPictureBox.BackgroundImage = global::DATAO.Properties.Resources.__;
+            this.addToSkladPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.addToSkladPictureBox.Location = new System.Drawing.Point(365, 35);
+            this.addToSkladPictureBox.Name = "addToSkladPictureBox";
+            this.addToSkladPictureBox.Size = new System.Drawing.Size(56, 48);
+            this.addToSkladPictureBox.TabIndex = 9;
+            this.addToSkladPictureBox.TabStop = false;
+            this.addToSkladPictureBox.Click += new System.EventHandler(this.addToSkladPictureBox_Click);
             // 
             // AdminForm
             // 
@@ -1443,46 +1322,39 @@
             this.Calendar.PerformLayout();
             this.Personal.ResumeLayout(false);
             this.Personal.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.okPicture7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.okPicture6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.okPicture5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.okPicture4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.okPicture3)).EndInit();
             this.groupBoxPersonal.ResumeLayout(false);
             this.groupBoxPersonal.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.okPicture2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.okPicture1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.schedulePersonalPicture)).EndInit();
             this.Uslugi.ResumeLayout(false);
             this.Uslugi.PerformLayout();
             this.newServiceBox.ResumeLayout(false);
             this.newServiceBox.PerformLayout();
             this.serviceBox3.ResumeLayout(false);
             this.serviceBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.deleteServicePicture3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.changePicture3)).EndInit();
             this.serviceBox2.ResumeLayout(false);
             this.serviceBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.deleteServicePicture2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.changePicture2)).EndInit();
             this.serviceBox1.ResumeLayout(false);
             this.serviceBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.deleteServicePicture1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.changePicture1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.serviceBox.ResumeLayout(false);
             this.serviceBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.deleteServicePicture)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.changePicture)).EndInit();
             this.Sklad.ResumeLayout(false);
             this.Sklad.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.deleteFromSkladPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.addToSkladPictureBox)).EndInit();
             this.statisticsSkladBox.ResumeLayout(false);
             this.statisticsSkladBox.PerformLayout();
             this.searchSkladBox.ResumeLayout(false);
             this.searchSkladBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deleteServicePicture3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.changePicture3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deleteServicePicture2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.changePicture2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deleteServicePicture1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.changePicture1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deleteServicePicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.changePicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deleteFromSkladPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.addToSkladPictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1517,25 +1389,11 @@
         private System.Windows.Forms.TextBox addressTextBox;
         private System.Windows.Forms.TextBox phonePersonalTextBox;
         private System.Windows.Forms.TextBox nameTextBox;
-        private MaterialSkin.Controls.MaterialLabel materialLabel7;
-        private MaterialSkin.Controls.MaterialLabel materialLabel6;
-        private MaterialSkin.Controls.MaterialLabel materialLabel5;
-        private MaterialSkin.Controls.MaterialLabel materialLabel4;
-        private MaterialSkin.Controls.MaterialLabel materialLabel2;
-        private System.Windows.Forms.PictureBox schedulePersonalPicture;
-        private System.Windows.Forms.PictureBox okPicture1;
-        private System.Windows.Forms.PictureBox okPicture7;
-        private System.Windows.Forms.PictureBox okPicture6;
-        private System.Windows.Forms.PictureBox okPicture5;
-        private System.Windows.Forms.PictureBox okPicture4;
-        private System.Windows.Forms.PictureBox okPicture3;
-        private System.Windows.Forms.PictureBox okPicture2;
         private MaterialSkin.Controls.MaterialCheckBox editPersonalCheckBox;
         private SourceGrid.Grid skladGrid;
         private System.Windows.Forms.PictureBox addToSkladPictureBox;
         private MaterialSkin.Controls.MaterialRaisedButton settingButton;
         private System.Windows.Forms.PictureBox deleteFromSkladPictureBox;
-        private SourceGrid.Grid schedulePersonalGrid;
         private SourceGrid.Grid ScheduleGrid;
         private MaterialSkin.Controls.MaterialRaisedButton deleteEventButton;
         private System.Windows.Forms.GroupBox serviceBox;
@@ -1582,8 +1440,6 @@
         private MaterialSkin.Controls.MaterialRaisedButton saveChangePersonalButton;
         private MaterialSkin.Controls.MaterialRaisedButton searchSkladShowButton;
         private MaterialSkin.Controls.MaterialRaisedButton syncSkladButton;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.MaskedTextBox endPersonalDay;
         private System.Windows.Forms.MaskedTextBox startPersonalDay;
         private System.Windows.Forms.MonthCalendar monthCalendarPersonal;
@@ -1595,5 +1451,13 @@
         private System.Windows.Forms.DateTimePicker dateIncome;
         private MaterialSkin.Controls.MaterialRaisedButton confirmIncomeRaisedButton1;
         private MaterialSkin.Controls.MaterialRaisedButton completeIncomeButton;
+        private System.Windows.Forms.Label phonePeronalLabel;
+        private System.Windows.Forms.Label namePeronalLabel;
+        private System.Windows.Forms.Label ratePeronalLabel;
+        private System.Windows.Forms.Label statusPeronalLabel;
+        private System.Windows.Forms.Label addressPeronalLabel;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label endPersonalDayView;
+        private System.Windows.Forms.Label startPersonalDayView;
     }
 }

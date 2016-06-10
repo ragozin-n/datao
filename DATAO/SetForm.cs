@@ -54,7 +54,7 @@ namespace DATAO
 
                 scheduleGrid.Rows.Insert(2);
                 for (int i = 0; i < 7; i++)
-                { scheduleGrid[2, i] = new SourceGrid.Cells.Cell(Enterprise.TimeTable[(Days)i + 1][1], typeof(TimeSpan)); }
+                { scheduleGrid[2, i] = new SourceGrid.Cells.Cell(Enterprise.TimeTable[(Days)i+1][1], typeof(TimeSpan)); }
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -77,21 +77,12 @@ namespace DATAO
             Enterprise.About.Fields["ФАКТАДРЕС"] = actualAddressTextBox.Text;
             Enterprise.About.Fields["Юридический адрес"] = legfalAddressTextBox.Text;
             Enterprise.About.Fields["ИНН:"] = tinTextBox.Text;
-            //uint accnumb = 0;
-            //uint.TryParse(accountNumberTextBox.Text, out accnumb);
             Enterprise.About.Fields["СЧЕТ"] = accountNumberTextBox.Text;
-            string[] rasp = {
-                scheduleGrid[1, 0] + "-" + scheduleGrid[2, 0], scheduleGrid[1, 1] + "-" + scheduleGrid[2, 1],
-                scheduleGrid[1, 2] + "-" + scheduleGrid[2, 2], scheduleGrid[1, 3] + "-" + scheduleGrid[2, 3],
-                scheduleGrid[1, 4] + "-" + scheduleGrid[2, 4], scheduleGrid[1, 5] + "-" + scheduleGrid[2, 5],
-                scheduleGrid[1, 6] + "-" + scheduleGrid[2, 6]
-            };
             for (int i = 0; i < 7; i++)
                 {
                     Enterprise.TimeTable[(Days)i + 1][0] = DateTime.Parse(scheduleGrid[1, i].Value.ToString()).TimeOfDay;
                     Enterprise.TimeTable[(Days)i + 1][1] = DateTime.Parse(scheduleGrid[2, i].Value.ToString()).TimeOfDay;
             }
-            //Table.Save();
             adF.Name = nameOrgTextBox.Text;
             adF.UpdateSchedule();
             Close();

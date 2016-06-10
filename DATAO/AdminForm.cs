@@ -23,25 +23,7 @@ namespace DATAO
             LoadPersonal();
             LoadSkladGrid();
             LoadService(1);
-            schedulePersonalGrid.Visible = false;
-            schedulePersonalGrid.BorderStyle = BorderStyle.None;
-            schedulePersonalGrid.ColumnsCount = 7;
-            schedulePersonalGrid.FixedRows = 1;
-            schedulePersonalGrid.Rows.Insert(0);
-
-            string[] week = { "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресение" };
-            for (int i = 0; i < week.Length; i++)
-            {
-                schedulePersonalGrid[0, i] = new SourceGrid.Cells.ColumnHeader(week[i]);
-            }
-            schedulePersonalGrid.Rows.Insert(1);
-
-            for (int i = 0; i < 7; i++)
-            {
-                schedulePersonalGrid[1, i] = new SourceGrid.Cells.CheckBox(string.Empty, false);
-            }
-            schedulePersonalGrid.AutoSizeCells();
-
+    
             skladGrid.BorderStyle = BorderStyle.FixedSingle;
             skladGrid.ColumnsCount = 5;
             skladGrid.FixedRows = 1;
@@ -183,7 +165,25 @@ namespace DATAO
 
         private int IndexDay()
         {
-            return (int)monthCalendar.SelectionStart.DayOfWeek;
+            //твой ретурн инт возращал не правильные индексы!
+            switch(monthCalendar.SelectionStart.DayOfWeek)
+            {
+                case DayOfWeek.Monday:
+                    return 0;
+                case DayOfWeek.Tuesday:
+                    return 1;
+                case DayOfWeek.Wednesday:
+                    return 2;
+                case DayOfWeek.Thursday:
+                    return 3;
+                case DayOfWeek.Friday:
+                    return 4;
+                case DayOfWeek.Saturday:
+                    return 5;
+                case DayOfWeek.Sunday:
+                    return 6;
+            }
+            return 0;
         }
 
         private void LoadSchedule()
@@ -203,15 +203,16 @@ namespace DATAO
             int j = 1;
             try
             {
-                for (TimeSpan i = Enterprise.TimeTable[(Days)IndexDay() + 1][0];
-                    i < Enterprise.TimeTable[(Days)IndexDay() + 1][1];
+                for (TimeSpan i = Enterprise.TimeTable[(Days)IndexDay()+1][0];
+                    i < Enterprise.TimeTable[(Days)IndexDay()+1][1];
                     i = i + DateTime.Parse("00:30:00").TimeOfDay)
                 {
                     ScheduleGrid.Rows.Insert(j);
                     ScheduleGrid[j, 0] = new SourceGrid.Cells.RowHeader($"{i} - {(i + DateTime.Parse("00:30:00").TimeOfDay)}");
                     for (int k = 1; k < ScheduleGrid.ColumnsCount; k++)
                     {
-                        if (todayWorker[k - 1].TimeTable.Data[monthCalendar.SelectionStart.Date].End <= i)
+                        if (todayWorker[k - 1].TimeTable.Data[monthCalendar.SelectionStart.Date].End <= i
+                            || todayWorker[k - 1].TimeTable.Data[monthCalendar.SelectionStart.Date].Start >= i)
                         {
                             ScheduleGrid[j, k] = new SourceGrid.Cells.Cell("Не работает", typeof(string));
                         }
@@ -314,7 +315,8 @@ namespace DATAO
                 int j = 0;
                 for (int i = 1; i <= ScheduleGrid.RowsCount; i++)
                 {
-                    if (ScheduleGrid.Selection.IsSelectedCell(new SourceGrid.Position(i, c)))
+                    if (ScheduleGrid.Selection.IsSelectedCell(new SourceGrid.Position(i, c))&&
+                        ScheduleGrid[i,c].Value == null)
                     {
                         if (j == 0)
                         {
@@ -361,12 +363,18 @@ namespace DATAO
                 _worker.About.Fields.Add("Ставка", rateTextBox.Text);
                 _worker.About.Fields.Add("Статус", statusTextBox.Text);
                 _worker.About.Fields.Add("Отработанные часы", "0");
-
+                try
+                {
+                    _worker.TimeTable.Data.Add(monthCalendarPersonal.SelectionStart.Date,
+                        new WorkDay(startPersonalDay.Text + "-" + endPersonalDay.Text));
+                }
+                catch (Exception) { MessageBox.Show("Было введено некорректное время работы, \nвы можете попробовать добавить его через режим режактирования"); }
                 Enterprise.Personal.Add(_worker);
 
                 editPersonalCheckBox.CheckState = CheckState.Unchecked;
                 LoadPersonal();
                 personalListBox.EndUpdate();
+                UpdateSchedule();
             }
             else
             {
@@ -411,12 +419,10 @@ namespace DATAO
             addressTextBox.ReadOnly = !addressTextBox.ReadOnly;
             rateTextBox.ReadOnly = !rateTextBox.ReadOnly;
             statusTextBox.ReadOnly = !statusTextBox.ReadOnly;
-            startPersonalDay.ReadOnly = !startPersonalDay.ReadOnly;
-            endPersonalDay.ReadOnly = !endPersonalDay.ReadOnly;
-            schedulePersonalGrid.Visible = !schedulePersonalGrid.Visible;
-            //почему с рид онли не прокатывает
-            //startPersonalDay.ReadOnly = !startPersonalDay.ReadOnly;
-            //endPersonalDay.ReadOnly = !endPersonalDay.ReadOnly;
+            startPersonalDay.Visible = !startPersonalDay.Visible;
+            endPersonalDay.Visible = !endPersonalDay.Visible;
+            startPersonalDayView.Text = "с --:--";
+            endPersonalDayView.Text = "до --:--";
         }
 
         private void checkEventButton_Click(object sender, EventArgs e)
@@ -480,13 +486,13 @@ namespace DATAO
             addressTextBox.Text = Enterprise.Personal[personalListBox.SelectedIndex].About.Fields["Адрес"];
             rateTextBox.Text = Enterprise.Personal[personalListBox.SelectedIndex].About.Fields["Ставка"];
             statusTextBox.Text = Enterprise.Personal[personalListBox.SelectedIndex].About.Fields["Статус"];
-
+            
             if (Enterprise.Personal[personalListBox.SelectedIndex].TimeTable.Data.ContainsKey(monthCalendarPersonal.SelectionStart.Date))
             {
-                startPersonalDay.Text = Enterprise.Personal[personalListBox.SelectedIndex].TimeTable.Data
-                    [monthCalendarPersonal.SelectionStart.Date].Start.ToString();
-                endPersonalDay.Text = Enterprise.Personal[personalListBox.SelectedIndex].TimeTable.Data
-                    [monthCalendarPersonal.SelectionStart.Date].End.ToString();
+                startPersonalDayView.Text = "с "+Enterprise.Personal[personalListBox.SelectedIndex].TimeTable.Data
+                    [monthCalendarPersonal.SelectionStart.Date].Start.ToString().Substring(0, 5);
+                endPersonalDayView.Text = "до "+Enterprise.Personal[personalListBox.SelectedIndex].TimeTable.Data
+                    [monthCalendarPersonal.SelectionStart.Date].End.ToString().Substring(0,5);
             }
         }
 
@@ -605,7 +611,10 @@ namespace DATAO
 
         private void saveChangePersonalButton_Click(object sender, EventArgs e)
         {
-            try {
+            try
+            {
+                TimeSpan start = TimeSpan.Parse(startPersonalDay.Text);
+                TimeSpan end = TimeSpan.Parse(endPersonalDay.Text);
                 Enterprise.Personal[personalListBox.SelectedIndex].About.Name = nameTextBox.Text;
                 Enterprise.Personal[personalListBox.SelectedIndex].About.Fields["Телефон"] = phonePersonalTextBox.Text;
                 Enterprise.Personal[personalListBox.SelectedIndex].About.Fields["Адрес"] = addressTextBox.Text;
@@ -613,9 +622,9 @@ namespace DATAO
                 if (Enterprise.Personal[personalListBox.SelectedIndex].TimeTable.Data.ContainsKey(monthCalendarPersonal.SelectionStart.Date))
                 {
                     Enterprise.Personal[personalListBox.SelectedIndex].TimeTable.Data
-                        [monthCalendarPersonal.SelectionStart.Date].Start = TimeSpan.Parse(startPersonalDay.Text);
+                        [monthCalendarPersonal.SelectionStart.Date].Start = start;
                     Enterprise.Personal[personalListBox.SelectedIndex].TimeTable.Data
-                        [monthCalendarPersonal.SelectionStart.Date].End = TimeSpan.Parse(endPersonalDay.Text);
+                        [monthCalendarPersonal.SelectionStart.Date].End = end;
                 }
                 else
                 {
@@ -623,10 +632,19 @@ namespace DATAO
                         new WorkDay (startPersonalDay.Text+"-"+ endPersonalDay.Text));
                 }
                 editPersonalCheckBox.CheckState = CheckState.Unchecked;
+                UpdateSchedule();
             }
             catch (ArgumentOutOfRangeException)
             {
                 MessageBox.Show("Выберете рабочего");
+            }
+            catch (OverflowException)
+            {
+                MessageBox.Show("Пример ввода времени 16:30");
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Пример ввода времени 16:30");
             }
         }
 
@@ -644,16 +662,18 @@ namespace DATAO
             {
                 if(editPersonalCheckBox.Checked == false)
                 {
-                    startPersonalDay.Text = Enterprise.Personal[personalListBox.SelectedIndex].
-                        TimeTable.Data[monthCalendarPersonal.SelectionStart.Date].Start.ToString();
-                    endPersonalDay.Text = Enterprise.Personal[personalListBox.SelectedIndex].
-                        TimeTable.Data[monthCalendarPersonal.SelectionStart.Date].End.ToString();
+                    startPersonalDayView.Text = "с "+Enterprise.Personal[personalListBox.SelectedIndex].
+                        TimeTable.Data[monthCalendarPersonal.SelectionStart.Date].Start.ToString().Substring(0, 5);
+                    endPersonalDayView.Text = "до "+Enterprise.Personal[personalListBox.SelectedIndex].
+                        TimeTable.Data[monthCalendarPersonal.SelectionStart.Date].End.ToString().Substring(0, 5);
                 }
             }
             catch(Exception)
             {
                 startPersonalDay.Text = string.Empty;
                 endPersonalDay.Text = string.Empty;
+                startPersonalDayView.Text = "с --:--";
+                endPersonalDayView.Text = "до --:--";
             }
         }
 
