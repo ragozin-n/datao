@@ -38,6 +38,11 @@ namespace DATAO
 
         private void LoadService(int currentPage)
         {
+            serviceComboBox.Items.Clear();
+            foreach(Service service in Enterprise.PriceList)
+            {
+                serviceComboBox.Items.Add(service.About.Name);
+            }
             if ((Enterprise.PriceList.Count / 4) + 1 >= currentPage)
             {
                 if (Enterprise.PriceList.Count < 5)
@@ -875,6 +880,37 @@ namespace DATAO
                 MessageBox.Show("Проверьте правильность ввода значения");
                 LoadSkladGrid();
             }
+        }
+
+        private void statisticsService()
+        {
+            double cost = 0;
+            int count = 0;
+            foreach(Worker worker in Enterprise.Personal)
+            {
+                foreach(Event _event in worker.Events.Where(ev => (ev.isComplete == true&& 
+                ev.RecordDate.Date>=serviceStartDate.Value.Date && ev.RecordDate<=serviceEndDate.Value.Date)))
+                {
+                    count++;
+                    cost += _event.Cost;
+                }
+            }
+            statService.Text = "Выполнено(раз) : "+count+" на сумму(руб) : "+cost;
+        }
+
+        private void serviceComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            statisticsService();
+        }
+
+        private void serviceStartDate_ValueChanged(object sender, EventArgs e)
+        {
+            statisticsService();
+        }
+
+        private void serviceEndDate_ValueChanged(object sender, EventArgs e)
+        {
+            statisticsService();
         }
     }
 }

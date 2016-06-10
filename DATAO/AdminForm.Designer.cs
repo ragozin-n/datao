@@ -79,10 +79,7 @@
             this.costService1 = new System.Windows.Forms.Label();
             this.nameServiceLabel1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.statisticsOutputLabel = new System.Windows.Forms.Label();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.serviceComboBox = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.serviceBox = new System.Windows.Forms.GroupBox();
             this.timeService = new System.Windows.Forms.Label();
@@ -127,6 +124,11 @@
             this.changePicture = new System.Windows.Forms.PictureBox();
             this.deleteFromSkladPictureBox = new System.Windows.Forms.PictureBox();
             this.addToSkladPictureBox = new System.Windows.Forms.PictureBox();
+            this.serviceStartDate = new System.Windows.Forms.DateTimePicker();
+            this.serviceEndDate = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.statService = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.Calendar.SuspendLayout();
             this.Personal.SuspendLayout();
@@ -768,59 +770,34 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.statisticsOutputLabel);
-            this.groupBox1.Controls.Add(this.comboBox4);
+            this.groupBox1.Controls.Add(this.statService);
             this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.comboBox3);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.serviceEndDate);
+            this.groupBox1.Controls.Add(this.serviceStartDate);
+            this.groupBox1.Controls.Add(this.serviceComboBox);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.InactiveBorder;
             this.groupBox1.Location = new System.Drawing.Point(56, 382);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(515, 136);
+            this.groupBox1.Size = new System.Drawing.Size(536, 136);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Статистика";
             // 
-            // statisticsOutputLabel
+            // serviceComboBox
             // 
-            this.statisticsOutputLabel.AutoSize = true;
-            this.statisticsOutputLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.statisticsOutputLabel.ForeColor = System.Drawing.Color.Tan;
-            this.statisticsOutputLabel.Location = new System.Drawing.Point(50, 74);
-            this.statisticsOutputLabel.Name = "statisticsOutputLabel";
-            this.statisticsOutputLabel.Size = new System.Drawing.Size(347, 25);
-            this.statisticsOutputLabel.TabIndex = 4;
-            this.statisticsOutputLabel.Text = "За январь выполнено 50 стрижек";
-            // 
-            // comboBox4
-            // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(315, 32);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(150, 21);
-            this.comboBox4.TabIndex = 3;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(266, 35);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(43, 13);
-            this.label8.TabIndex = 2;
-            this.label8.Text = "Месяц:";
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(104, 32);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(142, 21);
-            this.comboBox3.TabIndex = 1;
+            this.serviceComboBox.FormattingEnabled = true;
+            this.serviceComboBox.Location = new System.Drawing.Point(25, 33);
+            this.serviceComboBox.Name = "serviceComboBox";
+            this.serviceComboBox.Size = new System.Drawing.Size(156, 21);
+            this.serviceComboBox.TabIndex = 1;
+            this.serviceComboBox.SelectedIndexChanged += new System.EventHandler(this.serviceComboBox_SelectedIndexChanged);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(52, 35);
+            this.label7.Location = new System.Drawing.Point(71, 16);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(46, 13);
             this.label7.TabIndex = 0;
@@ -1304,6 +1281,50 @@
             this.addToSkladPictureBox.TabStop = false;
             this.addToSkladPictureBox.Click += new System.EventHandler(this.addToSkladPictureBox_Click);
             // 
+            // serviceStartDate
+            // 
+            this.serviceStartDate.Location = new System.Drawing.Point(201, 34);
+            this.serviceStartDate.Name = "serviceStartDate";
+            this.serviceStartDate.Size = new System.Drawing.Size(141, 20);
+            this.serviceStartDate.TabIndex = 2;
+            this.serviceStartDate.ValueChanged += new System.EventHandler(this.serviceStartDate_ValueChanged);
+            // 
+            // serviceEndDate
+            // 
+            this.serviceEndDate.Location = new System.Drawing.Point(362, 33);
+            this.serviceEndDate.Name = "serviceEndDate";
+            this.serviceEndDate.Size = new System.Drawing.Size(142, 20);
+            this.serviceEndDate.TabIndex = 3;
+            this.serviceEndDate.ValueChanged += new System.EventHandler(this.serviceEndDate_ValueChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(268, 14);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(16, 13);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "с:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(419, 14);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(22, 13);
+            this.label8.TabIndex = 5;
+            this.label8.Text = "по:";
+            // 
+            // statService
+            // 
+            this.statService.AutoSize = true;
+            this.statService.Font = new System.Drawing.Font("Comic Sans MS", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.statService.Location = new System.Drawing.Point(14, 80);
+            this.statService.Name = "statService";
+            this.statService.Size = new System.Drawing.Size(504, 33);
+            this.statService.TabIndex = 6;
+            this.statService.Text = "Выполнено(раз) : --- на сумму(руб) : ------";
+            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1401,10 +1422,7 @@
         private System.Windows.Forms.Label costService;
         private System.Windows.Forms.Label timeService;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label statisticsOutputLabel;
-        private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox serviceComboBox;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.PictureBox changePicture;
         private System.Windows.Forms.PictureBox deleteServicePicture;
@@ -1459,5 +1477,10 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label endPersonalDayView;
         private System.Windows.Forms.Label startPersonalDayView;
+        private System.Windows.Forms.Label statService;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DateTimePicker serviceEndDate;
+        private System.Windows.Forms.DateTimePicker serviceStartDate;
     }
 }
