@@ -637,11 +637,7 @@ namespace DATAO
             {
                 MessageBox.Show("Выберете рабочего");
             }
-            catch (OverflowException)
-            {
-                MessageBox.Show("Пример ввода времени 16:30");
-            }
-            catch (FormatException)
+            catch (Exception ex) when (ex is FormatException || ex is OverflowException)
             {
                 MessageBox.Show("Пример ввода времени 16:30");
             }
@@ -889,7 +885,7 @@ namespace DATAO
                     cost += _event.Cost;
                 }
             }
-            statService.Text = "Выполнено(раз) : "+count+" на сумму(руб) : "+cost;
+            statService.Text = $"Выполнено(раз) : {count} на сумму(руб) : {cost}";
         }
 
         private void serviceComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -918,7 +914,7 @@ namespace DATAO
                 costCurrentService.Visible = !costCurrentService.Visible;
                 LoadService((int.Parse(numberPageLabel.Text)));
             }
-            catch(Exception)
+            catch (Exception ex) when (ex is FormatException || ex is OverflowException)
             {
                 MessageBox.Show("Поле стоимость должно содержать только цифры");
             }
@@ -935,7 +931,7 @@ namespace DATAO
                 costCurrentService1.Visible = !costCurrentService1.Visible;
                 LoadService((int.Parse(numberPageLabel.Text)));
             }
-            catch (Exception)
+            catch (Exception ex) when (ex is FormatException || ex is OverflowException)
             {
                 MessageBox.Show("Поле стоимость должно содержать только цифры");
             }
@@ -952,7 +948,7 @@ namespace DATAO
                 costCurrentService2.Visible = !costCurrentService2.Visible;
                 LoadService((int.Parse(numberPageLabel.Text)));
             }
-            catch (Exception)
+            catch (Exception ex) when (ex is FormatException || ex is OverflowException)
             {
                 MessageBox.Show("Поле стоимость должно содержать только цифры");
             }
@@ -969,7 +965,7 @@ namespace DATAO
                 costCurrentService3.Visible = !costCurrentService3.Visible;
                 LoadService((int.Parse(numberPageLabel.Text)));
             }
-            catch (Exception)
+            catch (Exception ex) when (ex is FormatException || ex is OverflowException)
             {
                 MessageBox.Show("Поле стоимость должно содержать только цифры");
             }
