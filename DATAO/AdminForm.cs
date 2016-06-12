@@ -373,7 +373,10 @@ namespace DATAO
                     _worker.TimeTable.Data.Add(monthCalendarPersonal.SelectionStart.Date,
                         new WorkDay(startPersonalDay.Text + "-" + endPersonalDay.Text));
                 }
-                catch (Exception) { MessageBox.Show("Было введено некорректное время работы, \nвы можете попробовать добавить его через режим режактирования"); }
+                catch (Exception)
+                {
+                    //MessageBox.Show("Было введено некорректное время работы, \nвы можете попробовать добавить его через режим режактирования"); 
+                }
                 Enterprise.Personal.Add(_worker);
 
                 editPersonalCheckBox.CheckState = CheckState.Unchecked;

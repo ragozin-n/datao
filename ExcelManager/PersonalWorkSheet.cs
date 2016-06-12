@@ -40,7 +40,7 @@ namespace ExcelManager
                 while (Core.Cells[j, k].Value != null)
                 {
                     _worker.TimeTable.Data.Add(
-                        DateTime.Parse(Core.Cells[1, k].Value.ToString()),
+                        DateTime.FromOADate(double.Parse(Core.Cells[1, k].Value.ToString())),
                         new WorkDay(Core.Cells[j, k].Value.ToString())
                         );
                     k++;
