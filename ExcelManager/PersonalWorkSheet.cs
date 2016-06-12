@@ -87,6 +87,9 @@ namespace ExcelManager
                 int l = 7;
                 foreach (var pair in Enterprise.Personal[i].TimeTable.Data)
                 {
+                    //
+                    Core.Cells[j, 1].Style.Numberformat.Format = "yyyy-mm-dd";
+                    //
                     Core.Cells[1, l].Value = pair.Key;
                     Core.Cells[j, l].Value = $"{pair.Value.Start} - {pair.Value.End}";
                     l++;

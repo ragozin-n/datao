@@ -81,6 +81,9 @@ namespace ExcelManager
             {
                 for (int j = 0; j < Enterprise.Personal[i].Events.Count; j++)
                 {
+                    //
+                    Core.Cells[row, 1].Style.Numberformat.Format = "yyyy-mm-dd";
+                    //
                     Core.Cells[row, 1].Value = Enterprise.Personal[i].Events[j].RecordDate;
                     Core.Cells[row, 2].Value = Enterprise.Personal[i].Events[j].Customer.About.Name;
                     Core.Cells[row, 3].Value = Enterprise.Personal[i].Events[j].Service.About.Name;
