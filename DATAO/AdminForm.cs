@@ -395,7 +395,10 @@ namespace DATAO
                         Enterprise.GoodsAvailability.Remove(Enterprise.GoodsAvailability.
                             First(good => good.Key.About.ID == uint.Parse(skladGrid[row.Index,0].Value.ToString())).Key);
                     }
-                    catch (InvalidOperationException) { }
+                    catch (InvalidOperationException)
+                    {
+                        //
+                    }
                     skladGrid.Rows.Remove(row.Index);
                     break;
                 }
@@ -443,7 +446,8 @@ namespace DATAO
                     }
                 }
             }
-            try {
+            try
+            {
                 if (Enterprise.Personal.Find(w => w.About.Name == nameWorker).Events.Find(
                         ev => ((ev.RecordDate == monthCalendar.SelectionStart.Date + start) && (ev.Service.Duration == end - start))).isComplete == false)
                 {
@@ -457,7 +461,10 @@ namespace DATAO
                     MessageBox.Show("Чек уже был выдан!");
                 }
             }
-            catch(Exception) { }
+            catch(ArgumentNullException)
+            {
+                //
+            }
         }
 
         private void monthCalendar_DateChanged(object sender, DateRangeEventArgs e)
@@ -523,7 +530,8 @@ namespace DATAO
 
         private void saveServiceButton_Click(object sender, EventArgs e)
         {
-            try {
+            try
+            {
                 Service newService = new Service();
                 newService.About.Name = newNameServiceTextBox.Text;
 

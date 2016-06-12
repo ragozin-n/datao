@@ -74,10 +74,10 @@ namespace DATAO
         {
             Enterprise.About.Name = nameOrgTextBox.Text;
             Enterprise.About.Fields["Телефон"] = phoneTextBox.Text;
-            Enterprise.About.Fields["ФАКТАДРЕС"] = actualAddressTextBox.Text;
+            Enterprise.About.Fields["Фактический адрес"] = actualAddressTextBox.Text;
             Enterprise.About.Fields["Юридический адрес"] = legfalAddressTextBox.Text;
-            Enterprise.About.Fields["ИНН:"] = tinTextBox.Text;
-            Enterprise.About.Fields["СЧЕТ"] = accountNumberTextBox.Text;
+            Enterprise.About.Fields["ИНН"] = tinTextBox.Text;
+            Enterprise.About.Fields["Расчетный счет"] = accountNumberTextBox.Text;
             for (int i = 0; i < 7; i++)
                 {
                     Enterprise.TimeTable[(Days)i + 1][0] = DateTime.Parse(scheduleGrid[1, i].Value.ToString()).TimeOfDay;
