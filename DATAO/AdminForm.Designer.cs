@@ -129,6 +129,10 @@
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
             this.settingButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.reportRaisedButton1 = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.costCurrentService = new System.Windows.Forms.TextBox();
+            this.costCurrentService1 = new System.Windows.Forms.TextBox();
+            this.costCurrentService2 = new System.Windows.Forms.TextBox();
+            this.costCurrentService3 = new System.Windows.Forms.TextBox();
             this.tabControl.SuspendLayout();
             this.Calendar.SuspendLayout();
             this.Personal.SuspendLayout();
@@ -705,6 +709,7 @@
             // 
             // serviceBox3
             // 
+            this.serviceBox3.Controls.Add(this.costCurrentService3);
             this.serviceBox3.Controls.Add(this.deleteServicePicture3);
             this.serviceBox3.Controls.Add(this.changePicture3);
             this.serviceBox3.Controls.Add(this.timeService3);
@@ -738,6 +743,7 @@
             this.changePicture3.Size = new System.Drawing.Size(40, 40);
             this.changePicture3.TabIndex = 3;
             this.changePicture3.TabStop = false;
+            this.changePicture3.Click += new System.EventHandler(this.changePicture3_Click);
             // 
             // timeService3
             // 
@@ -774,6 +780,7 @@
             // 
             // serviceBox2
             // 
+            this.serviceBox2.Controls.Add(this.costCurrentService2);
             this.serviceBox2.Controls.Add(this.deleteServicePicture2);
             this.serviceBox2.Controls.Add(this.changePicture2);
             this.serviceBox2.Controls.Add(this.timeService2);
@@ -807,6 +814,7 @@
             this.changePicture2.Size = new System.Drawing.Size(40, 40);
             this.changePicture2.TabIndex = 3;
             this.changePicture2.TabStop = false;
+            this.changePicture2.Click += new System.EventHandler(this.changePicture2_Click);
             // 
             // timeService2
             // 
@@ -843,6 +851,7 @@
             // 
             // serviceBox1
             // 
+            this.serviceBox1.Controls.Add(this.costCurrentService1);
             this.serviceBox1.Controls.Add(this.deleteServicePicture1);
             this.serviceBox1.Controls.Add(this.changePicture1);
             this.serviceBox1.Controls.Add(this.timeService1);
@@ -876,6 +885,7 @@
             this.changePicture1.Size = new System.Drawing.Size(40, 40);
             this.changePicture1.TabIndex = 3;
             this.changePicture1.TabStop = false;
+            this.changePicture1.Click += new System.EventHandler(this.changePicture1_Click);
             // 
             // timeService1
             // 
@@ -991,6 +1001,7 @@
             // 
             // serviceBox
             // 
+            this.serviceBox.Controls.Add(this.costCurrentService);
             this.serviceBox.Controls.Add(this.deleteServicePicture);
             this.serviceBox.Controls.Add(this.changePicture);
             this.serviceBox.Controls.Add(this.timeService);
@@ -1024,6 +1035,7 @@
             this.changePicture.Size = new System.Drawing.Size(40, 40);
             this.changePicture.TabIndex = 3;
             this.changePicture.TabStop = false;
+            this.changePicture.Click += new System.EventHandler(this.changePicture_Click);
             // 
             // timeService
             // 
@@ -1321,6 +1333,38 @@
             this.reportRaisedButton1.UseVisualStyleBackColor = true;
             this.reportRaisedButton1.Click += new System.EventHandler(this.reportRaisedButton1_Click);
             // 
+            // costCurrentService
+            // 
+            this.costCurrentService.Location = new System.Drawing.Point(195, 151);
+            this.costCurrentService.Name = "costCurrentService";
+            this.costCurrentService.Size = new System.Drawing.Size(71, 20);
+            this.costCurrentService.TabIndex = 5;
+            this.costCurrentService.Visible = false;
+            // 
+            // costCurrentService1
+            // 
+            this.costCurrentService1.Location = new System.Drawing.Point(195, 151);
+            this.costCurrentService1.Name = "costCurrentService1";
+            this.costCurrentService1.Size = new System.Drawing.Size(71, 20);
+            this.costCurrentService1.TabIndex = 11;
+            this.costCurrentService1.Visible = false;
+            // 
+            // costCurrentService2
+            // 
+            this.costCurrentService2.Location = new System.Drawing.Point(195, 151);
+            this.costCurrentService2.Name = "costCurrentService2";
+            this.costCurrentService2.Size = new System.Drawing.Size(71, 20);
+            this.costCurrentService2.TabIndex = 11;
+            this.costCurrentService2.Visible = false;
+            // 
+            // costCurrentService3
+            // 
+            this.costCurrentService3.Location = new System.Drawing.Point(195, 151);
+            this.costCurrentService3.Name = "costCurrentService3";
+            this.costCurrentService3.Size = new System.Drawing.Size(71, 20);
+            this.costCurrentService3.TabIndex = 11;
+            this.costCurrentService3.Visible = false;
+            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1478,5 +1522,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker serviceEndDate;
         private System.Windows.Forms.DateTimePicker serviceStartDate;
+        private System.Windows.Forms.TextBox costCurrentService3;
+        private System.Windows.Forms.TextBox costCurrentService2;
+        private System.Windows.Forms.TextBox costCurrentService1;
+        private System.Windows.Forms.TextBox costCurrentService;
     }
 }

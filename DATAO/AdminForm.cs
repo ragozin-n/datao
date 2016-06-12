@@ -917,5 +917,73 @@ namespace DATAO
         {
             statisticsService();
         }
+
+        private void changePicture_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (costCurrentService.Visible == true)
+                {
+                    Enterprise.PriceList[(int.Parse(numberPageLabel.Text) * 4) - 4].Cost = double.Parse(costCurrentService.Text);
+                }
+                costCurrentService.Visible = !costCurrentService.Visible;
+                LoadService((int.Parse(numberPageLabel.Text)));
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Поле стоимость должно содержать только цифры");
+            }
+        }
+
+        private void changePicture1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (costCurrentService1.Visible == true)
+                {
+                    Enterprise.PriceList[(int.Parse(numberPageLabel.Text) * 4) - 3].Cost = double.Parse(costCurrentService1.Text);
+                }
+                costCurrentService1.Visible = !costCurrentService1.Visible;
+                LoadService((int.Parse(numberPageLabel.Text)));
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Поле стоимость должно содержать только цифры");
+            }
+        }
+
+        private void changePicture2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (costCurrentService2.Visible == true)
+                {
+                    Enterprise.PriceList[(int.Parse(numberPageLabel.Text) * 4) - 2].Cost = double.Parse(costCurrentService2.Text);
+                }
+                costCurrentService2.Visible = !costCurrentService2.Visible;
+                LoadService((int.Parse(numberPageLabel.Text)));
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Поле стоимость должно содержать только цифры");
+            }
+        }
+
+        private void changePicture3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (costCurrentService3.Visible == true)
+                {
+                    Enterprise.PriceList[(int.Parse(numberPageLabel.Text) * 4) - 1].Cost = double.Parse(costCurrentService3.Text);
+                }
+                costCurrentService3.Visible = !costCurrentService3.Visible;
+                LoadService((int.Parse(numberPageLabel.Text)));
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Поле стоимость должно содержать только цифры");
+            }
+        }
     }
 }
