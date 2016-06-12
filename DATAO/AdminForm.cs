@@ -744,6 +744,7 @@ namespace DATAO
                 syncSkladButton.Visible = false;
                 completeIncomeButton.Visible = true;
                 MessageBox.Show("Теперь добавьтие принятый товар в таблицу, и нажмите кнопку \"ОК\"!");
+                confirmIncomeRaisedButton1.Visible = false;
             }
             catch (Exception) { MessageBox.Show("Проверьте поле стоимость (пример : 20000)"); }
         }
@@ -782,6 +783,7 @@ namespace DATAO
         private void completeIncomeButton_Click(object sender, EventArgs e)
         {
             SyncSklad(true);
+            confirmIncomeRaisedButton1.Visible = true;
         }
 
         private void searchSkladShowButton_Click(object sender, EventArgs e)
@@ -878,7 +880,7 @@ namespace DATAO
             int count = 0;
             foreach(Worker worker in Enterprise.Personal)
             {
-                foreach(Event _event in worker.Events.Where(ev => (ev.isComplete == true&& 
+                foreach(Event _event in worker.Events.Where(ev => (ev.isComplete == true&& ev.Service.About.Name == serviceComboBox.Text&&
                 ev.RecordDate.Date>=serviceStartDate.Value.Date && ev.RecordDate<=serviceEndDate.Value.Date)))
                 {
                     count++;
