@@ -170,25 +170,28 @@ namespace DATAO
 
         private int IndexDay()
         {
-            //твой ретурн инт возращал не правильные индексы!
-            switch(monthCalendar.SelectionStart.DayOfWeek)
-            {
-                case DayOfWeek.Monday:
-                    return 0;
-                case DayOfWeek.Tuesday:
-                    return 1;
-                case DayOfWeek.Wednesday:
-                    return 2;
-                case DayOfWeek.Thursday:
-                    return 3;
-                case DayOfWeek.Friday:
-                    return 4;
-                case DayOfWeek.Saturday:
-                    return 5;
-                case DayOfWeek.Sunday:
-                    return 6;
-            }
-            return 0;
+            ////твой ретурн инт возращал не правильные индексы!
+            // пиздец -1 нужно просто было сделать
+            //switch(monthCalendar.SelectionStart.DayOfWeek)
+            //{
+            //    case DayOfWeek.Monday:
+            //        return 0;
+            //    case DayOfWeek.Tuesday:
+            //        return 1;
+            //    case DayOfWeek.Wednesday:
+            //        return 2;
+            //    case DayOfWeek.Thursday:
+            //        return 3;
+            //    case DayOfWeek.Friday:
+            //        return 4;
+            //    case DayOfWeek.Saturday:
+            //        return 5;
+            //    case DayOfWeek.Sunday:
+            //        return 6;
+            //}
+            //return 0;
+
+            return (int)monthCalendar.SelectionStart.DayOfWeek - 1;
         }
 
         private void LoadSchedule()
