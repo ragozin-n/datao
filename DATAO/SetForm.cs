@@ -19,7 +19,7 @@ namespace DATAO
         private void SetForm_Load(object sender, EventArgs e)
         {
             nameOrgTextBox.Text = Enterprise.About.Name;
-            phoneTextBox.Text = Enterprise.About.Fields["Телефон:"];
+            phoneTextBox.Text = Enterprise.About.Fields["Телефон"];
             actualAddressTextBox.Text = Enterprise.About.Fields["Фактический адрес"];
             legfalAddressTextBox.Text = Enterprise.About.Fields["Юридический адрес"];
             tinTextBox.Text = Enterprise.About.Fields["ИНН"];
