@@ -219,7 +219,7 @@ namespace DATAO
                     for (int k = 1; k < ScheduleGrid.ColumnsCount; k++)
                     {
                         if (todayWorker[k - 1].TimeTable.Data[monthCalendar.SelectionStart.Date].End <= i
-                            || todayWorker[k - 1].TimeTable.Data[monthCalendar.SelectionStart.Date].Start >= i)
+                            || todayWorker[k - 1].TimeTable.Data[monthCalendar.SelectionStart.Date].Start > i)
                         {
                             ScheduleGrid[j, k] = new SourceGrid.Cells.Cell("Не работает", typeof(string));
                         }
