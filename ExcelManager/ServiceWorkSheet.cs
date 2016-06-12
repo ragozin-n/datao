@@ -46,7 +46,7 @@ namespace ExcelManager
             Core.Cells[1, 3].Value = "Длительность";
 
             int j = 4;
-            if (Enterprise.Personal.Count != 0)
+            if (Enterprise.PriceList.Count != 0)
             {
                 foreach (var pair in Enterprise.PriceList[0].About.Fields)
                 {

@@ -16,7 +16,7 @@ namespace DATAO
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            
+
             //Авторизация
             UserCredential _user = null;
             Authorization.FillCredentials(ref _user);
@@ -44,14 +44,14 @@ namespace DATAO
             }
 
             //Отрисовка формы
-            //try
-            //{
+            try
+            {
                 Application.Run(new AdminForm());
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //}
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
             //Сохранее при закрытие формы и отправка на сервер
             Table.Update();
