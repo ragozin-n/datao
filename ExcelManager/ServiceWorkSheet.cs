@@ -55,21 +55,20 @@ namespace ExcelManager
                 }
             }
             j = 2;
-            while (Core.Cells[j, 1].Value != null)
-            {
-                foreach (var _service in Enterprise.PriceList)
-                {
-                    Core.Cells[j, 1].Value = _service.About.Name;
-                    Core.Cells[j, 2].Value = _service.Cost;
-                    Core.Cells[j, 3].Value = _service.Duration;
 
-                    for (int i = 0; i < _service.About.Fields.Count; i++)
-                    {
-                        Core.Cells[j, 4 + i].Value = _service.About.Fields[Core.Cells[1, 4 + i].Value.ToString()];
-                    }
-                    j++;
+            foreach (var _service in Enterprise.PriceList)
+            {
+                Core.Cells[j, 1].Value = _service.About.Name;
+                Core.Cells[j, 2].Value = _service.Cost;
+                Core.Cells[j, 3].Value = _service.Duration;
+
+                for (int i = 0; i < _service.About.Fields.Count; i++)
+                {
+                    Core.Cells[j, 4 + i].Value = _service.About.Fields[Core.Cells[1, 4 + i].Value.ToString()];
                 }
+                j++;
             }
+
         }
     }
 }
