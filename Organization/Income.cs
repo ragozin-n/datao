@@ -14,7 +14,7 @@ namespace Organization
         public DateTime Date { get; set; }
 
         /// <summary>
-        /// Непосредственно товар, который привезли
+        /// Поставщик
         /// </summary>
         public string Provider { get; set; }
 
@@ -23,6 +23,5 @@ namespace Organization
         /// </summary>
         public double Cost { get; set; }
 
-        //Поставщика можно найти по адресу: Good.Provider
     }
 }

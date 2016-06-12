@@ -57,12 +57,12 @@ namespace ExcelManager
                 Core.Cells[j, k].Value = item.Value.ToString();
                 k = topFieldNames.Length + 1;
 
-                for (int i = 0; i < Enterprise.GoodsExpences[item.Key].Count; i++)
-                {
-                    Core.Cells[1, k].Value = $"Израсходовано за {(Months)i+1}";
-                    Core.Cells[j, k].Value = Enterprise.GoodsExpences[item.Key][(Months)i+1].ToString();
-                    k++;
-                }
+                //for (int i = 0; i < Enterprise.GoodsExpences[item.Key].Count; i++)
+                //{
+                //    Core.Cells[1, k].Value = $"Израсходовано за {(Months)i+1}";
+                //    Core.Cells[j, k].Value = Enterprise.GoodsExpences[item.Key][(Months)i+1].ToString();
+                //    k++;
+                //}
                 j++;
             }
         }

@@ -15,6 +15,8 @@ namespace ExcelManager
         public static ServiceWorkSheet Services { get; set; }
         public static StorehouseWorkSheet Storehouse { get; set; }
 
+        public static IncomeWorkSheet Income { get; set; }
+
         /// <summary>
         /// Конструктор по умолчанию
         /// </summary>
@@ -39,6 +41,7 @@ namespace ExcelManager
             Services = new ServiceWorkSheet(xlPackage.Workbook.Worksheets["Услуги"]);
             WorkList = new CalendarWorkSheet(xlPackage.Workbook.Worksheets["Календарь"]);
             Storehouse = new StorehouseWorkSheet(xlPackage.Workbook.Worksheets["Склад"]);
+            Income = new IncomeWorkSheet(xlPackage.Workbook.Worksheets["Приход"]);
         }
 
 
