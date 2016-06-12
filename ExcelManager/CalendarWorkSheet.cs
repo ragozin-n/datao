@@ -48,6 +48,8 @@ namespace ExcelManager
                     try
                     {
                         _event.Service = Enterprise.PriceList.First(service => service.About.Name == Core.Cells[j,3].Value.ToString());
+                        _event.isComplete = (Core.Cells[j, 5].Value.ToString() == "Выполнено" ? true : false);
+                        _event.Cost = double.Parse(Core.Cells[j, 6].Value.ToString());
                         _master.Events.Add(_event);
                         j++;
                     }
@@ -69,7 +71,7 @@ namespace ExcelManager
         public void Update()
         {
             //Название солбцов
-            string[] topFieldsNames = {"Дата начала", "Клиент", "Название услуги", "Имя мастера"};
+            string[] topFieldsNames = {"Дата начала", "Клиент", "Название услуги", "Имя мастера", "Статус выполнения", "Цена на момент записи"};
             for (int j = 0; j < topFieldsNames.Length; j++)
             {
                 Core.Cells[1, j+1].Value = topFieldsNames[j];
@@ -88,6 +90,8 @@ namespace ExcelManager
                     Core.Cells[row, 2].Value = Enterprise.Personal[i].Events[j].Customer.About.Name;
                     Core.Cells[row, 3].Value = Enterprise.Personal[i].Events[j].Service.About.Name;
                     Core.Cells[row, 4].Value = Enterprise.Personal[i].About.Name;
+                    Core.Cells[row, 5].Value = (Enterprise.Personal[i].Events[j].isComplete ? "Выполнено" : "Не выполнено");
+                    Core.Cells[row, 6].Value = Enterprise.Personal[i].Events[j].Service.Cost;
                     row++;
                 }
             }
