@@ -203,9 +203,11 @@ namespace DATAO
                             || todayWorker[k - 1].TimeTable.Data[monthCalendar.SelectionStart.Date].Start > i)
                         {
                             ScheduleGrid[j, k] = new SourceGrid.Cells.Cell("Не работает", typeof(string));
+                            ScheduleGrid[j, k].ToolTipText = string.Empty;
                         }
                         else {
                             ScheduleGrid[j, k] = new SourceGrid.Cells.Cell(string.Empty, typeof(string));
+                            ScheduleGrid[j, k].ToolTipText = string.Empty;
                         }
                     }
                     j++;
@@ -218,6 +220,18 @@ namespace DATAO
             finally
             {
                 ScheduleGrid.AutoSizeCells();
+            }
+        }
+
+        private void ScheduleGrid_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if(ScheduleGrid[ScheduleGrid.MouseCellPosition].ToolTipText!=string.Empty &&
+                    ScheduleGrid.MouseCellPosition.Column!=0&& ScheduleGrid.MouseCellPosition.Row!=0)
+                {
+                    MessageBox.Show(ScheduleGrid[ScheduleGrid.MouseCellPosition].ToolTipText);
+                }
             }
         }
 
@@ -238,10 +252,12 @@ namespace DATAO
                                 if (ev.isComplete == true)
                                 {
                                     ScheduleGrid[rowIndex + count, todayWorker.IndexOf(w) + 1].Value = "Исполнено";
+                                    ScheduleGrid[rowIndex + count, todayWorker.IndexOf(w) + 1].ToolTipText = ev.Service.About.Name + "-" + ev.Customer.About.Name;
                                 }
                                 else
                                 {
                                     ScheduleGrid[rowIndex + count, todayWorker.IndexOf(w) + 1].Value = "Занято";
+                                    ScheduleGrid[rowIndex + count, todayWorker.IndexOf(w) + 1].ToolTipText = ev.Service.About.Name + "-" + ev.Customer.About.Name;
                                 }
                                 count++;
                             }

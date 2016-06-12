@@ -1,4 +1,6 @@
-﻿namespace DATAO
+﻿using System.Windows.Forms;
+
+namespace DATAO
 {
     partial class AdminForm
     {
@@ -254,6 +256,8 @@
             this.ScheduleGrid.TabIndex = 4;
             this.ScheduleGrid.TabStop = true;
             this.ScheduleGrid.ToolTipText = "";
+            this.ScheduleGrid.MouseDown += new MouseEventHandler(this.ScheduleGrid_MouseClick);
+            //this.ScheduleGrid.MouseHover
             // 
             // checkEventButton
             // 
