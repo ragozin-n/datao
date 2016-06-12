@@ -76,7 +76,7 @@ namespace DATAO
             Enterprise.About.Fields["Телефон"] = phoneTextBox.Text;
             Enterprise.About.Fields["ФАКТАДРЕС"] = actualAddressTextBox.Text;
             Enterprise.About.Fields["Юридический адрес"] = legfalAddressTextBox.Text;
-            Enterprise.About.Fields["ИНН:"] = tinTextBox.Text;
+            Enterprise.About.Fields["ИНН"] = tinTextBox.Text;
             Enterprise.About.Fields["СЧЕТ"] = accountNumberTextBox.Text;
             for (int i = 0; i < 7; i++)
                 {
