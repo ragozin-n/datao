@@ -171,7 +171,7 @@ namespace DATAO
         private int IndexDay()
         {
             //твой ретурн инт возращал не правильные индексы!
-            пиздец - 1 нужно просто было сделать
+
             switch (monthCalendar.SelectionStart.DayOfWeek)
             {
                 case DayOfWeek.Monday:
