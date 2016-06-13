@@ -68,6 +68,7 @@ namespace ExcelManager
             Services.Update();
             WorkList.Update();
             Storehouse.Update();
+            Income.Update();
         }
 
         /// <summary>
