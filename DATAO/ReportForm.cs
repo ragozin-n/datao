@@ -77,8 +77,9 @@ namespace DATAO
             else
             {
                 payTextBox.Text = string.Empty;
-                StreamWriter sw = new StreamWriter(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\report.txt");
+                StreamWriter sw = new StreamWriter(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\report.txt");
                 sw.WriteLine(spendLine);
+                sw.Close();
             }
         }
 
