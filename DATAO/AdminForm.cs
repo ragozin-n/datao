@@ -698,7 +698,7 @@ namespace DATAO
         {
             //вызываю метод формирования отчета
             SaveFileDialog saveFile = new SaveFileDialog();
-            saveFile.FileName = "report.txt";
+            saveFile.FileName = "report.xls";
             saveFile.ShowDialog();
             //если я выберу отчет за год нужно чтоб шаблон сохранился по выбранному пути
             //чтоб я просто мог в ячейки занести данные

@@ -175,6 +175,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="report.xls">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <None Include="Resources\bigstock-Abstract-White-Digital-D-Chao-75094717.jpg" />
   </ItemGroup>
   <ItemGroup>
