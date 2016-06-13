@@ -36,12 +36,11 @@ namespace DATAO
             //расходы
             List<string> spendLine = new List<string>();
             double salary = 0;
-            foreach(Worker worker in Enterprise.Personal)
+            foreach (Worker worker in Enterprise.Personal)
             {
-                double oldSalary = 0;
+                 double oldSalary = salary; ;
                 foreach (KeyValuePair<DateTime, WorkDay> kvp in worker.TimeTable.Data.Where(date => date.Key.Date >=start && date.Key.Date<=end))
                 {
-                    oldSalary = salary;
                     salary += (kvp.Value.End - kvp.Value.Start).Hours * worker.WageRate;
                 }
                 spendLine.Add(worker.About.Name.ToString() + "-" + (salary-oldSalary).ToString());
@@ -57,11 +56,12 @@ namespace DATAO
             double profit = 0;
             foreach(Worker worker in Enterprise.Personal)
             {
-                foreach(Event ev in worker.Events.Where(_event => _event.isComplete == true && _event.RecordDate>=start && _event.RecordDate<=end))
+                foreach(Event ev in worker.Events.Where(_event => _event.isComplete == true && _event.RecordDate.Date>=start && _event.RecordDate.Date<=end.Date))
                 {
                     profit += ev.Cost;
                 }
             }
+            spendLine.Add("Доход с услуг :" + profit.ToString());
             profitTextBox.Text = profit.ToString();
             if (type != 0)
             {
