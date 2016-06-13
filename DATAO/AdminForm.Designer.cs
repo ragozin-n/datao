@@ -77,18 +77,21 @@ namespace DATAO
             this.leftButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.numberPageLabel = new System.Windows.Forms.Label();
             this.serviceBox3 = new System.Windows.Forms.GroupBox();
+            this.costCurrentService3 = new System.Windows.Forms.TextBox();
             this.deleteServicePicture3 = new System.Windows.Forms.PictureBox();
             this.changePicture3 = new System.Windows.Forms.PictureBox();
             this.timeService3 = new System.Windows.Forms.Label();
             this.costService3 = new System.Windows.Forms.Label();
             this.nameServiceLabel3 = new System.Windows.Forms.Label();
             this.serviceBox2 = new System.Windows.Forms.GroupBox();
+            this.costCurrentService2 = new System.Windows.Forms.TextBox();
             this.deleteServicePicture2 = new System.Windows.Forms.PictureBox();
             this.changePicture2 = new System.Windows.Forms.PictureBox();
             this.timeService2 = new System.Windows.Forms.Label();
             this.costService2 = new System.Windows.Forms.Label();
             this.nameServiceLabel2 = new System.Windows.Forms.Label();
             this.serviceBox1 = new System.Windows.Forms.GroupBox();
+            this.costCurrentService1 = new System.Windows.Forms.TextBox();
             this.deleteServicePicture1 = new System.Windows.Forms.PictureBox();
             this.changePicture1 = new System.Windows.Forms.PictureBox();
             this.timeService1 = new System.Windows.Forms.Label();
@@ -103,6 +106,7 @@ namespace DATAO
             this.serviceComboBox = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.serviceBox = new System.Windows.Forms.GroupBox();
+            this.costCurrentService = new System.Windows.Forms.TextBox();
             this.deleteServicePicture = new System.Windows.Forms.PictureBox();
             this.changePicture = new System.Windows.Forms.PictureBox();
             this.timeService = new System.Windows.Forms.Label();
@@ -131,10 +135,6 @@ namespace DATAO
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
             this.settingButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.reportRaisedButton1 = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.costCurrentService = new System.Windows.Forms.TextBox();
-            this.costCurrentService1 = new System.Windows.Forms.TextBox();
-            this.costCurrentService2 = new System.Windows.Forms.TextBox();
-            this.costCurrentService3 = new System.Windows.Forms.TextBox();
             this.tabControl.SuspendLayout();
             this.Calendar.SuspendLayout();
             this.Personal.SuspendLayout();
@@ -256,8 +256,7 @@ namespace DATAO
             this.ScheduleGrid.TabIndex = 4;
             this.ScheduleGrid.TabStop = true;
             this.ScheduleGrid.ToolTipText = "";
-            this.ScheduleGrid.MouseDown += new MouseEventHandler(this.ScheduleGrid_MouseClick);
-            //this.ScheduleGrid.MouseHover
+            this.ScheduleGrid.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ScheduleGrid_MouseClick);
             // 
             // checkEventButton
             // 
@@ -726,6 +725,14 @@ namespace DATAO
             this.serviceBox3.TabStop = false;
             this.serviceBox3.Visible = false;
             // 
+            // costCurrentService3
+            // 
+            this.costCurrentService3.Location = new System.Drawing.Point(195, 151);
+            this.costCurrentService3.Name = "costCurrentService3";
+            this.costCurrentService3.Size = new System.Drawing.Size(71, 20);
+            this.costCurrentService3.TabIndex = 11;
+            this.costCurrentService3.Visible = false;
+            // 
             // deleteServicePicture3
             // 
             this.deleteServicePicture3.BackgroundImage = global::DATAO.Properties.Resources.deleteservice;
@@ -774,9 +781,9 @@ namespace DATAO
             // nameServiceLabel3
             // 
             this.nameServiceLabel3.AutoEllipsis = true;
-            this.nameServiceLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nameServiceLabel3.Font = new System.Drawing.Font("Roboto Black", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.nameServiceLabel3.ForeColor = System.Drawing.Color.Orange;
-            this.nameServiceLabel3.Location = new System.Drawing.Point(6, 69);
+            this.nameServiceLabel3.Location = new System.Drawing.Point(6, 74);
             this.nameServiceLabel3.Name = "nameServiceLabel3";
             this.nameServiceLabel3.Size = new System.Drawing.Size(260, 42);
             this.nameServiceLabel3.TabIndex = 0;
@@ -796,6 +803,14 @@ namespace DATAO
             this.serviceBox2.TabIndex = 3;
             this.serviceBox2.TabStop = false;
             this.serviceBox2.Visible = false;
+            // 
+            // costCurrentService2
+            // 
+            this.costCurrentService2.Location = new System.Drawing.Point(195, 151);
+            this.costCurrentService2.Name = "costCurrentService2";
+            this.costCurrentService2.Size = new System.Drawing.Size(71, 20);
+            this.costCurrentService2.TabIndex = 11;
+            this.costCurrentService2.Visible = false;
             // 
             // deleteServicePicture2
             // 
@@ -845,9 +860,9 @@ namespace DATAO
             // nameServiceLabel2
             // 
             this.nameServiceLabel2.AutoEllipsis = true;
-            this.nameServiceLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nameServiceLabel2.Font = new System.Drawing.Font("Roboto Black", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.nameServiceLabel2.ForeColor = System.Drawing.Color.Orange;
-            this.nameServiceLabel2.Location = new System.Drawing.Point(6, 69);
+            this.nameServiceLabel2.Location = new System.Drawing.Point(6, 73);
             this.nameServiceLabel2.Name = "nameServiceLabel2";
             this.nameServiceLabel2.Size = new System.Drawing.Size(269, 42);
             this.nameServiceLabel2.TabIndex = 0;
@@ -867,6 +882,14 @@ namespace DATAO
             this.serviceBox1.TabIndex = 2;
             this.serviceBox1.TabStop = false;
             this.serviceBox1.Visible = false;
+            // 
+            // costCurrentService1
+            // 
+            this.costCurrentService1.Location = new System.Drawing.Point(195, 151);
+            this.costCurrentService1.Name = "costCurrentService1";
+            this.costCurrentService1.Size = new System.Drawing.Size(71, 20);
+            this.costCurrentService1.TabIndex = 11;
+            this.costCurrentService1.Visible = false;
             // 
             // deleteServicePicture1
             // 
@@ -916,9 +939,9 @@ namespace DATAO
             // nameServiceLabel1
             // 
             this.nameServiceLabel1.AutoEllipsis = true;
-            this.nameServiceLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nameServiceLabel1.Font = new System.Drawing.Font("Roboto Black", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.nameServiceLabel1.ForeColor = System.Drawing.Color.Orange;
-            this.nameServiceLabel1.Location = new System.Drawing.Point(6, 69);
+            this.nameServiceLabel1.Location = new System.Drawing.Point(6, 73);
             this.nameServiceLabel1.Name = "nameServiceLabel1";
             this.nameServiceLabel1.Size = new System.Drawing.Size(269, 42);
             this.nameServiceLabel1.TabIndex = 0;
@@ -1018,6 +1041,14 @@ namespace DATAO
             this.serviceBox.TabStop = false;
             this.serviceBox.Visible = false;
             // 
+            // costCurrentService
+            // 
+            this.costCurrentService.Location = new System.Drawing.Point(195, 151);
+            this.costCurrentService.Name = "costCurrentService";
+            this.costCurrentService.Size = new System.Drawing.Size(71, 20);
+            this.costCurrentService.TabIndex = 5;
+            this.costCurrentService.Visible = false;
+            // 
             // deleteServicePicture
             // 
             this.deleteServicePicture.BackgroundImage = global::DATAO.Properties.Resources.deleteservice;
@@ -1066,9 +1097,9 @@ namespace DATAO
             // nameServiceLabel
             // 
             this.nameServiceLabel.AutoEllipsis = true;
-            this.nameServiceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nameServiceLabel.Font = new System.Drawing.Font("Roboto Black", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.nameServiceLabel.ForeColor = System.Drawing.Color.Orange;
-            this.nameServiceLabel.Location = new System.Drawing.Point(6, 69);
+            this.nameServiceLabel.Location = new System.Drawing.Point(6, 73);
             this.nameServiceLabel.Name = "nameServiceLabel";
             this.nameServiceLabel.Size = new System.Drawing.Size(260, 42);
             this.nameServiceLabel.TabIndex = 0;
@@ -1336,38 +1367,6 @@ namespace DATAO
             this.reportRaisedButton1.Text = "Отчет";
             this.reportRaisedButton1.UseVisualStyleBackColor = true;
             this.reportRaisedButton1.Click += new System.EventHandler(this.reportRaisedButton1_Click);
-            // 
-            // costCurrentService
-            // 
-            this.costCurrentService.Location = new System.Drawing.Point(195, 151);
-            this.costCurrentService.Name = "costCurrentService";
-            this.costCurrentService.Size = new System.Drawing.Size(71, 20);
-            this.costCurrentService.TabIndex = 5;
-            this.costCurrentService.Visible = false;
-            // 
-            // costCurrentService1
-            // 
-            this.costCurrentService1.Location = new System.Drawing.Point(195, 151);
-            this.costCurrentService1.Name = "costCurrentService1";
-            this.costCurrentService1.Size = new System.Drawing.Size(71, 20);
-            this.costCurrentService1.TabIndex = 11;
-            this.costCurrentService1.Visible = false;
-            // 
-            // costCurrentService2
-            // 
-            this.costCurrentService2.Location = new System.Drawing.Point(195, 151);
-            this.costCurrentService2.Name = "costCurrentService2";
-            this.costCurrentService2.Size = new System.Drawing.Size(71, 20);
-            this.costCurrentService2.TabIndex = 11;
-            this.costCurrentService2.Visible = false;
-            // 
-            // costCurrentService3
-            // 
-            this.costCurrentService3.Location = new System.Drawing.Point(195, 151);
-            this.costCurrentService3.Name = "costCurrentService3";
-            this.costCurrentService3.Size = new System.Drawing.Size(71, 20);
-            this.costCurrentService3.TabIndex = 11;
-            this.costCurrentService3.Visible = false;
             // 
             // AdminForm
             // 
