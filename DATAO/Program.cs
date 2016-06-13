@@ -52,11 +52,17 @@ namespace DATAO
             {
                 MessageBox.Show(ex.Message);
             }
+            finally
+            {
+                Table.Update();
+                Table.Save();
+                Authorization.UploadDatao(ref _user);
+            }
 
             //Сохранее при закрытие формы и отправка на сервер
-            Table.Update();
-            Table.Save();
-            Authorization.UploadDatao(ref _user);
+            //Table.Update();
+            //Table.Save();
+            //Authorization.UploadDatao(ref _user);
         }
     }
 }
