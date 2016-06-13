@@ -51,7 +51,6 @@ namespace DATAO
                     double _profit = 0;
                     double _spend = 0;
                     double _pay = 0;
-                    double temppay = 0;
                     //заполнить шаблон
                     repoerView(DateTime.Now.Date.AddMonths(-12), DateTime.Now.Date.AddMonths(-9), 1);
                     _profit = double.Parse(profitTextBox.Text);
@@ -59,9 +58,8 @@ namespace DATAO
                     _pay = double.Parse(payTextBox.Text);
                     report.Add("Сумма доходов за первый квартал - " + _profit.ToString());
                     report.Add("Сумма расходов за первый квартал - " + _spend.ToString());
-                    report.Add("Налоговая база для исчисления - " + (_profit - _spend) * 0.15);
+                    report.Add("Налоговая база для исчисления - " + (_profit - _spend).ToString());
                     report.Add("Сумма исчисленного налога за первый квартал - " + _pay.ToString());
-                    temppay += _pay;
                     //теперь добавить из текстбоксов в ячейки 1 кв
                     repoerView(DateTime.Now.Date.AddMonths(-12), DateTime.Now.Date.AddMonths(-6), 1);
                     _profit = double.Parse(profitTextBox.Text);
@@ -69,9 +67,8 @@ namespace DATAO
                     _pay = double.Parse(payTextBox.Text);
                     report.Add("Сумма доходов за пол года - " + _profit.ToString());
                     report.Add("Сумма расходов за пол года - " + _spend.ToString());
-                    report.Add("Налоговая база для исчисления - " + (_profit - _spend) * 0.15);
+                    report.Add("Налоговая база для исчисления - " + (_profit - _spend).ToString());
                     report.Add("Сумма исчисленного налога за пол года - " + _pay.ToString());
-                    temppay += _pay;
                     //теперь добавить из текстбоксов в ячейки 2 кв
                     repoerView(DateTime.Now.Date.AddMonths(-12), DateTime.Now.Date.AddMonths(-3), 1);
                     _profit = double.Parse(profitTextBox.Text);
@@ -79,9 +76,8 @@ namespace DATAO
                     _pay = double.Parse(payTextBox.Text);
                     report.Add("Сумма доходов за 9 месяцев - " + _profit.ToString());
                     report.Add("Сумма расходов за 9 месяцев - " + _spend.ToString());
-                    report.Add("Налоговая база для исчисления - " + (_profit - _spend) * 0.15);
+                    report.Add("Налоговая база для исчисления - " + (_profit - _spend).ToString());
                     report.Add("Сумма исчисленного налога за 9 месяцев - " + _pay.ToString());
-                    temppay += _pay;
                     //теперь добавить из текстбоксов в ячейки 3 кв
                     repoerView(DateTime.Now.Date.AddMonths(-12), DateTime.Now.Date, 1);
                     _profit = double.Parse(profitTextBox.Text);
@@ -90,7 +86,8 @@ namespace DATAO
                     report.Add("Сумма доходов за год - " + _profit.ToString());
                     report.Add("Сумма расходов за год - " + _spend.ToString());
                     report.Add("Налоговая база для исчисления - " + (_profit - _spend) * 0.15);
-                    report.Add("Сумма исчисленного налога год - " + (_pay-temppay).ToString());
+                    report.Add("Сумма исчисленного налога год - " + _pay.ToString());
+                    report.Add("Сумма исчисленного минимального налога за налоговый период (ставка налога 1%) - " + (_profit * 0.1).ToString());
                     //теперь добавить из текстбоксов в ячейки 4 кв
                     payTextBox.Text = string.Empty;
                     StreamWriter sw = new StreamWriter(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\reportUSN-IP.txt");
