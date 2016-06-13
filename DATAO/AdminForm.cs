@@ -696,13 +696,8 @@ namespace DATAO
 
         private void reportRaisedButton1_Click(object sender, EventArgs e)
         {
-            //вызываю метод формирования отчета
-            SaveFileDialog saveFile = new SaveFileDialog();
-            saveFile.FileName = "report.xls";
-            saveFile.ShowDialog();
-            //если я выберу отчет за год нужно чтоб шаблон сохранился по выбранному пути
-            //чтоб я просто мог в ячейки занести данные
-            MessageBox.Show(saveFile.FileName);
+            ReportForm rf = new ReportForm();
+            rf.Show();
         }
 
         private void checkConfirmButton_Click(object sender, EventArgs e)
