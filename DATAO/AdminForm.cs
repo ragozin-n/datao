@@ -423,7 +423,6 @@ namespace DATAO
 
         private void editPersonalCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            saveChangePersonalButton.Visible = !saveChangePersonalButton.Visible;
             nameTextBox.ReadOnly = !nameTextBox.ReadOnly;
             phonePersonalTextBox.ReadOnly = !phonePersonalTextBox.ReadOnly;
             addressTextBox.ReadOnly = !addressTextBox.ReadOnly;
@@ -626,36 +625,43 @@ namespace DATAO
 
         private void saveChangePersonalButton_Click(object sender, EventArgs e)
         {
-            try
+            if (editPersonalCheckBox.Checked)
             {
-                TimeSpan start = TimeSpan.Parse(startPersonalDay.Text);
-                TimeSpan end = TimeSpan.Parse(endPersonalDay.Text);
-                Enterprise.Personal[personalListBox.SelectedIndex].About.Name = nameTextBox.Text;
-                Enterprise.Personal[personalListBox.SelectedIndex].About.Fields["Телефон"] = phonePersonalTextBox.Text;
-                Enterprise.Personal[personalListBox.SelectedIndex].About.Fields["Адрес"] = addressTextBox.Text;
-                Enterprise.Personal[personalListBox.SelectedIndex].About.Fields["Статус"] = statusTextBox.Text;
-                if (Enterprise.Personal[personalListBox.SelectedIndex].TimeTable.Data.ContainsKey(monthCalendarPersonal.SelectionStart.Date))
+                try
                 {
-                    Enterprise.Personal[personalListBox.SelectedIndex].TimeTable.Data
-                        [monthCalendarPersonal.SelectionStart.Date].Start = start;
-                    Enterprise.Personal[personalListBox.SelectedIndex].TimeTable.Data
-                        [monthCalendarPersonal.SelectionStart.Date].End = end;
+                    TimeSpan start = TimeSpan.Parse(startPersonalDay.Text);
+                    TimeSpan end = TimeSpan.Parse(endPersonalDay.Text);
+                    Enterprise.Personal[personalListBox.SelectedIndex].About.Name = nameTextBox.Text;
+                    Enterprise.Personal[personalListBox.SelectedIndex].About.Fields["Телефон"] = phonePersonalTextBox.Text;
+                    Enterprise.Personal[personalListBox.SelectedIndex].About.Fields["Адрес"] = addressTextBox.Text;
+                    Enterprise.Personal[personalListBox.SelectedIndex].About.Fields["Статус"] = statusTextBox.Text;
+                    if (Enterprise.Personal[personalListBox.SelectedIndex].TimeTable.Data.ContainsKey(monthCalendarPersonal.SelectionStart.Date))
+                    {
+                        Enterprise.Personal[personalListBox.SelectedIndex].TimeTable.Data
+                            [monthCalendarPersonal.SelectionStart.Date].Start = start;
+                        Enterprise.Personal[personalListBox.SelectedIndex].TimeTable.Data
+                            [monthCalendarPersonal.SelectionStart.Date].End = end;
+                    }
+                    else
+                    {
+                        Enterprise.Personal[personalListBox.SelectedIndex].TimeTable.Data.Add(monthCalendarPersonal.SelectionStart.Date,
+                            new WorkDay(startPersonalDay.Text + "-" + endPersonalDay.Text));
+                    }
+                    editPersonalCheckBox.CheckState = CheckState.Unchecked;
+                    UpdateSchedule();
                 }
-                else
+                catch (ArgumentOutOfRangeException)
                 {
-                    Enterprise.Personal[personalListBox.SelectedIndex].TimeTable.Data.Add(monthCalendarPersonal.SelectionStart.Date,
-                        new WorkDay (startPersonalDay.Text+"-"+ endPersonalDay.Text));
+                    MessageBox.Show("Выберете рабочего");
                 }
-                editPersonalCheckBox.CheckState = CheckState.Unchecked;
-                UpdateSchedule();
+                catch (Exception ex) when (ex is FormatException || ex is OverflowException)
+                {
+                    MessageBox.Show("Пример ввода времени 16:30");
+                }
             }
-            catch (ArgumentOutOfRangeException)
+            else
             {
-                MessageBox.Show("Выберете рабочего");
-            }
-            catch (Exception ex) when (ex is FormatException || ex is OverflowException)
-            {
-                MessageBox.Show("Пример ввода времени 16:30");
+                MessageBox.Show("Активируйте режим редактирования");
             }
         }
 

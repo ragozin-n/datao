@@ -43,7 +43,6 @@ namespace DATAO
             this.Personal = new System.Windows.Forms.TabPage();
             this.saveChangePersonalButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.editPersonalCheckBox = new MaterialSkin.Controls.MaterialCheckBox();
-            this.deletePersonalButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.newPersonalButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.personalListBox = new System.Windows.Forms.ListBox();
             this.groupBoxPersonal = new System.Windows.Forms.GroupBox();
@@ -298,7 +297,6 @@ namespace DATAO
             this.Personal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Personal.Controls.Add(this.saveChangePersonalButton);
             this.Personal.Controls.Add(this.editPersonalCheckBox);
-            this.Personal.Controls.Add(this.deletePersonalButton);
             this.Personal.Controls.Add(this.newPersonalButton);
             this.Personal.Controls.Add(this.personalListBox);
             this.Personal.Controls.Add(this.groupBoxPersonal);
@@ -313,15 +311,14 @@ namespace DATAO
             // 
             this.saveChangePersonalButton.Depth = 0;
             this.saveChangePersonalButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.saveChangePersonalButton.Location = new System.Drawing.Point(953, 40);
+            this.saveChangePersonalButton.Location = new System.Drawing.Point(135, 496);
             this.saveChangePersonalButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.saveChangePersonalButton.Name = "saveChangePersonalButton";
             this.saveChangePersonalButton.Primary = true;
-            this.saveChangePersonalButton.Size = new System.Drawing.Size(91, 23);
+            this.saveChangePersonalButton.Size = new System.Drawing.Size(111, 54);
             this.saveChangePersonalButton.TabIndex = 21;
             this.saveChangePersonalButton.Text = "Сохранить";
             this.saveChangePersonalButton.UseVisualStyleBackColor = true;
-            this.saveChangePersonalButton.Visible = false;
             this.saveChangePersonalButton.Click += new System.EventHandler(this.saveChangePersonalButton_Click);
             // 
             // editPersonalCheckBox
@@ -341,19 +338,6 @@ namespace DATAO
             this.editPersonalCheckBox.Text = "Режим редактирования";
             this.editPersonalCheckBox.UseVisualStyleBackColor = true;
             this.editPersonalCheckBox.CheckedChanged += new System.EventHandler(this.editPersonalCheckBox_CheckedChanged);
-            // 
-            // deletePersonalButton
-            // 
-            this.deletePersonalButton.Depth = 0;
-            this.deletePersonalButton.Location = new System.Drawing.Point(136, 496);
-            this.deletePersonalButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.deletePersonalButton.Name = "deletePersonalButton";
-            this.deletePersonalButton.Primary = true;
-            this.deletePersonalButton.Size = new System.Drawing.Size(110, 54);
-            this.deletePersonalButton.TabIndex = 4;
-            this.deletePersonalButton.Text = "Удалить рабочего";
-            this.deletePersonalButton.UseVisualStyleBackColor = true;
-            this.deletePersonalButton.Click += new System.EventHandler(this.deletePersonalButton_Click);
             // 
             // newPersonalButton
             // 
@@ -1441,7 +1425,6 @@ namespace DATAO
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox costIncometextBox4;
         private System.Windows.Forms.TextBox providerIncometextBox;
-        private MaterialSkin.Controls.MaterialRaisedButton deletePersonalButton;
         private System.Windows.Forms.TextBox searchValueSkladtextBox;
         private System.Windows.Forms.GroupBox searchSkladBox;
         private System.Windows.Forms.Label label6;
