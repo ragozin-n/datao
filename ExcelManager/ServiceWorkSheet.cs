@@ -1,16 +1,17 @@
 ﻿using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Organization;
 
 namespace ExcelManager
 {
     public class ServiceWorkSheet
     {
         private ExcelWorksheet Core { get; set; }
-        public List<Service> ServiceList { get; private set; } = new List<Service>();
         /// <summary>
         /// Конструктор по умолчанию
         /// </summary>
@@ -18,68 +19,56 @@ namespace ExcelManager
         public ServiceWorkSheet(ExcelWorksheet _sheet)
         {
             Core = _sheet;
-            ServiceList.Clear();
+
             int j = 2;
-            while (Core.Cells[j, 1].Value != null)
+            while (Core.Cells[j,1].Value != null)
             {
-                try
+                Service _service = new Service();
+                _service.About.Name = Core.Cells[j, 1].Value.ToString();
+                _service.Cost = double.Parse(Core.Cells[j, 2].Value.ToString());
+                _service.Duration = TimeSpan.Parse(Core.Cells[j, 3].Value.ToString().Split(' ')[1]);
+
+                int k = 4;
+                while (Core.Cells[j, k].Value != null)
                 {
-                    Service _service = new Service(
-                        Core.Cells[j, 2].Value.ToString(),
-                        uint.Parse(Core.Cells[j, 3].Value.ToString()),
-                        DateTime.Parse(Core.Cells[j, 5].Value.ToString()).TimeOfDay,
-                        uint.Parse(Core.Cells[j, 1].Value.ToString())
-                        );
-                    ServiceList.Add(_service);
-                    j++;
+                    _service.About.Fields.Add(Core.Cells[1, k].Value.ToString(), Core.Cells[j, k].Value.ToString());
+                    k++;
                 }
-                catch (Exception)
-                {
-                    //Ошибка
-                    j++;
-                }
+                Enterprise.PriceList.Add(_service);
+                j++;
             }
         }
 
-        /// <summary>
-        /// Добавляет услугу в перечень услуг
-        /// </summary>
-        /// <param name="_service">Услуга</param>
-        public void AddNewService(Service _service)
+        public void Update()
         {
-            ServiceList.Add(_service);
-            int j = 2;
-            while (Core.Cells[j, 1].Value != null)
-            {
-                j++;
-            }
-            Core.Cells[j, 1].Value = _service.ID;
-            Core.Cells[j, 2].Value = _service.Name;
-            Core.Cells[j, 3].Value = _service.Cost;
-            Core.Cells[j, 4].Value = _service.AdditionalServiceID;
+            Core.Cells[1, 1].Value = "Название";
+            Core.Cells[1, 2].Value = "Стоимость";
+            Core.Cells[1, 3].Value = "Длительность";
 
-            Core.Cells[j, 5].Style.Numberformat.Format = "hh:mm";
-            Core.Cells[j, 5].Formula = $"TIME({_service.Duration.Hours},{_service.Duration.Minutes},{_service.Duration.Seconds})";
-            Core.Cells[j, 5].Calculate();
-        }
-        /// <summary>
-        /// Удаляет заданную услугу из перечня услуг
-        /// </summary>
-        /// <param name="ID">ID услуги</param>
-        public void RemoveService(Service _service)
-        {
-            int j = 2;
-            while (Core.Cells[j, 1].Value != null)
+            int j = 4;
+            if (Enterprise.PriceList.Count != 0)
             {
-                if (Core.Cells[j,1].Value.ToString() == _service.ID.ToString())
+                foreach (var pair in Enterprise.PriceList[0].About.Fields)
                 {
-                    // ServiceList.Remove(ServiceList.First(s => s.ID == _service.ID));
-                    ServiceList.Remove(_service);
-                    Core.DeleteRow(j);
+                    Core.Cells[1, j].Value = pair.Key;
                     j++;
+                }
+            }
+            j = 2;
+
+            foreach (var _service in Enterprise.PriceList)
+            {
+                Core.Cells[j, 1].Value = _service.About.Name;
+                Core.Cells[j, 2].Value = _service.Cost;
+                Core.Cells[j, 3].Value = _service.Duration;
+
+                for (int i = 0; i < _service.About.Fields.Count; i++)
+                {
+                    Core.Cells[j, 4 + i].Value = _service.About.Fields[Core.Cells[1, 4 + i].Value.ToString()];
                 }
                 j++;
             }
+
         }
     }
 }

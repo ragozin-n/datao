@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using MaterialSkin.Controls;
-using ExcelManager;
+using Organization;
 
 namespace DATAO
 {
@@ -30,11 +23,11 @@ namespace DATAO
             selectWorker.Text = nameWorker1;
             selectTimeStart.Text = startTime1.ToString();
             selectTimeEnd.Text = endTime1.ToString();
-            foreach (Service s in Table.Services.ServiceList)
+            foreach (Service s in Enterprise.PriceList)
             {
                 if ((endTime1 - startTime1) >= s.Duration)
                 {
-                    selectService.Items.Add(s.Name);
+                    selectService.Items.Add(s.About.Name);
                 }
             }
         }
@@ -48,27 +41,16 @@ namespace DATAO
         {
             if (data != null && startTime != null && endTime != null && nameWorker != null && clientName.Text != "")
             {
-                uint idWorker = 0;
-                uint idService = Table.Services.ServiceList.Find(x => x.Name == selectService.Text).ID;
-                foreach(Human w in Table.PersonalList.Workers)
-                {
-                    if (w.Name + " " + w.Surname == nameWorker)
-                    {
-                        idWorker = w.ID;
-                        break;
-                    }
-                }
-                //MessageBox.Show(idWorker.ToString());
-                if (idWorker == 0 && idService == 0) { MessageBox.Show("нет услуги или рабочего"); Hide(); }
-                else {
-                    Event currentEvent = new Event(data,
-                        startTime, endTime, clientName.Text, idWorker,
-                        idService
-                        );
-                    Table.WorkList.AddEventToCalendar(currentEvent);
-                    ad.UpdateSchedule();
-                    Hide();
-                }
+                Event currentEvent = new Event(Enterprise.PriceList.Find(pl => pl.About.Name == selectService.SelectedItem.ToString()));
+                currentEvent.RecordDate = data + startTime;
+                currentEvent.Master = Enterprise.Personal.Find(w => w.About.Name == nameWorker);
+                Client customer = new Client();
+                customer.About.Name = clientName.Text;
+                currentEvent.Customer = customer;
+                Enterprise.Personal.Find(w => w.About.Name == nameWorker).Events.Add(currentEvent);
+                customer.Events.Add(currentEvent);
+                ad.UpdateSchedule();
+                Hide();
             }
         }
 

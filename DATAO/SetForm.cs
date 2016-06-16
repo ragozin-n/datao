@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using MaterialSkin.Controls;
+using Organization;
 using ExcelManager;
 
 namespace DATAO
@@ -24,14 +18,14 @@ namespace DATAO
 
         private void SetForm_Load(object sender, EventArgs e)
         {
-            this.nameOrgTextBox.Text = Table.Salon.SalonName;
-            this.phoneTextBox.Text = Table.Salon.Phone;
-            this.actualAddressTextBox.Text = Table.Salon.ActualAddress;
-            this.legfalAddressTextBox.Text = Table.Salon.LegalAddress;
-            this.tinTextBox.Text = Table.Salon.TIN;
-            this.accountNumberTextBox.Mask = "00000000000000000000";
+            nameOrgTextBox.Text = Enterprise.About.Name;
+            phoneTextBox.Text = Enterprise.About.Fields["Телефон"];
+            actualAddressTextBox.Text = Enterprise.About.Fields["Фактический адрес"];
+            legfalAddressTextBox.Text = Enterprise.About.Fields["Юридический адрес"];
+            tinTextBox.Text = Enterprise.About.Fields["ИНН"];
+            accountNumberTextBox.Mask = "00000000000000000000";
             accountNumberTextBox.MaskInputRejected += new MaskInputRejectedEventHandler(accountNumberTextBox_MaskInputRejected);
-            this.accountNumberTextBox.Text = Table.Salon.AccountNumber.ToString();  
+            accountNumberTextBox.Text = Enterprise.About.Fields["Расчетный счет"];
         }
         private void accountNumberTextBox_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
@@ -56,11 +50,11 @@ namespace DATAO
             {
                 scheduleGrid.Rows.Insert(1);
                 for (int i = 0; i < 7; i++)
-                { scheduleGrid[1, i] = new SourceGrid.Cells.Cell(Table.Salon.Schedule[i].Start, typeof(TimeSpan)); }
+                { scheduleGrid[1, i] = new SourceGrid.Cells.Cell(Enterprise.TimeTable[(Days)i+1][0], typeof(TimeSpan)); }
 
                 scheduleGrid.Rows.Insert(2);
                 for (int i = 0; i < 7; i++)
-                { scheduleGrid[2, i] = new SourceGrid.Cells.Cell(Table.Salon.Schedule[i].End, typeof(TimeSpan)); }
+                { scheduleGrid[2, i] = new SourceGrid.Cells.Cell(Enterprise.TimeTable[(Days)i+1][1], typeof(TimeSpan)); }
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -78,22 +72,18 @@ namespace DATAO
 
         private void confirmlFlatButton_Click(object sender, EventArgs e)
         {
-            Table.Salon.SalonName = nameOrgTextBox.Text;
-            Table.Salon.Phone = phoneTextBox.Text;
-            Table.Salon.ActualAddress = actualAddressTextBox.Text;
-            Table.Salon.LegalAddress = legfalAddressTextBox.Text;
-            Table.Salon.TIN = tinTextBox.Text;
-            uint accnumb = 0;
-            uint.TryParse(accountNumberTextBox.Text, out accnumb);
-            Table.Salon.AccountNumber = accnumb;
-            string[] rasp = {
-                scheduleGrid[1, 0] + "-" + scheduleGrid[2, 0], scheduleGrid[1, 1] + "-" + scheduleGrid[2, 1],
-                scheduleGrid[1, 2] + "-" + scheduleGrid[2, 2], scheduleGrid[1, 3] + "-" + scheduleGrid[2, 3],
-                scheduleGrid[1, 4] + "-" + scheduleGrid[2, 4], scheduleGrid[1, 5] + "-" + scheduleGrid[2, 5],
-                scheduleGrid[1, 6] + "-" + scheduleGrid[2, 6]
-            };
-            Table.Salon.SetSchedule(rasp);
-            Table.Save();
+            Enterprise.About.Name = nameOrgTextBox.Text;
+            Enterprise.About.Fields["Телефон"] = phoneTextBox.Text;
+            Enterprise.About.Fields["Фактический адрес"] = actualAddressTextBox.Text;
+            Enterprise.About.Fields["Юридический адрес"] = legfalAddressTextBox.Text;
+            Enterprise.About.Fields["ИНН"] = tinTextBox.Text;
+            Enterprise.About.Fields["Расчетный счет"] = accountNumberTextBox.Text;
+            for (int i = 0; i < 7; i++)
+                {
+                    Enterprise.TimeTable[(Days)i + 1][0] = DateTime.Parse(scheduleGrid[1, i].Value.ToString()).TimeOfDay;
+                    Enterprise.TimeTable[(Days)i + 1][1] = DateTime.Parse(scheduleGrid[2, i].Value.ToString()).TimeOfDay;
+            }
+            adF.Name = nameOrgTextBox.Text;
             adF.UpdateSchedule();
             Close();
         }        

@@ -1,80 +1,69 @@
 ﻿using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Organization;
 
 namespace ExcelManager
 {
     public class StorehouseWorkSheet
     {
         private ExcelWorksheet Core { get; set; }
-        public List<Item> ItemsList { get; private set; } = new List<Item>();
-
-        public void AddItem(Item _item)
-        {
-            ItemsList.Add(_item);
-            int j = 2;
-            while (Core.Cells[j,1].Value != null)
-            {
-                j++;
-            }
-            Core.Cells[j, 1].Value = _item.CodeNumber;
-            Core.Cells[j, 2].Value = _item.Name;
-            Core.Cells[j, 3].Value = _item.Supplier;
-            Core.Cells[j, 4].Value = _item.Cost;
-            Core.Cells[j, 5].Value = _item.TotalResidue;
-            for (int i = 6; i < 18; i++)
-            {
-                Core.Cells[j, i].Value = _item.Balance[(Item.Months)i - 6];
-            }
-        }
-
-        public void RemoveItem(Item _item)
-        {
-            int j = 2;
-            while (Core.Cells[j,1].Value != null)
-            {
-                //Артикул это как ID
-                if (Core.Cells[j, 1].Value.ToString() == _item.CodeNumber.ToString())
-                {
-                    Core.DeleteRow(j);
-                    ItemsList.Remove(_item);
-                }
-            }
-        }
 
         public StorehouseWorkSheet(ExcelWorksheet _sheet)
         {
             Core = _sheet;
-            ItemsList.Clear();
 
             int j = 2;
-            while (Core.Cells[j, 1].Value != null)
+            while (Core.Cells[j,1].Value != null)
             {
-                try
+                Goods _item = new Goods();
+                _item.About.ID = uint.Parse(Core.Cells[j, 1].Value.ToString());
+                _item.About.Name = Core.Cells[j, 2].Value.ToString();
+                _item.Provider = Core.Cells[j, 3].Value.ToString();
+                _item.Cost = double.Parse(Core.Cells[j, 4].Value.ToString());
+
+                Dictionary<Months, uint> _itemExpences = new Dictionary<Months, uint>();
+                Enterprise.GoodsAvailability.Add(_item, uint.Parse(Core.Cells[j, 5].Value.ToString()));
+
+                for (int i = 0; i < 12; i++)
                 {
-                    Dictionary<Item.Months, uint> balance = new Dictionary<Item.Months, uint>();
-                    Item _item = new Item(
-                        Core.Cells[j, 1].Value.ToString(),
-                        Core.Cells[j, 2].Value.ToString(),
-                        Core.Cells[j, 3].Value.ToString(),
-                        uint.Parse(Core.Cells[j, 4].Value.ToString()),
-                        uint.Parse(Core.Cells[j, 5].Value.ToString()),
-                        balance
-                        );
-                    for (int i = 6; i < 18; i++)
-                    {
-                        balance.Add((Item.Months)i - 6, uint.Parse(Core.Cells[j, i].Value.ToString()));
-                    }
-                    j++;
+                    _itemExpences.Add((Months)i + 1, uint.Parse(Core.Cells[j,6+i].Value.ToString()));
                 }
-                catch (Exception)
-                {
-                    //Ошибка
-                    j++;
-                }
+
+                Enterprise.GoodsExpences.Add(_item, _itemExpences);
+                j++;
+            }
+        }
+
+        public void Update()
+        {
+            //Заполнили верхние поля
+            string[] topFieldNames = { "Артикул","Наименование","Поставщик","Стоимость","Остаток на складе"};
+            for (int i = 0; i < topFieldNames.Length; i++)
+            {
+                Core.Cells[1, i + 1].Value = topFieldNames[i];
+            }
+
+            int j = 2;
+            //int k = topFieldNames.Length;
+
+            foreach (var item in Enterprise.GoodsAvailability)
+            {
+                int k = topFieldNames.Length;
+                Core.Cells[j, k].Value = item.Value.ToString();
+                k = topFieldNames.Length + 1;
+
+                //for (int i = 0; i < Enterprise.GoodsExpences[item.Key].Count; i++)
+                //{
+                //    Core.Cells[1, k].Value = $"Израсходовано за {(Months)i+1}";
+                //    Core.Cells[j, k].Value = Enterprise.GoodsExpences[item.Key][(Months)i+1].ToString();
+                //    k++;
+                //}
+                j++;
             }
         }
     }

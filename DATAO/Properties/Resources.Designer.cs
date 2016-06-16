@@ -83,6 +83,16 @@ namespace DATAO.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _40599 {
+            get {
+                object obj = ResourceManager.GetObject("40599", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bigstock_Abstract_White_Digital_D_Chao_75094717 {
             get {
                 object obj = ResourceManager.GetObject("bigstock-Abstract-White-Digital-D-Chao-75094717", resourceCulture);

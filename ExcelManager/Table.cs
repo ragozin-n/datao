@@ -1,4 +1,5 @@
 ﻿using OfficeOpenXml;
+using System;
 using System.IO;
 
 namespace ExcelManager
@@ -13,8 +14,9 @@ namespace ExcelManager
         public static PersonalWorkSheet PersonalList { get; set; }
         public static ServiceWorkSheet Services { get; set; }
         public static StorehouseWorkSheet Storehouse { get; set; }
-        
-        
+        public static IncomeWorkSheet Income { get; set; }
+        public static ExcelPackage Report { get; set; }
+
         /// <summary>
         /// Конструктор по умолчанию
         /// </summary>
@@ -22,17 +24,36 @@ namespace ExcelManager
         public static void FillTable(FileInfo pathToDataoInit)
         {
             dataoFileInfo = pathToDataoInit;
-            ExcelPackage xlPackage = new ExcelPackage(pathToDataoInit);
+            ExcelPackage xlPackage;
+            try
+            {
+                xlPackage = new ExcelPackage(pathToDataoInit);
+            }
+            catch (NullReferenceException)
+            {
+                throw;
+            }
             //Сохраняем линк
             dataoPackage = xlPackage;
-            //Добавлю по мере написания
+
             Salon = new SalonWorkSheet(xlPackage.Workbook.Worksheets["Салон"]);
-            WorkList = new CalendarWorkSheet(xlPackage.Workbook.Worksheets["Календарь"]);
             PersonalList = new PersonalWorkSheet(xlPackage.Workbook.Worksheets["Персонал"]);
             Services = new ServiceWorkSheet(xlPackage.Workbook.Worksheets["Услуги"]);
+            WorkList = new CalendarWorkSheet(xlPackage.Workbook.Worksheets["Календарь"]);
             Storehouse = new StorehouseWorkSheet(xlPackage.Workbook.Worksheets["Склад"]);
-            //Расходы
-            //Доходы
+            Income = new IncomeWorkSheet(xlPackage.Workbook.Worksheets["Приход"]);
+
+            //
+            ExcelPackage _reportPackage;
+            try
+            {
+                _reportPackage = new ExcelPackage(new FileInfo(@"..\..\report.xls"));
+            }
+            catch (NullReferenceException)
+            {
+                throw;
+            }
+            Report = _reportPackage;
         }
 
 
@@ -41,7 +62,13 @@ namespace ExcelManager
         /// </summary>
         public static void Update()
         {
-            FillTable(dataoFileInfo);
+            //Пишем в Core
+            Salon.Update();
+            PersonalList.Update();
+            Services.Update();
+            WorkList.Update();
+            Storehouse.Update();
+            Income.Update();
         }
 
         /// <summary>
@@ -52,6 +79,14 @@ namespace ExcelManager
             dataoPackage.Save();
             var _file = new FileStream(dataoFileInfo.ToString(), FileMode.Open);
             dataoPackage.Load(_file);
+            _file.Close();
+        }
+
+        public static void SaveReport(FileInfo pathToSave)
+        {
+            Report.SaveAs(new FileInfo($"{pathToSave}\report.xlsx"));
+            var _file = new FileStream(@"..\..\report.xls", FileMode.Open);
+            Report.Load(_file);
             _file.Close();
         }
     }

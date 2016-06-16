@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7245203A-666C-4F74-9090-E2E4E304E117}</ProjectGuid>
+    <ProjectGuid>{BAEABFEC-E555-4A9D-9C56-3343EEBDCE92}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ExcelManager</RootNamespace>
-    <AssemblyName>ExcelManager</AssemblyName>
+    <RootNamespace>Organization</RootNamespace>
+    <AssemblyName>Organization</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,14 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EPPlus">
-      <HintPath>..\DATAO\EPPlus.dll</HintPath>
-    </Reference>
-    <Reference Include="Organization">
-      <HintPath>..\Organization\bin\Debug\Organization.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,19 +42,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CalendarWorkSheet.cs" />
-    <Compile Include="IncomeWorkSheet.cs" />
-    <Compile Include="PersonalWorkSheet.cs" />
-    <Compile Include="SalonWorkSheet.cs" />
-    <Compile Include="ServiceWorkSheet.cs" />
-    <Compile Include="StorehouseWorkSheet.cs" />
-    <Compile Include="Table.cs" />
+    <Compile Include="Client.cs" />
+    <Compile Include="Event.cs" />
+    <Compile Include="Goods.cs" />
+    <Compile Include="Human.cs" />
+    <Compile Include="Income.cs" />
+    <Compile Include="Info.cs" />
+    <Compile Include="Organization.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="EPPlus.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
+    <Compile Include="Schedule.cs" />
+    <Compile Include="Service.cs" />
+    <Compile Include="WorkDay.cs" />
+    <Compile Include="Worker.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
