@@ -25,6 +25,7 @@ namespace ExcelManager
                     _income.Date = DateTime.FromOADate(double.Parse(Core.Cells[j, 1].Value.ToString()));
                     _income.Provider = Core.Cells[j, 2].Value.ToString();
                     _income.Cost = double.Parse(Core.Cells[j, 3].Value.ToString());
+                    j++;
                     Enterprise.Earnings.Add(_income);
                 }
                 catch (Exception ex) when (ex is FormatException || ex is OverflowException)
